@@ -1,0 +1,11 @@
+.login-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.login-form{
+    outline: 1px solid rgb(142, 110, 255);
+    padding: 20px;
+    border-radius: 20px;
+}

@@ -1,0 +1,23 @@
+.blueButton {
+
+    background: #5E5DF0 !important;
+    border-radius: 999px !important;
+    box-shadow: #5E5DF0 0 10px 20px -10px !important;
+    box-sizing: border-box !important;
+    color: #FFFFFF !important;
+    cursor: pointer !important;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 24px !important;
+    opacity: 1 !important;
+    outline: 0 solid transparent !important;
+    padding: 8px 18px !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    touch-action: manipulation !important;
+    width: fit-content !important;
+    word-break: break-word !important;
+    border: 0 !important;
+    text-transform: none !important;
+}
