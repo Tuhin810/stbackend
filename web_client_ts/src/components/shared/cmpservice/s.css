@@ -1,0 +1,20 @@
+.services-img{
+	
+	/* width: 375px;
+	height: 530px; */
+	border-radius: 10px;
+	filter: brightness(70%);
+	background:  url("https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg?auto=compress&cs=tinysrgb&w=600");
+	background-repeat: no-repeat;
+	background-size: auto;
+	transition: 0.3s;
+
+}
+.services-img:hover{
+	filter: brightness(80%);
+	
+}
+
+ .imag{
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}

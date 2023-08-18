@@ -1,13 +1,29 @@
-import React from 'react';
-import './home.css';
-import { home } from '../../../assets/images';
-import SearchBox from '../../shared/searchBox/SearchBox';
 
+import './home.css';
+
+import SearchBox from '../../shared/searchBox/SearchBox';
+import Footer from '../footer/Footer';
+import { Companies } from '../../shared/companyList/Companies';
+import HowWorks from '../how_works/HowWorks';
+import ServicesList from '../../shared/cmpservice/Services';
+import NavBar from '../../shared/navbar/NavBar';
+import "./home.css"
+import { home } from '../../../assets/images';
+import A from '../../shared/a/A';
+import Testimonial from '../../shared/Testimonial/Testimonial';
 const Home = () => {
     return (
-
-        <div className="home-page pt-5">
-            <div className='home'>
+<>
+<div className="fixed layout top-0 z-10 bg-gray-50 w-full">
+    
+    <NavBar/>
+    {/* <ComplexNavbar/> */}
+    
+    </div>
+    <div className="mt-24 ">
+        <div className="home-page   pt-10">
+            
+            <div className='home mb-20'>
                 <div className='left-home'>
 
                     <h2>Unlocking Doors to <span>Success</span> Your <span>Future</span> Starts Here.</h2>
@@ -26,7 +42,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-50 mt-4'>
+                    <div className=''>
                         <SearchBox />
                     </div>
 
@@ -35,7 +51,18 @@ const Home = () => {
                     <img src={home} />
                 </div>
             </div>
-        </div>
+
+            {/* home components */}
+            <HowWorks/>
+          <Companies/>
+          <ServicesList/>
+          <Testimonial/>
+          <A/>
+         
+          <div className="my-5"></div>
+            <Footer/>
+            
+        </div></div></>
     )
 }
 
