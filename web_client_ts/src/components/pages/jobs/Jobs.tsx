@@ -1,11 +1,11 @@
 import React from 'react'
 
-const UserDetails = () => {
+const Jobs = () => {
   return (
     <div>
-      
+      Job Dashboard
     </div>
   )
 }
 
-export default UserDetails
+export default Jobs

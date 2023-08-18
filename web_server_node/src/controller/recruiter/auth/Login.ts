@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UserCredential } from "../../../@types/interfaces/UserCredentail";
 import { getRecruiterByEmailAndPassword } from "../../../service/Recruiter/RecruiterService";
 
-export const loginUser = async (req: Request, res: Response) => {
+export const loginRecruiter = async (req: Request, res: Response) => {
     const recruiterCredentail: UserCredential = req.body;
 
     if (!recruiterCredentail.email || !recruiterCredentail.password) {
@@ -16,7 +16,6 @@ export const loginUser = async (req: Request, res: Response) => {
         const recruiter = await getRecruiterByEmailAndPassword(recruiterCredentail);
         console.log(recruiterCredentail);
         console.log(recruiter);
-
 
         if (recruiter) {
             recruiter.password = "";

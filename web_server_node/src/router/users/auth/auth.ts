@@ -5,6 +5,6 @@ import { loginUser } from "../../../controller/users/auth/Login";
 const router = express.Router();
 
 router.post("/user/auth/register",registerNewUser);
-router.post("user/auth/login",loginUser);
+router.post("/user/auth/login",loginUser);
 
-export {router as authRouter}
+export {router as authUsersRouter}
