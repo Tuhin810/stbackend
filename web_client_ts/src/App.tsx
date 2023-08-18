@@ -1,27 +1,52 @@
-import React from 'react'
-import Nav from './components/shared/navbar/NavBar';
-import LandingPage from './components/dashboard/landingpageDashboard/LandingPage';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import LoginForm from './components/pages/forms/auth/LogInForm/LoginForm';
-import UserState from './context/userDetails/UserState';
-import RegistrationForm from './components/pages/forms/auth/RegistrationForm/RegistrationForm';
 
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./components/pages/home/Home";
+import NavBar from "./components/shared/navbar/NavBar";
+import Login from "./components/pages/auth/Login";
 
-const App = () => {
+import UserDevider from "./components/pages/auth/UserDevider";
+import Signup from "./components/pages/auth/Signup";
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:<> <Home/>
+    </> ,
+  },
+  {
+    path: "/signup",
+    element:<> <UserDevider/>
+    </> ,
+  },
+  {
+    path: "/signup/user",
+    element:<> <Signup/>
+    </> ,
+  },
+  {
+    path: "/signin",
+    element:<> <Login/>
+    </> ,
+  },
+  
+]);
+
+
+function App() {
+
+
   return (
-    <div className="app">
-      <UserState>
-        <Router>
-          <Nav />
-          <Routes>
-            <Route path='/' element={<LandingPage />} />
-            <Route path='/login' element={<LoginForm />} />
-            <Route path='/signup' element={<RegistrationForm />} />
-          </Routes>
-        </Router>
-      </UserState>
-    </div>
+    <>
+ <RouterProvider
+      router={router}
+  
+    />
+    </>
   )
 }
 

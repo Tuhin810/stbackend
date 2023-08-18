@@ -12,7 +12,7 @@ export const Get = async (url: string, headers: Object) => {
     }
 }
 
-export const Post = async (url: string, payload: Object, headers: Object): Promise<any> => {
+export const Post = async (url: string, payload: Object, headers: Object) => {
     try {
         const response = await axios.post(baseURL + url, payload, headers);
         return response;
