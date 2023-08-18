@@ -4,7 +4,6 @@ import { UserSignUp } from "../../@types/interfaces/UserDetails";
 // model for new registration 
 
 const usersSchema: Schema<UserSignUp> = new mongoose.Schema({
-  
     firebase_id: {
         type: String
     },

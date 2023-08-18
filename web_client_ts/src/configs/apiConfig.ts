@@ -1,4 +1,4 @@
-export const baseURL: string = 'https://starmark-serverside.onrender.com/';
+export const baseURL: string = 'http://localhost:8989/';
 
 export const payload: Object = {}
 

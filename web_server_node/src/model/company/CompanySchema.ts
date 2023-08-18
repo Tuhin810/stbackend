@@ -70,7 +70,6 @@ const CompanySchema: Schema<CompanyDetails> = new mongoose.Schema({
     },
     website:{
         type:String,
-        required:true
     }
 });
 

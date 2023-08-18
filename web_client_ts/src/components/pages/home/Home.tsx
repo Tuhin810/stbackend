@@ -16,7 +16,7 @@ const Home = () => {
 <>
 <div className="fixed layout top-0 z-10 bg-gray-50 w-full">
     
-    <NavBar/>
+    
     {/* <ComplexNavbar/> */}
     
     </div>
@@ -60,7 +60,6 @@ const Home = () => {
           <A/>
          
           <div className="my-5"></div>
-            <Footer/>
             
         </div></div></>
     )
