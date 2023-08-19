@@ -1,3 +1,5 @@
+import mongoose from "mongoose"
+
 export interface RecruiterSignUp {
     firebase_id:string,
     created_date:Date
@@ -15,5 +17,5 @@ export interface RecruiterSignUp {
     age: number,
     dob:Date,
     photo:Buffer,
-    company_name:string
+    company_id:mongoose.Schema.Types.ObjectId
 }

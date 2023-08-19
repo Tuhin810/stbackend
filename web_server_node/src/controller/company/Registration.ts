@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CompanyDetails } from "../../@types/interfaces/CompanyDetails";
 import CompanyModel from "../../model/company/CompanySchema";
+import { addNewCompany, getCompanyByEmail } from "../../service/Company/CompanyService";
 
 //creating new company
 
@@ -16,21 +17,19 @@ const registerNewCompany =async (req:Request,res:Response) => {
     }
     else{
         try {
-            const company = await CompanyModel.findOne({ email: companyDetails.email })
-    
+            const company = await getCompanyByEmail(companyDetails.email);
             if (company) {
                 return res.status(409).send({
                     success: false,
                     message: "Already exists !!",
                 });
             } else {
-                CompanyModel
-                    .create(companyDetails)
+                addNewCompany(companyDetails)
                     .then((data) => {
                         const companyDetails:CompanyDetails=data;
                         res.status(200).send({
                             success: true,
-                            message: "Company Register Successfully",
+                            message: "Company Registered Successfully",
                             company:companyDetails
                         });
                     })

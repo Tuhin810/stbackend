@@ -1,3 +1,5 @@
+import mongoose from "mongoose"
+
 export interface JobsDetails{
     posted_date:Date,
     jobTitle:string,
@@ -11,9 +13,7 @@ export interface JobsDetails{
     location:string[],
     salary:number,
     currency_type:string,
-    company_name:string,
+    company_id:mongoose.Schema.Types.ObjectId,
     age_limit:number,
-    company_details:string,
-    company_website:string,
-    job_poster_name:string,
+    job_poster_id:mongoose.Schema.Types.ObjectId
 }

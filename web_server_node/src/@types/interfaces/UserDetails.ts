@@ -15,5 +15,5 @@ export interface UserSignUp {
     age: number,
     dob:Date,
     photo:Buffer,
-    cv:Buffer,
+    cv:Buffer[],
 }

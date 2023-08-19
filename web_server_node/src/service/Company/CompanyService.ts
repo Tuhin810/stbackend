@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+import { CompanyDetails } from "../../@types/interfaces/CompanyDetails";
 import CompanyModel from "../../model/company/CompanySchema"
 
 export const getCompanyByName =async (name:string) => {
@@ -5,7 +7,17 @@ export const getCompanyByName =async (name:string) => {
     return company;
 }
 
-export const getCompanyById =async (id:string) => {
+export const getCompanyById =async (id:mongoose.Schema.Types.ObjectId) => {
     const company = await CompanyModel.findById(id);
+    return company;
+}
+
+export const getCompanyByEmail =async (name:string) => {
+    const company = await CompanyModel.find({name:name});
+    return company;
+}
+
+export const addNewCompany =async (companyDetails:CompanyDetails) => {
+    const company = await CompanyModel.create(companyDetails);
     return company;
 }
