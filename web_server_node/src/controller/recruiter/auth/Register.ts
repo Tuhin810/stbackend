@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { RecruiterSignUp } from "../../../@types/interfaces/RecruiterSignup";
 import { getRecruiterByEmail, postRecruiter } from "../../../service/Recruiter/RecruiterService";
-import { getCompanyByName } from "../../../service/Company/CompanyService";
+import { getCompanyById, getCompanyByName } from "../../../service/Company/CompanyService";
 
 export const registerNewRecruiter = async (req: Request, res: Response) => {
     const recruiterDetails: RecruiterSignUp = req.body;
@@ -18,7 +18,7 @@ export const registerNewRecruiter = async (req: Request, res: Response) => {
                 message: "Already Registered please login",
             });
         } else {
-            const comapny = await getCompanyByName(recruiterDetails.company_name);
+            const comapny = await getCompanyById(recruiterDetails.company_id);
             if (comapny) {
                 postRecruiter(recruiterDetails)
                     .then((data) => {

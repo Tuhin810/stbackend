@@ -73,9 +73,10 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         data: Buffer,
         contentType: String,
     },
-    company_name: {
-        type:String,
-        required:[true,"company name can not be blank"]
+    company_id: {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Companies",
+        required:true
     }
 });
 

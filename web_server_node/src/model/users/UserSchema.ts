@@ -74,7 +74,7 @@ const usersSchema: Schema<UserSignUp> = new mongoose.Schema({
         contentType: String,
     },
     cv: {
-        data: Buffer,
+        data: [Buffer],
         contentType: String,
     }
 });

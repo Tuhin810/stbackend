@@ -8,6 +8,7 @@ import { authUsersRouter } from "./src/router/users/auth/auth";
 import { companyRouter } from "./src/router/company/company";
 import { authRecruiterRouter } from "./src/router/recruiter/auth/auth";
 import { loginRecruiter } from "./src/controller/recruiter/auth/Login";
+import { jobRouter } from "./src/router/jobs/jobs";
 
 
 dotenv.config();
@@ -22,7 +23,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 app.use(json());
-app.use([authUsersRouter,authRecruiterRouter, companyRouter,loginRecruiter]);
+app.use([authUsersRouter,authRecruiterRouter, companyRouter,jobRouter]);
 
 mongoose
   .connect(process.env.MONGO_URL!)
