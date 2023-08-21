@@ -4,6 +4,7 @@ import { UserCredentials } from '../../../@types/UserCredential';
 import { signIn } from '../../../utils/apis/auth/login';
 import { userContext } from '../../../context/userDetails/UserContext';
 import { UserDetails } from '../../../@types/UserDetails';
+import { globalContext } from '../../../context/GlobalDetails/GlobalContext';
 
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
   const [email, setemail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const userState = useContext(userContext);
+  const globalState = useContext(globalContext);
   const navigate = useNavigate();
 
   let userCredentail = {
@@ -25,9 +27,10 @@ const Login = () => {
     if (response?.status === 200) {
       let userDetails = response.data as UserDetails;
       userState.loggedIn(userDetails);
+      globalState.loggedIn("user");
       navigate('/jobs');
     }
-    else{
+    else {
       console.log('n');
     }
   }
@@ -95,7 +98,7 @@ const Login = () => {
               <div className="mt-8">
                 <button
                   className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                  onClick={()=>{login(userCredentail)}}
+                  onClick={() => { login(userCredentail) }}
                 >
                   <svg
                     className="w-6 h-6 -ml-2"
