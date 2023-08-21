@@ -8,8 +8,7 @@ export default function JobList(){
 					
 					companyName="ABC Company"
 					role="Consultant" 
-					functionalArea="Other" 
-					stateCity="Chennai" 
+					functionalArea="Other"  
 					employmentType="remote"
 					experience="0-3"
 					urgency="Immediate"
@@ -18,8 +17,7 @@ export default function JobList(){
 				<JobCard
 					companyName="XYZ Company"
 					role="Software Engineer" 
-					functionalArea="Other" 
-					stateCity="Kolkata" 
+					functionalArea="Other" 	
 					employmentType="Hybrid"
 					experience="0-3"
 					urgency="Immediate"
@@ -28,20 +26,11 @@ export default function JobList(){
 					companyName="XYZ Company"
 					role="Software Engineer" 
 					functionalArea="Other" 
-					stateCity="Kolkata" 
 					employmentType="Hybrid"
 					experience="0-3"
 					urgency="Immediate"
 				/>
-				<JobCard
-					companyName="XYZ Company"
-					role="Software Engineer" 
-					functionalArea="Other" 
-					stateCity="Kolkata" 
-					employmentType="Hybrid"
-					experience="0-3"
-					urgency="Immediate"
-				/>											
+															
 			</div>
 		</>
 	)

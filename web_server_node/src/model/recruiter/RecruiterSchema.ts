@@ -39,7 +39,6 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
     phone: {
         type: Number,
         maxLength: [10, "phone number can not be more than 10 digits"],
-        unique: true,
     },
     password: {
         type: String,

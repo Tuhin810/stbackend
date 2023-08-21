@@ -2,12 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import UserState from './context/userDetails/UserState.tsx'
+import GlobalState from './context/GlobalDetails/GlobalState.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <UserState>
+    <GlobalState>
       <App />
-    </UserState>
+    </GlobalState>
   </React.StrictMode>,
 )

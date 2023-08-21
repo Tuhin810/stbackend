@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Jobs = () => {
   return (
     <>
@@ -24,7 +22,7 @@ const Jobs = () => {
               </div>
           </div>
             <div className="sm:w-4/12 w-full h-[64px] flex items-center">
-              <a href="#applyNow" data-bs-toggle="modal" class=" mx-auto text-center w-[90%]  bg-blue-500 border-transparent text-white sm:h-[70%] py-2 rounded-md hover:shadow">Apply Now</a>
+              <a href="#applyNow" data-bs-toggle="modal" className=" mx-auto text-center w-[90%]  bg-blue-500 border-transparent text-white sm:h-[70%] py-2 rounded-md hover:shadow">Apply Now</a>
             </div>
         </div>
         <div className="px-6 pb-6">
@@ -70,7 +68,7 @@ const Jobs = () => {
 
                     <ul className="mb-0 text-gray-500 dark:text-gray-300">
                         <li className="mb-2 text-gray-500 dark:text-gray-300">
-                        <svg className="inline" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                        <svg className="inline bi bi-circle" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
         </svg> Have sound knowledge of commercial activities.</li>
                         <li className="mb-2 text-gray-500 dark:text-gray-300"><i className="mr-2 uil uil-circle"></i> Build next-generation web applications with a focus on the client side</li> 

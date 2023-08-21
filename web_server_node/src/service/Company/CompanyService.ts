@@ -21,3 +21,8 @@ export const addNewCompany =async (companyDetails:CompanyDetails) => {
     const company = await CompanyModel.create(companyDetails);
     return company;
 }
+
+export const getCompanyList =async () => {
+    const companyList = await CompanyModel.find({},{name:1});
+    return companyList;
+}

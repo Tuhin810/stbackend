@@ -1,14 +1,6 @@
-interface CardProps {
-    companyName: string;
-    role: string;
-    functionalArea: string;
-    employmentType: string;
-    admin: string;
-    experience:string;
-    urgency:string;
-}
+import { CardProps } from "../../../../@types/interfaces/CardProps";
 
-export default function card({companyName, role, functionalArea, urgency, employmentType,experience}:CardProps){
+export default function card({companyName, role, functionalArea,urgency, employmentType,experience}:CardProps){
 	return(
 		<>
 			
@@ -33,7 +25,7 @@ export default function card({companyName, role, functionalArea, urgency, employ
                                 </li>
                                 <li>
                                     <p className="mb-0 text-sm text-gray-500 ml-2 sm:ml-0">
-	                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill inline mr-0.5" viewBox="0 0 16 16">
+	                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="bi bi-geo-alt-fill inline mr-0.5" viewBox="0 0 16 16">
 										  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
 										</svg>
 	 									{functionalArea}
@@ -41,7 +33,7 @@ export default function card({companyName, role, functionalArea, urgency, employ
                                 </li>
                                 <li>
                                     <p className="mb-0 text-sm text-gray-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-cash-stack inline mr-1" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="bi bi-cash-stack inline mr-1" viewBox="0 0 16 16">
 									  <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
 									  <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z"/>
 									</svg> $250 - $800 / month</p>
@@ -62,7 +54,7 @@ export default function card({companyName, role, functionalArea, urgency, employ
                         <div className="col-span-12 md:col-span-6 lg:col-span-7">
                             <ul className="flex flex-wrap gap-1 text-gray-700 ">
                                 <li>
-                                	<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-double-right inline mr-1" viewBox="0 0 16 16">
+                                	<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="bi bi-chevron-double-right inline mr-1" viewBox="0 0 16 16">
 									  <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
 									  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
 									</svg> 
@@ -85,7 +77,7 @@ export default function card({companyName, role, functionalArea, urgency, employ
                 <div className="absolute top-4 right-4">
                     <div className="p-2 rounded-md">
                         <a href="javascript:void(0)">
-                        	<svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-red-600 text-white" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        	<svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-red-600 text-white bi bi-heart" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
 							 	<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 							</svg>
                         </a>
