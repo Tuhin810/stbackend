@@ -11,6 +11,7 @@ import "./home.css"
 import { home } from '../../../assets/images';
 import A from '../../shared/a/A';
 import Testimonial from '../../shared/Testimonial/Testimonial';
+import Advertisement from '../../shared/card/Advertisement';
 const Home = () => {
     return (
 <>
@@ -21,7 +22,7 @@ const Home = () => {
     
     </div>
     <div className="mt-24 ">
-        <div className="home-page   pt-10">
+        <div className="home-page  py-10 ">
             
             <div className='home mb-20'>
                 <div className='left-home'>
@@ -55,6 +56,7 @@ const Home = () => {
             {/* home components */}
             <HowWorks/>
           <Companies/>
+          <Advertisement/>
           <ServicesList/>
           <Testimonial/>
           <A/>
