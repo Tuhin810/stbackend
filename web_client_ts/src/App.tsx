@@ -11,7 +11,7 @@ import Login from "./components/pages/auth/Login";
 
 import UserDevider from "./components/pages/auth/UserDevider";
 import Signup from "./components/pages/auth/Signup";
-import Footer from "./components/pages/footer/Footer";
+
 import Jobs from "./components/pages/jobs/Jobs";
 import UserType from "./components/pages/usertype/UserType";
 import RecruiterSignup from "./components/pages/recruiter/auth/RecruiterSignup";
@@ -25,6 +25,8 @@ import RecruiterDashboard from "./components/dashboard/recruiterDashboard/Recrui
 import PostedJobs from "./components/pages/recruiter/postedJobs/PostedJobs";
 import UserState from "./context/userDetails/UserState";
 import UserDashboard from "./components/dashboard/userDashBoard/UserDashboard";
+import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin";
+import Devider from "./components/pages/usertype/LoginUserType";
 
 
 
@@ -42,6 +44,8 @@ function App() {
           <Route path="" element={<LandingPage />}>
             <Route path="/" element={<Home />} />
             <Route path="/userType" element={<UserType />} />
+            <Route path="/login/Type" element={<Devider />} />
+            <Route path="/userType" element={<Login />} />
             <Route path="/jobs" element={<Jobs />} />
              <Route path="/recruiter/dashboard" element={<> <NavBar /><DashBoard/></>}/ >
           <Route path="/profile" element={<> <NavBar /><UserProfile/></>}/ >
@@ -56,8 +60,9 @@ function App() {
             </RecruiterState>
           }>
             <Route path="/recruiter/signup" element={
-              <RecruiterSignup />
-            } />
+              <RecruiterSignup />} />
+            <Route path="/recruiter/login" element={<RecruiterLogin />} />
+
             <Route path="/recruiter/jobs" element={<PostedJobs />} />
           </Route>
           <Route path="/users" element={
@@ -67,7 +72,10 @@ function App() {
           }>
             <Route path="/users/signup" element={<Signup />} />
             <Route path="/users/login" element={<Login />} />
+
+
           </Route>
+          
         </Routes>
         
       </BrowserRouter>
