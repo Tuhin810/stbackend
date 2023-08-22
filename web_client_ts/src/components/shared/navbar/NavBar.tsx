@@ -76,7 +76,7 @@ function NavBar() {
                                
                             </Link>
                             {/* Save button */}
-                            <Link to="/user/login" className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white  justify-center items-center">
+                            <Link to="/users/login" className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white  justify-center items-center">
                             <a href="#_" className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-blue-500 rounded-md group">
 <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-blue-700 rounded group-hover:-mr-4 group-hover:-mt-4">
 <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>

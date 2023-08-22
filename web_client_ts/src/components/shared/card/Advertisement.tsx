@@ -2,8 +2,8 @@ import "./advr.css"
 
 function Advertisement() {
   return (
-    <div>
-        <main className="flex py-10 w-full items-center justify-center ">
+    <div className="hidden md:inline">
+        <main className="flex py-10  w-full items-center justify-center ">
 
     <article className="group relative flex h-[12rem] w-[50rem] overflow-hidden rounded-2xl bg-gray-200 shadow-xl">
        

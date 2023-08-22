@@ -6,19 +6,17 @@ function Signup() {
 <div className="relative h-screen flex ">
     <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
       <div className="sm:w-1/2 xl:w-2/5 h-full hidden md:flex flex-auto items-center justify-start p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative" style={{ 
-  backgroundImage: `url("https://images.unsplash.com/photo-1579451861283-a2239070aaa9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80")` 
+  backgroundImage: `url("https://images.pexels.com/photos/3127880/pexels-photo-3127880.jpeg?auto=compress&cs=tinysrgb&w=600")` 
 }}>
         <div className="absolute bg-gradient-to-b from-blue-900 to-gray-900 opacity-75 inset-0 z-0"></div>
 <div className="absolute triangle  min-h-screen right-0 w-16" ></div>
-<a href="https://codepen.io/uidesignhub" target="_blank" title="" className="flex absolute top-5 text-center text-gray-100 focus:outline-none"><img src="/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="StarMark" className="object-cover mx-auto w-8 h-8 rounded-full w-10 h-10"/><p className="text-xl ml-3">StarMark<strong></strong></p> </a>
-<img src="https://images.pexels.com/photos/6954194/pexels-photo-6954194.jpeg?auto=compress&cs=tinysrgb&w=600"
+<a href="" target="_blank" title="" className="flex absolute top-5 text-center text-gray-100 focus:outline-none">
+      <img src="https://starmark.vercel.app/assets/logo-e2e14c98.png"
+      className="object-cover mx-auto w-32 h-8 rounded-md w-10 h-10"/> </a><img src="https://images.pexels.com/photos/6954194/pexels-photo-6954194.jpeg?auto=compress&cs=tinysrgb&w=600"
  className="h-96 absolute right-5 mr-5 rounded-xl shadow-xl"/>
         <div className=" max-w-md z-10">
           <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Reference site about Lorem Ipsum..</div>
-          <div className="sm:text-sm xl:text-md text-gray-200 font-normal"> What is Lorem Ipsum Lorem Ipsum is simply dummy
-            text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it
-            has?</div>
+         
         </div>
        
        <ul className="circles">
@@ -83,7 +81,7 @@ function Signup() {
            
             <div>
               <button type="submit" className="w-full mb-5 flex justify-center bg-gradient-to-r from-indigo-500 to-blue-600  hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500">
-                Sign in
+                Sign up
               </button>
             </div>
            
