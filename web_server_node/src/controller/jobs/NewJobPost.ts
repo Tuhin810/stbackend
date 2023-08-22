@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { JobsDetails } from "../../@types/interfaces/JobsDetails";
 import JobModel from "../../model/jobs/JobSchema";
+import { postNewJob } from "../../service/jobs/jobService";
 
 //posting new jobs
 
@@ -16,14 +17,13 @@ const postNewJobs = async (req: Request, res: Response) => {
     }
     else {
         try {
-            JobModel
-                .create(jobDetails)
+            postNewJob(jobDetails)
                 .then((data) => {
-                    const jobDetails: JobsDetails = data;
+                    const jobData: JobsDetails = data;
                     res.status(200).send({
                         success: true,
                         message: "Job posted Successfully",
-                        job: jobDetails
+                        job: jobData
                     });
                 })
 

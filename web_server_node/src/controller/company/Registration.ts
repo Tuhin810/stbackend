@@ -18,7 +18,10 @@ const registerNewCompany =async (req:Request,res:Response) => {
     else{
         try {
             const company = await getCompanyByEmail(companyDetails.email);
+            console.log(company);
+            
             if (company) {
+                console.log(company);
                 return res.status(409).send({
                     success: false,
                     message: "Already exists !!",

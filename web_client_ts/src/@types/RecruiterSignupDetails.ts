@@ -1,4 +1,5 @@
 export interface RecruiterSignupDetails{
+    _id:string,
     firebase_id:string,
     created_date:Date
     first_name: string,

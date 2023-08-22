@@ -1,18 +1,16 @@
 import JobCard from './jobcard'
 
-export default function JobList(){
+ const JobList =()=>{
 	return (
 		<>
 			<div className="job-list-container mx-none px-4 py-10 flex flex-wrap justify-evenly">
-				<JobCard 
-					
+				<JobCard 	
 					companyName="ABC Company"
 					role="Consultant" 
 					functionalArea="Other"  
 					employmentType="remote"
 					experience="0-3"
 					urgency="Immediate"
-					
 				/>
 				<JobCard
 					companyName="XYZ Company"
@@ -35,3 +33,5 @@ export default function JobList(){
 		</>
 	)
 }
+
+export default JobList
