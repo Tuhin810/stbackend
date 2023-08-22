@@ -3,7 +3,7 @@ import { CompanyList } from '../../../../@types/CompanyList';
 import { getCompanyList } from '../../../../utils/apis/company/company';
 import { RecruiterSignupDetails } from '../../../../@types/RecruiterSignupDetails';
 import { registerRecruiter } from '../../../../utils/apis/recruiter/recruiter';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { globalContext } from '../../../../context/GlobalDetails/GlobalContext';
 
@@ -61,8 +61,8 @@ const RecruiterSignup = () => {
   const signUpRecruiter = async () => {
 
     const response = await registerRecruiter(recruiterSignUpDetail);
-    if (response?.status) {
-      let recruiterDetails = response.data as RecruiterSignupDetails;
+    if (response?.status===200) {
+      let recruiterDetails = response.data.recruiter as RecruiterSignupDetails;
       recruiterState.loggedIn(recruiterDetails);
       globalState.loggedIn("recruiter");
       navigate('/recruiter/jobs');
@@ -99,7 +99,7 @@ const RecruiterSignup = () => {
                   }
                 </select>
               </div>
-              <p className="text-sm text-gray-600 mb-2">If your company is not listed <a href="#" className="text-blue-500 hover:underline">register here</a></p>
+              <p className="text-sm text-gray-600 mb-2">If your company is not listed <Link to="/registerCompany" className="text-blue-500 hover:underline">register here</Link></p>
               <div className="mb-4">
                 <label htmlFor="firstName" className="block text-gray-700 text-sm font-medium mb-1">First Name</label>
                 <input type="text" id="firstName" name="firstName" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required onChange={(e) => handleChangeFirstName(e)} />
