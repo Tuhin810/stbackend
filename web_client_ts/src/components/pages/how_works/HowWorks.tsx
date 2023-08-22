@@ -125,22 +125,22 @@ const HowWorks = () => {
 		</div>
 		
 		
-		<div className="">
+		<div className="ml-20 -mt-5">
 			
 			
 			{/* <img src="https://images.pexels.com/photos/5439153/pexels-photo-5439153.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
 			 */}
-			 <div className=" ">
+			 <div className=" hidden md:inline ">
   <div className="flex flex-col justify-between w-72 sm:w-96 h-96 bg-white  text-gray-800 shadow-md overflow-hidden cursor-pointer right-img" >
     <div className="flex justify-between items-center ml-4 pr-8">
-      <div className="bg-red-600 text-white bg-opacity-95 shadow px-2 py-1 flex items-center font-bold text-xs rounded">Some information</div>
-      <div className="bg-red-600 w-10 h-12 shadow flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full">%</div>
+      <div className="bg-blue-600 text-white bg-opacity-95 shadow px-2 py-1 flex items-center font-bold text-xs rounded">Some information</div>
+      <div className="bg-blue-600 w-10 h-12 shadow flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full">%</div>
     </div>
     <div className="bg-white bg-opacity-95 shadow-md rounded-r-xl p-4 flex flex-col mr-4 mb-8">
-      <h3 className="text-xl font-bold pb-2">Happy Nowruz 1400</h3>
-      <p className="truncate text-gray-500 text-sm">Nowruz is the Persian New Year, which begins on the Spring equinox, marking the first day of Farvardin, the first month of the Iranian solar calendar.</p>
+      <h3 className="text-xl font-bold pb-2">Get Your Drean Job !</h3>
+      <p className="truncate text-gray-500 text-sm">on Starmark</p>
       <div className="flex justify-between items-center">
-        <span className="text-gray-400 text-xs">Have a nice year...</span>
+        <span className="text-gray-400 text-xs">...</span>
       </div>
     </div>
   </div>
