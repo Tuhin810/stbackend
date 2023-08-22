@@ -1,6 +1,13 @@
+import { Helmet } from 'react-helmet';
+import titles from '../../../utils/titles';
+
 const Jobs = () => {
   return (
+ 
     <>
+       <Helmet>
+        <title>{titles.home}</title>
+      </Helmet>
       <div className="border rounded-md border-gray-300 m-10">
         <div className="flex flex-wrap mt-6 sm:justify-between items-center sm:px-6">
           <div className="flex flex-wrap sm:w-8/12 w-full mb-4 sm:mb-0">

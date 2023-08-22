@@ -18,6 +18,7 @@ const LoginForm = () => {
         <div className='login-page'>
             <div className='login-form'>
                 <h2 className='heading text-center text-primary mb-4'>Log In</h2>
+                
                 <div className='text-center my-4'>
                     <button className='btn btn-primary text-center' onClick={()=>{signIn(userCredential)}}>Submit</button>
                 </div>

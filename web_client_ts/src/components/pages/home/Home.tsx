@@ -1,5 +1,7 @@
 
 import './home.css';
+import { Helmet } from 'react-helmet';
+import titles from '../../../utils/titles';
 
 import SearchBox from '../../shared/searchBox/SearchBox';
 import Footer from '../footer/Footer';
@@ -14,6 +16,9 @@ import Testimonial from '../../shared/Testimonial/Testimonial';
 const Home = () => {
     return (
 <>
+<Helmet>
+        <title>{titles.home}</title>
+      </Helmet>
 <div className="fixed layout top-0 z-10 bg-gray-50 w-full">
     
     

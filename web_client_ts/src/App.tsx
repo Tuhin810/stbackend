@@ -9,6 +9,7 @@ import {
 import Home from "./components/pages/home/Home";
 import NavBar from "./components/shared/navbar/NavBar";
 import Login from "./components/pages/auth/Login";
+import title from './title';
 
 import UserDevider from "./components/pages/auth/UserDevider";
 import Signup from "./components/pages/auth/Signup";
@@ -22,7 +23,8 @@ import PostedJobs from "./components/pages/recruiter/postedJobs/PostedJobs";
 import UserDashboard from "./components/dashboard/userDashBoard/UserDashboard";
 import UserState from "./context/recruiterDetails/RecruiterState";
 import RecruiterState from "./context/recruiterDetails/RecruiterState";
-
+import titles from "./utils/titles";
+import { Helmet } from 'react-helmet';
 
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
 
   return (
     <>
+    <Helmet>
+        <title>{titles.home}</title>
+      </Helmet>
       <BrowserRouter>
         <Routes>
           <Route path="" element={<LandingPage />}>
