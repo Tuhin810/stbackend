@@ -107,7 +107,7 @@ const CompanyRegistration = () => {
     }
 
     return (
-        <div className="bg-gray-100 flex items-center justify-center h-screen" id="company_registration">
+        <div className="bg-gray-100 mt-10 flex items-center justify-center h-screen" id="company_registration">
             <div className="container mx-auto py-8">
                 <div className="max-w-md mx-auto bg-white p-8 rounded shadow-md">
                     <h2 className="text-2xl font-semibold mb-4">Register Your <span className="text-cyan-400"> Company </span></h2>
