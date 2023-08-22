@@ -25,6 +25,8 @@ import RecruiterDashboard from "./components/dashboard/recruiterDashboard/Recrui
 import PostedJobs from "./components/pages/recruiter/postedJobs/PostedJobs";
 import UserState from "./context/userDetails/UserState";
 import UserDashboard from "./components/dashboard/userDashBoard/UserDashboard";
+import Notification from "./components/pages/notifications/notifications";
+
 
 
 
@@ -33,45 +35,47 @@ function App() {
 
   return (
     <>
-    
 
 
-<div id="app">
-      <BrowserRouter>
-        <Routes>
-          <Route path="" element={<LandingPage />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/userType" element={<UserType />} />
-            <Route path="/jobs" element={<Jobs />} />
-             <Route path="/recruiter/dashboard" element={<> <NavBar /><DashBoard/></>}/ >
-          <Route path="/profile" element={<> <NavBar /><UserProfile/></>}/ >
-          <Route path="/profile/qualification" element={<> <NavBar />"hh"</>} />
 
-          <Route path="/a" element={<><NavBar /><ABCD/> </>} />
-            <Route path="/registerCompany" element={<CompanyRegistration />} />
-          </Route>
-          <Route path="/recruiter" element={
-            <RecruiterState>
-              <RecruiterDashboard />
-            </RecruiterState>
-          }>
-            <Route path="/recruiter/signup" element={
-              <RecruiterSignup />
-            } />
-            <Route path="/recruiter/jobs" element={<PostedJobs />} />
-          </Route>
-          <Route path="/users" element={
-            <UserState>
-              <UserDashboard />
-            </UserState>
-          }>
-            <Route path="/users/signup" element={<Signup />} />
-            <Route path="/users/login" element={<Login />} />
-          </Route>
-        </Routes>
-        
-      </BrowserRouter>
-    </div>
+      <div id="app">
+        <BrowserRouter>
+          <Routes>
+            <Route path="" element={<LandingPage />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/userType" element={<UserType />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/recruiter/dashboard" element={<><DashBoard /></>} />
+              <Route path="/profile" element={<> <UserProfile /></>} />
+              <Route path="/notify" element={<> <Notification /></>} />
+              <Route path="/profile/qualification" element={<> <NavBar /></>} />
+              
+
+              <Route path="/a" element={<><NavBar /><ABCD /> </>} />
+              <Route path="/registerCompany" element={<CompanyRegistration />} />
+            </Route>
+            <Route path="/recruiter" element={
+              <RecruiterState>
+                <RecruiterDashboard />
+              </RecruiterState>
+            }>
+              <Route path="/recruiter/signup" element={
+                <RecruiterSignup />
+              } />
+              <Route path="/recruiter/jobs" element={<PostedJobs />} />
+            </Route>
+            <Route path="/users" element={
+              <UserState>
+                <UserDashboard />
+              </UserState>
+            }>
+              <Route path="/users/signup" element={<Signup />} />
+              <Route path="/users/login" element={<Login />} />
+            </Route>
+          </Routes>
+
+        </BrowserRouter>
+      </div>
     </>
   )
 }

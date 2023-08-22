@@ -12,7 +12,8 @@ import rating from './rating.png';
 import vectorImg from './img.png';
 import logo from './logo.png';
 import home from './home.png';
-import searchIcon from './search-icon.gif'
+import searchIcon from './search-icon.gif';
+import notFound from './notFound.png';
 
 export {
 	get_find,
@@ -29,5 +30,6 @@ export {
 	vectorImg,
 	logo,
 	home,
-	searchIcon
+	searchIcon,
+	notFound
 };

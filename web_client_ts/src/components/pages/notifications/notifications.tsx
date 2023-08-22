@@ -1,4 +1,3 @@
-import NotifiList from './notificationCardList';
 import NotiCard from './notificationCard';
 const cardInfo= [
 		{
@@ -13,7 +12,7 @@ const cardInfo= [
 		}
 	]
 
-export default function notification(){
+export default function Notification(){
 
 	return (
 			<>
