@@ -1,18 +1,20 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { globalContext } from '../../../../context/GlobalDetails/GlobalContext';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
+import JobList from '../../jobs/jobCard/jobList';
 
 const PostedJobs = () => {
+  const [postedJobList, setPostedJobList] = useState([]);
   const recruiterState = useContext(recruiterContext);
   const globalState = useContext(globalContext);
-
+  const [recruiterId, setRecruiterId] = useState('');
   useEffect(() => {
-    console.log('details', recruiterState.recruiterDetails);
-    console.log('type', globalState.userType);
+    const { _id } = recruiterState.recruiterDetails;
   }, [])
+
   return (
-    <div>
-      <p>Posted Jobs</p>
+    <div className="h-screen">
+      <JobList />
     </div>
   )
 }

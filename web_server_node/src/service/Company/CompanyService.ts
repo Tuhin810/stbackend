@@ -12,8 +12,8 @@ export const getCompanyById =async (id:mongoose.Schema.Types.ObjectId) => {
     return company;
 }
 
-export const getCompanyByEmail =async (name:string) => {
-    const company = await CompanyModel.find({name:name});
+export const getCompanyByEmail =async (email:string) => {
+    const company = await CompanyModel.findOne({email:email});
     return company;
 }
 

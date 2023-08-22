@@ -27,7 +27,7 @@ export const registerNewRecruiter = async (req: Request, res: Response) => {
                         res.status(200).send({
                             success: true,
                             message: "Users Register Successfully",
-                            user: recruiterDetails
+                            recruiter: recruiterDetails
                         });
                     })
             }
