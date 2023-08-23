@@ -11,7 +11,7 @@ import Login from "./components/pages/auth/Login";
 
 import UserDevider from "./components/pages/auth/UserDevider";
 import Signup from "./components/pages/auth/Signup";
-import Footer from "./components/pages/footer/Footer";
+
 import Jobs from "./components/pages/jobs/Jobs";
 import UserType from "./components/pages/usertype/UserType";
 import RecruiterSignup from "./components/pages/recruiter/auth/RecruiterSignup";
@@ -25,10 +25,11 @@ import RecruiterDashboard from "./components/dashboard/recruiterDashboard/Recrui
 import PostedJobs from "./components/pages/recruiter/postedJobs/PostedJobs";
 import UserState from "./context/userDetails/UserState";
 import UserDashboard from "./components/dashboard/userDashBoard/UserDashboard";
+
+import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin";
+import Devider from "./components/pages/usertype/LoginUserType";
+
 import Notification from "./components/pages/notifications/notifications";
-
-
-
 
 function App() {
 
@@ -37,45 +38,48 @@ function App() {
     <>
 
 
+<div id="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<LandingPage />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/userType" element={<UserType />} />
+            <Route path="/login/Type" element={<Devider />} />
+            <Route path="/userType" element={<Login />} />
+            <Route path="/jobs" element={<Jobs />} />
+             <Route path="/recruiter/dashboard" element={<> <NavBar /><DashBoard/></>}/ >
+          <Route path="/profile" element={<> <NavBar /><UserProfile/></>}/ >
+          <Route path="/profile/qualification" element={<> <NavBar />"hh"</>} />
 
-      <div id="app">
-        <BrowserRouter>
-          <Routes>
-            <Route path="" element={<LandingPage />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/userType" element={<UserType />} />
-              <Route path="/jobs" element={<Jobs />} />
-              <Route path="/recruiter/dashboard" element={<><DashBoard /></>} />
-              <Route path="/profile" element={<> <UserProfile /></>} />
-              <Route path="/notify" element={<> <Notification /></>} />
-              <Route path="/profile/qualification" element={<> <NavBar /></>} />
-              
+          <Route path="/a" element={<><NavBar /><ABCD/> </>} />
+            <Route path="/registerCompany" element={<CompanyRegistration />} />
+          </Route>
+          <Route path="/recruiter" element={
+            <RecruiterState>
+              <RecruiterDashboard />
+            </RecruiterState>
+          }>
+            <Route path="/recruiter/signup" element={
+              <RecruiterSignup />} />
+            <Route path="/recruiter/login" element={<RecruiterLogin />} />
 
-              <Route path="/a" element={<><NavBar /><ABCD /> </>} />
-              <Route path="/registerCompany" element={<CompanyRegistration />} />
-            </Route>
-            <Route path="/recruiter" element={
-              <RecruiterState>
-                <RecruiterDashboard />
-              </RecruiterState>
-            }>
-              <Route path="/recruiter/signup" element={
-                <RecruiterSignup />
-              } />
-              <Route path="/recruiter/jobs" element={<PostedJobs />} />
-            </Route>
-            <Route path="/users" element={
-              <UserState>
-                <UserDashboard />
-              </UserState>
-            }>
-              <Route path="/users/signup" element={<Signup />} />
-              <Route path="/users/login" element={<Login />} />
-            </Route>
-          </Routes>
+            <Route path="/recruiter/jobs" element={<PostedJobs />} />
+          </Route>
+          <Route path="/users" element={
+            <UserState>
+              <UserDashboard />
+            </UserState>
+          }>
+            <Route path="/users/signup" element={<Signup />} />
+            <Route path="/users/login" element={<Login />} />
 
-        </BrowserRouter>
-      </div>
+
+          </Route>
+          
+        </Routes>
+        
+      </BrowserRouter>
+    </div>
     </>
   )
 }
