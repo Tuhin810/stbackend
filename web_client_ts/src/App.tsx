@@ -23,22 +23,26 @@ import UserState from "./context/recruiterDetails/RecruiterState";
 import RecruiterState from "./context/recruiterDetails/RecruiterState";
 
 
+import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin";
+import Devider from "./components/pages/usertype/LoginUserType";
 
+import Notification from "./components/pages/notifications/notifications";
 
 function App() {
 
 
   return (
     <>
-    {/* <Helmet>
-        <title>{titles.home}</title>
-      </Helmet> */}
+<div id="app">
+
       <BrowserRouter>
         <Routes>
           <Route path="" element={<LandingPage />}>
             <Route path="/" element={<Home />} 
             />
             <Route path="/userType" element={<UserType />} />
+            <Route path="/login/Type" element={<Devider />} />
+            <Route path="/userType" element={<Login />} />
             <Route path="/jobs" element={<Jobs />} />
           </Route>
           <Route path="/recruiter" element={
@@ -47,8 +51,9 @@ function App() {
             </RecruiterState>
           }>
             <Route path="/recruiter/signup" element={
-              <RecruiterSignup />
-            } />
+              <RecruiterSignup />} />
+            <Route path="/recruiter/login" element={<RecruiterLogin />} />
+
             <Route path="/recruiter/jobs" element={<PostedJobs />} />
           </Route>
           <Route path="/users" element={
@@ -58,7 +63,10 @@ function App() {
           }>
             <Route path="/users/signup" element={<Signup />} />
             <Route path="/users/login" element={<Login />} />
+
+
           </Route>
+          
         </Routes>
         <Footer />
       </BrowserRouter>

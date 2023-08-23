@@ -1,4 +1,4 @@
-import { NotiCardProps } from "../../../../@types/interfaces/NotificationCardProps";
+import { NotiCardProps } from "../../../@types/interfaces/NotificationCardProps"
 
 export default function notiCard({title, company}:NotiCardProps){
 	return (

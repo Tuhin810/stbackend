@@ -11,6 +11,8 @@ const RecruiterState = (props: any) => {
 
     const loggedIn = (recruiterDetails: RecruiterSignupDetails) => {
         setRecruiterDetails(recruiterDetails);
+        localStorage.setItem('details',JSON.stringify(recruiterDetails))
+        localStorage.setItem('userType',"recruiter");
         setIsLoggedIn(true);
     }
 

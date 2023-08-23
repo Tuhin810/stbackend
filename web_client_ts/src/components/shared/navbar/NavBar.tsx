@@ -14,8 +14,8 @@ function NavBar() {
                              </div>
                         {/* For large (i.e. desktop and laptop sized screen) */}
                         
-                        <div className="lg:flex hidden flex-auto justify-between flex-row">
-                            <div className=" xl:pl-16 lg:pl-4">
+                        <div className="lg:flex hidden flex-auto justify-end flex-row ">
+                            <div className=" xl:pl-16 lg:pl-4 hidden">
                                 <div className=" flex space-x-1 items-center">
                                     <div className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer w-3 h-3 rounded-full bg-gray-200 flex justify-center items-center">
                                         <svg width={4} height={6} viewBox="0 0 4 6" fill="none" className="" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@ function NavBar() {
                                
                             </Link>
                             {/* Save button */}
-                            <Link to="/users/login" className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white  justify-center items-center">
+                            <Link to="/login/Type" className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white  justify-center items-center">
                             <a href="#_" className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-blue-500 rounded-md group">
 <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-blue-700 rounded group-hover:-mr-4 group-hover:-mt-4">
 <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
@@ -115,10 +115,9 @@ function NavBar() {
                         </div>
                         <div className="hidden sm:flex flex-row space-x-6 ">
                         <div className="inline-block mb-6 rounded-full bg-gray-300 pr-5 h-16 line-height-username1">
-    	<img className="rounded-full float-left h-full" src="https://randomuser.me/api/portraits/women/34.jpg"/> <span className="ml-3">Kate Horwitz</span>
+                            <img className="rounded-full float-left h-full" src="https://randomuser.me/api/portraits/women/34.jpg"/> <span className="ml-3">Kate Horwitz</span>
 	</div>
-  
-  	<div></div>
+  <div></div>
                             <button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-gray-800 bg-white focus:outline focus:bg-gray-200 hover:bg-gray-200 duration-150 justify-center items-center">
                                 <p>Home</p>
                                 <svg className="mt-1" width={14} height={14} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">

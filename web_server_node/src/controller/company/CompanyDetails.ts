@@ -14,7 +14,6 @@ const getAllCompany =async (req:Request,res:Response) => {
                             company:data
                         });
                     })
-    
             }
          catch (e) {
             res.status(500).send({
