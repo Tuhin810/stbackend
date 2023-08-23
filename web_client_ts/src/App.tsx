@@ -25,17 +25,17 @@ import RecruiterDashboard from "./components/dashboard/recruiterDashboard/Recrui
 import PostedJobs from "./components/pages/recruiter/postedJobs/PostedJobs";
 import UserState from "./context/userDetails/UserState";
 import UserDashboard from "./components/dashboard/userDashBoard/UserDashboard";
+
 import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin";
 import Devider from "./components/pages/usertype/LoginUserType";
 
-
+import Notification from "./components/pages/notifications/notifications";
 
 function App() {
 
 
   return (
     <>
-    
 
 
 <div id="app">
