@@ -12,7 +12,7 @@ import Login from "./components/pages/auth/Login";
 import UserDevider from "./components/pages/auth/UserDevider";
 import Signup from "./components/pages/auth/Signup";
 import Footer from "./components/pages/footer/Footer";
-import Jobs from "./components/pages/jobs/jobCard/jobList";
+import Jobs from "./components/pages/jobs/Jobs";
 import UserType from "./components/pages/usertype/UserType";
 import RecruiterSignup from "./components/pages/recruiter/auth/RecruiterSignup";
 import LandingPage from "./components/dashboard/landingpageDashboard/LandingPage";
