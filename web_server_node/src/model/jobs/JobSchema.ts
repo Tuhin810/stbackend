@@ -15,7 +15,7 @@ const JobSchema: Schema<JobsDetails> = new mongoose.Schema({
     jobType:{
         type:String,
         required:[true,"jobtype cannot be null"],
-        enum: ["Full Time", "Part Time", "Internship", "Freelancing"],
+        enum: ["full-time", "part-time", "Internship", "Freelancing"],
     },
     jobDescription:{
         type:String,
@@ -33,7 +33,7 @@ const JobSchema: Schema<JobsDetails> = new mongoose.Schema({
         type:[String],
         required:[true,"skills list cant be null"]
     },
-    soft_skills:{
+    additonal_skills:{
         type:[String],
         default:[]
     },
@@ -67,8 +67,35 @@ const JobSchema: Schema<JobsDetails> = new mongoose.Schema({
         ref:"Recruiters",
         required:[true,"job poster name can not be null"]
     },
-   
-    
+    spoken_english_required:{
+        type:Boolean,
+        default:true
+    },
+    is_target_based_salary:{
+        type:Boolean,
+        default:false
+    },
+    duty_hours:{
+        type:Number,
+        default:8
+    },
+    is_fresher_allowed:{
+        type:Boolean,
+        required:[true,"fresh allowed field can not be blank"]
+    },
+    gender:{
+        type:String,
+        enum:["male","female","all"],
+        required:true
+    },
+    qualification:{
+        type:String,
+        required:true
+    },
+    any_charges:{
+        type:Boolean,
+        required:[true,"any charges field can not be blank"]
+    }
 });
 
 const JobModel = mongoose.model<JobsDetails>("Jobs", JobSchema);

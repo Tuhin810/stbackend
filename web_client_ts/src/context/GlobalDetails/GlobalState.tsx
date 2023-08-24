@@ -1,21 +1,12 @@
-import { useState } from 'react';
 import { globalContext } from './GlobalContext';
+import { useReducer } from 'react';
+import { globalLoggedInReducer } from '../../reducers/globalReducers/GlobalReducers';import { GlobalLoggedInDetails } from '../../@types/interfaces/GlobalLoggedInDetails';
 
-const GlobalState = (props: any) => {
-    const [isLoggedIn,setIsLoggedIn]=useState(false);
-    const [userType, setUserType] = useState<string>("");
-    const loggedIn = (userType: string) => {
-        setUserType(userType);
-        setIsLoggedIn(true);
-    }
-    const loggedOut = () =>{
-        setUserType("");
-        setIsLoggedIn(false);
-    }
-
+const GlobalState = (props: any) => {    
+    const [globalLoggedIn,loggedIn]=useReducer(globalLoggedInReducer,{} as GlobalLoggedInDetails);
     return (
         <div>
-            <globalContext.Provider value={{ userType,isLoggedIn,loggedIn,loggedOut }}>
+            <globalContext.Provider value={{ globalLoggedIn,loggedIn }}>
                 {props.children}
             </globalContext.Provider>
         </div>
@@ -23,3 +14,4 @@ const GlobalState = (props: any) => {
 }
 
 export default GlobalState
+

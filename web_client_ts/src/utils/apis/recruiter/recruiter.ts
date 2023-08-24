@@ -1,5 +1,5 @@
 import { RecruiterLoginDetails } from "../../../@types/RecruiterLoginDEtails";
-import { RecruiterSignupDetails } from "../../../@types/RecruiterSignupDetails";
+import { RecruiterSignupDetails } from "../../../@types/RecruiterDetails";
 import { header } from "../../../configs/apiConfig";
 import { Get, Post } from "../apiCall";
 

@@ -14,8 +14,10 @@ export const Get = async (url: string, headers: Object) => {
 
 export const Post = async (url: string, payload: Object, headers: Object) => {
     try {
-        const response = await axios.post(baseURL + url, payload, headers);
-        return response;
+        if (payload != null || payload != undefined) {
+            const response = await axios.post(baseURL + url, payload, headers);
+            return response;
+        }
     } catch (exception) {
         console.log(exception);
     }
@@ -23,8 +25,10 @@ export const Post = async (url: string, payload: Object, headers: Object) => {
 
 export const Put = async (url: string, payload: Object, headers: Object) => {
     try {
-        const response = await axios.put(baseURL + url, payload, headers);
-        return response;
+        if (payload != null || payload != undefined) {
+            const response = await axios.put(baseURL + url, payload, headers);
+            return response;
+        }
     } catch (exception) {
         console.log(exception);
     }

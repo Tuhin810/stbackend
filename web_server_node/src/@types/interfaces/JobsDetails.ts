@@ -8,12 +8,19 @@ export interface JobsDetails{
     no_of_vacancy:number,
     experience_year:number
     skills:string[],
-    soft_skills:string[],
+    additonal_skills:string[],
     no_of_applicants:number
     location:string[],
     salary:number,
     currency_type:string,
     company_id:mongoose.Schema.Types.ObjectId,
     age_limit:number,
-    job_poster_id:mongoose.Schema.Types.ObjectId
+    job_poster_id:mongoose.Schema.Types.ObjectId,
+    spoken_english_required:boolean,
+    is_target_based_salary:boolean,
+    duty_hours:number,
+    is_fresher_allowed:boolean,
+    gender:string,
+    qualification:string,
+    any_charges:boolean,
 }
