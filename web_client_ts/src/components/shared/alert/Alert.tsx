@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { AlertData } from '../../../@types/interfaces/AlertProps'
+import { AlertData } from '../../../@types/interfaces/props/AlertProps'
 
 
 const Alert:FunctionComponent<AlertData> = ({type,text}) => {

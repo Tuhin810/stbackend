@@ -1,61 +1,64 @@
-
-
 import {
   BrowserRouter,
-  createBrowserRouter,
+  Navigate,
   Route,
   Routes,
 } from "react-router-dom";
-import Home from "./components/pages/home/Home";
-import NavBar from "./components/shared/navbar/NavBar";
-import Login from "./components/pages/auth/Login";
-import UserDevider from "./components/pages/auth/UserDevider";
-import Signup from "./components/pages/auth/Signup";
-import Footer from "./components/pages/footer/Footer";
-import Jobs from "./components/pages/jobs/Jobs";
-import UserType from "./components/pages/usertype/UserType";
+
+import Home from "./components/pages/common/home/Home";
+import Login from "./components/pages/applicant/auth/Login/Login";
+import Signup from "./components/pages/applicant/auth/SignUp/Signup";
+import Jobs from "./components/pages/applicant/jobs/Jobs";
+import UserType from "./components/pages/common/usertype/UserType";
 import RecruiterSignup from "./components/pages/recruiter/auth/RecruiterSignup";
 import LandingPage from "./components/dashboard/landingpageDashboard/LandingPage";
 import RecruiterDashboard from "./components/dashboard/recruiterDashboard/RecruiterDashboard";
-import PostedJobs from "./components/pages/recruiter/postedJobs/PostedJobs";
+import PostedJobList from "./components/pages/recruiter/postedJobList/PostedJobList";
 import UserDashboard from "./components/dashboard/userDashBoard/UserDashboard";
 import UserState from "./context/recruiterDetails/RecruiterState";
 import RecruiterState from "./context/recruiterDetails/RecruiterState";
-
-
 import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin";
-import Devider from "./components/pages/usertype/LoginUserType";
+import Devider from "./components/pages/common/usertype/LoginUserType";
+import { useEffect, useState } from "react";
+import { getUserType } from "./guards/UserTypeGuard";;
+import PostJob from "./components/pages/recruiter/PostJob/PostJob";
+import Footer from "./components/pages/common/footer/Footer";
+import RecruiterPricing from "./components/pages/recruiter/recruiterPricing/RecruiterPricing";
 
-import Notification from "./components/pages/notifications/notifications";
-
-function App() {
-
-
+const App = () => {
+  const [userType$, setuserType$] = useState<string>("");
+  useEffect(() => {
+    const userType = getUserType();
+    setuserType$(userType);
+  })
   return (
-    <>
-<div id="app">
-
+    <div id="app">
       <BrowserRouter>
         <Routes>
-          <Route path="" element={<LandingPage />}>
-            <Route path="/" element={<Home />} 
-            />
+          <Route path="/" element={<Navigate to={`/${userType$}`} />} />
+          <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
+
+          <Route path="/" element={<LandingPage />}>
+            <Route path="/home" element={<Home />} />
             <Route path="/userType" element={<UserType />} />
             <Route path="/login/Type" element={<Devider />} />
-            <Route path="/userType" element={<Login />} />
+
             <Route path="/jobs" element={<Jobs />} />
           </Route>
+
           <Route path="/recruiter" element={
             <RecruiterState>
               <RecruiterDashboard />
             </RecruiterState>
           }>
-            <Route path="/recruiter/signup" element={
-              <RecruiterSignup />} />
+            <Route path="/recruiter/signup" element={<RecruiterSignup />} />
             <Route path="/recruiter/login" element={<RecruiterLogin />} />
-
-            <Route path="/recruiter/jobs" element={<PostedJobs />} />
+            <Route path="/recruiter/jobs" element={<PostedJobList />} />
+            <Route path="/recruiter/postjob" element={<PostJob />} />
+            <Route path="/recruiter/pricing" element={<RecruiterPricing/>} />
+            {/* <Route path="/recruiter/jobDashboard" element={<PostedJobDashboard />} /> */}
           </Route>
+
           <Route path="/users" element={
             <UserState>
               <UserDashboard />
@@ -63,14 +66,11 @@ function App() {
           }>
             <Route path="/users/signup" element={<Signup />} />
             <Route path="/users/login" element={<Login />} />
-
-
           </Route>
-          
         </Routes>
-        <Footer />
+        <Footer/>  
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 

@@ -1,15 +1,8 @@
 import { createContext } from "react";
-import { RecruiterSignupDetails } from "../../@types/RecruiterSignupDetails";
+import { RecruiterDetails } from "../../@types/RecruiterDetails";
 import { JobsDetails } from "../../@types/JobDetails";
+import { RecruiterState } from "../../@types/interfaces/state/RecruiterState";
 
 
-interface recruiterDetailsState{
-    recruiterDetails:RecruiterSignupDetails,
-    isLoggedIn:boolean,
-    postedJobList:JobsDetails[],
-    loggedIn:(recruiterDetails:RecruiterSignupDetails)=>void,
-    loggedOut:()=>void,
-    setJobList$:(jobDetails:JobsDetails[])=>void,
-}
 
-export const recruiterContext= createContext({} as recruiterDetailsState);
+export const recruiterContext= createContext({} as RecruiterState);

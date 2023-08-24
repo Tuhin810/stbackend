@@ -1,4 +1,4 @@
-import { NotFoundProps } from "../../../@types/interfaces/NotFoundProps"
+import { NotFoundProps } from "../../../@types/interfaces/props/NotFoundProps"
 import { notFound } from "../../../assets/images"
 
 
