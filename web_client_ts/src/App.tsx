@@ -22,8 +22,11 @@ import Devider from "./components/pages/common/usertype/LoginUserType";
 import { useEffect, useState } from "react";
 import { getUserType } from "./guards/UserTypeGuard";;
 import PostJob from "./components/pages/recruiter/PostJob/PostJob";
-import Footer from "./components/pages/common/footer/Footer";
 import RecruiterPricing from "./components/pages/recruiter/recruiterPricing/RecruiterPricing";
+import PostedJobDashboard from "./components/pages/recruiter/PostedJobDashboard/PostedJobDashBoard";
+import { DashboardApplicantList } from "./components/dashboard/recruiterDashboard/DashboardApplicantList/DashboardApplicantList";
+import { User_JobDesc_Page } from "./components/shared/job_Description/User_JobDesc_Page";
+import Dashboard from "./components/dashboard/recruiterDashboard/DashBoard_Layout/Dashboard";
 
 const App = () => {
   const [userType$, setuserType$] = useState<string>("");
@@ -44,6 +47,7 @@ const App = () => {
             <Route path="/login/Type" element={<Devider />} />
 
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="/jobdescription" element={<User_JobDesc_Page />} />
           </Route>
 
           <Route path="/recruiter" element={
@@ -56,9 +60,12 @@ const App = () => {
             <Route path="/recruiter/jobs" element={<PostedJobList />} />
             <Route path="/recruiter/postjob" element={<PostJob />} />
             <Route path="/recruiter/pricing" element={<RecruiterPricing/>} />
-            {/* <Route path="/recruiter/jobDashboard" element={<PostedJobDashboard />} /> */}
+            {/* Recruiter Dashboard */}
+            <Route path="/recruiter/dashboard" element={<Dashboard />}>
+            <Route path="/recruiter/dashboard/job" element={<PostedJobDashboard />} />
+            <Route path="/recruiter/dashboard/applicantList" element={<DashboardApplicantList />} />
+            </Route>
           </Route>
-
           <Route path="/users" element={
             <UserState>
               <UserDashboard />
@@ -68,7 +75,7 @@ const App = () => {
             <Route path="/users/login" element={<Login />} />
           </Route>
         </Routes>
-        <Footer/>  
+         
       </BrowserRouter>
     </div>
   )
