@@ -10,6 +10,4 @@ const setGlobalLoggedIn = (userloggedin:GlobalLoggedInDetails,action:GlobalLogge
     }
     return {} as GlobalLoggedInDetails;
 }
-
-
 export {setGlobalLoggedIn as globalLoggedInReducer}

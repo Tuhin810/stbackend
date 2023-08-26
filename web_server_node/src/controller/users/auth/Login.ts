@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import UserModel from "../../../model/users/UserSchema";
+import ApplicantModel from "../../../model/applicant/ApplicantSchema";
 import { UserCredential } from "../../../@types/interfaces/UserCredentail";
-import { UserSignUp } from "../../../@types/interfaces/UserDetails";
 
 export const loginUser = async (req: Request, res: Response) => {
     const userCredentail: UserCredential = req.body;
@@ -14,7 +13,7 @@ export const loginUser = async (req: Request, res: Response) => {
     }
     try {
 
-        const user = await UserModel.findOne({ $and: [{ email: userCredentail.email },{ password: userCredentail.password }] });
+        const user = await ApplicantModel.findOne({ $and: [{ email: userCredentail.email },{ password: userCredentail.password }] });
         console.log(userCredentail);
         console.log(user);
 
@@ -41,7 +40,6 @@ export const loginUser = async (req: Request, res: Response) => {
         res.status(500).send({
             success: false,
             message: "Error in login",
-
         });
     }
 

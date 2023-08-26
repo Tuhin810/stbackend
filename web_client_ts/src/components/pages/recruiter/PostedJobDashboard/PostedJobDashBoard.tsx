@@ -1,4 +1,12 @@
 
+
+import React from 'react'
+import { JobDetailsProps } from '../../../../@types/interfaces/props/JobDetailsProps'
+
+const PostedJobDashboard =()=> {
+
+
+
 import "./postedjobsdashboard.css"
 const PostedJobDashboard =()=> {
   return (
@@ -13,7 +21,11 @@ const PostedJobDashboard =()=> {
             </svg>
           </div>
           <div>
+
             <span  className="block text-2xl font-bold"></span>
+
+            <span  className="block text-2xl font-bold">20</span>
+
             <span  className="block text-gray-500">job aplies</span>
           </div>
         </div>
