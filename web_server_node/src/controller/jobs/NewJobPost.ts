@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { JobsDetails } from "../../@types/interfaces/JobsDetails";
 import JobModel from "../../model/jobs/JobSchema";
-import { postNewJob } from "../../service/jobs/jobService";
+import { matchedJobApplicants, postNewJob } from "../../service/jobs/jobService";
+import { sendMessage } from "../../service/emailService/EmailService";
 
 //posting new jobs
 
@@ -19,12 +20,26 @@ const postNewJobs = async (req: Request, res: Response) => {
         try {
             postNewJob(jobDetails)
                 .then((data) => {
-                    const jobData: JobsDetails = data;
-                    res.status(200).send({
-                        success: true,
-                        message: "Job posted Successfully",
-                        job: jobData
-                    });
+                    const jobData = data;
+                    try{
+                        matchedJobApplicants(data).
+                        then(applicantDatalist=>{
+                            res.status(200).send({
+                                success: true,
+                                message: "Job posted Successfully",
+                                job: jobData,
+                                applicantList:applicantDatalist
+                            });
+                        })
+                    }
+                    catch(e){
+                        res.status(207).send({
+                            success:true,
+                            message:"job posted,failedto get applicant list",
+                            e
+                        })
+                    }
+                    
                 })
 
 
