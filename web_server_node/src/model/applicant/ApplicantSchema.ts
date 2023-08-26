@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
-import { UserSignUp } from "../../@types/interfaces/UserDetails";
+import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
 
 // model for new registration 
 
-const usersSchema: Schema<UserSignUp> = new mongoose.Schema({
+const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     firebase_id: {
         type: String
     },
@@ -76,9 +76,45 @@ const usersSchema: Schema<UserSignUp> = new mongoose.Schema({
     cv: {
         data: [Buffer],
         contentType: String,
+    },
+    experience_year:{
+        type:Number,
+        default:0
+    },
+    skills:{
+        type:[String],
+        default:[]
+    },
+    additonal_skills:{
+        type:[String],
+        default:[]
+    },
+    spoken_english:{
+        type:Boolean,
+        default:false
+    },
+    is_fresher:{
+        type:Boolean,
+        default:true
+    },
+    gender:{
+        type:String,
+        enum:['male','female']
+    },
+    qualification:{
+        type:[String],
+        default:[]
+    },
+    min_expected_salary:{
+        type:Number,
+        default:0
+    },
+    min_duty_hours:{
+        type:Number,
+        default:6
     }
 });
 
-const UserModel = mongoose.model<UserSignUp>("Users", usersSchema);
+const ApplicantModel = mongoose.model<ApplicantDetails>("applicants", applicantSchema);
 
-export default UserModel;
+export default ApplicantModel;

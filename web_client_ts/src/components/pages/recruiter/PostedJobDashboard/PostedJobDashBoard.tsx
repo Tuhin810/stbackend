@@ -1,7 +1,7 @@
 import React from 'react'
 import { JobDetailsProps } from '../../../../@types/interfaces/props/JobDetailsProps'
 
-const PostedJobDashboard =({jobDetails}:JobDetailsProps)=> {
+const PostedJobDashboard =()=> {
 
 
   return (
@@ -61,7 +61,7 @@ const PostedJobDashboard =({jobDetails}:JobDetailsProps)=> {
             </svg>
           </div>
           <div>
-            <span  className="block text-2xl font-bold">{jobDetails.no_of_applicants}</span>
+            <span  className="block text-2xl font-bold">20</span>
             <span  className="block text-gray-500">job aplies</span>
           </div>
         </div>

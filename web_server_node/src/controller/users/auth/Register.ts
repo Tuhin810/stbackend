@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
-import { UserSignUp } from "../../../@types/interfaces/UserDetails";
-import UserModel from "../../../model/users/UserSchema";
+
+import UserModel from "../../../model/applicant/ApplicantSchema";
+import { ApplicantDetails } from "../../../@types/interfaces/ApplicantDetails";
 
 export const registerNewUser = async (req: Request, res: Response) => {
-    const userDetails: UserSignUp = req.body;
+    const userDetails: ApplicantDetails = req.body;
     if (!userDetails.email || !userDetails.first_name || !userDetails.password) {
         return res.status(422).json({ error: "fill the form" })
     }
@@ -19,7 +20,7 @@ export const registerNewUser = async (req: Request, res: Response) => {
             UserModel
                 .create(userDetails)
                 .then((data) => {
-                    const userDetails:UserSignUp=data;
+                    const userDetails:ApplicantDetails=data;
                     userDetails.password="";
                     res.status(200).send({
                         success: true,

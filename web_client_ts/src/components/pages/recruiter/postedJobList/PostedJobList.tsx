@@ -39,7 +39,7 @@ const PostedJobList = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen w-100">
+    <div className="flex items-center justify-center w-100">
       {
         (postedJobList.length === 0) ?
           <>

@@ -7,7 +7,6 @@ import PostJobPage3 from './postJob3/PostJobPage3';
 import PostJobPage4 from './postJob4/PostJobPage4';
 import PostJobPage5 from './postJob5/PostJobPage5';
 import PostJobConfirmationModal from './PostJobConfirmation/PostJobConfirmationModal';
-import { newJobPost } from '../../../../utils/apis/Job/jobpost';
 import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 
@@ -158,9 +157,11 @@ const PostJob = () => {
 
     const pushMandatorySkills = (skill:string) => {
         jobDetails.skills.push(skill);
+        return jobDetails.skills;
     }
     const pushAdditonalSkills = (skill:string) => {
         jobDetails.additonal_skills.push(skill);
+        return jobDetails.additonal_skills;
     }
 
 

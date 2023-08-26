@@ -1,4 +1,4 @@
-export interface UserSignUp {
+export interface ApplicantDetails {
     firebase_id:string,
     created_date:Date
     first_name: string,
@@ -16,4 +16,13 @@ export interface UserSignUp {
     dob:Date,
     photo:Buffer,
     cv:Buffer[],
+    experience_year: number
+    skills: string[],
+    additonal_skills: string[],
+    spoken_english: boolean,
+    is_fresher: boolean,
+    gender: string,
+    qualification: string[],
+    min_expected_salary:number,
+    min_duty_hours:number
 }
