@@ -25,11 +25,11 @@ const Home = () => {
             <div className="mt-24 ">
                 <div className="home-page  py-10 ">
 
-                    <div className='home mb-20'>
+                    <div className='home mb-24'>
                         <div className='left-home'>
 
-                            <h2 className='text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl'>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-sky-400'>Success Your Future</span> Starts Here.</h2>
-                            <p className='text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 mt-9'>
+                            <h2 className='text-3xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-sky-400'>Success Your Future</span> Starts Here.</h2>
+                            <p className='text-lg font-normal text-gray-500 lg:text-xl  mt-9'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum similique sequi iure! Rem, sapiente! Iste, in ab! Obcaecati iure voluptatum ex cum at dignissimos adipisci! Veritatis, sed voluptatibus. Neque, tempora?
                             </p>
                             <div className='mt-10'>
@@ -60,7 +60,8 @@ const Home = () => {
 
                     <div className="my-5"></div>
 
-                </div></div></>
+                </div></div>
+                <Footer/> </>
     )
 }
 

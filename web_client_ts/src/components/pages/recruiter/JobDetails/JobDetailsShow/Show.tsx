@@ -1,5 +1,5 @@
-import "./abcd.css"
-import ApplicantCard from '../../../shared/card/ApplicantCard'
+import "../JobDetailsHeading/JobDetailsHeading.css"
+import ApplicantCard from "../../../../shared/card/ApplicantCard"
 
 function Show() {
   return (

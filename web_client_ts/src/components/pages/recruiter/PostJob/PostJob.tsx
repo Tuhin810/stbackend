@@ -10,6 +10,7 @@ import PostJobConfirmationModal from './PostJobConfirmation/PostJobConfirmationM
 import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 
+
 const PostJob = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState<number>(1);
@@ -60,6 +61,8 @@ const PostJob = () => {
         console.log(step);
         if (step > 1) {
             setStep(prevStep => prevStep - 1)
+        }else{
+            navigate("/recruiter/jobs")
         }
     };
     //handle changes
@@ -179,6 +182,7 @@ const PostJob = () => {
 
     return (
         <>
+         
             <ProgressStep />
             <div className="py-4">
                 <div className="max-w-2xl mx-auto p-6 bg-white mt-10 rounded shadow">
