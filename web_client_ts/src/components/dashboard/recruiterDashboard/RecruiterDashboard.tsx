@@ -16,7 +16,7 @@ const RecruiterDashboard = () => {
 
   useEffect(() => {
     const details = getuserDetails();
-    dispatch({ type: "refreshPage", payload: details })
+    dispatch({ type: "refreshPage", payload: details });
     console.log(recruiterloggedinDetails);
 
   }, [])

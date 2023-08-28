@@ -2,11 +2,10 @@ import { useContext, useEffect, useState } from 'react'
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { getJobsByRecruiter } from '../../../../utils/apis/recruiter/recruiter';
 import NotFound from '../../../shared/notfound/NotFound';
-import { JobPostDetails } from '../../../../@types/JobPostDetails';
-import { useNavigate } from 'react-router-dom';
-import { getuserDetails } from '../../../../utils/commonFunctions/GetuserDetails';
 import JobCard from '../../../shared/jobCard/JobCard';
 import { JobDetailsListContext } from '../../../../context/jobDetails/JobDetailsContext';
+
+import './PostedJobList.css';
 
 const PostedJobList = () => {
   //caling jobDetails context to reduce api calls
@@ -49,9 +48,9 @@ const PostedJobList = () => {
               </> : <>
                 <div className="job-list-container w-full">
                   {
-                    jobList?.map(job => {
+                    jobList?.map((job,value) => {
                       return (
-                        <JobCard jobDetails={job} />
+                        <JobCard jobDetails={job} key={value}/>
                       )
                     })
                   }

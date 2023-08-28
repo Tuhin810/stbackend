@@ -1,11 +1,92 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import "./postedjobsdashboard.css"
+import ApexCharts from 'apexcharts';
 const PostedJobDashboard = () => {
+
+  const [isRender, setIsRender] = useState<boolean>(false);
+
+  // ApexCharts options and config
+  const getChart = () => {
+    let option = {
+      chart: {
+        height: "100%",
+        maxWidth: "100%",
+        type: "area",
+        fontFamily: "Inter, sans-serif",
+        dropShadow: {
+          enabled: false,
+        },
+        toolbar: {
+          show: false,
+        },
+      },
+      tooltip: {
+        enabled: true,
+        x: {
+          show: false,
+        },
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          opacityFrom: 0.55,
+          opacityTo: 0,
+          shade: "#1C64F2",
+          gradientToColors: ["#1C64F2"],
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        width: 6,
+      },
+      grid: {
+        show: false,
+        strokeDashArray: 4,
+        padding: {
+          left: 2,
+          right: 2,
+          top: 0
+        },
+      },
+      series: [
+        {
+          name: "New users",
+          data: [6500, 6418, 6456, 6526, 6356, 6456],
+          color: "#1A56DB",
+        },
+      ],
+      xaxis: {
+        categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+        labels: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
+        axisTicks: {
+          show: false,
+        },
+      },
+      yaxis: {
+        show: false,
+      },
+    }
+
+    if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
+      const chart = new ApexCharts(document.getElementById("area-chart"), option);
+      chart.render();
+    }
+  };
+  useEffect(() => {
+    getChart();
+  }, [])
+
   return (
 
-    <main className="p-6 sm:p-10 space-y-6 ">
-
-      <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+    <main className="job-dashboard">
+      <section className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
         <div className="flex items-center p-8 bg-white shadow rounded-lg">
           <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
@@ -44,23 +125,74 @@ const PostedJobDashboard = () => {
             <span className="block text-gray-500">Underperforming job aplies</span>
           </div>
         </div>
-        <div className="flex items-center p-8 bg-white shadow rounded-lg">
-          <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <div>
-            <span className="block text-2xl font-bold">83%</span>
-            <span className="block text-gray-500">Accepted Jobs</span>
-          </div>
-        </div>
+
       </section>
-      <section className="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+      <section className="grid md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-3 xl:grid-flow-col gap-6">
         <div className="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
           <div className="px-6 py-5 font-semibold border-b border-gray-100">The number of applied and left job aplies per month</div>
           <div className="p-4 flex-grow">
-            <div className="flex items-center justify-center h-full px-4 py-16 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">Chart</div>
+            <div className="flex items-center justify-center h-full text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
+
+              <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+                <div className="flex justify-between">
+                  <div>
+                    <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">32.4k</h5>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">Users this week</p>
+                  </div>
+                  <div
+                    className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+                    12%
+                    <svg className="w-3 h-3 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4" />
+                    </svg>
+                  </div>
+                </div>
+                <div id="area-chart"></div>
+                <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+                  <div>
+                    <button
+                      id="dropdownDefaultButton"
+                      data-dropdown-toggle="lastDaysdropdown"
+                      data-dropdown-placement="bottom"
+                      className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+                      type="button">
+                      Last 7 days
+                      <svg className="w-2.5 m-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                    </button>
+                    <div id="lastDaysdropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                      <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        <li>
+                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+                        </li>
+                        <li>
+                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+                        </li>
+                        <li>
+                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
+                        </li>
+                        <li>
+                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
+                        </li>
+                        <li>
+                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 90 days</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <a
+                      href="#"
+                      className="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
+                      Users Report
+                      <svg className="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
         <div className="flex items-center p-8 bg-white shadow rounded-lg">
@@ -159,12 +291,7 @@ const PostedJobDashboard = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col row-span-3 bg-white shadow rounded-lg">
-          <div className="px-6 py-5 font-semibold border-b border-gray-100">job aplies by type of Acceptence</div>
-          <div className="p-4 flex-grow">
-            <div className="flex items-center justify-center h-full px-4 py-24 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">Chart</div>
-          </div>
-        </div>
+
       </section>
 
     </main>
