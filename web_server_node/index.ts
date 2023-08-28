@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cors from 'cors';
 import { json } from "body-parser";
 
-import { authUsersRouter } from "./src/router/users/auth/auth";
+import { ApplicantRouter } from "./src/router/users/auth/Applicant";
 import { companyRouter } from "./src/router/company/company";
 import { authRecruiterRouter } from "./src/router/recruiter/auth/auth";
 import { loginRecruiter } from "./src/controller/recruiter/auth/Login";
@@ -24,7 +24,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 app.use(json());
-app.use([authUsersRouter,authRecruiterRouter, companyRouter,jobRouter,suggestionRouter]);
+app.use([ApplicantRouter,authRecruiterRouter, companyRouter,jobRouter,suggestionRouter]);
 
 mongoose
   .connect(process.env.MONGO_URL!)

@@ -45,20 +45,14 @@ const App = () => {
           {/* recruiter dashboard */}
           <Route path="/recruiter/login" element={<RecruiterLogin />} />
           <Route path="/recruiter/signup" element={<RecruiterSignup />} />
+          {/* Recruiter Dashboard */}
           <Route path="/recruiter" element={<RecruiterDashboard />}>
             <Route path="/recruiter/jobs" element={<PostedJobList />} />
             <Route path="/recruiter/postjob" element={<PostJob />} />
             <Route path="/recruiter/pricing" element={<RecruiterPricing />} />
             <Route path="/recruiter/jobDetails/:jobId" element={<JobDescription />} />
-
-            {/* Recruiter Dashboard */}
-            <Route path="/recruiter/dashboard" element={<Dashboard />}>
-              <Route path="/recruiter/dashboard/job" element={<PostedJobDashboard />} />
-              <Route path="/recruiter/dashboard/applicantList" element={<DashboardApplicantList />} />
-              <Route path="/recruiter/dashboard/jobDashboard" element={<PostedJobDashboard />} />
-            </Route>
+            <Route path="/recruiter/jobDashboard" element={<PostedJobDashboard />} />
           </Route>
-
           <Route path="/applicant/signup" element={<Signup />} />
           <Route path="/applicant/login" element={<Login />} />
           {/* applicant dashboard */}

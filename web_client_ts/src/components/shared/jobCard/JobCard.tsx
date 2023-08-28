@@ -20,16 +20,14 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
     return (
         <div>
             <div className="card w-full p-4 mb-7 text-left bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 cursor-pointer" onClick={routeToJobDetails}>
-
-
                 <div className="flex justify-between items-center">
                     <div>
-                        <p className="date px-4">Posted On: {formatDate(jobDetails.posted_date)}</p>
-                        <h5 className="text-2xl mb-5 font-bold text-black">{formatTitle(jobDetails.jobTitle)}</h5>
+                        <p className="date bg-teal-200 text-blue-600 px-4 mb-2">Posted On: {formatDate(jobDetails.posted_date)}</p>
+                        <h5 className="text-2xl mb-4 font-bold text-black">{formatTitle(jobDetails.jobTitle)}</h5>
                     </div>
                     <img src={defaultCompany} className="w-14" />
                 </div>
-                <p className="mb-2 inline-flex items-center text-base text-gray-800  dark:text-gray-400">
+                <p className="mb-2 inline-flex font-semibold items-center text-base text-gray-800  dark:text-gray-400">
                     <svg className="w-4 h-4 text-gray-800 me-2 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 1h12M3 1v16M3 1H2m13 0v16m0-16h1m-1 16H3m12 0h2M3 17H1M6 4h1v1H6V4Zm5 0h1v1h-1V4ZM6 8h1v1H6V8Zm5 0h1v1h-1V8Zm-3 4h2a1 1 0 0 1 1 1v4H7v-4a1 1 0 0 1 1-1Z" />
                     </svg>
@@ -39,14 +37,15 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
                 <p className="text-blue-600 mb-2 inline-flex items-center">
                     <svg className="w-4 h-4 me-2 text-cyan-400 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
                         <path d="M8 0a7.992 7.992 0 0 0-6.583 12.535 1 1 0 0 0 .12.183l.12.146c.112.145.227.285.326.4l5.245 6.374a1 1 0 0 0 1.545-.003l5.092-6.205c.206-.222.4-.455.578-.7l.127-.155a.934.934 0 0 0 .122-.192A8.001 8.001 0 0 0 8 0Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
-                    </svg> Location :
+                    </svg>
+                    <span className="font-semibold"> Location : </span>
                     {jobDetails.location}
                 </p>
                 <div className="flex flex-row align-middle space-x-4">
                     <p className="salary inline-flex items-center">
                         <svg className="w-4 h-5 me-2 text-red-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                             <path d="M15.045.007 9.31 0a1.965 1.965 0 0 0-1.4.585L.58 7.979a2 2 0 0 0 0 2.805l6.573 6.631a1.956 1.956 0 0 0 1.4.585 1.965 1.965 0 0 0 1.4-.585l7.409-7.477A2 2 0 0 0 18 8.479v-5.5A2.972 2.972 0 0 0 15.045.007Zm-2.452 6.438a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                        </svg> Salary Range : {formatSalaryRange(jobDetails.salary)}
+                        </svg><span className="font-semibold"> Salary Range :</span>  {formatSalaryRange(jobDetails.salary)}
                     </p>
                     <p className="salary inline-flex items-center">
                         <svg className="w-4 h-4 me-2 text-blue-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 18">
