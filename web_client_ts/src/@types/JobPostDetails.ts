@@ -1,4 +1,5 @@
-export interface JobsDetails {
+export interface JobPostDetails {
+    _id:string,
     posted_date: Date,
     jobTitle: string,
     jobType: string,

@@ -1,14 +1,18 @@
 
 import { recruiterContext } from './RecruiterContext';
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import { recruiterLoggedInReducer } from '../../reducers/recruiterReducers/RecruiterReducers';
-import { RecruiterLoggedInDetails } from '../../@types/interfaces/RecruiterLoggedInDetails';
+import { RecruiterDetails } from '../../@types/RecruiterDetails';
 
 const RecruiterState = (props: any) => {    
-    const [recruiterloggedinDetails,dispatch]=useReducer(recruiterLoggedInReducer,{} as RecruiterLoggedInDetails);
+    const [recruiterloggedinDetails, dispatch] = useReducer(recruiterLoggedInReducer, {
+        isLoggedin: false,
+        recruiterDetails: JSON.parse(localStorage.getItem("details")!) as RecruiterDetails
+    });
+
     return (
         <div>
-            <recruiterContext.Provider value={{ recruiterloggedinDetails,dispatch }}>
+            <recruiterContext.Provider value={{ recruiterloggedinDetails, dispatch }}>
                 {props.children}
             </recruiterContext.Provider>
         </div>

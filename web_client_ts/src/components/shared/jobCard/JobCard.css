@@ -1,0 +1,22 @@
+.card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.card:hover{
+    transform: scale(1.01);
+    transition-duration: 0.8s;
+    background-color: rgb(255, 253, 244);
+}
+@media (max-width:405px) {
+    .delete {
+        display: none !important;
+    }
+}
+
+.date{
+    background-color: #EFFFE3;
+    border-radius: 15px;
+    font-style: italic;
+    font-family: cursive;
+    font-size: 12px;
+    text-align: center;
+}

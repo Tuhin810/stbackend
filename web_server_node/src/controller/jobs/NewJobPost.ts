@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { JobsDetails } from "../../@types/interfaces/JobsDetails";
+import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
 import { matchedJobApplicants, postNewJob } from "../../service/jobs/jobService";
 import { sendMessage } from "../../service/emailService/EmailService";
@@ -8,8 +8,8 @@ import { sendMessage } from "../../service/emailService/EmailService";
 
 const postNewJobs = async (req: Request, res: Response) => {
 
-    const jobDetails: JobsDetails = req.body;
-
+    delete req.body._id;
+    const jobDetails: JobPostDetails = req.body;
     if (!jobDetails.jobTitle || !jobDetails.jobType || !jobDetails.jobDescription || !jobDetails.no_of_vacancy || !jobDetails.skills || !jobDetails.company_id || !jobDetails.job_poster_id) {
         return res.status(422).send({
             success: false,
@@ -21,25 +21,25 @@ const postNewJobs = async (req: Request, res: Response) => {
             postNewJob(jobDetails)
                 .then((data) => {
                     const jobData = data;
-                    try{
+                    try {
                         matchedJobApplicants(data).
-                        then(applicantDatalist=>{
-                            res.status(200).send({
-                                success: true,
-                                message: "Job posted Successfully",
-                                job: jobData,
-                                applicantList:applicantDatalist
-                            });
-                        })
+                            then(applicantDatalist => {
+                                res.status(200).send({
+                                    success: true,
+                                    message: "Job posted Successfully",
+                                    job: jobData,
+                                    applicantList: applicantDatalist
+                                });
+                            })
                     }
-                    catch(e){
+                    catch (e) {
                         res.status(207).send({
-                            success:true,
-                            message:"job posted,failedto get applicant list",
+                            success: true,
+                            message: "job posted,failedto get applicant list",
                             e
                         })
                     }
-                    
+
                 })
 
 

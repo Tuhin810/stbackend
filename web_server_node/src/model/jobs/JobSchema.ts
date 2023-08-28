@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
-import { JobsDetails } from "../../@types/interfaces/JobsDetails";
+import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 
 // model for new company registration 
 
-const JobSchema: Schema<JobsDetails> = new mongoose.Schema({
+const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
     posted_date:{
         type:Date,
         default:Date.now
@@ -98,6 +98,6 @@ const JobSchema: Schema<JobsDetails> = new mongoose.Schema({
     }
 });
 
-const JobModel = mongoose.model<JobsDetails>("Jobs", JobSchema);
+const JobModel = mongoose.model<JobPostDetails>("Jobs", JobSchema);
 
 export default JobModel;

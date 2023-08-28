@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-const UserDashboard = () => {
+const ApplicantDashboard = () => {
     return (
         <div>
             <Outlet />
@@ -8,4 +8,4 @@ const UserDashboard = () => {
     )
 }
 
-export default UserDashboard
+export default ApplicantDashboard

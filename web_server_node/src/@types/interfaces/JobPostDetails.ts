@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-export interface JobsDetails {
+export interface JobPostDetails {
     posted_date: Date,
     jobTitle: string,
     jobType: string,
@@ -22,6 +22,5 @@ export interface JobsDetails {
     is_fresher_allowed: boolean,
     gender: string,
     qualification: string,
-    any_charges: boolean,
-    
+    any_charges: boolean,   
 }

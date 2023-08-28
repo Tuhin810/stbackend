@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { JobsDetails } from "../../@types/interfaces/JobsDetails";
+import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
-import { getJobsByCompanyId, getJobsByRecruiterId, postNewJob } from "../../service/jobs/jobService";
+import { getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId, postNewJob } from "../../service/jobs/jobService";
 
 //get jobs by company
 
@@ -19,18 +19,18 @@ export const getJobsByCompany = async (req: Request, res: Response) => {
         try {
             getJobsByCompanyId(companyId)
                 .then((data) => {
-                    const jobsList: JobsDetails[] = data;
-                    if(jobsList.length!==0){
+                    const jobsList: JobPostDetails[] = data;
+                    if (jobsList.length !== 0) {
                         res.status(200).send({
                             success: true,
-                            message:"jobs fetched successfully",
+                            message: "jobs fetched successfully",
                             jobList: jobsList
                         });
                     }
-                    else{
+                    else {
                         res.status(404).send({
                             success: false,
-                            message:"job list not found",
+                            message: "job list not found",
                             jobList: jobsList
                         });
                     }
@@ -61,18 +61,18 @@ export const getJobsRecruiter = async (req: Request, res: Response) => {
         try {
             getJobsByRecruiterId(recruiterId)
                 .then((data) => {
-                    const jobsList: JobsDetails[] = data;
-                    if(jobsList.length!==0){
+                    const jobsList: JobPostDetails[] = data;
+                    if (jobsList.length !== 0) {
                         res.status(200).send({
                             success: true,
-                            message:"jobs fetched successfully",
+                            message: "jobs fetched successfully",
                             jobList: jobsList
                         });
                     }
-                    else{
+                    else {
                         res.status(404).send({
                             success: false,
-                            message:"job list not found",
+                            message: "job list not found",
                             jobList: jobsList
                         });
                     }
@@ -87,5 +87,35 @@ export const getJobsRecruiter = async (req: Request, res: Response) => {
             });
         }
     }
+}
+
+export const getJobDetails = async (req: Request, res: Response) => {
+    const jobId: string = req.params.jobId;
+    if (jobId === undefined || !jobId) {
+        res.status(422).send({
+            success: false,
+            message: "job id is bad"
+        })
+    }
+    else {
+        try {
+            const response = await getJobDetailsByJobId(jobId);
+            if(response){
+                res.status(200).send({
+                    success:true,
+                    message:"Job Details fetched successfully",
+                    jobDetails:response
+                })
+            }
+        }
+        catch(e){
+            res.send(500).send({
+                success:false,
+                message:"internal problem",
+                e
+            })
+        }
+    }
+
 }
 

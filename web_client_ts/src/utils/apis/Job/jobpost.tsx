@@ -1,9 +1,13 @@
-import { CompanyDetails } from "../../../@types/CompanyDetails";
-import { JobsDetails } from "../../../@types/JobDetails";
+import { JobPostDetails } from "../../../@types/JobPostDetails";
 import { header } from "../../../configs/apiConfig";
-import { Post } from "../apiCall";
+import { Get, Post } from "../apiCall";
 
-export const newJobPost = async (jobDetails: JobsDetails) => {
+export const newJobPost = async (jobDetails: JobPostDetails) => {
     const response = await Post('jobs/postjob', jobDetails, header);
+    return response;
+}
+
+export const getJobDetailsByJobId =async (jobId:string) => {
+    const response = await Get(`jobs/getJobByJobId/${jobId}`,header)
     return response;
 }

@@ -1,4 +1,4 @@
-import { UserDetails } from "../@types/UserDetails";
+import { UserDetails } from "../@types/ApplicantDetails";
 
 export const DefaultUserDetails: UserDetails = {
     _id: '',
