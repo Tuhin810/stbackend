@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { applicantContext } from '../../../context/applicantDetails/ApplicantContext';
 import { globalContext } from '../../../context/GlobalDetails/GlobalContext';
 import { getuserDetails } from '../../../utils/commonFunctions/GetuserDetails';
+import ApplicantNavBar from '../../shared/navbar/NavBar'
 
 const ApplicantDashboard = () => {
     const { applicantDispatch } = useContext(applicantContext);
@@ -15,6 +16,7 @@ const ApplicantDashboard = () => {
     }, [])
     return (
         <div>
+           <ApplicantNavBar/>
             <Outlet />
         </div>
     )
