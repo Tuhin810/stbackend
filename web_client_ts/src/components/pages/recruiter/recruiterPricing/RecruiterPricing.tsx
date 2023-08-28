@@ -4,7 +4,7 @@ import PricingCard from '../../../shared/pricingCard/PricingCard'
 const RecruiterPricing = () => {
     return (
         <div id='recruiterPricing'>
-            <div className='flex flex-row justify-around align-middle min-h-screen p-4 mt-4'>
+            <div className='flex flex-row flex-wrap items-center justify-around min-h-screen space-y-4'>
                     <PricingCard />
                     <PricingCard />
                     <PricingCard />

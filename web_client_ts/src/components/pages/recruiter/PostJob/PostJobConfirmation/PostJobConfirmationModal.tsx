@@ -1,16 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import { JobsDetails } from "../../../../../@types/JobDetails";
 import { newJobPost } from "../../../../../utils/apis/Job/jobpost";
 import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetailsProps";
+import { useContext, useState } from "react";
+import { JobDetailsListContext } from "../../../../../context/jobDetails/JobDetailsContext";
+import { JobPostDetails } from "../../../../../@types/JobPostDetails";
 
-const PostJobConfirmationModal = ({jobDetails}:JobDetailsProps) => {
-    const navigate=useNavigate();
+const PostJobConfirmationModal = ({ jobDetails }: JobDetailsProps) => {
+    const navigate = useNavigate();
+    const { jobListDispatch } = useContext(JobDetailsListContext);
+    const {jobDetailsListDetails} = useContext(JobDetailsListContext)
+    const {jobList} = jobDetailsListDetails;
     const hideModal = () => {
         document.getElementById('modal-overlay')!.classList.add('hidden');
     }
     const postJob = async () => {
+        const fetchedJobList: JobPostDetails[] = jobList;
         const response = await newJobPost(jobDetails);
-        if(response?.status===200){
+        if (response?.status === 200) {
+            fetchedJobList.push(response?.data.job);
+            jobListDispatch({ type: "postJob", payload: fetchedJobList });
             hideModal();
             navigate("/recruiter/jobs")
         }

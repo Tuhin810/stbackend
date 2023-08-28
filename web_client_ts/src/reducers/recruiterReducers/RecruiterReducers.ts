@@ -1,15 +1,35 @@
+import { RecruiterDetails } from "../../@types/RecruiterDetails";
 import { RecruiterLoggedInDetails } from "../../@types/interfaces/RecruiterLoggedInDetails";
 import { RecruiterLoggedInAction } from "../../@types/interfaces/actionTypes/RecruiterLoggedInAction";
 
-const setRecruiterLoggedIn = (recruiterloggedin:RecruiterLoggedInDetails,action:RecruiterLoggedInAction):RecruiterLoggedInDetails=>{
-    if(action.type==="login"){
-        recruiterloggedin.isLoggedin=true;
-        recruiterloggedin.recruiterDetails=action.payload;
-        localStorage.setItem('details',JSON.stringify(action.payload));
-        return recruiterloggedin;
+const setRecruiterLoggedIn = (recruiterloggedin: RecruiterLoggedInDetails, action: RecruiterLoggedInAction): RecruiterLoggedInDetails => {
+    switch (action.type) {
+        case "login":
+            localStorage.setItem("details", JSON.stringify(action.payload));
+            return {
+                ...recruiterloggedin,
+                isLoggedin: true,
+                recruiterDetails: action.payload
+            };
+        case "refreshPage":
+            let recruiterDetails: RecruiterDetails = JSON.parse(localStorage.getItem("details")!);
+            return {
+                ...recruiterloggedin,
+                isLoggedin: true,
+                recruiterDetails: recruiterDetails
+            };
+        case "logout":
+            localStorage.clear();
+            return {
+                ...recruiterloggedin,
+                isLoggedin: false,
+                recruiterDetails: {} as RecruiterDetails
+            };
+        default:
+            return {} as RecruiterLoggedInDetails
+
     }
-    return {} as RecruiterLoggedInDetails;
 }
 
 
-export {setRecruiterLoggedIn as recruiterLoggedInReducer}
+export { setRecruiterLoggedIn as recruiterLoggedInReducer }

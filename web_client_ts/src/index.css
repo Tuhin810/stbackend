@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     background-color: white;
+}
+
+.threeButtons {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width:420px) {
+    .noneDisplayAfter420px {
+        display: none;
+    }
 }

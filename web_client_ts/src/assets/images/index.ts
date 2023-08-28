@@ -14,6 +14,7 @@ import logo from './logo.png';
 import home from './home.png';
 import searchIcon from './search-icon.gif';
 import notFound from './notFound.png';
+import defaultCompany from './defaultCompany.png';
 
 export {
 	get_find,
@@ -31,5 +32,6 @@ export {
 	logo,
 	home,
 	searchIcon,
-	notFound
+	notFound,
+	defaultCompany
 };

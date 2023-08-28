@@ -1,25 +1,26 @@
 import mongoose, { FilterQuery, Query } from "mongoose";
-import { JobsDetails } from "../../@types/interfaces/JobsDetails";
+import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
 import ApplicantModel from "../../model/applicant/ApplicantSchema";
+import CompanyModel from "../../model/company/CompanySchema";
 
-export const postNewJob = async (jobDetails: JobsDetails) => {
+export const postNewJob = async (jobDetails: JobPostDetails) => {
     const data = await JobModel.create(jobDetails);
     return data;
 }
 
 export const getJobsByRecruiterId = async (recruiterId: string) => {
-    const jobList: JobsDetails[] = await JobModel.find({ job_poster_id: recruiterId })
+    const jobList: JobPostDetails[] = await JobModel.find({ job_poster_id: recruiterId })
     return jobList;
 }
 
 export const getJobsByCompanyId = async (companyId: string) => {
-    const jobList: JobsDetails[] = await JobModel.find({ company_id: companyId })
+    const jobList: JobPostDetails[] = await JobModel.find({ company_id: companyId })
     return jobList;
 }
 
-export const matchedJobApplicants = async (jobDetails: JobsDetails) => {
+export const matchedJobApplicants = async (jobDetails: JobPostDetails) => {
     if (jobDetails.gender != "all") {
         const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
             $and: [
@@ -55,3 +56,11 @@ export const matchedJobApplicants = async (jobDetails: JobsDetails) => {
     }
 }
 
+export const getJobDetailsByJobId =async (jobId:string) => {
+    const response = await JobModel.findById(jobId).populate('company_id').exec();;
+    return response;
+}
+export const deleteJobDetailsByJobId =async (jobId:string) => {
+    const response = await JobModel.findByIdAndDelete(jobId)
+    return response;
+}

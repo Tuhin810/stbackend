@@ -1,4 +1,5 @@
 export interface ModalProps{
+    id:string,
     message:string,
     leftButtonLink:string,
     rightButtonLink:string,

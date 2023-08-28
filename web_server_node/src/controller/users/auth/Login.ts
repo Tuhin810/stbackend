@@ -23,7 +23,7 @@ export const loginUser = async (req: Request, res: Response) => {
             res.status(200).send({
                 success: true,
                 message: "login successful",
-                user: user
+                applicant: user
             });
         }
         else {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useContext } from 'react'
 import ProgressStep from '../../../shared/ProgressStep/ProgressStep';
-import { JobsDetails } from '../../../../@types/JobDetails';
+import { JobPostDetails } from '../../../../@types/JobPostDetails';
 import PostJobPage1 from './postJob1/PostJobPage1';
 import PostJobPage2 from './postJob2/PostJobPage2';
 import PostJobPage3 from './postJob3/PostJobPage3';
@@ -10,15 +10,15 @@ import PostJobConfirmationModal from './PostJobConfirmation/PostJobConfirmationM
 import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 
-
 const PostJob = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState<number>(1);
     const [buttonText, setButtontext] = useState<string>("Continue");
     const {recruiterloggedinDetails} = useContext(recruiterContext);
     const {recruiterDetails} = recruiterloggedinDetails;
-    const [jobDetails, setJobDetails] = useState<JobsDetails>(
+    const [jobDetails, setJobDetails] = useState<JobPostDetails>(
         {
+            _id:'',
             posted_date: new Date(),
             jobTitle: '',
             jobType: '',

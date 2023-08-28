@@ -8,17 +8,11 @@ import {
 import Home from "./components/pages/common/home/Home";
 import Login from "./components/pages/applicant/auth/Login/Login";
 import Signup from "./components/pages/applicant/auth/SignUp/Signup";
-import Jobs from "./components/pages/applicant/jobs/Jobs";
-import UserType from "./components/pages/common/usertype/UserType";
 import RecruiterSignup from "./components/pages/recruiter/auth/RecruiterSignup";
 import LandingPage from "./components/dashboard/landingpageDashboard/LandingPage";
 import RecruiterDashboard from "./components/dashboard/recruiterDashboard/RecruiterDashboard";
 import PostedJobList from "./components/pages/recruiter/postedJobList/PostedJobList";
-import UserDashboard from "./components/dashboard/userDashBoard/UserDashboard";
-import UserState from "./context/recruiterDetails/RecruiterState";
-import RecruiterState from "./context/recruiterDetails/RecruiterState";
 import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin/RecruiterLogin";
-import Devider from "./components/pages/common/usertype/LoginUserType";
 import { useEffect, useState } from "react";
 import { getUserType } from "./guards/UserTypeGuard";;
 import PostJob from "./components/pages/recruiter/PostJob/PostJob";
@@ -27,7 +21,9 @@ import PostedJobDashboard from "./components/pages/recruiter/PostedJobDashboard/
 import { DashboardApplicantList } from "./components/dashboard/recruiterDashboard/DashboardApplicantList/DashboardApplicantList";
 import { User_JobDesc_Page } from "./components/shared/job_Description/User_JobDesc_Page";
 import Dashboard from "./components/dashboard/recruiterDashboard/DashBoard_Layout/Dashboard";
-
+import JobDescription from "./components/shared/job_Description/JobDescription/JobDescription";
+import ApplicantDashboard from "./components/dashboard/applicantDashBoard/ApplicantDashboard";
+import ApplicantProfile from "./components/pages/Profile/UserProfile";
 
 const App = () => {
   const [userType$, setuserType$] = useState<string>("");
@@ -36,7 +32,7 @@ const App = () => {
     setuserType$(userType);
   })
   return (
-    <div id="app" className="bg-white">
+    <div id="app" className="bg-gray-50">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
@@ -44,43 +40,32 @@ const App = () => {
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
             <Route path="/home" element={<Home />} />
-            <Route path="/jobs" element={<Jobs />} />
             <Route path="/jobdescription" element={<User_JobDesc_Page />} />
           </Route>
           {/* recruiter dashboard */}
-          <Route path="/recruiter" element={
-            <RecruiterState>
-              <RecruiterDashboard />
-            </RecruiterState>
-          }>
-            <Route path="/recruiter/signup" element={<RecruiterSignup />} />
-            <Route path="/recruiter/login" element={<RecruiterLogin />} />
+          <Route path="/recruiter/login" element={<RecruiterLogin />} />
+          <Route path="/recruiter/signup" element={<RecruiterSignup />} />
+          <Route path="/recruiter" element={<RecruiterDashboard />}>
             <Route path="/recruiter/jobs" element={<PostedJobList />} />
             <Route path="/recruiter/postjob" element={<PostJob />} />
-            <Route path="/recruiter/pricing" element={<RecruiterPricing/>} />
+            <Route path="/recruiter/pricing" element={<RecruiterPricing />} />
+            <Route path="/recruiter/jobDetails/:jobId" element={<JobDescription />} />
 
             {/* Recruiter Dashboard */}
             <Route path="/recruiter/dashboard" element={<Dashboard />}>
-            <Route path="/recruiter/dashboard/job" element={<PostedJobDashboard />} />
-            <Route path="/recruiter/dashboard/applicantList" element={<DashboardApplicantList />} />
+              <Route path="/recruiter/dashboard/job" element={<PostedJobDashboard />} />
+              <Route path="/recruiter/dashboard/applicantList" element={<DashboardApplicantList />} />
+              <Route path="/recruiter/dashboard/jobDashboard" element={<PostedJobDashboard />} />
             </Route>
           </Route>
-          <Route path="/users" element={
 
-            <Route path="/recruiter/jobDashboard" element={<PostedJobDashboard />} />
-          </Route>
+          <Route path="/applicant/signup" element={<Signup />} />
+          <Route path="/applicant/login" element={<Login />} />
           {/* applicant dashboard */}
-          <Route path="/applicant" element={
-
-            <UserState>
-              <UserDashboard />
-            </UserState>
-          }>
-            <Route path="/applicant/signup" element={<Signup />} />
-            <Route path="/applicant/login" element={<Login />} />
+          <Route path="/applicant" element={<ApplicantDashboard />}>
+            <Route path="/applicant/profile" element={<ApplicantProfile />} />
           </Route>
         </Routes>
-         
       </BrowserRouter>
     </div>
   )
