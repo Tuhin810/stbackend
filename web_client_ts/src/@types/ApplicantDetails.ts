@@ -13,7 +13,7 @@ export interface ApplicantDetails {
     country: string,
     pin: number,
     age: number,
-    dob:Date,
+    dob:string,
     photo:string,
     cv:BufferSource[],
     experience_year: number

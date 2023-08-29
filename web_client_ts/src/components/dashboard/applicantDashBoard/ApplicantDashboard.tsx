@@ -16,7 +16,6 @@ const ApplicantDashboard = () => {
     }, [])
     return (
         <div>
-           <ApplicantNavBar/>
             <Outlet />
         </div>
     )

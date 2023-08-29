@@ -23,7 +23,8 @@ import { User_JobDesc_Page } from "./components/shared/job_Description/User_JobD
 import Dashboard from "./components/dashboard/recruiterDashboard/DashBoard_Layout/Dashboard";
 import JobDescription from "./components/shared/job_Description/JobDescription/JobDescription";
 import ApplicantDashboard from "./components/dashboard/applicantDashBoard/ApplicantDashboard";
-import ApplicantProfile from "./components/pages/Profile/UserProfile";
+import ApplicantProfile from "./components/pages/applicant/Profile/UserProfile";
+import Resume from "./components/pages/applicant/resume/Resume";
 
 const App = () => {
   const [userType$, setuserType$] = useState<string>("");
@@ -37,6 +38,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
           <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
+          <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
             <Route path="/home" element={<Home />} />
@@ -55,9 +57,11 @@ const App = () => {
           </Route>
           <Route path="/applicant/signup" element={<Signup />} />
           <Route path="/applicant/login" element={<Login />} />
+          <Route path="/profile/details/:id" element={<ApplicantProfile />} />
           {/* applicant dashboard */}
           <Route path="/applicant" element={<ApplicantDashboard />}>
-            <Route path="/applicant/profile" element={<ApplicantProfile />} />
+            <Route path="/applicant/profile/" element={<ApplicantProfile />} />
+            <Route path="/applicant/resume/" element={<Resume />} />
           </Route>
         </Routes>
       </BrowserRouter>
