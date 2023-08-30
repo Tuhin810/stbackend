@@ -1,4 +1,7 @@
+import { ApplicantEducation } from "./interfaces/ApplicantEducation"
+
 export interface ApplicantDetails {
+    _id?:string,
     firebase_id:string,
     created_date:Date
     first_name: string,
@@ -22,7 +25,8 @@ export interface ApplicantDetails {
     spoken_english: boolean,
     is_fresher: boolean,
     gender: string,
-    qualification: string[],
+    qualification_to_search: string[],
+    qualification_details:ApplicantEducation[],
     min_expected_salary:number,
     min_duty_hours:number
 }

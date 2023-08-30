@@ -4,11 +4,11 @@ import { MyLeftProfileProps } from '../../../../../@types/interfaces/props/myPro
 const MyLeftProfile = ({ first_name, middle_name, last_name }: MyLeftProfileProps) => {
 
     let name = "";
-    if(middle_name!==undefined){
-        name = first_name + " " +  middle_name + " " + last_name;
+    if (middle_name !== undefined) {
+        name = first_name + " " + middle_name + " " + last_name;
     }
-    else{
-        name=first_name+" "+last_name;
+    else {
+        name = first_name + " " + last_name;
     }
 
 
@@ -17,9 +17,8 @@ const MyLeftProfile = ({ first_name, middle_name, last_name }: MyLeftProfileProp
             <div className="w-72 max-w-sm bg-white  rounded-xl drop-shadow-xl ">
                 <div className="flex justify-end px-4 pt-4">
                     <button id="dropdownButton" data-dropdown-toggle="dropdown" className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                        <span className="sr-only">Open dropdown</span>
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                        <svg className="w-5 h-5 text-gray-40 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                            <path d="M14.419 10.581a3.564 3.564 0 0 0-2.574 1.1l-4.756-2.49a3.54 3.54 0 0 0 .072-.71 3.55 3.55 0 0 0-.043-.428L11.67 6.1a3.56 3.56 0 1 0-.831-2.265c.006.143.02.286.043.428L6.33 6.218a3.573 3.573 0 1 0-.175 4.743l4.756 2.491a3.58 3.58 0 1 0 3.508-2.871Z" />
                         </svg>
                     </button>
 

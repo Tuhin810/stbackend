@@ -14,13 +14,12 @@ import RecruiterDashboard from "./components/dashboard/recruiterDashboard/Recrui
 import PostedJobList from "./components/pages/recruiter/postedJobList/PostedJobList";
 import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin/RecruiterLogin";
 import { useEffect, useState } from "react";
-import { getUserType } from "./guards/UserTypeGuard";;
+import { getUserType } from "./guards/UserTypeGuard";
 import PostJob from "./components/pages/recruiter/PostJob/PostJob";
 import RecruiterPricing from "./components/pages/recruiter/recruiterPricing/RecruiterPricing";
 import PostedJobDashboard from "./components/pages/recruiter/PostedJobDashboard/PostedJobDashBoard";
-import { DashboardApplicantList } from "./components/dashboard/recruiterDashboard/DashboardApplicantList/DashboardApplicantList";
 import { User_JobDesc_Page } from "./components/shared/job_Description/User_JobDesc_Page";
-import Dashboard from "./components/dashboard/recruiterDashboard/DashBoard_Layout/Dashboard";
+
 import JobDescription from "./components/shared/job_Description/JobDescription/JobDescription";
 import ApplicantDashboard from "./components/dashboard/applicantDashBoard/ApplicantDashboard";
 import ApplicantProfile from "./components/pages/applicant/Profile/UserProfile";

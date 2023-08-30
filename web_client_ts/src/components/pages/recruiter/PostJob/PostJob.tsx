@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from 'react'
+import React, { useState, useEffect,useContext} from 'react'
 import ProgressStep from '../../../shared/ProgressStep/ProgressStep';
 import { JobPostDetails } from '../../../../@types/JobPostDetails';
 import PostJobPage1 from './postJob1/PostJobPage1';
@@ -43,20 +43,23 @@ const PostJob = () => {
             any_charges: false
         }
     );
+
     const incrementPage = () => {
         console.log(step);
         if (step < 5) {
             setStep(prevStep => prevStep + 1)
         }
         else if (step == 5) {
-            console.log();
+            console.log("");
             showModal();
         }
     };
+
     const showModal = () => {
         console.log('y');
         document.getElementById('modal-overlay')!.classList.remove('hidden');
     }
+
     const decreasePage = () => {
         console.log(step);
         if (step > 1) {
@@ -65,6 +68,21 @@ const PostJob = () => {
             navigate("/recruiter/jobs")
         }
     };
+
+    //it will be implemented soon
+
+    // const handleJobChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    //     const { name, value} = event.target;
+
+    //     if(name === "salary") {
+    //         setJobDetails(Object.assign({}, jobDetails, {[name]: value === "Yes"? true: false}))
+    //     }
+    //     else {
+    //         setJobDetails(Object.assign({}, jobDetails, {[name]: value}))
+    //     }
+        
+    // }, [jobDetails])
+
     //handle changes
     const handleChangeJobTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
@@ -72,18 +90,21 @@ const PostJob = () => {
             jobTitle: value
         }))
     }
+
     const handleChangeJobType = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
         setJobDetails(Object.assign({}, jobDetails, {
             jobType: value
         }))
     }
+
     const handleChangeJobDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const { value } = event.target;
         setJobDetails(Object.assign({}, jobDetails, {
             jobDescription: value
         }))
     }
+
     const handleChangeQualification = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setJobDetails(Object.assign({}, jobDetails, {
@@ -182,7 +203,6 @@ const PostJob = () => {
 
     return (
         <>
-         
             <ProgressStep />
             <div className="py-4">
                 <div className="max-w-2xl mx-auto p-6 bg-white mt-10 rounded shadow">

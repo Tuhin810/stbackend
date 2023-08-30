@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom";
 
 const MyResumeContainer = () => {
+  const navigate=useNavigate();
+  const routeToResume = () =>{
+    const path = "/applicant/resume";
+    navigate(path);
+  }
   return (
     <div>
-      <div className="w-full mt-4 h-40 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 flex items-center justify-center">
+      <div className="w-full mt-4 h-40 max-w-sm p-4 bg-white border border-gray-200
+       rounded-lg shadow sm:p-6 flex items-center justify-center" onClick={routeToResume}>
         Create Your Cv
       </div>
     </div>

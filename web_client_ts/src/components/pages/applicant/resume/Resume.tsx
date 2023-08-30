@@ -1,15 +1,13 @@
-import {useContext, useState} from 'react';
+import { useContext } from 'react';
 import { logo } from '../../../../assets/images';
 import './Resume.css';
-import { ResumeProps } from '../../../../@types/interfaces/props/ResumeProps';
 import { applicantContext } from '../../../../context/applicantDetails/ApplicantContext';
 const Resume = () => {
-    const {applicantloggedinDetails} = useContext(applicantContext);
-    const {applicantDetails} =applicantloggedinDetails;
+    const { applicantloggedinDetails } = useContext(applicantContext);
+    const { applicantDetails } = applicantloggedinDetails;
     const downloadCv = () => {
         document.getElementById('downloadButton')!.remove();
         document.getElementById('resume')?.classList!.remove('w-2/3');
-        document.getElementById('resume')?.classList!.add('w-full');
         window.print();
     }
     return (
@@ -32,13 +30,13 @@ const Resume = () => {
                         <div className="flex space-x-4">
                             <ul className='flex flex-wrap space-x-5'>
                                 {
-                                    applicantDetails?.skills.map((skill,value)=>{
-                                        return(
+                                    applicantDetails?.skills.map((skill, value) => {
+                                        return (
                                             <li key={value}>{skill}</li>
                                         )
                                     })
                                 }
-                                
+
 
                             </ul>
                         </div>
@@ -53,13 +51,21 @@ const Resume = () => {
                     <hr className='mb-4' />
                     <div className="mb-4">
                         <h2 className="text-xl font-semibold text-blue-600">Education</h2>
-                        <p className="font-semibold">Bachelor of Science in Computer Science - ABC University</p>
-                        <p className="text-cyan-400">Graduated in May 2019</p>
+                        {
+                            applicantDetails?.qualification_details.map((qualification, value) => {
+                                return (
+                                    <div className='mb-2' key={value}>
+                                        <p className="font-semibold">{qualification.qualification} - {qualification.inst_name}</p>
+                                        <p className="text-blue-600 italic">From <span className='text-black'>{qualification.from_year}</span> To <span className='text-black'>{qualification.to_year}</span></p>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
-                    <hr className='mb-4'/>
+                    <hr className='mb-4' />
                     <div className='copy_right flex items-center justify-center ms-auto w-100 relative bottom-0'>
                         <p>Powered By </p>
-                        <img src={logo} className='h-8'/>
+                        <img src={logo} className='h-8' />
                     </div>
                 </div>
             </div>

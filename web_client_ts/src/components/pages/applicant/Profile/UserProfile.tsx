@@ -1,30 +1,17 @@
-import { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext } from "react";
+
 import AdditonalDetails from "./additionalDetails/AdditonalDetails";
 import MyLeftProfile from "./myLeftProfile/MyLeftProfile";
 import MyProfileDetails from "./myProfileDetails/MyProfileDetails";
 import MyResumeContainer from "./myResumeContainer/MyResumeContainer";
 import MySkill from "./mySkill/MySkill";
 import MyQualification from "./qualification/MyQualification";
-import { getApplicantDetailsById } from "../../../../utils/apis/applicant/Applicant";
 import "./profile.css";
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext";
 
 const ApplicantProfile = () => {
-    // const params=useParams();
-    // const [isLoading,setIsLoading]=useState<boolean>(false);
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
-    // const getApplicantDetails= async() =>{
-    //     const applicantId:string =params.id!;
-    //     setIsLoading(true);
-    //     const response = await getApplicantDetailsById(applicantId);
-    //     setIsLoading(false);
-    //     if(response?.status===200){
-
-    //     }
-    // }
-
     return (
         <>
             <div className=" my-16 min-h-screen">
@@ -41,9 +28,9 @@ const ApplicantProfile = () => {
                             country_code={applicantDetails?.country_code} phone={applicantDetails?.phone} email={applicantDetails?.email} address={applicantDetails?.address}
                             birthday={applicantDetails?.dob} />
                         <MySkill skillList={applicantDetails?.skills} />
-                        <MyQualification />
-                        <AdditonalDetails fresher={applicantDetails?.is_fresher} spoken_english={ applicantDetails?.spoken_english} min_salary={applicantDetails?.min_expected_salary}
-                            min_duty_hours={applicantDetails?.min_duty_hours} experience={applicantDetails?.experience_year } />
+                        <MyQualification qualificationDetails={applicantDetails?.qualification_details}/>
+                        <AdditonalDetails fresher={applicantDetails?.is_fresher} spoken_english={applicantDetails?.spoken_english} min_salary={applicantDetails?.min_expected_salary}
+                            min_duty_hours={applicantDetails?.min_duty_hours} experience={applicantDetails?.experience_year} />
                     </div>
                 </div>
 

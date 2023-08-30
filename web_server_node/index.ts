@@ -4,12 +4,12 @@ import mongoose from "mongoose";
 import cors from 'cors';
 import { json } from "body-parser";
 
-import { ApplicantRouter } from "./src/router/users/auth/Applicant";
 import { companyRouter } from "./src/router/company/company";
 import { authRecruiterRouter } from "./src/router/recruiter/auth/auth";
 import { loginRecruiter } from "./src/controller/recruiter/auth/Login";
 import { jobRouter } from "./src/router/jobs/jobs";
 import { suggestionRouter } from "./src/router/suggestion/Suggestion";
+import { ApplicantRouter } from "./src/router/applicant/auth/applicant.router";
 
 
 dotenv.config();

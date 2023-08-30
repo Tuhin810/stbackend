@@ -27,11 +27,11 @@ export const matchedJobApplicants = async (jobDetails: JobPostDetails) => {
                 { gender: jobDetails.gender },
                 { age: { $lt: jobDetails.age_limit } },
                 { experience_year: { $gt: jobDetails.experience_year } },
-                { spoken_english: jobDetails.spoken_english_required },
+                { spoken_english: jobDetails.spoken_english_level },
                 { is_fresher: jobDetails.is_fresher_allowed },
                 { min_expected_salary: { $lt: jobDetails.salary } },
                 { min_duty_hours: { $gt: jobDetails.duty_hours } },
-                { qualification: jobDetails.qualification },
+                { qualification_to_search: jobDetails.qualification },
                 { skills: { $all: jobDetails.skills } }
             ]
         }
@@ -43,7 +43,7 @@ export const matchedJobApplicants = async (jobDetails: JobPostDetails) => {
             $and: [
                 { age: { $lt: jobDetails.age_limit } },
                 { experience_year: { $gt: jobDetails.experience_year } },
-                { spoken_english: jobDetails.spoken_english_required },
+                { spoken_english: jobDetails.spoken_english_level },
                 { is_fresher: jobDetails.is_fresher_allowed },
                 { min_expected_salary: { $gt: jobDetails.salary } },
                 { min_duty_hours: { $lt: jobDetails.duty_hours } },

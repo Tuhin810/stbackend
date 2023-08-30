@@ -14,9 +14,6 @@ export const loginRecruiter = async (req: Request, res: Response) => {
     try {
 
         const recruiter = await getRecruiterByEmailAndPassword(recruiterCredentail);
-        console.log(recruiterCredentail);
-        console.log(recruiter);
-
         if (recruiter) {
             recruiter.password = "";
             res.status(200).send({

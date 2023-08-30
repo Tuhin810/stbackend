@@ -45,9 +45,13 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: String,
         default:""
     },
-    address: {
+    current_address: {
         type: String,
         default: ""
+    },
+    permanent_address:{
+        type:String,
+        default:""
     },
     state: {
         type: String,
@@ -55,7 +59,7 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     },
     country: {
         type: String,
-        default: ""
+        default: "India"
     },
     pin: {
         type: Number,
@@ -90,8 +94,9 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         default:[]
     },
     spoken_english:{
-        type:Boolean,
-        default:false
+        type:String,
+        enum:["beginner","intermediate","fluent"],
+        default:"beginner"
     },
     is_fresher:{
         type:Boolean,
@@ -101,8 +106,12 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type:String,
         enum:['male','female']
     },
-    qualification:{
+    qualification_to_search:{
         type:[String],
+        default:[]
+    },
+    qualification_details:{
+        type:[Object],
         default:[]
     },
     min_expected_salary:{
@@ -112,6 +121,18 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     min_duty_hours:{
         type:Number,
         default:6
+    },
+    is_disabled:{
+        type:Boolean,
+        default:false
+    },
+    native_language:{
+        type:String,
+        default:""
+    },
+    profile_bio:{
+        type:String,
+        default:""
     }
 });
 
