@@ -4,7 +4,7 @@ import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/my
 const MyProfileDetails = ({first_name,last_name,gender,country_code,phone,address,email,birthday}:MyProfileDetailsProps) => {
     return (
         <div>
-            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-72  px-5 pt-8 flex flex-col">
+            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72   px-9 md:px-5 pt-8 flex flex-col">
                 <div className="deatils px-3">
                     <div>
                         <div className="w-full mx-2 ">
@@ -46,12 +46,7 @@ const MyProfileDetails = ({first_name,last_name,gender,country_code,phone,addres
                                         <div className="px-4 py-2 font-semibold">Permanant Address</div>
                                         <div className="px-4 py-2">{address}</div>
                                     </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="px-4 pr-0 py-2 font-semibold">Email.</div>
-                                        <div className="px-0 py-2">
-                                            <a className="text-blue-800" href="mailto:jane@example.com">{email}</a>
-                                        </div>
-                                    </div>
+                                   
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Birthday</div>
                                         <div className="px-4 py-2">{birthday}</div>

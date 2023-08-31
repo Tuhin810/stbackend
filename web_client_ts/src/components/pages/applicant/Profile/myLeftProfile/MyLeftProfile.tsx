@@ -1,7 +1,7 @@
 import React from 'react'
 import { MyLeftProfileProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyLeftProfileProps'
 
-const MyLeftProfile = ({ first_name, middle_name, last_name }: MyLeftProfileProps) => {
+const MyLeftProfile = ({ first_name, middle_name, last_name,email }: MyLeftProfileProps) => {
 
     let name = "";
     if(middle_name!==undefined){
@@ -14,7 +14,7 @@ const MyLeftProfile = ({ first_name, middle_name, last_name }: MyLeftProfileProp
 
     return (
         <div>
-            <div className="w-72 max-w-sm bg-white  rounded-xl drop-shadow-xl ">
+            <div className="md:w-72 m-auto max-w-sm bg-white  rounded-xl drop-shadow-xl ">
                 <div className="flex justify-end px-4 pt-4">
                     <button id="dropdownButton" data-dropdown-toggle="dropdown" className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                         <span className="sr-only">Open dropdown</span>
@@ -42,6 +42,7 @@ const MyLeftProfile = ({ first_name, middle_name, last_name }: MyLeftProfileProp
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWo3luud5KPZknLR5zdUUwzvYBztWgTxrkbA&usqp=CAU" alt="Bonnie image" />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{name}</h5>
                     <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+                    <a className="text-blue-800" href="mailto:jane@example.com">{email}</a>
                     <div className="flex mt-4 space-x-3 md:mt-6">
                         <button type="button" className="text-white inline-flex items-center bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
                             Edit Profile
