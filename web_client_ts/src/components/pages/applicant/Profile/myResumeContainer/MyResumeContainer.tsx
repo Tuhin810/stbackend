@@ -8,7 +8,7 @@ const MyResumeContainer = () => {
   }
   return (
     <div>
-      <div className="w-full mt-4 h-40 max-w-sm p-4 bg-white border border-gray-200
+      <div className="w-72 max-w-sm min-h-fit mt-4 h-40  p-4 bg-white border border-gray-200
        rounded-lg shadow sm:p-6 flex items-center justify-center" onClick={routeToResume}>
         Create Your Cv
       </div>

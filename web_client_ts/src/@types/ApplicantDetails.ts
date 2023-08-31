@@ -14,6 +14,7 @@ export interface ApplicantDetails {
     address: string,
     state: string,
     country: string,
+    profile_bio:string,
     pin: number,
     age: number,
     dob:string,
