@@ -29,10 +29,10 @@ const ApplicantProfile = () => {
         <>
             <div className=" my-16 min-h-screen">
 
-                <div className="body flex gap-10 px-32 py-10">
+                <div className="body md:flex flex-col md:flex-row gap-10 px-3 md:px-32 py-10">
                     {/* Left Side  */}
-                    <div className="left_side ">
-                        <MyLeftProfile first_name={applicantDetails?.first_name} middle_name={applicantDetails?.middle_name} last_name={applicantDetails?.last_name} />
+                    <div className="left_side mb-5">
+                        <MyLeftProfile email={applicantDetails?.email} first_name={applicantDetails?.first_name} middle_name={applicantDetails?.middle_name} last_name={applicantDetails?.last_name} />
                         <MyResumeContainer />
                     </div>
                     {/*RIGHT side  */}
