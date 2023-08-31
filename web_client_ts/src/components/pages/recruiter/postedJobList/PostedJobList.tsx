@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect} from 'react'
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { getJobsByRecruiter } from '../../../../utils/apis/recruiter/recruiter';
 import NotFound from '../../../shared/notfound/NotFound';

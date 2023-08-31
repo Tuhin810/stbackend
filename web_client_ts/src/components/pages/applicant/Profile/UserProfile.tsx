@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AdditonalDetails from "./additionalDetails/AdditonalDetails";
 import MyLeftProfile from "./myLeftProfile/MyLeftProfile";
@@ -8,10 +8,12 @@ import MySkill from "./mySkill/MySkill";
 import MyQualification from "./qualification/MyQualification";
 import "./profile.css";
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext";
+import { ApplicantProfileState } from "../../../../@types/interfaces/props/ApplicantProfileState";
 
-const ApplicantProfile = () => {
+const ApplicantProfile = ({state}:ApplicantProfileState) => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
+
     return (
         <>
             <div className=" my-16 min-h-screen">

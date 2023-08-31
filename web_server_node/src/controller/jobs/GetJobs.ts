@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
-import { getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId, postNewJob } from "../../service/jobs/jobService";
+import { getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId, postNewJob } from "../../service/jobs/job.service";
 
 //get jobs by company
 

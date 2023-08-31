@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { updateApplicantQualification } from "../../../service/applicant/applicantService.service";
+import { updateApplicantQualification } from "../../../service/applicant/applicant.service";
 import { ApplicantQualification } from "../../../@types/interfaces/ApplicantEducation";
 
 export const updateQualification = async (req: Request, res: Response) => {

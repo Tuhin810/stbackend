@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { JobDetails } from "../../../../@types/interfaces/JobDetails";
 import { getJobDetailsByJobId } from "../../../../utils/apis/Job/jobpost";
 import Spinner from "../../spinner/Spinner";
-import { CompanyDetails } from "../../../../@types/CompanyDetails";
 
 const JobDescription = () => {
   const navigate = useNavigate();

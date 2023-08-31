@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import UserModel from "../../../model/applicant/ApplicantSchema";
 import { ApplicantDetails } from "../../../@types/interfaces/ApplicantDetails";
-import { registerNewApplicant } from "../../../service/applicant/applicantService.service";
+import { registerNewApplicant } from "../../../service/applicant/applicant.service";
 
 export const registerNewUser = async (req: Request, res: Response) => {
     const userDetails: ApplicantDetails = req.body;

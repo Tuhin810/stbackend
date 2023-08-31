@@ -1,6 +1,6 @@
 
 
-import { useReducer, useState } from 'react';
+import { useReducer} from 'react';
 import { applicantLoggedInReducer } from '../../reducers/applicantReducers/ApplicantReducer';
 import { applicantContext } from './ApplicantContext';
 import { ApplicantDetails } from '../../@types/ApplicantDetails';

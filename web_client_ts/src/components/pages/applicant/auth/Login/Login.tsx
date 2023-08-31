@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { globalContext } from '../../../../../context/GlobalDetails/GlobalContext';
 import { logo } from '../../../../../assets/images';
@@ -11,12 +11,10 @@ import { UserCredentials } from '../../../../../@types/UserCredential';
 const Login = () => {
   const navigate = useNavigate();
   const [applicantCredential, setApplicantCredential] = useState<UserCredentials>({} as UserCredentials);
-  const [applicantSignUpDetail, setApplicantSignUpDetail] = useState<ApplicantDetails>({} as ApplicantDetails);
-  const { applicantloggedinDetails } = useContext(applicantContext);
   const { applicantDispatch } = useContext(applicantContext);
   const { loggedIn } = useContext(globalContext);
   //email change
-  const handleChangeEmail = (event: any) => {
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     console.log("event", event)
     setApplicantCredential(Object.assign({}, applicantCredential, {
@@ -24,7 +22,7 @@ const Login = () => {
     }))
   }
   //password change
-  const handleChangePassword = (event: any) => {
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     setApplicantCredential(Object.assign({}, applicantCredential, {
       password: value
@@ -34,7 +32,7 @@ const Login = () => {
   const loginApplicant = async () => {
     await applicantSignIn(applicantCredential).then(response => {
       if (response?.status === 200) {
-        let applicantDetails = response.data.applicant as ApplicantDetails;
+        const applicantDetails = response.data.applicant as ApplicantDetails;
         applicantDispatch({ type: "login", payload: applicantDetails })
         loggedIn({ type: "login", userType: "applicant" });
         navigate('/applicant/profile');

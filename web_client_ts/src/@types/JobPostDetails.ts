@@ -15,7 +15,7 @@ export interface JobPostDetails {
     company_id: string,
     age_limit: number,
     job_poster_id: string,
-    spoken_english_required: boolean,
+    spoken_english_level: string,
     is_target_based_salary: boolean,
     duty_hours: number,
     is_fresher_allowed: boolean,

@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 
 export interface JobPostDetails {
+    _id?:string,
     posted_date: Date,
     jobTitle: string,
     jobType: string,

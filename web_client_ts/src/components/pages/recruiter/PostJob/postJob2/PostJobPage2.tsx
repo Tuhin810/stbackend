@@ -1,7 +1,7 @@
-import { useEffect, useState,useRef } from 'react';
+import { useState } from 'react';
 import { JobPostPage2Props } from '../../../../../@types/interfaces/props/JobPostPageProps/JobPostPage2Props';
 import SkillList from '../skillList/SkillList';
-const PostJobPage2 = ({ pushMandatorySkills, pushAdditonalSkills, handleChangeQualification }: JobPostPage2Props) => {
+const PostJobPage2 = ({ pushMandatorySkills, pushAdditonalSkills, handleChangeJobDetails }: JobPostPage2Props) => {
 
     const [skill, setSkill] = useState("");
     const [additionalSkill, setAdditionalSkillSkill] = useState("");
@@ -15,14 +15,14 @@ const PostJobPage2 = ({ pushMandatorySkills, pushAdditonalSkills, handleChangeQu
             const listData= pushMandatorySkills(event.currentTarget.value);
             setSkillList(listData);
             event.currentTarget.value=''
-        };
+        }
     }
     const handleChangeAdditionalSkill=(event:React.KeyboardEvent<HTMLInputElement>)=>{
         if (event.key === "Enter") {
             setAdditionalSkillSkill(event.currentTarget.value)
             pushAdditonalSkills(event.currentTarget.value);
             
-        };
+        }
     }
     
 
@@ -40,7 +40,7 @@ const PostJobPage2 = ({ pushMandatorySkills, pushAdditonalSkills, handleChangeQu
             </div>
             <div className="mb-4">
                 <label htmlFor="qualification" className="block font-medium text-blue-600">Qualification</label>
-                <input type="text" id="qualification" name="qualification" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={(e) => handleChangeQualification(e)} />
+                <input type="text" id="qualification" name="qualification" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={(e) => handleChangeJobDetails(e)} />
             </div>
         </div>
     )

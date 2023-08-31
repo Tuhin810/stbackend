@@ -13,11 +13,11 @@ const setApplicantLoggedIn = (applicantloggedin: ApplicantLoggedInDetails, actio
             };
         }
         case "refreshPage": {
-            const recruiterDetails: ApplicantDetails = JSON.parse(localStorage.getItem("details")!);
+            const applicantDetails: ApplicantDetails = JSON.parse(localStorage.getItem("details")!);
             return {
                 ...applicantloggedin,
                 isLoggedin: true,
-                applicantDetails: recruiterDetails
+                applicantDetails: applicantDetails
             };
         }
         case "logout": {

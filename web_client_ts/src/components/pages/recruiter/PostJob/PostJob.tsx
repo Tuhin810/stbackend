@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext} from 'react'
+import React, { useState, useEffect,useContext, useCallback} from 'react'
 import ProgressStep from '../../../shared/ProgressStep/ProgressStep';
 import { JobPostDetails } from '../../../../@types/JobPostDetails';
 import PostJobPage1 from './postJob1/PostJobPage1';
@@ -21,7 +21,7 @@ const PostJob = () => {
             _id:'',
             posted_date: new Date(),
             jobTitle: '',
-            jobType: '',
+            jobType: 'full-time',
             jobDescription: '',
             no_of_vacancy: 0,
             experience_year: 0,
@@ -34,13 +34,13 @@ const PostJob = () => {
             company_id: recruiterDetails.company_id,
             age_limit: 18,
             job_poster_id: recruiterDetails._id,
-            spoken_english_required: false,
-            is_target_based_salary: false,
+            spoken_english_level: "beginner",
+            is_target_based_salary: true,
             duty_hours: 8,
             is_fresher_allowed: true,
             gender: 'male',
             qualification: '',
-            any_charges: false
+            any_charges: false,
         }
     );
 
@@ -71,113 +71,42 @@ const PostJob = () => {
 
     //it will be implemented soon
 
-    // const handleJobChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    //     const { name, value} = event.target;
+    const handleJobDetailsChange = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
+        const { name, value} = event.target;
 
-    //     if(name === "salary") {
-    //         setJobDetails(Object.assign({}, jobDetails, {[name]: value === "Yes"? true: false}))
-    //     }
-    //     else {
-    //         setJobDetails(Object.assign({}, jobDetails, {[name]: value}))
-    //     }
+        if(name === "is_fresher_allowed") {
+            setJobDetails(Object.assign({}, jobDetails, {[name]: value === "yes"? true: false}))
+        }
+        else if(name==="is_target_based_salary"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: value === "yes"? true: false}))
+        }
+        else if(name==="any_charges"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: value === "yes"? true: false}))
+        }
+        else if(name==="age_limit"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
+        else if(name==="salary"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
+        else if(name==="experience_year"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
+        else if(name==="no_of_vacancy"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
+        else if(name==="duty_hours"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
         
-    // }, [jobDetails])
+        else {
+            
+            setJobDetails(Object.assign({}, jobDetails, {[name]: value}))
+        }
+        
+    }, [jobDetails])
 
     //handle changes
-    const handleChangeJobTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            jobTitle: value
-        }))
-    }
-
-    const handleChangeJobType = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            jobType: value
-        }))
-    }
-
-    const handleChangeJobDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            jobDescription: value
-        }))
-    }
-
-    const handleChangeQualification = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            qualification: value
-        }))
-    }
-    const handleChangeAge = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            age_limit: value
-        }))
-    }
-    const handleChangeLocation = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            location: value
-        }))
-    }
-    const handleChangeFresherAllowed = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            is_fresher_allowed: value==="true"
-        }))
-    }
-    const handleChangeExperience = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            experience: value
-        }))
-    }
-    const handleChangeVacancy = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            no_of_vacancy: value
-        }))
-    }
-    const handleChangeDutyHours = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            duty_hours: value
-        }))
-    }
-    const handleChangeSpokenEnglish = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            spoken_english_required: value
-        }))
-    }
-    const handleChangeGender = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            gender: value
-        }))
-    }
-    const handleChangeSalary = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            salary: value
-        }))
-    }
-    const handleChangeTargetBasedSalaried = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            salary: value==="true"
-        }))
-    }
-    const handleChangeChargeRequired = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        setJobDetails(Object.assign({}, jobDetails, {
-            salary: value==="true"
-        }))
-    }
-
 
     const pushMandatorySkills = (skill:string) => {
         jobDetails.skills.push(skill);
@@ -198,9 +127,6 @@ const PostJob = () => {
         }
     }, [step]);
 
-    console.log(jobDetails);
-
-
     return (
         <>
             <ProgressStep />
@@ -209,15 +135,15 @@ const PostJob = () => {
                     <h1 className="text-2xl font-semibold mb-4">Post a<span className='text-blue-500'> Job</span>
                     </h1>
                     {(step == 1) ?
-                        <PostJobPage1 handleChangeJobTitle={handleChangeJobTitle} handleChangeJobType={handleChangeJobType} handleChangeJobDescription={handleChangeJobDescription} /> :
+                        <PostJobPage1 handleChangeJobDetails={handleJobDetailsChange}/> :
                         (step == 2) ?
-                            <PostJobPage2 pushMandatorySkills={pushMandatorySkills} pushAdditonalSkills={pushAdditonalSkills} handleChangeQualification={handleChangeQualification} /> :
+                            <PostJobPage2 pushMandatorySkills={pushMandatorySkills} pushAdditonalSkills={pushAdditonalSkills} handleChangeJobDetails={handleJobDetailsChange} /> :
                             (step == 3) ?
-                                <PostJobPage3 handleChangeLocation={handleChangeLocation} handleChangeExperience={handleChangeExperience} handleChangeAge={handleChangeAge} handleChangeSalary={handleChangeSalary} handleChangeGender={handleChangeGender} /> :
+                                <PostJobPage3 handleChangeJobDetails={handleJobDetailsChange} /> :
                                 (step == 4) ?
-                                    <PostJobPage4 handleChangeDutyHours={handleChangeDutyHours} handleChangeFresher={handleChangeFresherAllowed} handleChangeSpokenEnglish={handleChangeSpokenEnglish} handleChangeVacancy={handleChangeVacancy}/> :
+                                    <PostJobPage4 handleChangeJobDetails={handleJobDetailsChange}/> :
                                     (step == 5) ?
-                                        <PostJobPage5 handleChangeChargeRequired={handleChangeChargeRequired} handleChangeTargetBasedSalaried={handleChangeTargetBasedSalaried} /> :
+                                        <PostJobPage5 handleChangeJobDetails={handleJobDetailsChange} /> :
                                         null
                     }
                     <div className='flex justify-between'>

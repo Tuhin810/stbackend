@@ -15,7 +15,7 @@ const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
     jobType:{
         type:String,
         required:[true,"jobtype cannot be null"],
-        enum: ["full-time", "part-time", "Internship", "Freelancing"],
+        enum: ["full-time", "part-time", "Internship", "Freelancing","contract"],
     },
     jobDescription:{
         type:String,
@@ -69,7 +69,7 @@ const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
     },
     spoken_english_level:{
         type:String,
-        enum:["beginner"]
+        enum:["beginner","intermediate","fluent"]
     },
     is_target_based_salary:{
         type:Boolean,

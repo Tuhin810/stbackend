@@ -16,3 +16,8 @@ export const updateApplicantEducation =async (applicantId:string,applicantEducat
     const response = await Put(`applicant/updateApplicantEducation/${applicantId}`,applicantEducation,header);
     return response;
 }
+
+export const getApplicantInvitedJobList =async (applicantId:string) => {
+    const response = await Get(`applicant/getApplicantInvitedJobDetailsList/${applicantId}`,header);
+    return response;
+}

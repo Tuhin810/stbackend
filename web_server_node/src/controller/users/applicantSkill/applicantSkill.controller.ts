@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { updateApplicantSkill } from "../../../service/applicant/applicantService.service";
+import { updateApplicantSkill } from "../../../service/applicant/applicant.service";
 
 export const updateApplicantSkillById =async (req:Request,res:Response) => {
     const applicantId:string=req.params.id!;

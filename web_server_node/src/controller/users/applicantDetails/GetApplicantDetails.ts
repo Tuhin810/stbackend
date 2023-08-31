@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getApplicantDetails } from '../../../service/applicant/applicantService.service';
+import { getApplicantDetails } from '../../../service/applicant/applicant.service';
 export const getApplicantDetailsById = async (req: Request, res: Response) => {
     const applicantId = req.params.id;
     if (applicantId != undefined) {
