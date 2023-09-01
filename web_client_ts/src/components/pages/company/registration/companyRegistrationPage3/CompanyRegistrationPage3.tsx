@@ -1,4 +1,3 @@
-import React from 'react'
 import { CompanyRegistrationProps } from '../../../../../@types/interfaces/props/companyProps/CompanyRegistrationProps'
 
 const CompanyRegistrationPage3 = ({handleChangeCompanyDetails}:CompanyRegistrationProps) => {

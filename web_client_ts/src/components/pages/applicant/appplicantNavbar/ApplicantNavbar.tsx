@@ -17,7 +17,7 @@ const ApplicantNavbar = () => {
 
     return (
         <>
-            <div className="bg-transparent ">
+            <div className="bg-transparent">
                 {/* Desktop Navbar starts */}
                 <ApplicantDesktopNavbar profile={profile} setProfile={setProfile} logout={logout}/>
                 {/* Mobile Navbar */}

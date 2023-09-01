@@ -17,8 +17,11 @@ body{
     flex-direction: row;
     justify-content: space-around;
     align-items: last-baseline;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;   
+}
+
+.home{
+    align-items: end;
 }
 
 .left-home {

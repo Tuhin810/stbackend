@@ -26,21 +26,21 @@ const Home = () => {
     }
     return (
         <>
-            <div className="fixed layout top-0 z-10 bg-gray-50 w-full">
+            <div className="fixed layout top-0 z-10 w-full">
                 {/* <ComplexNavbar/> */}
             </div>
-            <div className="mt-24 ">
-                <div className="home-page  py-10 ">
+            <div className="mt-20">
+                <div className="home-page py-10 ">
 
-                    <div className='home mb-24'>
-                        <div className='left-home'>
+                    <div className='home'>
+                        <div className='left-home py-20'>
 
-                            <h2 className='text-3xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-sky-400'>Success Your Future</span> Starts Here.</h2>
+                            <h2 className='text-3xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-blue-400'>Success Your Future</span> Starts Here.</h2>
                             <p className='text-lg font-normal text-gray-500 lg:text-xl  mt-9'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum similique sequi iure! Rem, sapiente! Iste, in ab! Obcaecati iure voluptatum ex cum at dignissimos adipisci! Veritatis, sed voluptatibus. Neque, tempora?
                             </p>
                             <div className='mt-10'>
-                                <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-14 py-2.5 text-center mr-2 mb-2" onClick={handleLoginButton}>
+                                <button type="button" className="text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-14 py-2.5 text-center mr-2 mb-2" onClick={handleLoginButton}>
                                     Login
                                 </button>
                                 <button type="button" className="text-gray-700 border border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-14 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 text-center inline-flex items-center" onClick={handleSignUpButton}>
