@@ -14,8 +14,7 @@ const PostJob = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState<number>(1);
     const [buttonText, setButtontext] = useState<string>("Continue");
-    const {recruiterloggedinDetails} = useContext(recruiterContext);
-    const {recruiterDetails} = recruiterloggedinDetails;
+    const {recruiterDetails} = useContext(recruiterContext).recruiterloggedinDetails;
     const [jobDetails, setJobDetails] = useState<JobPostDetails>(
         {
             _id:'',
@@ -33,7 +32,7 @@ const PostJob = () => {
             currency_type: '',
             company_id: recruiterDetails.company_id,
             age_limit: 18,
-            job_poster_id: recruiterDetails._id,
+            job_poster_id: recruiterDetails._id!,
             spoken_english_level: "beginner",
             is_target_based_salary: true,
             duty_hours: 8,

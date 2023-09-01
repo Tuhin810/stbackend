@@ -43,7 +43,6 @@ export const updateApplicantSkill = async (applicantId: string, skill: string) =
         { _id: applicantId },
         { $push: { skills: skill } },
     )
-    console.log('response', response);
 
     const applicantdetails = await getApplicantDetails(applicantId);
     return applicantdetails;

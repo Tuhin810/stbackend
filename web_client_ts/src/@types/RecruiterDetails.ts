@@ -1,7 +1,7 @@
 export interface RecruiterDetails{
-    _id:string,
-    firebase_id:string,
-    created_date:Date
+    _id?:string,
+    firebase_id?:string,
+    created_date?:Date
     first_name: string,
     middle_name: string,
     last_name: string,
@@ -14,7 +14,7 @@ export interface RecruiterDetails{
     country: string,
     pin: number,
     age: number,
-    dob:Date,
+    dob?:Date,
     photo:BufferSource,
     company_id:string
 }

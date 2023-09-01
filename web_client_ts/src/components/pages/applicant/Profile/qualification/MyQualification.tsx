@@ -21,6 +21,7 @@ const MyQualification = ({ qualificationDetails }: ApplicantEducationProps) => {
                                 Add
                             </button>
                         </div>
+                        <div className="flex flex-wrap space-x-8 justify-around">
                         {
                             qualificationDetails.map((qualification, value) => {
                                 return (
@@ -32,6 +33,7 @@ const MyQualification = ({ qualificationDetails }: ApplicantEducationProps) => {
                                 )
                             })
                         }
+                        </div>
 
 
                     </div>

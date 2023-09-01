@@ -16,4 +16,4 @@ const stateSchema: Schema<StateSuggestion> = new mongoose.Schema({
 
 const StateSuggestionModel = mongoose.model<StateSuggestion>("StateSuggestion", stateSchema);
 
-export default StateSuggestion;
+export default StateSuggestionModel;

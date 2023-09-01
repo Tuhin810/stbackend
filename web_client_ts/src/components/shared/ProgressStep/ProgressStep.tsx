@@ -1,30 +1,47 @@
-const ProgressStep = () => {
+const ProgressStep =()=> {
     return (
-        <div>
-            <div className="max-w-2xl mx-auto p-4 mt-4 pb-0">
-                <ol className="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base">
-                    <li className="flex md:w-full items-center text-blue-600 dark:text-blue-500 sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-                        <span className="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+        <>
+            <div className="w-11/12 lg:w-2/6 mx-auto">
+                <div className="bg-gray-200 h-1 flex items-center justify-between">
+                    <div className="w-1/3 bg-indigo-700 h-1 flex items-center">
+                        <div className="bg-indigo-700 h-6 w-6 rounded-full shadow flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M5 12l5 5l10 -10" />
                             </svg>
-                            Personal <span className="hidden sm:inline-flex sm:ml-2">Info</span>
-                        </span>
-                    </li>
-                    <li className="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-                        <span className="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                            <span className="mr-2">2</span>
-                            Account <span className="hidden sm:inline-flex sm:ml-2">Info</span>
-                        </span>
-                    </li>
-                    <li className="flex items-center">
-                        <span className="mr-2">3</span>
-                        Confirmation
-                    </li>
-                </ol>
+                        </div>
+                    </div>
+                    <div className="w-1/3 flex justify-between bg-indigo-700 h-1 items-center relative">
+                        <div className="absolute right-0 -mr-2">
+                            <div className="relative bg-white shadow-lg px-2 py-1 rounded mt-16 -mr-12">
+                                <svg className="absolute top-0 -mt-1 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="Page-1" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                        <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#FFFFFF">
+                                            <g id="Group-4" transform="translate(310.000000, 198.000000)">
+                                                <polygon id="Triangle" points="20 0 28 8 12 8" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <p className="text-indigo-700 text-xs font-bold">Step 3: Analyzing</p>
+                            </div>
+                        </div>
+                        <div className="bg-indigo-700 h-6 w-6 rounded-full shadow flex items-center justify-center -ml-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M5 12l5 5l10 -10" />
+                            </svg>
+                        </div>
+                        <div className="bg-white h-6 w-6 rounded-full shadow flex items-center justify-center -mr-3 relative">
+                            <div className="h-3 w-3 bg-indigo-700 rounded-full" />
+                        </div>
+                    </div>
+                    <div className="w-1/3 flex justify-end">
+                        <div className="bg-white h-6 w-6 rounded-full shadow" />
+                    </div>
+                </div>
             </div>
-        </div>
-    )
+        </>
+    );
 }
-
-export default ProgressStep
+export default ProgressStep;
