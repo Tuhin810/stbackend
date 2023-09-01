@@ -3,7 +3,7 @@ const HowWorks = () => {
 		<>
 			<div className="overflow-y-hidden">
 				<div className="mx-auto container f-f-p px-4 xl:px-0 py-12">
-					<h1 className="focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900">How it works?</h1>
+					<h1 className="focus:outline-none text-center text-3xl lg:text-4xl font-extrabold lg:leading-9 tracking-wider text-gray-900">How it <span className="text-indigo-700">Works</span> ?</h1>
 					<div className="md:mt-24 f-f-p">
 						<div className="hidden md:flex justify-center w-full">
 							<div className="flex flex-col items-center md:items-end md:pr-12 md:border-r-4 border-gray-300 relative md:w-1/2">
