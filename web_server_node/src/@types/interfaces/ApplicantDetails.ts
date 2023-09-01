@@ -1,14 +1,20 @@
+import mongoose from "mongoose"
+import { ApplicantQualification } from "./ApplicantEducation"
+
 export interface ApplicantDetails {
+    _id?:mongoose.Schema.Types.ObjectId,
     firebase_id:string,
     created_date:Date
     first_name: string,
     middle_name: string,
     last_name: string,
     email: string,
-    country_code: string
+    country_code: string,
+    profile_bio:string,
     phone: number,
-    password: string,
-    address: string,
+    password?: string,
+    current_address: string,
+    permanent_address:string,
     state: string,
     country: string,
     pin: number,
@@ -16,13 +22,16 @@ export interface ApplicantDetails {
     dob:Date,
     photo:Buffer,
     cv:Buffer[],
-    experience_year: number
+    experience_year: number,
     skills: string[],
     additonal_skills: string[],
-    spoken_english: boolean,
+    spoken_english: string,
     is_fresher: boolean,
     gender: string,
-    qualification: string[],
+    qualification_to_search: string[],
+    qualification_details:ApplicantQualification[],
     min_expected_salary:number,
-    min_duty_hours:number
+    min_duty_hours:number,
+    native_language:string,
+    is_disabled:boolean,
 }

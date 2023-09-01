@@ -1,13 +1,13 @@
 import React from 'react'
 import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps'
 
-const MyProfileDetails = ({first_name,last_name,gender,country_code,phone,address,email,birthday}:MyProfileDetailsProps) => {
+const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, address, birthday }: MyProfileDetailsProps) => {
     return (
         <div>
-            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72   px-9 md:px-5 pt-8 flex flex-col">
-                <div className="deatils px-3">
+            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72 px-9 md:px-5 pt-8">
+                <div className="deatils">
                     <div>
-                        <div className="w-full mx-2 ">
+                        <div className="w-full ">
 
                             <div className="heading inline-flex items-center text-2xl text-gray-800 font-semibold mb-4">Profile<span className="text-blue-700 mx-2"> Details :</span>
                                 <svg className="w-5 h-5 text-red-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -46,7 +46,7 @@ const MyProfileDetails = ({first_name,last_name,gender,country_code,phone,addres
                                         <div className="px-4 py-2 font-semibold">Permanant Address</div>
                                         <div className="px-4 py-2">{address}</div>
                                     </div>
-                                   
+
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Birthday</div>
                                         <div className="px-4 py-2">{birthday}</div>
@@ -60,6 +60,8 @@ const MyProfileDetails = ({first_name,last_name,gender,country_code,phone,addres
 
             </div>
         </div>
+
+
     )
 }
 

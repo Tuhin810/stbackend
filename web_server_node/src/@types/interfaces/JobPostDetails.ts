@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 
 export interface JobPostDetails {
+    _id?:string,
     posted_date: Date,
     jobTitle: string,
     jobType: string,
@@ -16,7 +17,8 @@ export interface JobPostDetails {
     company_id: mongoose.Schema.Types.ObjectId,
     age_limit: number,
     job_poster_id: mongoose.Schema.Types.ObjectId,
-    spoken_english_required: boolean,
+    spoken_english_level :string,
+    is_disabled_alllow:boolean,
     is_target_based_salary: boolean,
     duty_hours: number,
     is_fresher_allowed: boolean,

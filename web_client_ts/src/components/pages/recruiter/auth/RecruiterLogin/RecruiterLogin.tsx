@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { LoginRecruiter } from '../../../../../utils/apis/recruiter/recruiter';
 import { useNavigate } from 'react-router-dom';
@@ -15,15 +15,14 @@ const RecruiterLogin = () => {
   const { dispatch } = useContext(recruiterContext);
   const { loggedIn } = useContext(globalContext);
   //email change
-  const handleChangeEmail = (event: any) => {
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
-    console.log("event", event)
     setRecruiterSignUpDetail(Object.assign({}, recruiterSignUpDetail, {
       email: value
     }))
   }
   //password change
-  const handleChangePassword = (event: any) => {
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     setRecruiterSignUpDetail(Object.assign({}, recruiterSignUpDetail, {
       password: value
@@ -33,7 +32,7 @@ const RecruiterLogin = () => {
   const loginRec = async () => {
      await LoginRecruiter(recruiterSignUpDetail).then(response=>{
       if (response?.status === 200) {
-        let recruiterDetails = response.data.recruiter as RecruiterDetails;
+        const recruiterDetails = response.data.recruiter as RecruiterDetails;
         dispatch({ type: "login", payload: recruiterDetails })
         loggedIn({ type: "login", userType: "recruiter" });
         navigate('/recruiter/jobs');

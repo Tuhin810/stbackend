@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { deleteJobDetailsByJobId } from "../../service/jobs/jobService"; 
+import { Request, Response } from "express"; 
+import { deleteJobDetailsByJobId } from "../../service/jobs/job.service";
 
 export const deleteJob = async (req: Request, res: Response) => {
     const jobId: string = req.params.jobId;

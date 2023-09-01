@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { getApplicantDetails } from '../../../service/applicant/ApplicantService';
+import { getApplicantDetails } from '../../../service/applicant/applicant.service';
 export const getApplicantDetailsById = async (req: Request, res: Response) => {
     const applicantId = req.params.id;
-    console.log(applicantId);
     if (applicantId != undefined) {
         try {
             await getApplicantDetails(applicantId).then(data => {

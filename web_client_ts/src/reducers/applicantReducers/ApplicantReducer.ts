@@ -4,27 +4,38 @@ import { ApplicantLoggedInAction } from "../../@types/interfaces/actionTypes/App
 
 const setApplicantLoggedIn = (applicantloggedin: ApplicantLoggedInDetails, action: ApplicantLoggedInAction): ApplicantLoggedInDetails => {
     switch (action.type) {
-        case "login":
+        case "login": {
             localStorage.setItem("details", JSON.stringify(action.payload));
             return {
                 ...applicantloggedin,
                 isLoggedin: true,
                 applicantDetails: action.payload
             };
-        case "refreshPage":
-            let recruiterDetails: ApplicantDetails = JSON.parse(localStorage.getItem("details")!);
+        }
+        case "refreshPage": {
+            const applicantDetails: ApplicantDetails = JSON.parse(localStorage.getItem("details")!);
             return {
                 ...applicantloggedin,
                 isLoggedin: true,
-                applicantDetails: recruiterDetails
+                applicantDetails: applicantDetails
             };
-        case "logout":
+        }
+        case "logout": {
             localStorage.clear();
             return {
                 ...applicantloggedin,
                 isLoggedin: false,
                 applicantDetails: {} as ApplicantDetails
             };
+        }
+        case "updateDetails":{
+            localStorage.setItem("details", JSON.stringify(action.payload));
+            return{
+                ...applicantloggedin,
+                isLoggedin: true,
+                applicantDetails: action.payload
+            }
+        }
         default:
             return {} as ApplicantLoggedInDetails
 

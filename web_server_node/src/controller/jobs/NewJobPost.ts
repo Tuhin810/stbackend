@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
-import { matchedJobApplicants, postNewJob } from "../../service/jobs/jobService";
+import { matchedJobApplicants, postNewJob } from "../../service/jobs/job.service";
 import { sendMessage } from "../../service/emailService/EmailService";
 
 //posting new jobs

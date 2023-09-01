@@ -14,10 +14,6 @@ export const loginUser = async (req: Request, res: Response) => {
     try {
 
         const user = await ApplicantModel.findOne({ $and: [{ email: userCredentail.email },{ password: userCredentail.password }] });
-        console.log(userCredentail);
-        console.log(user);
-
-
         if (user) {
             user.password = "";
             res.status(200).send({

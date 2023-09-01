@@ -12,7 +12,6 @@ const deleteCompany = async (req:Request, res:Response) => {
         message: "company Deleted successfully",
       });
     } catch (error) {
-      console.log(error);
       res.status(500).send({
         success: false,
         message: "Error while deleting company",

@@ -21,7 +21,6 @@ const registerNewCompany =async (req:Request,res:Response) => {
             console.log(company);
             
             if (company) {
-                console.log(company);
                 return res.status(409).send({
                     success: false,
                     message: "Already exists !!",

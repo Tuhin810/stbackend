@@ -11,6 +11,7 @@ import demo from './try.png';
 import rating from './rating.png';
 import vectorImg from './img.png';
 import logo from './logo.png';
+import logo_white from './logo_white.png';
 import home from './home.png';
 import searchIcon from './search-icon.gif';
 import notFound from './notFound.png';
@@ -33,5 +34,6 @@ export {
 	home,
 	searchIcon,
 	notFound,
-	defaultCompany
+	defaultCompany,
+	logo_white
 };

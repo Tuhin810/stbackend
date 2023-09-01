@@ -1,52 +1,57 @@
 import React from 'react'
 import { MyLeftProfileProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyLeftProfileProps'
 
-const MyLeftProfile = ({ first_name, middle_name, last_name,email }: MyLeftProfileProps) => {
+const MyLeftProfile = ({ first_name, middle_name, last_name,profile_bio }: MyLeftProfileProps) => {
 
     let name = "";
-    if(middle_name!==undefined){
-        name = first_name + " " +  middle_name + " " + last_name;
+    if (middle_name !== undefined) {
+        name = first_name + " " + middle_name + " " + last_name;
     }
-    else{
-        name=first_name+" "+last_name;
+    else {
+        name = first_name + " " + last_name;
     }
 
+    console.log(profile_bio);
+    
 
     return (
         <div>
-            <div className="md:w-72 m-auto max-w-sm bg-white  rounded-xl drop-shadow-xl ">
-                <div className="flex justify-end px-4 pt-4">
-                    <button id="dropdownButton" data-dropdown-toggle="dropdown" className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                        <span className="sr-only">Open dropdown</span>
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                        </svg>
-                    </button>
-
-                    <div id="dropdown" className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul className="py-2" aria-labelledby="dropdownButton">
-                            <li>
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export Data</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                            </li>
-                        </ul>
+            <div className="w-full relative mt-16 mb-32 sm:mb-24">
+                <div className="rounded overflow-hidden shadow-md bg-white">
+                    <div className="absolute -mt-20 w-full flex justify-center">
+                        <div className="h-32 w-32">
+                            <img src="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif" alt className="rounded-full object-cover h-full w-full shadow-md" />
+                        </div>
                     </div>
-                </div>
-                <div className="flex flex-col items-center pb-10">
-                    <img className="w-32 h-32 mb-3 rounded-full border-2 shadow-xl shadow-orange-200 border-orange-400 shadow-lg"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWo3luud5KPZknLR5zdUUwzvYBztWgTxrkbA&usqp=CAU" alt="Bonnie image" />
-                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{name}</h5>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
-                    <a className="text-blue-800" href="mailto:jane@example.com">{email}</a>
-                    <div className="flex mt-4 space-x-3 md:mt-6">
-                        <button type="button" className="text-white inline-flex items-center bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
-                            Edit Profile
-                        </button>
+                    <div className="px-6 mt-16">
+                        <div className="font-bold text-3xl text-center pb-1">{name}</div>
+                        <p className="text-gray-800 text-sm text-center">Chief Executive Officer</p>
+                        <p className="text-center text-gray-600 text-base pt-3 font-normal">{profile_bio}</p>
+                        <div className="w-full flex justify-center pt-5 pb-5">
+                            <a href="javascript:void(0)" className="mx-5">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="#718096" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-github">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                </div>
+                            </a>
+                            <a href="" className="mx-5">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="#718096" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-twitter">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                    </svg>
+                                </div>
+                            </a>
+                            <a href="" className="mx-5">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="#718096" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-instagram">
+                                        <rect x={2} y={2} width={20} height={20} rx={5} ry={5} />
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

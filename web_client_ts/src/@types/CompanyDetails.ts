@@ -1,6 +1,6 @@
 export interface CompanyDetails{
     name:string,
-    logo:File,
+    logo?:File,
     type:string,
     email:string,
     country_code:string,

@@ -1,22 +1,20 @@
 import { useContext, useEffect } from 'react';
 import { Outlet } from 'react-router-dom'
 import { applicantContext } from '../../../context/applicantDetails/ApplicantContext';
-import { globalContext } from '../../../context/GlobalDetails/GlobalContext';
+// import { globalContext } from '../../../context/GlobalDetails/GlobalContext';
 import { getuserDetails } from '../../../utils/commonFunctions/GetuserDetails';
-import ApplicantNavBar from '../../shared/navbar/NavBar'
-
+import ApplicantNavbar from '../../pages/applicant/appplicantNavbar/ApplicantNavbar';
 const ApplicantDashboard = () => {
     const { applicantDispatch } = useContext(applicantContext);
-    const { applicantloggedinDetails } = useContext(applicantContext);
-    const { loggedIn } = useContext(globalContext);
-  
+
     useEffect(() => {
-      const details = getuserDetails();
-      applicantDispatch({ type: "refreshPage", payload: details })
+        const details = getuserDetails();
+        applicantDispatch({ type: "refreshPage", payload: details })
     }, [])
     return (
         <div>
-            <Outlet />
+            <ApplicantNavbar />
+                <Outlet />
         </div>
     )
 }

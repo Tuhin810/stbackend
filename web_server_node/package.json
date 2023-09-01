@@ -19,14 +19,16 @@
     "start": "ts-node-dev index.ts"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.3",
     "@types/dotenv": "^8.2.0",
     "@types/nodemailer": "^6.4.9",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.4.3",
     "nodemailer": "^6.9.4",
-    "swagger-express-ts": "^1.1.0",
+    "swagger-express-ts": "^1.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
   }

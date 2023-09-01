@@ -1,13 +1,8 @@
 
 import './home.css';
-import titles from '../../../../utils/titles';
-
-import SearchBox from '../../../shared/searchBox/SearchBox';
 import Footer from '../footer/Footer';
-import { Companies } from '../companyList/Companies';
 import HowWorks from '../how_works/HowWorks';
 import ServicesList from '../serviceList/ServiceList';
-import NavBar from '../../../shared/navbar/NavBar';
 import "./home.css"
 import { home } from '../../../../assets/images';
 import FrequentlyAskedQuestion from '../frequentlyAskedQuestion/FrequentlyAskedQuestion';
@@ -16,6 +11,8 @@ import Advertisement from '../../../shared/card/Advertisement';
 import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 import CommonModal from '../../../shared/modal/CommonModal';
 import { useState } from 'react';
+import Features from '../features/Features';
+import CompanyList from '../companyList/CompanyList';
 const Home = () => {
     const modalId='home-modal'
     const [action,setAction] =useState<string>('');
@@ -61,10 +58,11 @@ const Home = () => {
                     </div>
                     <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} />
                     {/* home components */}
+                    <Features/>
                     <HowWorks />
-                    <Companies />
-                    <Advertisement />
+                    <CompanyList />
                     <ServicesList />
+                    <Advertisement />
                     <Testimonial />
                     <FrequentlyAskedQuestion />
 

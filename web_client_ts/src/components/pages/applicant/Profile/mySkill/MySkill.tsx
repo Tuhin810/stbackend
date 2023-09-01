@@ -1,7 +1,7 @@
 import React from 'react'
 import { MySkillProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MySkillProps'
 import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
-import AddSkillModal from '../../AddSkillModal/AddSkillModal'
+import AddSkillModal from '../../modals/AddSkillModal/AddSkillModal'
 
 const MySkill = ({ skillList }: MySkillProps) => {
     return (
