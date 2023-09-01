@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { AlertData } from '../../../@types/interfaces/props/AlertProps'
 
-
-const Alert:FunctionComponent<AlertData> = ({type,text}) => {
+// Test Push
+const Alert:FunctionComponent<AlertData> = ({type,text}) => { 
     return (
         <div className='alert' id='alert'>
             <div className="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
