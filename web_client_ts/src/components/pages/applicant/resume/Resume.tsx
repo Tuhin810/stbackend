@@ -69,7 +69,7 @@ const Resume = () => {
                     </div>
                 </div>
             </div>
-            <button type="button" id='downloadButton' className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={downloadCv}>Download</button>
+            <button type="button" id='downloadButton' className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 darkno:bg-gray-800 darkno:text-white darkno:border-gray-600 darkno:hover:bg-gray-700 darkno:hover:border-gray-600 darkno:focus:ring-gray-700" onClick={downloadCv}>Download</button>
         </div>
 
     )

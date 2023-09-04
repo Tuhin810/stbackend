@@ -87,7 +87,7 @@ const ApplicantMobileNavbar = ({show,setShow,logout}:IMobileApplicantNavbarProps
                                                             <circle cx={12} cy={12} r={9} />
                                                         </svg>
                                                     </div>
-                                                    <p className="text-white xl:text-base  text-base ml-3">Performance</p>
+                                                    <p className="text-white xl:text-base  text-base ml-3">cPerformance</p>
                                                 </div>
                                             </li>
                                         </a>

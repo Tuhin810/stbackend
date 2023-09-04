@@ -11,6 +11,7 @@ import Features from '../features/Features';
 import CompanyList from '../companyList/CompanyList';
 import Stats from '../stats/Stats';
 import Hero from '../hero/Hero';
+import { FacebookAdd } from './Facebook_Add/FacebookAdd';
 const Home = () => {
     const modalId='home-modal'
     const [action,setAction] =useState<string>('');
@@ -29,6 +30,7 @@ const Home = () => {
             </div>
                 <div className="home-page py-10 ">
                     <Hero handleLoginButton={handleLoginButton} handleSignUpButton={handleSignUpButton}/> 
+                    <FacebookAdd/>
                     <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} />
                     <Stats/>
                     <Features/>

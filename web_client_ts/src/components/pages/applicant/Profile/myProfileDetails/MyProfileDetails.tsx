@@ -1,6 +1,7 @@
 import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps'
-
-const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, current_address,permanent_address, birthday }: MyProfileDetailsProps) => {
+import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
+import { AddProfileModal } from '../../modals/AddProfileDetailModa.tsxl/AddProfileModal'
+const MyProfileDetails = ({ first_name, middle_name, last_name, gender, country_code, phone, current_address,permanent_address, birthday }: MyProfileDetailsProps) => {
     return (
         <div>
             <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72 px-9 md:px-5 pt-8">
@@ -8,22 +9,31 @@ const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, 
                     <div>
                         <div className="w-full ">
 
-                            <div className="heading inline-flex items-center text-2xl text-gray-800 font-semibold mb-4">Profile<span className="text-blue-700 mx-2"> Details :</span>
-                                <svg className="w-5 h-5 text-red-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="m13.835 7.578-.005.007-7.137 7.137 2.139 2.138 7.143-7.142-2.14-2.14Zm-10.696 3.59 2.139 2.14 7.138-7.137.007-.005-2.141-2.141-7.143 7.143Zm1.433 4.261L2 12.852.051 18.684a1 1 0 0 0 1.265 1.264L7.147 18l-2.575-2.571Zm14.249-14.25a4.03 4.03 0 0 0-5.693 0L11.7 2.611 17.389 8.3l1.432-1.432a4.029 4.029 0 0 0 0-5.689Z" />
-                                </svg>
+                        <div className='flex justify-between mb-4 pr-10 pl-3'>
+                            <div className="heading text-xl text-gray-500
+                              mb-4 font-sans inline-flex  font-semibold">My <span className="text-blue-500 mx-1 ">Profile</span>
+                               
                             </div>
-
+                           
+                            <button   onClick={() => { showModal('updateprofile') }}
+                             type="button" className="text-white text-xl border border-blue-100 font-small rounded-md bg-blue-400   h-8 px-2 text-center inline-flex items-center" >
+                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="mr-2 bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+             </svg>
+                                Edit
+                            </button>
+                        </div>
 
                             <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
 
 
                             </div>
-                            <div className="text-gray-700">
-                                <div className="grid md:grid-cols-2 text-sm">
+                            <div className="text-gray-700 ">
+                                <div className="grid md:grid-cols-2 text-md">
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">First Name</div>
-                                        <div className="px-4 py-2">{first_name}</div>
+                                        <div className="px-4 py-2 ">{first_name}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Last Name</div>
@@ -46,7 +56,7 @@ const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, 
                                         <div className="px-4 py-2">{permanent_address}</div>
                                     </div>
 
-                                    <div className="grid grid-cols-2">
+                                    <div className="grid grid-cols-2 md:mb-0 mb-10">
                                         <div className="px-4 py-2 font-semibold">Birthday</div>
                                         <div className="px-4 py-2">{birthday}</div>
                                     </div>
@@ -58,6 +68,14 @@ const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, 
                 </div>
 
             </div>
+           
+             <AddProfileModal first_name={first_name} last_name={last_name}
+             middle_name={middle_name}
+                phone={phone} current_address={current_address} permanent_address={permanent_address}
+                birthday={birthday} gender={''} country_code={''} email={''} />  
+           
+          
+            
         </div>
 
 

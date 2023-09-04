@@ -1,5 +1,6 @@
 export interface MyProfileDetailsProps{
     first_name:string,
+    middle_name:string,
     last_name:string,
     gender:string,
     country_code:string,
