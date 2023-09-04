@@ -70,8 +70,8 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         maxLength: 2,
         default: 0
     },
-    dob: {
-        type: Date
+    birth_year: {
+        type: Number
     },
     photo: {
         data: Buffer,
@@ -104,7 +104,7 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     },
     gender:{
         type:String,
-        enum:['male','female']
+        enum:["male","female"]
     },
     qualification_to_search:{
         type:[String],

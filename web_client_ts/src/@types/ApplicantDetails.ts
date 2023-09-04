@@ -11,13 +11,14 @@ export interface ApplicantDetails {
     country_code: string
     phone: number,
     password: string,
-    address: string,
+    current_address: string,
+    permanent_address: string,
     state: string,
     country: string,
     profile_bio:string,
     pin: number,
     age: number,
-    dob:string,
+    birth_year:string,
     photo:string,
     cv:BufferSource[],
     experience_year: number
