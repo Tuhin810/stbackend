@@ -1,12 +1,11 @@
-import mongoose from "mongoose";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
-import { ApplicantQualification, IApplicationEducationSchema } from "../../@types/interfaces/ApplicantEducation";
+import { ApplicantQualification } from "../../@types/interfaces/ApplicantEducation";
 import ApplicantModel from "../../model/applicant/ApplicantSchema"
 import applicantInvitedJobModel from "../../model/applicantInvitedjobs/ApplicantInvitedJobs";
 import { IApplicantInvitedJobs } from "../../@types/interfaces/ApplicantInvitedJobs";
-import { JobDetails } from "../../@types/interfaces/JobDetailsWithCompany";
 import { getJobDetailsByJobId } from "../jobs/job.service";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
+import { IApplicantProfileDetails } from "../../@types/interfaces/ApplicantProfileDetails";
 
 export const registerNewApplicant = async (applicantDetails: ApplicantDetails) => {
     const response: ApplicantDetails = await ApplicantModel.create(applicantDetails);
@@ -15,7 +14,7 @@ export const registerNewApplicant = async (applicantDetails: ApplicantDetails) =
             applicantId: response?._id!,
             jobId: []
         }
-        const response1 = await applicantInvitedJobModel.create(applicantInvitedJobs);
+        await applicantInvitedJobModel.create(applicantInvitedJobs);
     }
     return response;
 }
@@ -25,12 +24,17 @@ export const getApplicantDetails = async (applicantId: string) => {
     return response;
 }
 
+export const getApplicantDetailsByEmail = async (email: string) => {
+    const response = await ApplicantModel.findOne({email:email});
+    return response;
+}
+
 export const updateApplicantQualification = async (applicantId: string, applicantQualification: ApplicantQualification) => {
-    const response = await ApplicantModel.updateOne(
+    await ApplicantModel.updateOne(
         { _id: applicantId },
         { $push: { qualification_to_search: applicantQualification.qualification } }
     )
-    const response1 = await ApplicantModel.updateOne(
+    await ApplicantModel.updateOne(
         { _id: applicantId },
         { $push: { qualification_details: applicantQualification } },
     )
@@ -52,12 +56,10 @@ export const getApplicantInvitedJobListService = async (applicantId: string) => 
     const response = await applicantInvitedJobModel.findOne({ applicantId: applicantId });
     const jobDetailsList:JobPostDetails[]=[];
     if (response) {
-        console.log(response);
-        
         const jobList = response!.jobId;
-        for (let jobId of jobList) {
+        for (const jobId of jobList) {
             const jobDetailsResponse=await getJobDetailsByJobId(jobId);
-            console.log('job details response',jobDetailsResponse);
+            console.log("job details response",jobDetailsResponse);
             if(jobDetailsResponse){
                 const jobDetails:JobPostDetails=jobDetailsResponse as JobPostDetails
                 jobDetailsList.push(jobDetails);
@@ -65,7 +67,28 @@ export const getApplicantInvitedJobListService = async (applicantId: string) => 
             }
         }
     }
-    console.log('job details list',jobDetailsList);
+    console.log("job details list",jobDetailsList);
     return jobDetailsList;
-
 }
+
+export const updateApplicantProfileDetailsById =async (applicantId:string,applicantProfile:IApplicantProfileDetails) => {
+    await ApplicantModel.updateOne(
+        {_id:applicantId},
+        {
+            $set:
+            {
+                first_name:applicantProfile.first_name,
+                middle_name:applicantProfile.middle_name,
+                last_name:applicantProfile.last_name,
+                current_address:applicantProfile.current_address,
+                permanent_address:applicantProfile.permanent_address,
+                gender:applicantProfile.gender,
+                birth_year:applicantProfile.birth_year
+            }
+        }
+    )
+    const applicantDetails = await getApplicantDetails(applicantId);
+    return applicantDetails;
+}
+
+// export const updateApplicantAdditionalDetails 

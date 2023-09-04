@@ -21,25 +21,19 @@ body{
 }
 
 .home{
-    align-items: end;
+    align-items: center;
 }
 
 .left-home {
-    width: 50%;
+    width: 45%;
 }
 
 .right-home {
-    width: 20rem;
+    width: 25rem;
     display: flex;
     justify-content: baseline;
 }
 
-.right-home img {
-    position: relative;
-    bottom: 0;
-    width: auto;
-    height: auto;
-}
 
 
 .companyWithApplicant-container {

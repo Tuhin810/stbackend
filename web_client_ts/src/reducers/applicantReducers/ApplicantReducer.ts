@@ -12,6 +12,14 @@ const setApplicantLoggedIn = (applicantloggedin: ApplicantLoggedInDetails, actio
                 applicantDetails: action.payload
             };
         }
+        case "signup": {
+            localStorage.setItem("details", JSON.stringify(action.payload));
+            return {
+                ...applicantloggedin,
+                isLoggedin: true,
+                applicantDetails: action.payload
+            };
+        }
         case "refreshPage": {
             const applicantDetails: ApplicantDetails = JSON.parse(localStorage.getItem("details")!);
             return {

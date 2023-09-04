@@ -25,8 +25,8 @@ const ApplicantProfile = ({state}:ApplicantProfileState) => {
                     {/*RIGHT side  */}
                     <div className="w-full flex flex-col gap-7">
                         <MyProfileDetails first_name={applicantDetails?.first_name} last_name={applicantDetails?.last_name} gender={applicantDetails?.gender}
-                            country_code={applicantDetails?.country_code} phone={applicantDetails?.phone} email={applicantDetails?.email} address={applicantDetails?.address}
-                            birthday={applicantDetails?.dob} />
+                            country_code={applicantDetails?.country_code} phone={applicantDetails?.phone} email={applicantDetails?.email} current_address={applicantDetails?.current_address} permanent_address={applicantDetails?.permanent_address}
+                            birthday={applicantDetails?.birth_year} />
                         <MySkill skillList={applicantDetails?.skills} />
                         <MyQualification qualificationDetails={applicantDetails?.qualification_details}/>
                         <AdditonalDetails fresher={applicantDetails?.is_fresher} spoken_english={applicantDetails?.spoken_english} min_salary={applicantDetails?.min_expected_salary}

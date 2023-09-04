@@ -1,7 +1,6 @@
-import React from 'react'
 import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps'
 
-const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, address, birthday }: MyProfileDetailsProps) => {
+const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, current_address,permanent_address, birthday }: MyProfileDetailsProps) => {
     return (
         <div>
             <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72 px-9 md:px-5 pt-8">
@@ -40,11 +39,11 @@ const MyProfileDetails = ({ first_name, last_name, gender, country_code, phone, 
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Current Address</div>
-                                        <div className="px-4 py-2">{address}</div>
+                                        <div className="px-4 py-2">{current_address}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Permanant Address</div>
-                                        <div className="px-4 py-2">{address}</div>
+                                        <div className="px-4 py-2">{permanent_address}</div>
                                     </div>
 
                                     <div className="grid grid-cols-2">
