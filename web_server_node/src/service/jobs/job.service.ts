@@ -3,7 +3,6 @@ import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
 import ApplicantModel from "../../model/applicant/ApplicantSchema";
-import CompanyModel from "../../model/company/CompanySchema";
 import { IMatchedApplicant } from "../../@types/interfaces/MatchedApplicant";
 import applicantInvitedJobModel from "../../model/applicantInvitedjobs/ApplicantInvitedJobs";
 
@@ -23,7 +22,7 @@ export const getJobsByCompanyId = async (companyId: string) => {
 }
 
 
-export const matchedJobApplicants = async (jobDetails: JobPostDetails):Promise<IMatchedApplicant[]> => {
+export const matchedJobApplicants = async (jobDetails: JobPostDetails): Promise<IMatchedApplicant[]> => {
     if (jobDetails.gender != "all") {
         const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
             $and: [
@@ -31,15 +30,14 @@ export const matchedJobApplicants = async (jobDetails: JobPostDetails):Promise<I
                 { age: { $lt: jobDetails.age_limit } },
                 { experience_year: { $gt: jobDetails.experience_year } },
                 { spoken_english: jobDetails.spoken_english_level },
-                { is_fresher: jobDetails.is_fresher_allowed },
                 { min_expected_salary: { $lt: jobDetails.salary } },
                 { min_duty_hours: { $gt: jobDetails.duty_hours } },
                 { qualification_to_search: jobDetails.qualification },
                 { skills: { $all: jobDetails.skills } }
             ]
         }
-        const applicantList:IMatchedApplicant[] = await ApplicantModel.find(queryToFindApplicant,{first_name:1,middle_name:1,last_name:1,_id:1});
-        await sendInviteApplicantList(applicantList,jobDetails._id!);
+        const applicantList: IMatchedApplicant[] = await ApplicantModel.find(queryToFindApplicant, { first_name: 1, middle_name: 1, last_name: 1, _id: 1 });
+        await sendInviteApplicantList(applicantList, jobDetails._id!);
         return applicantList;
     }
     else {
@@ -48,38 +46,55 @@ export const matchedJobApplicants = async (jobDetails: JobPostDetails):Promise<I
                 { age: { $lt: jobDetails.age_limit } },
                 { experience_year: { $gt: jobDetails.experience_year } },
                 { spoken_english: jobDetails.spoken_english_level },
-                { is_fresher: jobDetails.is_fresher_allowed },
                 { min_expected_salary: { $lt: jobDetails.salary } },
                 { min_duty_hours: { $gt: jobDetails.duty_hours } },
                 { qualification_to_search: jobDetails.qualification },
                 { skills: { $all: jobDetails.skills } }
             ]
         }
-        const applicantList:IMatchedApplicant[] = await ApplicantModel.find(queryToFindApplicant,{first_name:1,middle_name:1,last_name:1,email:1});
-        await sendInviteApplicantList(applicantList,jobDetails._id!);
+        const applicantList: IMatchedApplicant[] = await ApplicantModel.find(queryToFindApplicant, { first_name: 1, middle_name: 1, last_name: 1, email: 1 });
+        await sendInviteApplicantList(applicantList, jobDetails._id!);
         return applicantList;
     }
 }
 
-const sendInviteApplicantList = async (matchedApplicantList:IMatchedApplicant[],jobId:string) => {
-    for(let applicant of matchedApplicantList){
-        await inviteApplicant(applicant._id,jobId);
+const getApplicantInvitedJobList = async (applicantId: mongoose.Schema.Types.ObjectId) => {
+    const response = await applicantInvitedJobModel.findOne({ applicantId: applicantId }, { jobId: 1, _id: 0 });
+    return response;
+}
+
+
+const sendInviteApplicantList = async (matchedApplicantList: IMatchedApplicant[], jobId: string) => {
+    for (const applicant of matchedApplicantList) {
+        await inviteApplicant(applicant._id, jobId);
     }
 }
 
-const inviteApplicant =async (applicantId:mongoose.Schema.Types.ObjectId,jobid:string) => {
-    const response = await applicantInvitedJobModel.updateOne(
-        {applicantId:applicantId},
-        {$push:{jobId:jobid}}
-    )
-    return response;
+const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobId: string) => {
+    const applicantJobInvitedList = await getApplicantInvitedJobList(applicantId);
+    const { jobId: jobList } = applicantJobInvitedList!;
+    let flag = true;
+    for (const job of jobList) {
+        if (job === jobId) {
+            flag = false;
+            break;
+        }
+    }
+    if (flag) {
+        const response = await applicantInvitedJobModel.updateOne(
+            { applicantId: applicantId },
+            { $push: { jobId: jobId } }
+        )
+        return response;
+    }
+    return {};
 }
 
-export const getJobDetailsByJobId =async (jobId:string) => {
-    const response = await JobModel.findById(jobId).populate('company_id').exec();;
+export const getJobDetailsByJobId = async (jobId: string) => {
+    const response = await JobModel.findById(jobId).populate("company_id").exec();
     return response;
 }
-export const deleteJobDetailsByJobId =async (jobId:string) => {
+export const deleteJobDetailsByJobId = async (jobId: string) => {
     const response = await JobModel.findByIdAndDelete(jobId)
     return response;
 }

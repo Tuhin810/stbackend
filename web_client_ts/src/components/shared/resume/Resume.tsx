@@ -1,23 +1,15 @@
-import { useContext } from 'react';
-import { logo } from '../../../../assets/images';
-import './Resume.css';
-import { applicantContext } from '../../../../context/applicantDetails/ApplicantContext';
-const Resume = () => {
-    const { applicantloggedinDetails } = useContext(applicantContext);
-    const { applicantDetails } = applicantloggedinDetails;
-    const downloadCv = () => {
-        document.getElementById('downloadButton')!.remove();
-        document.getElementById('resume')?.classList!.remove('w-2/3');
-        window.print();
-    }
+import { MyProfileDetailsProps } from "../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps"
+import { logo } from "../../../assets/images"
+
+const Resume = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
     return (
-        <div>
+        <div id="resume">
             <div className="resume-container" id='resume'>
                 <div id='resume' className="container mx-auto p-8 bg-white mt-8 rounded shadow w-2/3">
                     <div className="resume-heading text-center mb-6">
-                        <h1 className="text-3xl font-bold mb-1">{applicantDetails?.first_name} <span className='text-blue-600'>{applicantDetails?.last_name}</span></h1>
+                        <h1 className="text-3xl font-bold mb-1">{defaultApplicantDetails?.first_name} <span className='text-blue-600'>{defaultApplicantDetails?.last_name}</span></h1>
                         <p className="text-lg mb-1">Frontend Developer</p>
-                        <p className='contact'> <span className='text-blue-600'>{applicantDetails?.email}</span> | {applicantDetails?.country_code} {applicantDetails.phone}</p>
+                        <p className='contact'> <span className='text-blue-600'>{defaultApplicantDetails?.email}</span> | {defaultApplicantDetails?.country_code} {defaultApplicantDetails.phone}</p>
                     </div>
                     <hr className='mb-4' />
                     <div className="mb-4">
@@ -30,14 +22,12 @@ const Resume = () => {
                         <div className="flex space-x-4">
                             <ul className='flex flex-wrap space-x-5'>
                                 {
-                                    applicantDetails?.skills.map((skill, value) => {
+                                    defaultApplicantDetails?.skills.map((skill, value) => {
                                         return (
                                             <li key={value}>{skill}</li>
                                         )
                                     })
                                 }
-
-
                             </ul>
                         </div>
                     </div>
@@ -52,7 +42,7 @@ const Resume = () => {
                     <div className="mb-4">
                         <h2 className="text-xl font-semibold text-blue-600">Education</h2>
                         {
-                            applicantDetails?.qualification_details.map((qualification, value) => {
+                            defaultApplicantDetails?.qualification_details.map((qualification, value) => {
                                 return (
                                     <div className='mb-2' key={value}>
                                         <p className="font-semibold">{qualification.qualification} - {qualification.inst_name}</p>
@@ -69,9 +59,7 @@ const Resume = () => {
                     </div>
                 </div>
             </div>
-            <button type="button" id='downloadButton' className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 darkno:bg-gray-800 darkno:text-white darkno:border-gray-600 darkno:hover:bg-gray-700 darkno:hover:border-gray-600 darkno:focus:ring-gray-700" onClick={downloadCv}>Download</button>
         </div>
-
     )
 }
 

@@ -1,11 +1,11 @@
-import { useState,useContext, useEffect,useCallback } from "react";
+import { useState,useContext, useCallback } from "react";
 import { ApplicantDetails } from "../../../../../@types/ApplicantDetails";
 import {  updateApplicantDetailsById } from "../../../../../utils/apis/applicant/Applicant";
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext";
 import { MyProfileDetailsProps } from "../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps";
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal"
 
-export const AddProfileModal = ({ first_name,middle_name, last_name, phone, current_address,permanent_address, birthday }: MyProfileDetailsProps) => {
+export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
 
     const {applicantDispatch} = useContext(applicantContext);
     const {applicantloggedinDetails} = useContext(applicantContext);
@@ -19,13 +19,12 @@ export const AddProfileModal = ({ first_name,middle_name, last_name, phone, curr
     const handleUpdate = async() =>{
         const response = await updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!,applicantDetails);
         if(response?.status===200){
-            applicantDispatch({type:"updateDetails",payload:response?.data.applicant})
+            applicantDispatch({type:"updateDetails",payload:response?.data.data})
         }
     }
   return (
    <div>
-  
-  <div id="updateprofile"  className={ ` fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm`}>
+  <div id="updateprofile"  className={ ` fixed inset-0 z-40 flex items-center hidden justify-center bg-black bg-opacity-50 backdrop-blur-sm`}>
                 <div className="relative w-full max-w-md max-h-full">
                     <div className="relative bg-white rounded-xl shadow ">
                         <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto
@@ -40,48 +39,48 @@ export const AddProfileModal = ({ first_name,middle_name, last_name, phone, curr
                             <h3 className="mb-4 text-xl font-medium text-gray-900 darkno:text-white">Update your<span className="text-blue-600"> Profile </span>Details</h3>
                             <div className="space-y-6">
                                 <div className="flex gap-2">
-                                  <div>
+                                  <div className="w-1/2">
                                     <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 darkno:text-white">First Name</label>
                                     <input
                                     onChange={(e)=>{handleChangeApplicantDetails(e)}} 
-                                     type="text" name="first_name" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                     placeholder="secondary education" required />
+                                     type="text" name="first_name" id="first_name" defaultValue={defaultApplicantDetails?.first_name} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                   required />
                                 </div>
-                                <div>
-                                    <label htmlFor="Middlename" className="block mb-2 text-sm font-medium text-gray-900 darkno:text-white">Middle Name</label>
+                                <div className="w-1/2">
+                                    <label htmlFor="middle_name" className="block mb-2 text-sm font-medium text-gray-900 darkno:text-white">Middle Name</label>
                                     <input
-                                    onChange={(e)=>{handleChangeApplicantDetails(e)}} value={middle_name}
-                                     type="text" name="Middlename" id="Middlename" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                     placeholder="secondary education" required />
+                                    onChange={(e)=>{handleChangeApplicantDetails(e)}} defaultValue={defaultApplicantDetails?.middle_name}
+                                     type="text" name="middle_name" id="middle_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                    required />
                                 </div>  
                                 </div>
                                 <div className="flex gap-2">
-                                     <div>
-                                    <label htmlFor="Lastname" className="block  text-sm font-medium text-gray-900 darkno:text-white">last Name</label>
+                                     <div className="w-1/2">
+                                    <label htmlFor="last_name" className="block  text-sm font-medium text-gray-900 darkno:text-white">last Name</label>
                                     <input
+                                    defaultValue={defaultApplicantDetails?.last_name}
                                     onChange={(e)=>{handleChangeApplicantDetails(e)}} 
-                                    value={last_name}
-                                    type="text" name="Lastname" id="Lastname" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                     placeholder="secondary education" required />
+                                    type="text" name="last_name" id="last_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                    required />
                                 </div>
-                                <div>
-                                    <label htmlFor="inst_name" className="block  text-sm font-medium text-gray-900 ">Gender</label>
+                                <div className="w-1/2">
+                                    <label htmlFor="gender" className="block  text-sm font-medium text-gray-900 ">Gender</label>
                                     <select
                                     
-                                     id="gender" name="gender" className="w-full px-4 py-2 border rounded-md bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 rounded-lg" >
-                                          <option value="unregistered">Male</option>
-                                          <option value="pvt">Female</option>
-                                          <option value="opc">Don't want to share</option>
+                                     id="gender" name="gender" className="w-full px-4 py-2  bg-gray-50 focus:outline-none border border-gray-300 text-gray-900
+                                      rounded-lg"  >
+                                          <option value="unregistered" defaultChecked={defaultApplicantDetails.gender==="male"}>Male</option>
+                                          <option value="pvt" defaultChecked={defaultApplicantDetails.gender==="female"}>Female</option>
 
                 </select>
                                       </div>
                                 </div>
                                 
                                 <div>
-                                    <label htmlFor="inst_name" className="block  text-sm font-medium text-gray-900 ">Current Address</label>
+                                    <label htmlFor="current_assress" className="block  text-sm font-medium text-gray-900 ">Current Address</label>
                                     <input 
                                     onChange={(e)=>{handleChangeApplicantDetails(e)}}
-                                    value={current_address}
+                                   defaultValue={defaultApplicantDetails.current_address}
                                     type="text" name="current_address" id="current_address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="St. Pauls School" />
                                 </div>
@@ -89,12 +88,12 @@ export const AddProfileModal = ({ first_name,middle_name, last_name, phone, curr
                                 <label htmlFor="inst_name" className="block mb-2 text-sm font-medium text-gray-900 ">Permanant Address</label>
                                 
                                     <div className="flex mb-2">
-                                        <input type="checkbox" /> <p className="text-gray-600 font-semibold text-xs ml-2">Same as Current Address</p>
+                                        <input type="checkbox " /> <p className="text-gray-600 font-semibold text-xs ml-2">Same as Current Address</p>
                                     </div>
                                     <div className="">
                                     <input
                                     onChange={(e)=>{handleChangeApplicantDetails(e)}}
-                                    value={permanent_address}
+                                   defaultValue={defaultApplicantDetails.permanent_address}
                                      type="text" name="permanent_address" id="permanent_address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="St. Pauls School" /></div>
                                     
@@ -104,7 +103,7 @@ export const AddProfileModal = ({ first_name,middle_name, last_name, phone, curr
                                     <label htmlFor="phone" className="block  text-sm font-medium text-gray-900 darkno:text-white">Contact number</label>
                                     <input 
                                     onChange={(e) => handleChangeApplicantDetails(e)}
-                                    value={phone}
+                                   defaultValue={defaultApplicantDetails.phone}
 
                                     type="number" name="phone" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                                      placeholder="secondary education" required />
@@ -113,7 +112,7 @@ export const AddProfileModal = ({ first_name,middle_name, last_name, phone, curr
                                     <label htmlFor="inst_name" className="block  text-sm font-medium text-gray-900 ">Birth Year</label>
                                     <input 
                                     onChange={(e) => handleChangeApplicantDetails(e)}
-                                    value={birthday}
+                                   defaultValue={defaultApplicantDetails.birth_year}
                                      type="text" name="birthday" id="birthday" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="2000" />
                                 </div>
