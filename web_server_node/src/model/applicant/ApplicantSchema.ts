@@ -43,15 +43,15 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     },
     password: {
         type: String,
-        default:""
+        default: ""
     },
     current_address: {
         type: String,
         default: ""
     },
-    permanent_address:{
-        type:String,
-        default:""
+    permanent_address: {
+        type: String,
+        default: ""
     },
     state: {
         type: String,
@@ -81,58 +81,66 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         data: [Buffer],
         contentType: String,
     },
-    experience_year:{
-        type:Number,
-        default:0
+    experience_year: {
+        type: Number,
+        default: 0
     },
-    skills:{
-        type:[String],
-        default:[]
+    skills: {
+        type: [String],
+        default: []
     },
-    additonal_skills:{
-        type:[String],
-        default:[]
+    additonal_skills: {
+        type: [String],
+        default: []
     },
-    spoken_english:{
-        type:String,
-        enum:["beginner","intermediate","fluent"],
-        default:"beginner"
+    spoken_english: {
+        type: String,
+        enum: ["beginner", "intermediate", "fluent"],
+        default: "beginner"
     },
-    is_fresher:{
-        type:Boolean,
-        default:true
+    is_fresher: {
+        type: Boolean,
+        default: true
     },
-    gender:{
-        type:String,
-        enum:["male","female"]
+    gender: {
+        type: String,
+        enum: ["male", "female"]
     },
-    qualification_to_search:{
-        type:[String],
-        default:[]
+    qualification_to_search: {
+        type: [String],
+        default: []
     },
-    qualification_details:{
-        type:[Object],
-        default:[]
+    qualification_details: {
+        type: [Object],
+        default: []
     },
-    min_expected_salary:{
-        type:Number,
-        default:0
+    min_expected_salary: {
+        type: Number,
+        default: 0
     },
-    min_duty_hours:{
-        type:Number,
-        default:6
+    min_duty_hours: {
+        type: Number,
+        default: 6
     },
-    is_disabled:{
-        type:Boolean,
-        default:false
+    is_disabled: {
+        type: Boolean,
+        default: false
     },
-    native_language:{
-        type:String,
-        default:""
+    native_language: {
+        type: String,
+        default: ""
     },
-    profile_bio:{
-        type:String,
-        default:""
+    profile_bio: {
+        type: String,
+        default: ""
+    },
+    is_profile_public: {
+        type: Boolean,
+        default: false
+    },
+    is_resume_public: {
+        type: Boolean,
+        default: false
     }
 });
 

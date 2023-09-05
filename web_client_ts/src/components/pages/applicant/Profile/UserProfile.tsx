@@ -7,10 +7,9 @@ import MySkill from "./mySkill/MySkill";
 import MyQualification from "./qualification/MyQualification";
 import "./profile.css";
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext";
-import { ApplicantProfileState } from "../../../../@types/interfaces/props/ApplicantProfileState";
 import MyResumeContainer from "./myResumeContainer/MyResumeContainer";
 
-const ApplicantProfile = ({state}:ApplicantProfileState) => {
+const ApplicantProfile = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
 
@@ -26,9 +25,7 @@ const ApplicantProfile = ({state}:ApplicantProfileState) => {
                     </div>
                     {/*RIGHT side  */} 
                     <div className="w-full flex flex-col gap-7 md:ml-80">
-                        <MyProfileDetails first_name={applicantDetails?.first_name} last_name={applicantDetails?.last_name} gender={applicantDetails?.gender}
-                            country_code={applicantDetails?.country_code} phone={applicantDetails?.phone} email={applicantDetails?.email} current_address={applicantDetails?.current_address} permanent_address={applicantDetails?.permanent_address}
-                            birthday={applicantDetails?.birth_year} middle_name={applicantDetails?.middle_name}/>
+                        <MyProfileDetails defaultApplicantDetails={applicantDetails}/>
                         <MySkill skillList={applicantDetails?.skills} />
                         <MyQualification qualificationDetails={applicantDetails?.qualification_details}/>
                         <AdditonalDetails fresher={applicantDetails?.is_fresher} spoken_english={applicantDetails?.spoken_english} min_salary={applicantDetails?.min_expected_salary}

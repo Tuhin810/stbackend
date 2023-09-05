@@ -11,3 +11,8 @@ export const getJobDetailsByJobId =async (jobId:string) => {
     const response = await Get(`jobs/getJobByJobId/${jobId}`,header)
     return response;
 }
+
+export const brodcastJob =async (jobDetails:JobPostDetails) => {
+    const response = await Post(`job/brodcast`,jobDetails,header);
+    return response;
+}

@@ -1,5 +1,6 @@
 import { ApplicantDetails } from "../../../@types/ApplicantDetails";
 import { ApplicantEducation } from "../../../@types/interfaces/ApplicantEducation";
+import { IApplicantPrivacyProps } from "../../../@types/interfaces/props/ApplicantProps/ApplicantPrivacyProps";
 import { header } from "../../../configs/apiConfig"
 import { Get, Put, Patch } from "../apiCall"
 
@@ -26,5 +27,20 @@ export const updateApplicantEducation =async (applicantId:string,applicantEducat
 
 export const getApplicantInvitedJobList =async (applicantId:string) => {
     const response = await Get(`applicant/getApplicantInvitedJobDetailsList/${applicantId}`,header);
+    return response;
+}
+
+export const getApplicantProfilePrivacy =async (applicantId:string) => {
+    const response = await Get(`applicant/getApplicantProfilePrivacy/${applicantId}`,header);
+    return response;
+}
+
+export const getApplicantResumePrivacy =async (applicantId:string) => {
+    const response = await Get(`applicant/getApplicantResumePrivacy/${applicantId}`,header);
+    return response;
+}
+
+export const updateApplicantPrivacy =async (applicantId:string,applicantPrivacy:IApplicantPrivacyProps) => {
+    const response = await Patch(`applicant/updateApplicantPrivacy/${applicantId}`,applicantPrivacy,header);
     return response;
 }

@@ -2,15 +2,15 @@ import { ApplicantEducation } from "./interfaces/ApplicantEducation"
 
 export interface ApplicantDetails {
     _id?:string,
-    firebase_id:string,
-    created_date:Date
+    firebase_id?:string,
+    created_date?:Date
     first_name: string,
     middle_name: string,
     last_name: string,
     email: string,
     country_code: string
     phone: number,
-    password: string,
+    password?: string,
     current_address: string,
     permanent_address: string,
     state: string,
@@ -18,9 +18,9 @@ export interface ApplicantDetails {
     profile_bio:string,
     pin: number,
     age: number,
-    birth_year:string,
-    photo:string,
-    cv:BufferSource[],
+    birth_year:number,
+    photo?:string,
+    cv?:BufferSource[],
     experience_year: number
     skills: string[],
     additonal_skills: string[],
@@ -30,5 +30,7 @@ export interface ApplicantDetails {
     qualification_to_search: string[],
     qualification_details:ApplicantEducation[],
     min_expected_salary:number,
-    min_duty_hours:number
+    min_duty_hours:number,
+    is_resume_public?:boolean,
+    is_profile_public?:boolean
 }

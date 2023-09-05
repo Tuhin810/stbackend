@@ -1,7 +1,7 @@
 import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps'
 import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
 import { AddProfileModal } from '../../modals/AddProfileDetailModa.tsxl/AddProfileModal'
-const MyProfileDetails = ({ first_name, middle_name, last_name, gender, country_code, phone, current_address,permanent_address, birthday }: MyProfileDetailsProps) => {
+const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
     return (
         <div>
             <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72 px-9 md:px-5 pt-8">
@@ -15,7 +15,7 @@ const MyProfileDetails = ({ first_name, middle_name, last_name, gender, country_
                                
                             </div>
                            
-                            <button   onClick={() => { showModal('updateprofile') }}
+                            <button onClick={() => { showModal('updateprofile') }}
                              type="button" className="text-white text-xl border border-blue-100 font-small rounded-md bg-blue-400   h-8 px-2 text-center inline-flex items-center" >
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="mr-2 bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -33,32 +33,32 @@ const MyProfileDetails = ({ first_name, middle_name, last_name, gender, country_
                                 <div className="grid md:grid-cols-2 text-md">
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">First Name</div>
-                                        <div className="px-4 py-2 ">{first_name}</div>
+                                        <div className="px-4 py-2 ">{defaultApplicantDetails?.first_name}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Last Name</div>
-                                        <div className="px-4 py-2">{last_name}</div>
+                                        <div className="px-4 py-2">{defaultApplicantDetails?.last_name}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Gender</div>
-                                        <div className="px-4 py-2">{gender}</div>
+                                        <div className="px-4 py-2">{defaultApplicantDetails?.gender}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Contact No.</div>
-                                        <div className="px-4 py-2">{country_code} {phone}</div>
+                                        <div className="px-4 py-2">{defaultApplicantDetails?.country_code} {defaultApplicantDetails?.phone}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Current Address</div>
-                                        <div className="px-4 py-2">{current_address}</div>
+                                        <div className="px-4 py-2">{defaultApplicantDetails?.current_address}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">Permanant Address</div>
-                                        <div className="px-4 py-2">{permanent_address}</div>
+                                        <div className="px-4 py-2">{defaultApplicantDetails?.permanent_address}</div>
                                     </div>
 
                                     <div className="grid grid-cols-2 md:mb-0 mb-10">
                                         <div className="px-4 py-2 font-semibold">Birthday</div>
-                                        <div className="px-4 py-2">{birthday}</div>
+                                        <div className="px-4 py-2">{defaultApplicantDetails?.birth_year}</div>
                                     </div>
                                 </div>
                             </div>
@@ -69,10 +69,7 @@ const MyProfileDetails = ({ first_name, middle_name, last_name, gender, country_
 
             </div>
            
-             <AddProfileModal first_name={first_name} last_name={last_name}
-             middle_name={middle_name}
-                phone={phone} current_address={current_address} permanent_address={permanent_address}
-                birthday={birthday} gender={''} country_code={''} email={''} />  
+             <AddProfileModal defaultApplicantDetails={defaultApplicantDetails} />  
            
           
             

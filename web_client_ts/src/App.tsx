@@ -18,15 +18,15 @@ import { getUserType } from "./guards/UserTypeGuard";
 import PostJob from "./components/pages/recruiter/PostJob/PostJob";
 import RecruiterPricing from "./components/pages/recruiter/recruiterPricing/RecruiterPricing";
 import PostedJobDashboard from "./components/pages/recruiter/PostedJobDashboard/PostedJobDashBoard";
-import { User_JobDesc_Page } from "./components/shared/job_Description/User_JobDesc_Page";
 
 import JobDescription from "./components/shared/job_Description/JobDescription/JobDescription";
 import ApplicantDashboard from "./components/dashboard/applicantDashBoard/ApplicantDashboard";
 import ApplicantProfile from "./components/pages/applicant/Profile/UserProfile";
-import Resume from "./components/pages/applicant/resume/Resume";
 import ApplicantInvitedJobList from "./components/pages/applicant/invitedJobList/ApplicantInvitedJobList";
 import { globalContext } from "./context/GlobalDetails/GlobalContext";
 import CompanyRegistration from "./components/pages/company/registration/CompanyRegistration";
+import ApplicantResume from "./components/pages/applicant/applicantResume/ApplicantResume";
+import SharedResume from "./components/pages/common/ResumeShare.tsx/SharedResume";
 
 const App = () => {
   const [userType$, setuserType$] = useState<string>("");
@@ -45,10 +45,10 @@ const App = () => {
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
           <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
           <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
+          <Route path="/resume/:id" element={<SharedResume/>} />
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
             <Route path="/home" element={<Home />} />
-            <Route path="/jobdescription" element={<User_JobDesc_Page />} />
           </Route>
           
           {/* recruiter */}
@@ -66,12 +66,12 @@ const App = () => {
 
           <Route path="/applicant/signup" element={<Signup />} />
           <Route path="/applicant/login" element={<Login />} />
-          <Route path="/profile/details/:id" element={<ApplicantProfile state="anonymus"/>} />
+          <Route path="/profile/details/:id" element={<ApplicantProfile/>} />
 
           {/* applicant dashboard */}
           <Route path="/applicant" element={<ApplicantDashboard />}>
-            <Route path="/applicant/profile/" element={<ApplicantProfile state="applicant"/>} />
-            <Route path="/applicant/resume/" element={<Resume />} />
+            <Route path="/applicant/profile/" element={<ApplicantProfile/>} />
+            <Route path="/applicant/resume/" element={<ApplicantResume />} />
             <Route path="/applicant/invitedjobs/" element={<ApplicantInvitedJobList />} />
             <Route path="/applicant/jobDetails/:jobId" element={<JobDescription />} />
           </Route>

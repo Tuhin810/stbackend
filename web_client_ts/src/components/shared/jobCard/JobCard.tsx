@@ -5,6 +5,7 @@ import { defaultCompany } from "../../../assets/images";
 import { formatDate, formatTitle } from "../../../utils/commonFunctions/Format";
 import { useContext } from "react";
 import { globalContext } from "../../../context/GlobalDetails/GlobalContext";
+import { brodcastJob } from "../../../utils/apis/Job/jobpost";
 
 const JobCard = ({ jobDetails }: JobDetailsProps) => {
     const navigate = useNavigate();
@@ -18,6 +19,16 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
             return "Not Disclosed"
         }
         return salary.toString();
+    }
+
+    const brodcast = async () => {
+        const response = await brodcastJob(jobDetails);
+        if(response?.status===200){
+            window.alert("brodcasted");
+        }
+        else{
+            window.alert("false");
+        }
     }
 
     return (
@@ -80,11 +91,12 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
                                         Ignore</button>
                                 </> :
                                 <>
-                                    <button type="button" className="text-white inline-flex items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 shadow-lg shadow-purple-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                    <button type="button" className="text-white inline-flex items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                                     focus:ring-purple-300 shadow-lg shadow-purple-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={brodcast}>
                                         <svg className="w-4 h-4 me-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M15.133 10.632v-1.8a5.406 5.406 0 0 0-4.154-5.262.955.955 0 0 0 .021-.106V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C4.867 13.018 3 13.614 3 14.807 3 15.4 3 16 3.538 16h12.924C17 16 17 15.4 17 14.807c0-1.193-1.867-1.789-1.867-4.175ZM4 4a1 1 0 0 1-.707-.293l-1-1a1 1 0 0 1 1.414-1.414l1 1A1 1 0 0 1 4 4ZM2 8H1a1 1 0 0 1 0-2h1a1 1 0 1 1 0 2Zm14-4a1 1 0 0 1-.707-1.707l1-1a1 1 0 1 1 1.414 1.414l-1 1A1 1 0 0 1 16 4Zm3 4h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2ZM6.823 17a3.453 3.453 0 0 0 6.354 0H6.823Z" />
                                         </svg>
-                                        Publish
+                                        Brodcast
                                     </button>
                                     <button type="button" className="text-white inline-flex items-center bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
                                         <svg className="w-4 h-4 me-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
