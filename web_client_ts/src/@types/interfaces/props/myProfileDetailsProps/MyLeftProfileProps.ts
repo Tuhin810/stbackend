@@ -3,4 +3,5 @@ export interface MyLeftProfileProps{
     middle_name:string,
     last_name:string,
     profile_bio:string,
+    email:string,
 }

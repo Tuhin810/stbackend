@@ -34,6 +34,17 @@ export const Put = async (url: string, payload: Object, headers: Object) => {
     }
 }
 
+export const Patch = async (url: string, payload: Object, headers: Object) => {
+    try {
+        if (payload != null || payload != undefined) {
+            const response = await axios.patch(baseURL + url, payload, headers);
+            return response;
+        }
+    } catch (exception) {
+        console.log(exception);
+    }
+}
+
 export const Delete = async (url: string, headers: Object) => {
     try {
         const response = await axios.delete(baseURL + url, headers);
