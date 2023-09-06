@@ -28,7 +28,6 @@ const postNewJobs = async (req: Request, res: Response) => {
                                     success: true,
                                     message: "Job posted Successfully",
                                     job: jobData,
-                                    applicantList: applicantDatalist
                                 });
                             })
                     }

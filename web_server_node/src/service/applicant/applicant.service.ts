@@ -1,10 +1,11 @@
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
 import { ApplicantQualification } from "../../@types/interfaces/ApplicantEducation";
 import ApplicantModel from "../../model/applicant/ApplicantSchema"
-import { getJobDetailsByJobId } from "../jobs/job.service";
-import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import { IApplicantPrivacy } from "../../@types/interfaces/ApplicantPrivacy";
-import mongoose from "mongoose";
+import mongoose, { FilterQuery } from "mongoose";
+import { MatchedApplicant } from "../../@types/interfaces/MatchedApplicant";
+import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
+import JobModel from "../../model/jobs/JobSchema";
 
 export const registerNewApplicant = async (applicantDetails: ApplicantDetails) => {
     const response: ApplicantDetails = await ApplicantModel.create(applicantDetails);
@@ -45,7 +46,7 @@ export const updateApplicantSkill = async (applicantId: string, skill: string) =
 }
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
-    const response = await ApplicantModel.findOne({ _id: applicantId }, { invited_job_list: 1, _id: 0 }).populate("invited_job_list").exec();
+    const response = (await MatchedApplicantModel.find({ applicantId: applicantId }, { jobId: 1, _id: 0 }).lean().populate("jobId").exec());
     return response;
 }
 
@@ -107,12 +108,6 @@ export const isApplicantResumePrivate = async (applicantId: string) => {
 }
 
 
-const getApplicantInvitedJobList = async (applicantId: mongoose.Schema.Types.ObjectId) => {
-    const response = await ApplicantModel.findOne({ _id: applicantId }, { invited_job_list: 1, _id: 0 });
-    console.log(response);
-    return response;
-}
-
 export const sendInviteApplicantList = async (matchedApplicantList: mongoose.Schema.Types.ObjectId[], jobId: mongoose.Schema.Types.ObjectId) => {
     for (const applicantId of matchedApplicantList) {
         await inviteApplicant(applicantId, jobId);
@@ -120,22 +115,64 @@ export const sendInviteApplicantList = async (matchedApplicantList: mongoose.Sch
 }
 
 const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobId: mongoose.Schema.Types.ObjectId) => {
-    const applicantJobInvitedList = await getApplicantInvitedJobList(applicantId);
-    let flag = true;
-    if (applicantJobInvitedList) {
-        for (const job of applicantJobInvitedList?.invited_job_list) {
-            if (job === jobId) {
-                flag = false;
-                break;
-            }
+    const matchedApplicant: MatchedApplicant = {
+        applicantId: applicantId,
+        jobId: jobId,
+        accept: false
+    }
+    const isApplicantAlreadyMatched = await getIsApplicantAlreadyMatched(matchedApplicant);
+
+    if (!isApplicantAlreadyMatched) {
+        try {
+            MatchedApplicantModel.create(matchedApplicant);
         }
-        if (flag) {
-            const response = await ApplicantModel.updateOne(
-                { _id: applicantId },
-                { $push: { invited_job_list: jobId } }
-            )
-            return response;
+        catch (error) {
+            console.log(error);
         }
     }
-    return {};
+}
+
+const getIsApplicantAlreadyMatched = async (matchedApplicant: MatchedApplicant) => {
+    const response = await MatchedApplicantModel.findOne({
+        $and: [
+            { applicantId: matchedApplicant.applicantId },
+            { jobId: matchedApplicant.jobId }
+        ]
+    })
+    if (response) return true;
+    return false;
+}
+
+export const applyjob = async (jobId: string, applicantId: string) => {
+    const queryToFindApplicantAndJob: FilterQuery<MatchedApplicant> = {
+        $and: [
+            { applicantId: applicantId },
+            { jobId: jobId }
+        ]
+    }
+    const response = await MatchedApplicantModel.updateOne(
+        queryToFindApplicantAndJob,
+        { $set: { accept: true } }
+    )
+    if (response.acknowledged) {
+        await setAppliedJobNumber(jobId);
+    }
+    return response
+}
+
+const setAppliedJobNumber = async (jobId: string) => {
+    const no_of_applicants: number = await MatchedApplicantModel.countDocuments({
+        $and: [
+            { jobId: jobId },
+            { accept: true }
+        ]
+    })
+    await JobModel.updateOne(
+        { _id: jobId },
+        {
+            $set: {
+                no_of_applicants: no_of_applicants
+            }
+        }
+    )
 }

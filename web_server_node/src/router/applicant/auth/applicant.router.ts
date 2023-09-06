@@ -7,6 +7,7 @@ import { updateApplicantSkillById } from "../../../controller/users/applicantSki
 import { getApplicantInvitedJobList } from "../../../controller/users/applicantInvitedJobLisit/GetInvitedJobList.Controller";
 import { updateApplicntProfileDetails } from "../../../controller/users/applicantDetails/UpdateApplicantProfileDetails";
 import { getApplicantProfilePrivacy, getApplicantResumePrivacy, updateApplicantPrivacy } from "../../../controller/users/applicantPrivacy/ApplicantPrivacy";
+import { applicantApplyJob } from "../../../controller/users/applicantAppliedJobList/ApplicantApplyJob";
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.get("/applicant/getApplicantProfilePrivacy/:id", getApplicantProfilePriva
 router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
 router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);
+router.post("/applicant/applyJob/:jobId/:applicantId", applicantApplyJob);
 router.put("/applicant/updateApplicantEducation/:id", updateQualification);
 router.put("/applicant/updateApplicantSkills/:id/:skill", updateApplicantSkillById);
 router.patch("/applicant/updateApplicantProfile/:id", updateApplicntProfileDetails);

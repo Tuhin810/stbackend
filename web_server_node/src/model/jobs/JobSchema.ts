@@ -108,15 +108,13 @@ export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
         type: Boolean,
         default: true
     },
-    applicant_list: {
-        type: [mongoose.Schema.Types.ObjectId],
-        default: [],
-        ref: "applicants"
+    no_of_matched_profiles: {
+        type: Number,
+        default: 0
     },
-    matched_applicant_list: {
-        type: [mongoose.Schema.Types.ObjectId],
-        default: [],
-        ref: "applicants"
+    no_of_applicants: {
+        type: Number,
+        default: 0
     }
 });
 

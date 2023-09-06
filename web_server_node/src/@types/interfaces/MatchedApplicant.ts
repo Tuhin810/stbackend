@@ -1,8 +1,6 @@
-import mongoose, { mongo } from "mongoose";
-
-export interface IMatchedApplicant{
-    first_name:string,
-    middle_name:string,
-    last_name:string,
-    _id:mongoose.Schema.Types.ObjectId
+import mongoose from "mongoose";
+export interface MatchedApplicant {
+    jobId: mongoose.Schema.Types.ObjectId,
+    applicantId: mongoose.Schema.Types.ObjectId,
+    accept: boolean
 }
