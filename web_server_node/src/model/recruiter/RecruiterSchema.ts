@@ -79,7 +79,6 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
     },
 }
 );
-
 CompanySchema.virtual("company_details", {
     ref: CompanyModel,
     localField: "company_id",

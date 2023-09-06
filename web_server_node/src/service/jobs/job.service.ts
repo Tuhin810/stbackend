@@ -77,7 +77,6 @@ const updateMatchedApplicantNumbers = async (jobId: mongoose.Schema.Types.Object
     }
 }
 
-
 export const getJobDetailsByJobId = async (jobId: mongoose.Schema.Types.ObjectId) => {
     const response = await JobModel.findById(jobId).populate("company_id").exec();
     return response;

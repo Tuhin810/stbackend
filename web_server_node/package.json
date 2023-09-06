@@ -16,7 +16,8 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "start": "ts-node-dev index.ts"
+    "start": "ts-node-dev index.ts",
+    "build":"tsc --project tsconfig.json"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.3",
