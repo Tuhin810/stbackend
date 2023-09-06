@@ -12,7 +12,7 @@ const ApplicantInvitedJobList = () => {
     const getInvitedJobList = async () => {
         const response = await getApplicantInvitedJobList(applicantDetails._id!);
         if (response?.status === 200) {
-            setJobDetailsList(response?.data.invitedJobList);
+            setJobDetailsList(response?.data.data.invited_job_list);
         }
     }
 

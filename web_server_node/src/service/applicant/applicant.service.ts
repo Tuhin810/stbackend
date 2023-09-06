@@ -1,21 +1,13 @@
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
 import { ApplicantQualification } from "../../@types/interfaces/ApplicantEducation";
 import ApplicantModel from "../../model/applicant/ApplicantSchema"
-import applicantInvitedJobModel from "../../model/applicantInvitedjobs/ApplicantInvitedJobs";
-import { IApplicantInvitedJobs } from "../../@types/interfaces/ApplicantInvitedJobs";
 import { getJobDetailsByJobId } from "../jobs/job.service";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import { IApplicantPrivacy } from "../../@types/interfaces/ApplicantPrivacy";
+import mongoose from "mongoose";
 
 export const registerNewApplicant = async (applicantDetails: ApplicantDetails) => {
     const response: ApplicantDetails = await ApplicantModel.create(applicantDetails);
-    if (response) {
-        const applicantInvitedJobs: IApplicantInvitedJobs = {
-            applicantId: response?._id!,
-            jobId: []
-        }
-        await applicantInvitedJobModel.create(applicantInvitedJobs);
-    }
     return response;
 }
 
@@ -53,22 +45,8 @@ export const updateApplicantSkill = async (applicantId: string, skill: string) =
 }
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
-    const response = await applicantInvitedJobModel.findOne({ applicantId: applicantId });
-    const jobDetailsList: JobPostDetails[] = [];
-    if (response) {
-        const jobList = response!.jobId;
-        for (const jobId of jobList) {
-            const jobDetailsResponse = await getJobDetailsByJobId(jobId);
-            console.log("job details response", jobDetailsResponse);
-            if (jobDetailsResponse) {
-                const jobDetails: JobPostDetails = jobDetailsResponse as JobPostDetails
-                jobDetailsList.push(jobDetails);
-
-            }
-        }
-    }
-    console.log("job details list", jobDetailsList);
-    return jobDetailsList;
+    const response = await ApplicantModel.findOne({ _id: applicantId }, { invited_job_list: 1, _id: 0 }).populate("invited_job_list").exec();
+    return response;
 }
 
 export const updateApplicantProfileDetailsById = async (applicantId: string, applicantProfile: ApplicantDetails) => {
@@ -92,7 +70,6 @@ export const updateApplicantProfileDetailsById = async (applicantId: string, app
                 age: applicantProfile.age,
                 experience_year: applicantProfile.experience_year,
                 spoken_english: applicantProfile.spoken_english,
-                is_fresher: applicantProfile.is_fresher,
                 min_expected_salary: applicantProfile.min_expected_salary,
                 min_duty_hours: applicantProfile.min_duty_hours,
                 native_language: applicantProfile.min_duty_hours,
@@ -127,4 +104,38 @@ export const isApplicantProfilePrivate = async (applicantId: string) => {
 export const isApplicantResumePrivate = async (applicantId: string) => {
     const response = await ApplicantModel.findOne({ _id: applicantId }, { is_resume_public: 1, _id: 0 });
     return response;
+}
+
+
+const getApplicantInvitedJobList = async (applicantId: mongoose.Schema.Types.ObjectId) => {
+    const response = await ApplicantModel.findOne({ _id: applicantId }, { invited_job_list: 1, _id: 0 });
+    console.log(response);
+    return response;
+}
+
+export const sendInviteApplicantList = async (matchedApplicantList: mongoose.Schema.Types.ObjectId[], jobId: mongoose.Schema.Types.ObjectId) => {
+    for (const applicantId of matchedApplicantList) {
+        await inviteApplicant(applicantId, jobId);
+    }
+}
+
+const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobId: mongoose.Schema.Types.ObjectId) => {
+    const applicantJobInvitedList = await getApplicantInvitedJobList(applicantId);
+    let flag = true;
+    if (applicantJobInvitedList) {
+        for (const job of applicantJobInvitedList?.invited_job_list) {
+            if (job === jobId) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            const response = await ApplicantModel.updateOne(
+                { _id: applicantId },
+                { $push: { invited_job_list: jobId } }
+            )
+            return response;
+        }
+    }
+    return {};
 }

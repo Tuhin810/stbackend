@@ -1,21 +1,18 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import cors from 'cors';
+import cors from "cors";
 import { json } from "body-parser";
 import { ApplicantRouter } from "../router/applicant/auth/applicant.router";
 import { authRecruiterRouter } from "../router/recruiter/auth/auth";
 import { companyRouter } from "../router/company/company";
 import { jobRouter } from "../router/jobs/jobs";
-import { suggestionRouter } from "../router/suggestion/Suggestion";
-
-
 
 dotenv.config();
 const app: Express = express();
 const port = process.env.PORT!;
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ["http://localhost:5173"];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins
@@ -23,7 +20,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 app.use(json());
-app.use([ApplicantRouter,authRecruiterRouter, companyRouter,jobRouter,suggestionRouter]);
+app.use([ApplicantRouter, authRecruiterRouter, companyRouter, jobRouter]);
 
 mongoose
   .connect(process.env.MONGO_URL!)

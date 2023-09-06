@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { RecruiterSignUp } from "../../@types/interfaces/RecruiterSignup";
+import CompanyModel, { CompanySchema } from "../company/CompanySchema";
 
 // model for new registration 
 
@@ -42,7 +43,7 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
     },
     password: {
         type: String,
-        default:""
+        default: ""
     },
     address: {
         type: String,
@@ -73,11 +74,22 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         contentType: String,
     },
     company_id: {
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Companies",
-        required:true
-    }
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+}
+);
+
+CompanySchema.virtual("company_details", {
+    ref: CompanyModel,
+    localField: "company_id",
+    foreignField: "_id",
+    justOne: true,
+    options: { lean: true }
 });
+
+CompanySchema.set("toJSON", { virtuals: true });
+CompanySchema.set("toObject", { virtuals: true });
 
 const RecruiterModel = mongoose.model<RecruiterSignUp>("Recruiters", recruiterSchema);
 

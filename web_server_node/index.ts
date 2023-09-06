@@ -6,9 +6,7 @@ import { json } from "body-parser";
 
 import { companyRouter } from "./src/router/company/company";
 import { authRecruiterRouter } from "./src/router/recruiter/auth/auth";
-import { loginRecruiter } from "./src/controller/recruiter/auth/Login";
 import { jobRouter } from "./src/router/jobs/jobs";
-import { suggestionRouter } from "./src/router/suggestion/Suggestion";
 import { ApplicantRouter } from "./src/router/applicant/auth/applicant.router";
 
 
@@ -24,7 +22,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 app.use(json());
-app.use([ApplicantRouter,authRecruiterRouter, companyRouter,jobRouter,suggestionRouter]);
+app.use([ApplicantRouter, authRecruiterRouter, companyRouter, jobRouter]);
 
 mongoose
   .connect(process.env.MONGO_URL!)

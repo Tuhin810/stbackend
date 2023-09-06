@@ -1,4 +1,3 @@
-import { JobPostDetails } from "../../@types/JobPostDetails";
 import { JobDetailsList } from "../../@types/interfaces/JobDetailsList";
 import { JobDetailsListAction } from "../../@types/interfaces/actionTypes/JobDetailsAction";
 

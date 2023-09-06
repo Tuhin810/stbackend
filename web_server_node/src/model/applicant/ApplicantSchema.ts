@@ -1,9 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
+import JobModel, { JobSchema } from "../jobs/JobSchema";
 
 // model for new registration 
 
-const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
+export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     firebase_id: {
         type: String
     },
@@ -98,10 +99,6 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         enum: ["beginner", "intermediate", "fluent"],
         default: "beginner"
     },
-    is_fresher: {
-        type: Boolean,
-        default: true
-    },
     gender: {
         type: String,
         enum: ["male", "female"]
@@ -134,6 +131,20 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: String,
         default: ""
     },
+    invited_job_list: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Jobs",
+        default: []
+    },
+    applied_job_list: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Jobs",
+        default: []
+    },
+    part_time_preferred_job_list: {
+        type: [String],
+        default: []
+    },
     is_profile_public: {
         type: Boolean,
         default: false
@@ -142,7 +153,14 @@ const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-});
+},
+    // JobSchema.virtual("invited_job_details_list", {
+    //     ref: "Jobs",
+    //     localField: "invited_job_list",
+    //     foreignField: "_id",
+    //     justOne: true
+    // });
+);
 
 const ApplicantModel = mongoose.model<ApplicantDetails>("applicants", applicantSchema);
 

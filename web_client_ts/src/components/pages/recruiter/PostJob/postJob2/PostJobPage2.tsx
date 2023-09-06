@@ -3,15 +3,15 @@ import { JobPostPage2Props } from '../../../../../@types/interfaces/props/JobPos
 import SkillList from '../skillList/SkillList';
 const PostJobPage2 = ({ pushMandatorySkills, pushAdditonalSkills, handleChangeJobDetails }: JobPostPage2Props) => {
 
-    const [skill, setSkill] = useState("");
-    const [additionalSkill, setAdditionalSkillSkill] = useState("");
+    // const [skill, setSkill] = useState("");
+    // const [additionalSkill, setAdditionalSkillSkill] = useState("");
 
     const [skillList,setSkillList] =useState<string[]>([]);
 
     const handleChangeMandatorySkill=(event:React.KeyboardEvent<HTMLInputElement>)=>{
         if (event.key === "Enter") {
             event.preventDefault();
-            setSkill(event.currentTarget.value)
+            // setSkill(event.currentTarget.value)
             const listData= pushMandatorySkills(event.currentTarget.value);
             setSkillList(listData);
             event.currentTarget.value=''
@@ -19,7 +19,7 @@ const PostJobPage2 = ({ pushMandatorySkills, pushAdditonalSkills, handleChangeJo
     }
     const handleChangeAdditionalSkill=(event:React.KeyboardEvent<HTMLInputElement>)=>{
         if (event.key === "Enter") {
-            setAdditionalSkillSkill(event.currentTarget.value)
+            // setAdditionalSkillSkill(event.currentTarget.value)
             pushAdditonalSkills(event.currentTarget.value);
             
         }

@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
-import JobModel from "../../model/jobs/JobSchema";
-import { getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId, postNewJob } from "../../service/jobs/job.service";
+import { getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId } from "../../service/jobs/job.service";
+import ApplicantModel from "../../model/applicant/ApplicantSchema";
+import mongoose from "mongoose";
 
 //get jobs by company
 
@@ -20,6 +21,7 @@ export const getJobsByCompany = async (req: Request, res: Response) => {
             getJobsByCompanyId(companyId)
                 .then((data) => {
                     const jobsList: JobPostDetails[] = data;
+                    // const applicantsCount = await ApplicantModel.countDocuments({  });
                     if (jobsList.length !== 0) {
                         res.status(200).send({
                             success: true,
@@ -90,7 +92,8 @@ export const getJobsRecruiter = async (req: Request, res: Response) => {
 }
 
 export const getJobDetails = async (req: Request, res: Response) => {
-    const jobId: string = req.params.jobId;
+    const id: string = req.params.jobId;
+    const jobId: mongoose.Schema.Types.ObjectId = new mongoose.Schema.Types.ObjectId(id);
     if (jobId === undefined || !jobId) {
         res.status(422).send({
             success: false,
@@ -100,18 +103,18 @@ export const getJobDetails = async (req: Request, res: Response) => {
     else {
         try {
             const response = await getJobDetailsByJobId(jobId);
-            if(response){
+            if (response) {
                 res.status(200).send({
-                    success:true,
-                    message:"Job Details fetched successfully",
-                    jobDetails:response
+                    success: true,
+                    message: "Job Details fetched successfully",
+                    jobDetails: response
                 })
             }
         }
-        catch(e){
+        catch (e) {
             res.send(500).send({
-                success:false,
-                message:"internal problem",
+                success: false,
+                message: "internal problem",
                 e
             })
         }

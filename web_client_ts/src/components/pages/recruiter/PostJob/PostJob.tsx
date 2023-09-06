@@ -19,24 +19,27 @@ const PostJob = () => {
         {
             _id:'',
             posted_date: new Date(),
-            jobTitle: '',
-            jobType: 'full-time',
-            jobDescription: '',
+            job_title: '',
+            job_type: 'full-time',
+            job_description: '',
             no_of_vacancy: 0,
-            experience_year: 0,
-            skills: [],
+            min_experience_year: 0,
+            max_experience_year:0,
+            mandatory_skills: [],
             additonal_skills: [],
-            no_of_applicants: 0,
             location: [],
-            salary: 0,
+            min_salary:0,
+            max_salary: 0,
             currency_type: '',
             company_id: recruiterDetails.company_id,
-            age_limit: 18,
+            max_age_limit: 60,
+            min_age_limit:18,
             job_poster_id: recruiterDetails._id!,
             spoken_english_level: "beginner",
             is_target_based_salary: true,
             duty_hours: 8,
-            is_fresher_allowed: true,
+            is_disabled_alllow:true,
+            no_of_expery_date:14,
             gender: 'male',
             qualification: '',
             any_charges: false,
@@ -82,13 +85,22 @@ const PostJob = () => {
         else if(name==="any_charges"){
             setJobDetails(Object.assign({}, jobDetails, {[name]: value === "yes"? true: false}))
         }
-        else if(name==="age_limit"){
+        else if(name==="min_age_limit"){
             setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
         }
-        else if(name==="salary"){
+        else if(name==="max_age_limit"){
             setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
         }
-        else if(name==="experience_year"){
+        else if(name==="min_salary"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
+        else if(name==="max_salary"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
+        else if(name==="min_experience_year"){
+            setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
+        }
+        else if(name==="max_experience_year"){
             setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
         }
         else if(name==="no_of_vacancy"){
@@ -108,8 +120,8 @@ const PostJob = () => {
     //handle changes
 
     const pushMandatorySkills = (skill:string) => {
-        jobDetails.skills.push(skill);
-        return jobDetails.skills;
+        jobDetails.mandatory_skills.push(skill);
+        return jobDetails.mandatory_skills;
     }
     const pushAdditonalSkills = (skill:string) => {
         jobDetails.additonal_skills.push(skill);
