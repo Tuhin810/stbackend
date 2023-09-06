@@ -79,10 +79,10 @@ const PostedJobList = () => {
                       {job.posted_date.toString()}
                     </td>
                     <td className="px-6 py-4 bg-gray-50">
-                      {job.matched_applicant_list?.length}
+                      {job.no_of_matched_profiles}
                     </td>
                     <td className="px-6 py-4">
-                      {job.applicant_list?.length}
+                      {job.no_of_applicants}
                     </td>
                     <td className="px-6 py-4">
                       <a href="#" className="font-medium text-blue-600 hover:underline">Edit</a>

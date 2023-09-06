@@ -131,20 +131,6 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: String,
         default: ""
     },
-    invited_job_list: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: "Jobs",
-        default: []
-    },
-    applied_job_list: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: "Jobs",
-        default: []
-    },
-    part_time_preferred_job_list: {
-        type: [String],
-        default: []
-    },
     is_profile_public: {
         type: Boolean,
         default: false

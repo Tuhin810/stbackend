@@ -25,6 +25,6 @@ export interface JobPostDetails {
     gender: string,
     qualification: string,
     any_charges: boolean,
-    applicant_list?: string[],
-    matched_applicant_list?: string[]
+    no_of_matched_profiles?: number
+    no_of_applicants?: number
 }
