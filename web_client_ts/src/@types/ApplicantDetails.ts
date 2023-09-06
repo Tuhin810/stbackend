@@ -35,7 +35,6 @@ export interface ApplicantDetails {
     is_disabled?: boolean,
     invited_job_list?: string[],
     applied_job_list?: string[],
-    part_time_preferred_job_list?: string[]
     is_profile_public?: boolean,
     is_resume_public?: boolean
 }

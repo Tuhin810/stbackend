@@ -109,7 +109,6 @@ const PostJob = () => {
         else if(name==="duty_hours"){
             setJobDetails(Object.assign({}, jobDetails, {[name]: Number(value)}))
         }
-        
         else {
             
             setJobDetails(Object.assign({}, jobDetails, {[name]: value}))

@@ -29,14 +29,14 @@ const PostJobPage2 = ({ pushMandatorySkills, pushAdditonalSkills, handleChangeJo
     return (
         <div>
             <div className="mb-4">
-                <label htmlFor="mainSkills" className="block font-medium text-blue-600">Mandatory Skills</label>
+                <label htmlFor="mandatory_skills" className="block font-medium text-blue-600">Mandatory Skills</label>
                 <SkillList skillList={skillList}/>
-                <input type="text" id="mainSkills" name="mainSkills" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onKeyDown={(e) => {handleChangeMandatorySkill(e)}}
+                <input type="text" id="mandatory_skills" name="mandatory_skills" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onKeyDown={(e) => {handleChangeMandatorySkill(e)}}
                 />
             </div>
             <div className="mb-4">
-                <label htmlFor="additonalSkills" className="block font-medium text-blue-600">Additional Skills</label>
-                <input type="text" id="additonalSkills" name="additonalSkills" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onKeyDown={e => handleChangeAdditionalSkill(e)} />
+                <label htmlFor="additonal_skills" className="block font-medium text-blue-600">Additional Skills</label>
+                <input type="text" id="additonal_skills" name="additonal_skills" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onKeyDown={e => handleChangeAdditionalSkill(e)} />
             </div>
             <div className="mb-4">
                 <label htmlFor="qualification" className="block font-medium text-blue-600">Qualification</label>

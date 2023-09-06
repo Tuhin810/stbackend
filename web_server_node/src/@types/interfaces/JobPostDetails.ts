@@ -26,6 +26,6 @@ export interface JobPostDetails {
     gender: string,
     qualification: string,
     any_charges: boolean,
-    applicant_list: mongoose.Schema.Types.ObjectId[],
-    matched_applicant_list: mongoose.Schema.Types.ObjectId[]
+    no_of_matched_profiles: number
+    no_of_applicants: number
 }

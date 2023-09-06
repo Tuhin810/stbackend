@@ -10,11 +10,10 @@ export const getApplicantInvitedJobList = async (req: Request, res: Response) =>
         })
     }
     else {
-        console.log(applicantId);
         try {
             const response = await getApplicantInvitedJobListService(applicantId);
             if (response) {
-                if (response.invited_job_list.length !== 0) {
+                if (response.length !== 0) {
                     res.status(200).json({
                         message: "fetched successfully",
                         data: response
