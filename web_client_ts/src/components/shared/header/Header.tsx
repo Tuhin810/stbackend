@@ -6,7 +6,7 @@ const Header =()=> {
     const [show, setshow] = useState(false);
     return (
         <div className=" bg-white shadow fixed w-full z-20">
-            <nav className="2xl:container 2xl:mx-auto sm:py-6 sm:px-7 py-5 px-4">
+            <nav className="2xl:container 2xl:mx-auto  py-5 px-6 md:py-3">
                 {/* For large and Medium-sized Screen */}
                 <div className="flex justify-between ">
                     <div className="hidden sm:flex flex-row items-center space-x-6">

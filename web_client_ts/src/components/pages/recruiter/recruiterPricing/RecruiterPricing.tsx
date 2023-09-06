@@ -13,10 +13,10 @@ const RecruiterPricing =() =>{
                         </p>
                         <div className="w-56">
                             <div className="bg-gray-100 shadow rounded-full flex items-center mt-10">
-                                <button onclick="menuHandler1()" className="bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none text-base leading-none text-gray-600 rounded-full py-4 px-6 mr-1" id="monthly">
+                                <button  className="bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none text-base leading-none text-gray-600 rounded-full py-4 px-6 mr-1" id="monthly">
                                     Monthly
                                 </button>
-                                <button onclick="menuHandler1()" className="bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none text-base leading-none text-white rounded-full py-4 px-6" id="annually">
+                                <button className="bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none text-base leading-none text-white rounded-full py-4 px-6" id="annually">
                                     Annually
                                 </button>
                             </div>

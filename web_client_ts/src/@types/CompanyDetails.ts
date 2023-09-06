@@ -1,6 +1,6 @@
 export interface CompanyDetails{
     name: string,
-    logo: string,
+    logo?: string,
     type: string,
     email: string,
     country_code: string,
@@ -14,5 +14,5 @@ export interface CompanyDetails{
     establish_year: number,
     website: string,
     created_date: Date,
-    employers: string[]
+    employers?: string[]
 }

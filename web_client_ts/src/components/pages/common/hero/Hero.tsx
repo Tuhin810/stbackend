@@ -4,7 +4,7 @@ import './Hero.css'
 const Hero = ({handleLoginButton,handleSignUpButton}:IHeroProps) => {
   return (
     <div>
-        <div className='home py-32 mt-10 bg-white'>
+        <div className='home mb-10 mt-24 bg-white'>
                         <div className='left-home'>
 
                             <h2 className='text-3xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-cyan-400'>Success Your Future</span> Starts Here.</h2>

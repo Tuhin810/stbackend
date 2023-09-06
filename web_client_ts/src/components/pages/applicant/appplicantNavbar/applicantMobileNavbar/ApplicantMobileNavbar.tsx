@@ -1,7 +1,7 @@
 import { IMobileApplicantNavbarProps } from "../../../../../@types/interfaces/props/ApplicantProps/ApplicantNavbarProps"
 import { logo } from "../../../../../assets/images"
 
-const ApplicantMobileNavbar = ({show,setShow,logout}:IMobileApplicantNavbarProps) => {
+const ApplicantMobileNavbar = ({show,setShow}:IMobileApplicantNavbarProps) => {
     return (
         <div>
             <nav>

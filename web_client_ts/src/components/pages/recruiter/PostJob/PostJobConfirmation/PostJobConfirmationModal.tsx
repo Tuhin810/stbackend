@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { newJobPost } from "../../../../../utils/apis/Job/jobpost";
 import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetailsProps";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { JobDetailsListContext } from "../../../../../context/jobDetails/JobDetailsContext";
 import { JobPostDetails } from "../../../../../@types/JobPostDetails";
 

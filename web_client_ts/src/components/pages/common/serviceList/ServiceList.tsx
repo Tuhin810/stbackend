@@ -2,7 +2,7 @@ import "./ServiceList.css"
 const ServicesList = () => {
     return (
         <>
-            <div className=" mt-10 services-container md:w-full sm:flex-none md:flex sm:flex-col lg:flex-row py-28">
+            <div className="  services-container md:w-full sm:flex-none md:flex sm:flex-col lg:flex-row my-16">
                 <div className="services-list md:w-10/12  md:mr-0 md:mx-9 md:ml-10 sm:mx-2">
                     <div className="col-span-12 sm:col-span-3 ml-12">
                         <div className="text-center mr-9 sm:text-left mb-14 before:block before:w-24 before:h-3 before:mb-5 before:rounded-md before:mx-auto sm:before:mx-0 before:bg-blue-600">
