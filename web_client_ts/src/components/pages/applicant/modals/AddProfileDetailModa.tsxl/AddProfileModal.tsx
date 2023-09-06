@@ -20,6 +20,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
         const response = await updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!,applicantDetails);
         if(response?.status===200){
             applicantDispatch({type:"updateDetails",payload:response?.data.data})
+            hideModal("updateprofile")
         }
     }
   return (

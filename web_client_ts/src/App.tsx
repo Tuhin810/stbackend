@@ -27,6 +27,7 @@ import { globalContext } from "./context/GlobalDetails/GlobalContext";
 import CompanyRegistration from "./components/pages/company/registration/CompanyRegistration";
 import ApplicantResume from "./components/pages/applicant/applicantResume/ApplicantResume";
 import SharedResume from "./components/pages/common/ResumeShare.tsx/SharedResume";
+import { JobsPage } from "./components/pages/applicant/JobsPage/JobsPage";
 
 const App = () => {
   const [userType$, setuserType$] = useState<string>("");
@@ -73,6 +74,7 @@ const App = () => {
             <Route path="/applicant/profile/" element={<ApplicantProfile/>} />
             <Route path="/applicant/resume/" element={<ApplicantResume />} />
             <Route path="/applicant/invitedjobs/" element={<ApplicantInvitedJobList />} />
+            <Route path="/applicant/RecommendedJobs/" element={<JobsPage />} />
             <Route path="/applicant/jobDetails/:jobId" element={<JobDescription />} />
           </Route>
         </Routes>

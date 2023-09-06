@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { recruiterContext } from "../../../../context/recruiterDetails/RecruiterContext";
 import { Link, useNavigate } from "react-router-dom";
-
+import "./Sidebar.css"
 const SideBar = () => {
     const { dispatch } = useContext(recruiterContext);
     const { recruiterDetails } = useContext(recruiterContext).recruiterloggedinDetails;
@@ -14,9 +14,9 @@ const SideBar = () => {
     }
     return (
         <div>
-            <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-72 h-screen pt-20 transition-transform -translate-x-full bg-slate-100 border-r-2 sm:translate-x-0" aria-label="Sidebar">
-                <div className="h-full px-3 pb-2 overflow-y-auto bg-transparent ">
-                    <div className="profile mt-10">
+            <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-72 h-screen overflow-y-scroll  pt-20  bg-slate-100 border-r-2 sm:translate-x-0" aria-label="Sidebar">
+                <div className="h-full px-3 pb-2 overflow-y-auto bg-transparent hideScrollbar">
+                    <div className="profile mt-5">
                         <div className="flex flex-col items-center pb-10">
                             <img className="w-32 h-32 mb-3 rounded-full border-4 border-gray-400 "
                                 src="https://static.naukimg.com/s/0/0/i/ni-gnb-revamped/userdp.svg" alt="Bonnie image" />

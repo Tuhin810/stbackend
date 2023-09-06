@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { AdditionalDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/AdditionalDetailsProps'
 
 const AdditonalDetails = ({ fresher, spoken_english, min_salary, min_duty_hours, experience }: AdditionalDetailsProps) => {
@@ -18,23 +18,23 @@ const AdditonalDetails = ({ fresher, spoken_english, min_salary, min_duty_hours,
                             <div className="text-gray-700">
                                 <div className="grid md:grid-cols-2 text-sm">
                                     <div className="grid grid-cols-2">
-                                        <div className="text-gray-800 font-semibold text-lg py-2 font-semibold">Fresher:</div>
+                                        <div className="text-gray-800 font-semibold text-md py-2 font-semibold">Fresher:</div>
                                         <div className=" py-2 text-gray-700 text-sm font-medium mt-2">{(fresher) ? "Yes" : "No"}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="text-gray-800 font-semibold text-lg py-2 font-semibold">English Profiency</div>
+                                        <div className="text-gray-800 font-semibold text-md py-2 font-semibold">English Profiency</div>
                                         <div className=" py-2 text-gray-700 text-sm font-medium mt-2">{(spoken_english)?"Yes":"No"}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="text-gray-800 font-semibold text-lg py-2 font-semibold">Min. Expected Salary</div>
+                                        <div className="text-gray-800 font-semibold text-md py-2 font-semibold">Min. Expected Salary</div>
                                         <div className=" py-2 text-gray-700 text-sm font-medium mt-2">{min_salary} LPA</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="text-gray-800 font-semibold text-lg py-2 font-semibold">Max. Duty Hours</div>
+                                        <div className="text-gray-800 font-semibold text-md py-2 font-semibold">Max. Duty Hours</div>
                                         <div className=" py-2 text-gray-700 text-sm font-medium mt-2">{min_duty_hours} hrs</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="text-gray-800 font-semibold text-lg py-2 font-semibold">Experience</div>
+                                        <div className="text-gray-800 font-semibold text-md py-2 font-semibold">Experience</div>
                                         <div className=" py-2 text-gray-700 text-sm font-medium mt-2">{experience} yrs.</div>
                                     </div>
                                     

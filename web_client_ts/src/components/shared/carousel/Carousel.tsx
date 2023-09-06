@@ -1,4 +1,4 @@
-import React from 'react';
+;
 import { left, right } from '../../../assets/images';
 import Card from '../card/Card';
 
@@ -9,7 +9,7 @@ const Carousel = () => {
 
 
 	const numbers = [1, 2, 3, 4, 5];
-	const listNumbers = numbers.map((num) => {
+	const listNumbers = numbers.map((_num) => {
 		return <Card />
 	})
 

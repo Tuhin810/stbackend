@@ -74,4 +74,3 @@ export default function team (props: Props)
 
 }
 
-type props={title:string, name:string, occupation:string,photo:string}

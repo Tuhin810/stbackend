@@ -1,4 +1,4 @@
-import React from 'react';
+;
 import contact from '../../../assets/images/Contact_us.jpg'
 import ayan from '../../../assets/images/ayan.jpeg'
 const Contact = () => {

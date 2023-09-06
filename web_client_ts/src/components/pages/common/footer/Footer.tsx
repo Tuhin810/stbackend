@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { logo_white } from '../../../../assets/images'
 
 const Footer = () => {

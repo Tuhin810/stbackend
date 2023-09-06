@@ -1,6 +1,6 @@
 
 import { recruiterContext } from './RecruiterContext';
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import { recruiterLoggedInReducer } from '../../reducers/recruiterReducers/RecruiterReducers';
 import { RecruiterDetails } from '../../@types/RecruiterDetails';
 

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import "./postedjobsdashboard.css"
 import ApexCharts from 'apexcharts';
 const PostedJobDashboard = () => {
 
-  const [isRender, setIsRender] = useState<boolean>(false);
+  // const [isRender, setIsRender] = useState<boolean>(false);
 
   // ApexCharts options and config
   const getChart = () => {

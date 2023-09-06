@@ -1,6 +1,6 @@
 import { globalContext } from './GlobalContext';
 import { useReducer } from 'react';
-import { globalLoggedInReducer } from '../../reducers/globalReducers/GlobalReducers'; import { GlobalLoggedInDetails } from '../../@types/interfaces/GlobalLoggedInDetails';
+import { globalLoggedInReducer } from '../../reducers/globalReducers/GlobalReducers'; 
 
 const GlobalState = (props: any) => {
     const [globalLoggedIn, loggedIn] = useReducer(globalLoggedInReducer, {
