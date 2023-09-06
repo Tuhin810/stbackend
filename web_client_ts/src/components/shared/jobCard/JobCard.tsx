@@ -31,6 +31,10 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
         }
     }
 
+    // const applyJob =async () => {
+        
+    // }
+
     return (
         <div>
             <div className="card w-full p-4 mb-7 text-left bg-white border border-gray-200 rounded-lg shadow sm:p-8 cursor-pointer" onClick={routeToJobDetails}>

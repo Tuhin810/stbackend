@@ -2,7 +2,7 @@ import { ApplicantDetails } from "../../../@types/ApplicantDetails";
 import { ApplicantEducation } from "../../../@types/interfaces/ApplicantEducation";
 import { IApplicantPrivacyProps } from "../../../@types/interfaces/props/ApplicantProps/ApplicantPrivacyProps";
 import { header } from "../../../configs/apiConfig"
-import { Get, Put, Patch } from "../apiCall"
+import { Get, Put, Patch, Post } from "../apiCall"
 
 export const getApplicantDetailsById = async (applicantId: string) => {
     const response = await Get(`applicant/getApplicantDetailsById/${applicantId}`, header);
@@ -42,5 +42,10 @@ export const getApplicantResumePrivacy =async (applicantId:string) => {
 
 export const updateApplicantPrivacy =async (applicantId:string,applicantPrivacy:IApplicantPrivacyProps) => {
     const response = await Patch(`applicant/updateApplicantPrivacy/${applicantId}`,applicantPrivacy,header);
+    return response;
+}
+
+export const applyJob =async (applicantId:string,jobId:string) => {
+    const response = await Post(`applicant/applyJob/${jobId}/${applicantId}`,{},header);
     return response;
 }
