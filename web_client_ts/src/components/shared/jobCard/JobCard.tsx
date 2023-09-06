@@ -37,7 +37,7 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
                 <div className="flex justify-between items-center">
                     <div>
                         <p className="date bg-teal-200 text-blue-600 px-4 mb-2">Posted On: {formatDate(jobDetails.posted_date)}</p>
-                        <h5 className="text-2xl mb-4 font-bold text-black">{formatTitle(jobDetails.jobTitle)}</h5>
+                        <h5 className="text-2xl mb-4 font-bold text-black">{formatTitle(jobDetails.job_title)}</h5>
                     </div>
                     <img src={defaultCompany} className="w-14" />
                 </div>
@@ -45,7 +45,7 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
                     <svg className="w-5 h-5 me-2 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" d="M3 1h12M3 1v16M3 1H2m13 0v16m0-16h1m-1 16H3m12 0h2M3 17H1M6 4h1v1H6V4Zm5 0h1v1h-1V4ZM6 8h1v1H6V8Zm5 0h1v1h-1V8Zm-3 4h2a1 1 0 0 1 1 1v4H7v-4a1 1 0 0 1 1-1Z" />
                     </svg>
-                    <span className="text-blue-600">Company Name | </span> {jobDetails.jobType}
+                    <span className="text-blue-600">Company Name | </span> {jobDetails.job_type}
                    
                 </p>
                 <br />
@@ -60,12 +60,12 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
                     <p className="salary inline-flex items-center">
                         <svg className="w-4 h-5 me-2 text-red-600 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                             <path d="M15.045.007 9.31 0a1.965 1.965 0 0 0-1.4.585L.58 7.979a2 2 0 0 0 0 2.805l6.573 6.631a1.956 1.956 0 0 0 1.4.585 1.965 1.965 0 0 0 1.4-.585l7.409-7.477A2 2 0 0 0 18 8.479v-5.5A2.972 2.972 0 0 0 15.045.007Zm-2.452 6.438a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                        </svg><span className="font-semibold"> Salary Range :</span>  {formatSalaryRange(jobDetails.salary)}
+                        </svg><span className="font-semibold"> Salary Range :</span>  {formatSalaryRange(jobDetails.min_salary)} - {formatSalaryRange(jobDetails.max_salary)}
                     </p>
                     <p className="salary inline-flex items-center">
                         <svg className="w-4 h-4 me-2 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 18">
                             <path d="M7 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm2 1H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
-                        </svg> Applicants : {jobDetails.no_of_applicants}
+                        </svg> Applicants : {jobDetails.applicant_list?.length}
                     </p>
 
                 </div>

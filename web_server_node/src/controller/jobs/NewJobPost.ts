@@ -10,7 +10,7 @@ const postNewJobs = async (req: Request, res: Response) => {
 
     delete req.body._id;
     const jobDetails: JobPostDetails = req.body;
-    if (!jobDetails.jobTitle || !jobDetails.jobType || !jobDetails.jobDescription || !jobDetails.no_of_vacancy || !jobDetails.skills || !jobDetails.company_id || !jobDetails.job_poster_id) {
+    if (!jobDetails.job_title || !jobDetails.job_type || !jobDetails.job_description || !jobDetails.no_of_vacancy || !jobDetails.mandatory_skills || !jobDetails.company_id || !jobDetails.job_poster_id) {
         return res.status(422).send({
             success: false,
             message: "Fields are empty",

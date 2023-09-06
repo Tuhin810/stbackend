@@ -6,7 +6,7 @@ export const loginRecruiter = async (req: Request, res: Response) => {
     const recruiterCredentail: UserCredential = req.body;
 
     if (!recruiterCredentail.email || !recruiterCredentail.password) {
-        return res.status(422).send({
+        return res.status(422).json({
             success: false,
             message: "Invalid email or password",
         });
@@ -16,14 +16,14 @@ export const loginRecruiter = async (req: Request, res: Response) => {
         const recruiter = await getRecruiterByEmailAndPassword(recruiterCredentail);
         if (recruiter) {
             recruiter.password = "";
-            res.status(200).send({
+            res.status(200).json({
                 success: true,
                 message: "login successful",
                 recruiter: recruiter
             });
         }
         else {
-            res.status(404).send({
+            res.status(404).json({
                 success: false,
                 message: "invalid credentials",
 
@@ -32,11 +32,10 @@ export const loginRecruiter = async (req: Request, res: Response) => {
         }
 
     }
-    catch (e) {
+    catch (error) {
         res.status(500).send({
-            success: false,
             message: "Error in login",
-
+            error
         });
     }
 

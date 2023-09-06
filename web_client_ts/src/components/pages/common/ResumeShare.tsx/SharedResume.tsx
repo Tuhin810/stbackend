@@ -40,7 +40,7 @@ const SharedResume = () => {
     const isResumePublic = async (applicantId: string) => {
         setIsLoading(true);
         const response = await getApplicantResumePrivacy(applicantId);
-        setIsLoading(false);
+        setIsLoading(false)
         if (response?.status === 200) {
             setIsPublic(response?.data.data.is_resume_public)
         }

@@ -3,31 +3,31 @@ import { CompanyDetails } from "../../@types/interfaces/CompanyDetails";
 
 // model for new company registration 
 
-const CompanySchema: Schema<CompanyDetails> = new mongoose.Schema({
+export const CompanySchema: Schema<CompanyDetails> = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
         required: [true, "first name can not be empty"],
         maxlength: [50, "Name cannot be more than 50 characters"],
-        unique:true
+        unique: true
     },
     logo: {
         data: Buffer,
         contentType: String,
     },
-    type:{
-        type:String
+    type: {
+        type: String
     },
     email: {
         type: String,
         trim: true,
         default: "",
-        unique:true,
-        required:[true,"company email can not be blank"]
+        unique: true,
+        required: [true, "company email can not be blank"]
     },
     country_code: {
         type: String,
-        trim:true,
+        trim: true,
         enum: ["+91", "033", "+1"],
         default: "+91"
     },
@@ -56,20 +56,20 @@ const CompanySchema: Schema<CompanyDetails> = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    gst_number:{
-        type:String,
-        unique:true
+    gst_number: {
+        type: String,
+        unique: true
     },
-    no_of_workers:{
-        type:Number,
-        default:0
+    no_of_workers: {
+        type: Number,
+        default: 0
     },
-    establish_year:{
-        type:Number,
-        maxlength:[4,"invalid years"]
+    establish_year: {
+        type: Number,
+        maxlength: [4, "invalid years"]
     },
-    website:{
-        type:String,
+    website: {
+        type: String,
     }
 });
 

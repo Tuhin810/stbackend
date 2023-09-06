@@ -4,7 +4,7 @@ import { loginRecruiter } from "../../../controller/recruiter/auth/Login";
 
 const router = express.Router();
 
-router.post("/recruiter/auth/register",registerNewRecruiter);
-router.post("/recruiter/auth/login",loginRecruiter);
+router.post("/recruiter/auth/register", registerNewRecruiter);
+router.post("/recruiter/auth/login", loginRecruiter);
 
-export {router as authRecruiterRouter}
+export { router as authRecruiterRouter }

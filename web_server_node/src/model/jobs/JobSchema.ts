@@ -3,102 +3,120 @@ import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 
 // model for new company registration 
 
-const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
-    posted_date:{
-        type:Date,
-        default:Date.now
+export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
+    posted_date: {
+        type: Date,
+        default: Date.now
     },
-    jobTitle:{
-        type:String,
-        required:[true,"job Title can't be null"]
+    job_title: {
+        type: String,
+        required: [true, "job Title can't be null"]
     },
-    jobType:{
-        type:String,
-        required:[true,"jobtype cannot be null"],
-        enum: ["full-time", "part-time", "Internship", "Freelancing","contract"],
+    job_type: {
+        type: String,
+        required: [true, "jobtype cannot be null"],
+        enum: ["full-time", "part-time", "Internship", "Freelancing", "contract"],
     },
-    jobDescription:{
-        type:String,
-        required:[true,"job description can not be null"]
+    job_description: {
+        type: String,
+        required: [true, "job description can not be null"]
     },
-    no_of_vacancy:{
-        type:Number,
-        required:[true,"job description can not be empty"]
+    no_of_vacancy: {
+        type: Number,
+        required: [true, "job description can not be empty"]
     },
-    experience_year:{
-        type:Number,
-        default:0
+    min_experience_year: {
+        type: Number,
+        default: 0
     },
-    skills:{
-        type:[String],
-        required:[true,"skills list cant be null"]
+    max_experience_year: {
+        type: Number,
+        default: 0
     },
-    additonal_skills:{
-        type:[String],
-        default:[]
+    no_of_expery_date: {
+        type: Number,
+        default: 10
     },
-    no_of_applicants:{
-        type:Number,
-        default:0
+    mandatory_skills: {
+        type: [String],
+        required: [true, "skills list cant be null"]
     },
-    location:{
-        type:[String],
-        default:[]
+    additonal_skills: {
+        type: [String],
+        default: []
     },
-    salary:{
-        type:Number,
-        default:0
+    location: {
+        type: [String],
+        default: []
     },
-    currency_type:{
-        type:String,
-        default:"INR"
+    min_salary: {
+        type: Number,
+        default: 0
     },
-    company_id:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Companies",
-        required:[true,"company name can not be null"]
+    max_salary: {
+        type: Number,
+        default: 0
     },
-    age_limit:{
-        type:Number,
-        default:60
+    currency_type: {
+        type: String,
+        default: "INR"
     },
-    job_poster_id:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Recruiters",
-        required:[true,"job poster name can not be null"]
+    company_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Companies",
+        required: [true, "company name can not be null"]
     },
-    spoken_english_level:{
-        type:String,
-        enum:["beginner","intermediate","fluent"]
+    min_age_limit: {
+        type: Number,
+        default: 60
     },
-    is_target_based_salary:{
-        type:Boolean,
-        default:false
+    max_age_limit: {
+        type: Number,
+        default: 0
     },
-    duty_hours:{
-        type:Number,
-        default:8
+    job_poster_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Recruiters",
+        required: [true, "job poster name can not be null"]
     },
-    is_fresher_allowed:{
-        type:Boolean,
-        required:[true,"fresh allowed field can not be blank"]
+    spoken_english_level: {
+        type: String,
+        enum: ["beginner", "intermediate", "fluent"]
     },
-    gender:{
-        type:String,
-        enum:["male","female","all"],
-        required:true
+    is_target_based_salary: {
+        type: Boolean,
+        default: false
     },
-    qualification:{
-        type:String,
-        required:true
+    duty_hours: {
+        type: Number,
+        default: 8
     },
-    any_charges:{
-        type:Boolean,
-        required:[true,"any charges field can not be blank"]
+    gender: {
+        type: String,
+        enum: ["male", "female", "all"],
+        required: true
     },
-    is_disabled_alllow:{
-        type:Boolean,
-        default:true
+    qualification: {
+        type: String,
+        required: true
+    },
+    any_charges: {
+        type: Boolean,
+        required: [true, "any charges field can not be blank"]
+    },
+    is_disabled_alllow: {
+        type: Boolean,
+        default: true
+    },
+    applicant_list: {
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],
+        ref: "applicants"
+    },
+    matched_applicant_list: {
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],
+        ref: "applicants"
     }
 });
 

@@ -4,14 +4,14 @@ const PostJobPage4 = ({ handleChangeJobDetails}: JobPostPage1Props) => {
     return (
         <div>
             <div>
-
-                <div className="mb-4">
-                    <label htmlFor="is_fresher_allowed" className="block font-medium text-blue-600">Freshers are Allowed ?</label>
-                    <select id="is_fresher_allowed" name="is_fresher_allowed" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={e => handleChangeJobDetails(e)}>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+            <div className="mb-4">
+                    <label htmlFor="gender" className="block font-medium text-blue-600">Gender</label>
+                    <select id="gender" name="gender" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={e=>handleChangeJobDetails(e)}>
+                        <option value="male">Only Male</option>
+                        <option value="female">Only Female</option>
+                        <option value="all">All Genders are allowed</option>
                     </select>
-                </div>
+            </div>
                 <div className="mb-4 flex">
                     <div className="w-1/2 pr-2">
                         <label htmlFor="no_of_vacancy" className="block font-medium text-blue-600">No of Vacnacy</label>
@@ -30,9 +30,6 @@ const PostJobPage4 = ({ handleChangeJobDetails}: JobPostPage1Props) => {
                         <option value="fluent">Fluent</option>
                     </select>
                 </div>
-
-
-
             </div>
         </div >
     )

@@ -44,41 +44,47 @@ const PostedJobList = () => {
           <table className="w-full text-sm text-left text-gray-500 ">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
           <tr>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-3 bg-gray-50">
               Job Title
             </th>
             <th scope="col" className="px-6 py-3">
               Job Type
             </th>
             <th scope="col" className="px-6 py-3">
+              Post Date
+            </th>
+            <th scope="col" className="px-6 py-3 bg-gray-50">
               Matched Profiles
             </th>
             <th scope="col" className="px-6 py-3">
               No of Applicants
             </th>
             <th scope="col" className="px-6 py-3">
-              <span className="sr-only">Edit</span>
-            </th>
+              Action
+            </th> 
           </tr>
         </thead>
         <tbody>
               {
                 jobList?.map((job,value) => {
                   return (
-                    <tr className="bg-white border-b-2  hover:bg-gray-50">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                      {job.jobTitle}
+                    <tr className="bg-white border-b-2  hover:bg-gray-50" key={value}>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
+                      {job.job_title}
                     </th>
                     <td className="px-6 py-4">
-                      {job.jobType}
+                      {job.job_type}
                     </td>
                     <td className="px-6 py-4">
-                      {job.no_of_vacancy}
+                      {job.posted_date.toString()}
+                    </td>
+                    <td className="px-6 py-4 bg-gray-50">
+                      {job.matched_applicant_list?.length}
                     </td>
                     <td className="px-6 py-4">
-                      {job.no_of_applicants}
+                      {job.applicant_list?.length}
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-6 py-4">
                       <a href="#" className="font-medium text-blue-600 hover:underline">Edit</a>
                     </td>
                   </tr>

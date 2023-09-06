@@ -26,7 +26,6 @@ export interface ApplicantDetails {
     skills: string[],
     additonal_skills: string[],
     spoken_english: string,
-    is_fresher: boolean,
     gender: string,
     qualification_to_search: string[],
     qualification_details: ApplicantQualification[],
@@ -34,6 +33,9 @@ export interface ApplicantDetails {
     min_duty_hours: number,
     native_language: string,
     is_disabled: boolean,
+    invited_job_list: mongoose.Schema.Types.ObjectId[],
+    applied_job_list: mongoose.Schema.Types.ObjectId[],
+    part_time_preferred_job_list: string[]
     is_profile_public: boolean,
     is_resume_public: boolean
 }
