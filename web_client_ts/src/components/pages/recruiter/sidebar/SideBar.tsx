@@ -14,7 +14,7 @@ const SideBar = () => {
     }
     return (
         <div>
-            <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-72 h-screen overflow-y-scroll  pt-20  bg-slate-100 border-r-2 sm:translate-x-0" aria-label="Sidebar">
+            <aside id="logo-sidebar" className="hidden md:inline fixed top-0 left-0 z-40 w-72 h-screen overflow-y-scroll  pt-20  bg-slate-100 border-r-2 sm:translate-x-0" aria-label="Sidebar">
                 <div className="h-full px-3 pb-2 overflow-y-auto bg-transparent hideScrollbar">
                     <div className="profile mt-5">
                         <div className="flex flex-col items-center pb-10">
