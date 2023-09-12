@@ -8,7 +8,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
     return (
         <div>
             <nav className="w-full px-10 fixed z-30 top-0 bg-white hidden xl:block drop-shadow-lg">
-                <div className="container px-6 h-20 flex justify-between items-center lg:items-stretch mx-auto">
+                <div className="py-7 px-6 h-20 flex justify-between items-center lg:items-stretch mx-auto">
                     <div className="flex items-center justify-around w-4/5">
                         <div className="mr-10 flex items-center">
                             <img src={logo} className="h-10" />
@@ -48,7 +48,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                         <circle cx={12} cy={12} r={9} />
                                     </svg>
                                 </span>
-                                Applied Job
+                                Performance
                             </Link>
                             <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black tracking-normal transition duration-150 ease-in-out">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="icon mr-2 icon-tabler icon-tabler-help" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">

@@ -65,14 +65,14 @@ export const getJobsRecruiter = async (req: Request, res: Response) => {
                 .then((data) => {
                     const jobsList: JobPostDetails[] = data;
                     if (jobsList.length !== 0) {
-                        res.status(200).send({
+                        res.status(200).json({
                             success: true,
                             message: "jobs fetched successfully",
                             jobList: jobsList
                         });
                     }
                     else {
-                        res.status(404).send({
+                        res.status(404).json({
                             success: false,
                             message: "job list not found",
                             jobList: jobsList
@@ -112,7 +112,7 @@ export const getJobDetails = async (req: Request, res: Response) => {
             }
         }
         catch (e) {
-            res.send(500).send({
+            res.status(500).send({
                 success: false,
                 message: "internal problem",
                 e
