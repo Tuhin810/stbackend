@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 export interface JobPostDetails {
-    _id?: mongoose.Schema.Types.ObjectId,
+    _id?: string,
     posted_date: Date,
     job_title: string,
     job_type: string,
@@ -15,10 +15,10 @@ export interface JobPostDetails {
     min_salary: number,
     max_salary: number,
     currency_type: string,
-    company_id: mongoose.Schema.Types.ObjectId,
+    company_id: string,
     min_age_limit: number,
     max_age_limit: number,
-    job_poster_id: mongoose.Schema.Types.ObjectId,
+    job_poster_id: string,
     spoken_english_level: string,
     is_disabled_alllow: boolean,
     is_target_based_salary: boolean,

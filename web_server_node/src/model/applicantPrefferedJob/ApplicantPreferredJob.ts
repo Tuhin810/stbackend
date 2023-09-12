@@ -5,7 +5,7 @@ import ApplicantModel from "../applicant/ApplicantSchema";
 
 export const applicantPreferredJobSchema: Schema<ApplicantPreferredJob> = new mongoose.Schema({
 	applicant_id: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: String,
 	},
 	preferred_job: {
 		type: String,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import mongoose, { FilterQuery } from "mongoose";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
@@ -6,6 +7,8 @@ import ApplicantModel from "../../model/applicant/ApplicantSchema";
 import { sendInviteApplicantList } from "../applicant/applicant.service";
 import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
 import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
+import { JobDetails } from "../../@types/interfaces/JobDetailsWithCompany";
+import { OAS3Options } from "swagger-jsdoc";
 
 export const postNewJob = async (jobDetails: JobPostDetails) => {
     const data = await JobModel.create(jobDetails);
@@ -23,51 +26,63 @@ export const getJobsByCompanyId = async (companyId: string) => {
 }
 
 
-export const matchedJobApplicants = async (jobDetails: JobPostDetails): Promise<JobPostDetails> => {
-    if (jobDetails.gender != "all") {
-        const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
-            $and: [
-                { gender: jobDetails.gender },
-                { age: { $lt: jobDetails.max_age_limit } },
-                { age: { $gt: jobDetails.min_age_limit } },
-                { experience_year: { $lt: jobDetails.max_experience_year } },
-                { experience_year: { $gt: jobDetails.min_experience_year } },
-                { spoken_english: jobDetails.spoken_english_level },
-                { min_expected_salary: { $lt: jobDetails.max_salary } },
-                { min_duty_hours: { $gt: jobDetails.duty_hours } },
-                { qualification_to_search: jobDetails.qualification },
-                { skills: { $all: jobDetails.mandatory_skills } }
-            ]
+export const matchedJobApplicants = async (jobId: string) => {
+    const response = await getJobDetailsByJobId(jobId)!;
+    console.log(response);
+    if (response) {
+        const jobDetails: JobPostDetails = response;
+        console.log("r");
+
+        if (jobDetails.gender != "all") {
+            const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
+                $and: [
+                    { gender: jobDetails.gender },
+                    { age: { $lt: jobDetails.max_age_limit } },
+                    { age: { $gt: jobDetails.min_age_limit } },
+                    { experience_year: { $lt: jobDetails.max_experience_year } },
+                    { experience_year: { $gt: jobDetails.min_experience_year } },
+                    { spoken_english: jobDetails.spoken_english_level },
+                    { min_expected_salary: { $lt: jobDetails.max_salary } },
+                    { min_duty_hours: { $gt: jobDetails.duty_hours } },
+                    { qualification_to_search: jobDetails.qualification },
+                    { skills: { $all: jobDetails.mandatory_skills } }
+                ]
+            }
+            const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
+            console.log("list", applicantList);
+            await sendInviteApplicantList(applicantList, jobDetails._id!);
         }
-        const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
-        await sendInviteApplicantList(applicantList, jobDetails._id!);
+        else {
+            const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
+                $and: [
+                    { gender: jobDetails.gender },
+                    { age: { $gt: jobDetails.min_age_limit } },
+                    { experience_year: { $lt: jobDetails.max_experience_year } },
+                    { experience_year: { $gt: jobDetails.min_experience_year } },
+                    { spoken_english: jobDetails.spoken_english_level },
+                    { min_expected_salary: { $lt: jobDetails.max_salary } },
+                    { min_duty_hours: { $gt: jobDetails.duty_hours } },
+                    { qualification_to_search: jobDetails.qualification },
+                    { skills: { $all: jobDetails.mandatory_skills } }
+                ]
+            }
+            const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
+            console.log("list", applicantList);
+            await sendInviteApplicantList(applicantList, jobDetails._id!);
+        }
+        const postJobDetails = await getJobDetailsByJobId(jobId);
+        await updateMatchedApplicantNumbers(jobDetails._id!);
+        if (postJobDetails) {
+            return postJobDetails;
+        }
     }
     else {
-        const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
-            $and: [
-                { gender: jobDetails.gender },
-                { age: { $gt: jobDetails.min_age_limit } },
-                { experience_year: { $lt: jobDetails.max_experience_year } },
-                { experience_year: { $gt: jobDetails.min_experience_year } },
-                { spoken_english: jobDetails.spoken_english_level },
-                { min_expected_salary: { $lt: jobDetails.max_salary } },
-                { min_duty_hours: { $gt: jobDetails.duty_hours } },
-                { qualification_to_search: jobDetails.qualification },
-                { skills: { $all: jobDetails.mandatory_skills } }
-            ]
-        }
-        const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
-        await sendInviteApplicantList(applicantList, jobDetails._id!);
-    }
-    const postJobDetails = await getJobDetailsByJobId(jobDetails._id!.toString());
-    await updateMatchedApplicantNumbers(jobDetails._id!);
-    if (postJobDetails) {
-        return postJobDetails;
+        console.log("noe");
     }
     return {} as JobPostDetails;
 }
 
-const updateMatchedApplicantNumbers = async (jobId: mongoose.Schema.Types.ObjectId) => {
+const updateMatchedApplicantNumbers = async (jobId: string) => {
     const matchedApplicantNumber: number = await MatchedApplicantModel.countDocuments({ jobId: jobId })
     if (matchedApplicantNumber) {
         await JobModel.updateOne(
@@ -78,7 +93,9 @@ const updateMatchedApplicantNumbers = async (jobId: mongoose.Schema.Types.Object
 }
 
 export const getJobDetailsByJobId = async (jobId: string) => {
-    const response = await JobModel.findById(jobId).populate("company_details").exec();
+    console.log(jobId);
+    const response = await JobModel.findById(jobId);
+    console.log(response);
     return response;
 }
 export const deleteJobDetailsByJobId = async (jobId: string) => {

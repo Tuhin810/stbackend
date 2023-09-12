@@ -58,9 +58,7 @@ export const deleteApplicantSkill = async (applicantId: string, skill: string) =
 }
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
-    console.log(applicantId);
     const response = (await MatchedApplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());
-    console.log(response);
     return response;
 }
 
@@ -122,13 +120,13 @@ export const isApplicantResumePrivate = async (applicantId: string) => {
 }
 
 
-export const sendInviteApplicantList = async (matchedApplicantList: mongoose.Schema.Types.ObjectId[], jobId: mongoose.Schema.Types.ObjectId) => {
+export const sendInviteApplicantList = async (matchedApplicantList: mongoose.Schema.Types.ObjectId[], jobId: string) => {
     for (const applicantId of matchedApplicantList) {
         await inviteApplicant(applicantId, jobId);
     }
 }
 
-const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobId: mongoose.Schema.Types.ObjectId) => {
+const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobId: string) => {
     const matchedApplicant: MatchedApplicant = {
         applicantId: applicantId,
         jobId: jobId,

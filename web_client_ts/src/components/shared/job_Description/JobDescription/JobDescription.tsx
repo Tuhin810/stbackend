@@ -82,7 +82,7 @@ const JobDescription = () => {
                 <div className="Education my-6">
                   <div className="heading text-xl mb-3 text-gray-700 uppercase font-bold flex gap-2 items-center">
                     Skills</div>
-                  <p>{jobDetails?.skills}</p>
+                  <p>{jobDetails?.mandatory_skills}</p>
                 </div>
                 {/*  Job Role ends */}
               </div>

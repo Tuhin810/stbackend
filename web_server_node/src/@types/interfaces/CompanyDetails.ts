@@ -16,5 +16,5 @@ export interface CompanyDetails {
     establish_year: number,
     website: string,
     created_date: Date,
-    employers: mongoose.Schema.Types.ObjectId[]
+    employers: string[]
 }

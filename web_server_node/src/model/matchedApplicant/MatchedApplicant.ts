@@ -10,7 +10,7 @@ export const matchedApplicantSchema: Schema<MatchedApplicant> = new mongoose.Sch
 		type: mongoose.Schema.Types.ObjectId,
 	},
 	jobId: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: String,
 	},
 	accept: {
 		type: Boolean,

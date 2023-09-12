@@ -20,5 +20,5 @@ export interface RecruiterSignUp {
     job_post_left: number,
     dob: Date,
     photo: Buffer,
-    company_id: mongoose.Schema.Types.ObjectId
+    company_id: string
 }
