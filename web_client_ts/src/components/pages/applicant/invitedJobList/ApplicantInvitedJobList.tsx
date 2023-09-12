@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from "react"
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext"
 import { getApplicantInvitedJobList } from "../../../../utils/apis/applicant/Applicant"
 import JobCard from "../../../shared/jobCard/JobCard"
-import { tempJobId } from "../../../../@types/temporaryJobId"
+import { InvitedJob } from "../../../../@types/interfaces/InvitedJobList"
 
 const ApplicantInvitedJobList = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
-    const [jobDetailsList, setJobDetailsList] = useState<tempJobId[]>([]);
+    const [jobDetailsList, setJobDetailsList] = useState<InvitedJob[]>([]);
 
     const getInvitedJobList = async () => {
         const response = await getApplicantInvitedJobList(applicantDetails._id!);
@@ -26,9 +26,10 @@ const ApplicantInvitedJobList = () => {
                     <>
                     <div className="px-10">
                         {
-                            jobDetailsList.map((temp_job, value) => {
+                            jobDetailsList.map((invitedJob, value) => {
+                                const {job_details} = invitedJob
                                 return (
-                                    <JobCard jobDetails={temp_job.jobId} key={value} />
+                                    <JobCard jobDetails={job_details} key={value} />
                                 )
                             })
                         }

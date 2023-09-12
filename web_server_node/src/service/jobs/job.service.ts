@@ -6,6 +6,7 @@ import ApplicantModel from "../../model/applicant/ApplicantSchema";
 import { sendInviteApplicantList } from "../applicant/applicant.service";
 import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
 import { MatchedApplicant } from "../../@types/interfaces/MatchedApplicant";
+import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
 
 export const postNewJob = async (jobDetails: JobPostDetails) => {
     const data = await JobModel.create(jobDetails);
@@ -78,10 +79,15 @@ const updateMatchedApplicantNumbers = async (jobId: mongoose.Schema.Types.Object
 }
 
 export const getJobDetailsByJobId = async (jobId: mongoose.Schema.Types.ObjectId) => {
-    const response = await JobModel.findById(jobId).populate("company_id").exec();
+    const response = await JobModel.findById(jobId).populate("company_details").exec();
     return response;
 }
 export const deleteJobDetailsByJobId = async (jobId: string) => {
     const response = await JobModel.findByIdAndDelete(jobId)
+    return response;
+}
+
+export const searchApplicantByPreferredJobName = async (job: string) => {
+    const response = await ApplicantPreferreJobModel.find({ preferred_job: job }).lean().populate("applicant_details").exec();
     return response;
 }

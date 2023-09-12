@@ -6,6 +6,8 @@ import mongoose, { FilterQuery } from "mongoose";
 import { MatchedApplicant } from "../../@types/interfaces/MatchedApplicant";
 import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
 import JobModel from "../../model/jobs/JobSchema";
+import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
+import { ApplicantPreferredJob } from "../../@types/interfaces/ApplicantPreferredJobs";
 
 export const registerNewApplicant = async (applicantDetails: ApplicantDetails) => {
     const response: ApplicantDetails = await ApplicantModel.create(applicantDetails);
@@ -35,10 +37,10 @@ export const updateApplicantQualification = async (applicantId: string, applican
     return applicantdetails;
 }
 
-export const updateApplicantSkill = async (applicantId: string, skill: string) => {
+export const updateApplicantSkill = async (applicantId: string, skillList: string[]) => {
     const response = await ApplicantModel.updateOne(
         { _id: applicantId },
-        { $push: { skills: skill } },
+        { $push: { skills: { $each: skillList } } }
     )
 
     const applicantdetails = await getApplicantDetails(applicantId);
@@ -56,7 +58,7 @@ export const deleteApplicantSkill = async (applicantId: string, skill: string) =
 }
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
-    const response = (await MatchedApplicantModel.find({ applicantId: applicantId }, { jobId: 1, _id: 0 }).lean().populate("jobId").exec());
+    const response = (await MatchedApplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());
     return response;
 }
 
@@ -185,4 +187,18 @@ const setAppliedJobNumber = async (jobId: string) => {
             }
         }
     )
+}
+
+export const addPreferredJob = async (applicantPreferredJob: ApplicantPreferredJob): Promise<boolean> => {
+    const response = await ApplicantPreferreJobModel.findOne({
+        $and: [
+            { applicant_id: applicantPreferredJob.applicant_id },
+            { preferred_job: applicantPreferredJob.preferred_job }
+        ]
+    })
+    if (!response) {
+        await ApplicantPreferreJobModel.create(applicantPreferredJob);
+        return true;
+    }
+    return false;
 }

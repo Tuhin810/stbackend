@@ -7,10 +7,12 @@ import { ApplicantDetails } from '../../../../../@types/ApplicantDetails';
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
 import { applicantSignIn } from '../../../../../utils/apis/auth/login';
 import { UserCredentials } from '../../../../../@types/UserCredential';
+import Alert from '../../../../shared/alert/Alert';
 
 const Login = () => {
   const navigate = useNavigate();
   const [applicantCredential, setApplicantCredential] = useState<UserCredentials>({} as UserCredentials);
+  const [error,setError]=useState<boolean>(false);
   const { applicantDispatch } = useContext(applicantContext);
   const { loggedIn } = useContext(globalContext);
   //email change
@@ -31,11 +33,18 @@ const Login = () => {
   //api calling function
   const loginApplicant = async () => {
     await applicantSignIn(applicantCredential).then(response => {
+      console.log("response", response)
       if (response?.status === 200) {
         const applicantDetails = response.data.applicant as ApplicantDetails;
         applicantDispatch({ type: "login", payload: applicantDetails })
         loggedIn({ type: "login", userType: "applicant" });
         navigate('/applicant/profile');
+      }
+      
+    }).catch((err) => {
+      if(err.response.status===404){
+        setError(true);
+        console.log("error");  
       }
     })
   }
@@ -46,6 +55,9 @@ const Login = () => {
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center gap-y-10 h-screen">
+      {
+        (error)?<Alert text="Invalid Credential" type="danger"/>:null
+      }
       <img src={logo} />
       <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
         <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />

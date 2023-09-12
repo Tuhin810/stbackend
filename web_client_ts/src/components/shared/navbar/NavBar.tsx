@@ -21,13 +21,20 @@ const NavBar = () => {
     useEffect(() => {
         window.addEventListener("scroll", () => {
             const navbar = document.querySelector(".navbar");
+            const logo = document.getElementById("logo");
+            const items = document.getElementById("items");
             if (window.scrollY > 100) {
-                navbar!.classList.remove("bg-transparent");
-                navbar!.classList.add("bg-white", "shadow");
+                logo!.classList.remove("hidden")
+                navbar!.classList.add("shadow");
+                items!.classList.remove("justify-end");
+                items!.classList.add("justify-between");
                 console.log(navbar);
 
             } else {
-                navbar!.classList.remove("bg-white", "shadow");
+                logo!.classList.add("hidden");
+                items!.classList.remove("justify-between");
+                items!.classList.add("justify-end");
+                navbar!.classList.remove("shadow");
             }
         });
     })
@@ -36,9 +43,9 @@ const NavBar = () => {
 
         <>
 
-            <nav className="navbar bg-transparent py-2 fixed w-full z-20 top-0 left-0 border-gray-200">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="https://flowbite.com/" className="flex items-center">
+            <nav className="navbar bg-white sticky py-2 w-full z-20 top-0 left-0 border-gray-200">
+                <div className="max-w-screen-xl flex flex-wrap justify-end mx-auto p-4" id='items'>
+                    <a href="https://flowbite.com/" className="flex items-center hidden" id="logo">
                         <img src={logo} className="h-10 mr-3" alt="Flowbite Logo" />
                     </a>
                     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">

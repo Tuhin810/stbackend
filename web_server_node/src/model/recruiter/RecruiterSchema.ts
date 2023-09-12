@@ -77,9 +77,12 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-}
+},
+    {
+        toJSON: { virtuals: true }
+    }
 );
-CompanySchema.virtual("company_details", {
+recruiterSchema.virtual("company_details", {
     ref: CompanyModel,
     localField: "company_id",
     foreignField: "_id",
@@ -87,8 +90,6 @@ CompanySchema.virtual("company_details", {
     options: { lean: true }
 });
 
-CompanySchema.set("toJSON", { virtuals: true });
-CompanySchema.set("toObject", { virtuals: true });
 
 const RecruiterModel = mongoose.model<RecruiterSignUp>("Recruiters", recruiterSchema);
 

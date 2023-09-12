@@ -28,8 +28,7 @@ const ApplicantProfile = () => {
                         <MyProfileDetails defaultApplicantDetails={applicantDetails}/>
                         <MySkill skillList={applicantDetails?.skills} />
                         <MyQualification qualificationDetails={applicantDetails?.qualification_details}/>
-                        <AdditonalDetails fresher={applicantDetails?.is_fresher} spoken_english={applicantDetails?.spoken_english} min_salary={applicantDetails?.min_expected_salary}
-                            min_duty_hours={applicantDetails?.min_duty_hours} experience={applicantDetails?.experience_year} />
+                        <AdditonalDetails defaultApplicantDetails={applicantDetails}/>
                     </div>
                 </div>
 

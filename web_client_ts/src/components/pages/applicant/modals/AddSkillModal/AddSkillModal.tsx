@@ -1,27 +1,25 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
+import Select, { MultiValue } from 'react-select'
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal"
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext";
 import { updateApplicantSkills } from "../../../../../utils/apis/applicant/Applicant";
-import Skills from "./SkillList/SkillList.json"
-import "./AddSkill.css"
+import { skillSuggestion } from "../../../../../constants/skillSuggestion";
+import makeAnimated from 'react-select/animated';
+const animatedComponents = makeAnimated();
+
 const AddSkillModal = () => {
-
-    const [renderedSkills, setRenderedSkills] = useState<Array<string>>([]);
-
-    useEffect(() => {
-        const skillsArray = Skills.skills;
-        setRenderedSkills(skillsArray.map((skill) => skill));
-    }, []);
-
-    const [skillName, setSkillName] = useState("");
+    const [skillList, setSkillList] = useState<string[]>([]);
     const { applicantDispatch } = useContext(applicantContext);
     const { applicantloggedinDetails } = useContext(applicantContext);
-    const handleChangeSkillName = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        setSkillName(value);
+    const handleChangeSkillName = (event: MultiValue<unknown>) => {
+        const tempArray:string[] = [];
+        event.forEach((skill)=>{
+            tempArray.push(skill.value);
+        })
+        setSkillList(tempArray);
     }
     const handleAddSkill = async () => {
-        const response = await updateApplicantSkills(applicantloggedinDetails.applicantDetails._id!, skillName);
+        const response = await updateApplicantSkills(applicantloggedinDetails.applicantDetails._id!, skillList);
         if (response?.status === 200) {
             applicantDispatch({ type: "updateDetails", payload: response?.data.applicant })
             hideModal("addSkills")
@@ -45,29 +43,13 @@ const AddSkillModal = () => {
                         <div className="px-6 py-6 lg:px-8">
                             <h3 className="mb-4 text-xl font-medium text-gray-900 darkno:text-white"><span className="text-blue-600">Spotlight</span> Your Skills</h3>
                             <div className="space-y-6">
-                                {/* <div>
-                                    <label htmlFor="skill" className="block mb-2 text-sm font-medium text-gray-900 darkno:text-white">Skill Name</label>
-                                    <input type="text" name="skill" id="skill" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                                     focus:border-blue-500 block w-full p-2.5 " placeholder="web development" required onChange={(e) => handleChangeSkillName(e)} />
-                                </div> */}
-                                <div className="">
-                                    <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-                                    <select name="skill" id="skill"
-                                     onChange={(e) => handleChangeSkillName(e)} 
-                                     className="select bg-gray-50 border-2 border-gray-300 text-gray-900 
-                                    text-md rounded-lg outline-none focus-none
-                                     block w-full py-3.5 px-3">
-                                        {renderedSkills.map((skill) => (
-                                            <option className="fixed top-[50%]" value={skill}>{skill}</option>
-                                           
-                                        ))}
-                                        {/* <option selected>Choose a country</option>
-                                        <option value="US">United States</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="FR">France</option>
-                                        <option value="React">React</option> */}
-                                    </select>
-                                </div>
+                                <Select
+                                    options={skillSuggestion}
+                                    closeMenuOnSelect={false}
+                                    isMulti
+                                    components={animatedComponents}
+                                    onChange={e=>handleChangeSkillName(e)}
+                                />
                                 <button className="w-full inline-flex items-center justify-center text-white
                                  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center " onClick={handleAddSkill}>
                                     Add Skills

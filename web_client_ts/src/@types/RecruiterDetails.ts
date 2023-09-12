@@ -1,3 +1,5 @@
+import { CompanyDetails } from "./CompanyDetails"
+
 export interface RecruiterDetails{
     _id?:string,
     firebase_id?:string,
@@ -16,5 +18,6 @@ export interface RecruiterDetails{
     age: number,
     dob?:Date,
     photo:BufferSource,
-    company_id:string
+    company_id:string,
+    company_details:CompanyDetails
 }

@@ -15,8 +15,8 @@ export const updateApplicantDetailsById = async (applicantId: string,applicantDe
     return response;
 }
 
-export const updateApplicantSkills =async (applicantId:string,skill:string) => {
-    const response = await Put(`applicant/updateApplicantSkills/${applicantId}/${skill}`,{},header);
+export const updateApplicantSkills =async (applicantId:string,skillList:string[]) => {
+    const response = await Put(`applicant/updateApplicantSkills/${applicantId}`,skillList,header);
     return response;
 }
 
