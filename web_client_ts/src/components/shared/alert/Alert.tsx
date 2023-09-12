@@ -1,8 +1,8 @@
-import  { FunctionComponent } from 'react'
-import { AlertData } from '../../../@types/interfaces/props/AlertProps'
+import { AlertProps } from '../../../@types/interfaces/props/AlertProps'
 
 // Test Push
-const Alert:FunctionComponent<AlertData> = ({text}) => { 
+const Alert = ({text,type}:AlertProps) => {
+    console.log(type);
     return (
         <div className='alert' id='alert'>
             <div className="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">

@@ -1,9 +1,6 @@
 import Footer from '../footer/Footer';
-import HowWorks from '../how_works/HowWorks';
-import ServicesList from '../serviceList/ServiceList';
 import FrequentlyAskedQuestion from '../frequentlyAskedQuestion/FrequentlyAskedQuestion';
 import Testimonial from '../Testimonial/Testimonial';
-import Advertisement from '../../../shared/card/Advertisement';
 import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 import CommonModal from '../../../shared/modal/CommonModal';
 import { useState } from 'react';
@@ -11,7 +8,7 @@ import Features from '../features/Features';
 import CompanyList from '../companyList/CompanyList';
 import Stats from '../stats/Stats';
 import Hero from '../hero/Hero';
-import JoinUsFaceBook from '../../../shared/joinusFb/JoinUsFacebook';
+import CustomerReview from '../../../shared/customerReview/CustomerReview';
 const Home = () => {
     const modalId='home-modal'
     const [action,setAction] =useState<string>('');
@@ -28,17 +25,17 @@ const Home = () => {
             <div className="fixed layout top-0 z-10 w-full">
                 {/* <ComplexNavbar/> */}
             </div>
-                <div className="home-page py-10 ">
+                <div className="home-page">
                     <Hero handleLoginButton={handleLoginButton} handleSignUpButton={handleSignUpButton}/> 
                     <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} />
                     <Stats/>
-                    <JoinUsFaceBook/>
                     <Features/>
-                    <HowWorks />
-                    <CompanyList />
-                    <ServicesList />
-                    <Advertisement />
+                    {/* <HowWorks /> */}
                     <Testimonial />
+                    <CustomerReview/>
+                    <CompanyList />
+                    {/* <ServicesList /> */}
+                    {/* <Advertisement /> */}
                     <FrequentlyAskedQuestion />
 
                     <div className="my-5"></div>

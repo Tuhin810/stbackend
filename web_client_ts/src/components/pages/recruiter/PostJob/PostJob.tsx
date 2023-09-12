@@ -9,6 +9,8 @@ import PostJobPage5 from './postJob5/PostJobPage5';
 import PostJobConfirmationModal from './PostJobConfirmation/PostJobConfirmationModal';
 import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
+import { MultiValue, SingleValue } from 'react-select';
+import { ISuggestion } from '../../../../@types/interfaces/Suggestion';
 
 const PostJob = () => {
     const navigate = useNavigate();
@@ -117,16 +119,26 @@ const PostJob = () => {
     }, [jobDetails])
 
     //handle changes
-
-    const pushMandatorySkills = (skill:string) => {
-        jobDetails.mandatory_skills.push(skill);
-        return jobDetails.mandatory_skills;
+    
+    const handleChangeMandatorySkillList = (event: MultiValue<unknown>) => {
+        const tempArray:string[] = [];
+        event.forEach((skill)=>{
+            tempArray.push(skill.value);
+        })
+        setJobDetails(Object.assign({}, jobDetails, {["mandatory_skills"]: tempArray}))
     }
-    const pushAdditonalSkills = (skill:string) => {
-        jobDetails.additonal_skills.push(skill);
-        return jobDetails.additonal_skills;
+
+    const handleChangeAdditionalSkillList = (event: MultiValue<unknown>) => {
+        const tempArray:string[] = [];
+        event.forEach((skill)=>{
+            tempArray.push(skill.value);
+        })
+        setJobDetails(Object.assign({}, jobDetails, {["additonal_skills"]: tempArray}))
     }
 
+    const handleChangeQualification = (event: SingleValue<ISuggestion>) => {
+        setJobDetails(Object.assign({}, jobDetails, {["qualification"]: event?.value}))
+    }
 
     useEffect(() => {
         if (step == 5) {
@@ -147,7 +159,7 @@ const PostJob = () => {
                     {(step == 1) ?
                         <PostJobPage1 handleChangeJobDetails={handleJobDetailsChange}/> :
                         (step == 2) ?
-                            <PostJobPage2 pushMandatorySkills={pushMandatorySkills} pushAdditonalSkills={pushAdditonalSkills} handleChangeJobDetails={handleJobDetailsChange} /> :
+                            <PostJobPage2 handleChangeMandatorySkillList={handleChangeMandatorySkillList} handleChangeAdditionalSkillList={handleChangeAdditionalSkillList} handleChangeQualification={handleChangeQualification} /> :
                             (step == 3) ?
                                 <PostJobPage3 handleChangeJobDetails={handleJobDetailsChange} /> :
                                 (step == 4) ?

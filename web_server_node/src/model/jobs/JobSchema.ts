@@ -1,5 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
+import CompanyModel from "../company/CompanySchema";
+import RecruiterModel from "../recruiter/RecruiterSchema";
 
 // model for new company registration 
 
@@ -63,7 +65,6 @@ export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
     },
     company_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Companies",
         required: [true, "company name can not be null"]
     },
     min_age_limit: {
@@ -76,7 +77,6 @@ export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
     },
     job_poster_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Recruiters",
         required: [true, "job poster name can not be null"]
     },
     spoken_english_level: {
@@ -116,6 +116,26 @@ export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
         type: Number,
         default: 0
     }
+},
+    {
+        toJSON: { virtuals: true }
+    }
+);
+
+JobSchema.virtual("company_details", {
+    ref: CompanyModel,
+    localField: "company_id",
+    foreignField: "_id",
+    justOne: true,
+    options: { lean: true }
+});
+
+JobSchema.virtual("recruiter_details", {
+    ref: RecruiterModel,
+    localField: "job_poster_id",
+    foreignField: "_id",
+    justOne: true,
+    options: { lean: true }
 });
 
 const JobModel = mongoose.model<JobPostDetails>("Jobs", JobSchema);

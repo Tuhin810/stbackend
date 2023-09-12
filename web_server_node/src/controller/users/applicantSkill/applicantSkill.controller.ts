@@ -3,9 +3,9 @@ import { deleteApplicantSkill, updateApplicantSkill } from "../../../service/app
 
 export const updateApplicantSkillById = async (req: Request, res: Response) => {
     const applicantId: string = req.params.id!;
-    const skill: string = req.params.skill!;
+    const skillList: string[] = req.body;
 
-    if (applicantId === undefined || !skill) {
+    if (applicantId === undefined || !skillList) {
         res.status(422).send({
             success: false,
             messsage: "fields are empty"
@@ -13,44 +13,11 @@ export const updateApplicantSkillById = async (req: Request, res: Response) => {
     }
     else {
         try {
-            const response = await updateApplicantSkill(applicantId, skill)
+            const response = await updateApplicantSkill(applicantId, skillList)
             if (response) {
                 res.status(200).send({
                     success: true,
                     messsage: "fetched successfully",
-                    applicant: response
-                })
-            } console.log(response);
-
-        }
-        catch (error) {
-            res.status(500).send({
-                success: false,
-                messsage: "error in server"
-            })
-        }
-    }
-}
-
-
-
-export const deleteApplicantSkillById = async (req: Request, res: Response) => {
-    const applicantId: string = req.params.id!;
-    const skill: string = req.params.skill!;
-
-    if (applicantId === undefined || !skill) {
-        res.status(422).send({
-            success: false,
-            messsage: "fields are empty"
-        })
-    }
-    else {
-        try {
-            const response = await deleteApplicantSkill(applicantId, skill)
-            if (response) {
-                res.status(200).send({
-                    success: true,
-                    messsage: "deleted successfully",
                     applicant: response
                 })
             } console.log(response);

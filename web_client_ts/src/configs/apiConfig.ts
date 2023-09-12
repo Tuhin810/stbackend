@@ -2,11 +2,10 @@ export const mode: string = "local";
 
 export const baseURL: string =
     (mode === "local") ?
-        'http://localhost:8989/' :
+        'http://127.0.0.1:8989/' :
         (mode === "dev") ?
-            'http://localhost:8989/' :
-            (mode === "prod") ?
-                'http://localhost:8989/' :
+            'http://13.50.177.162:8282/' :
+            (mode === "prod") ?                'http://localhost:8989/' :
                 ""
 
 export const payload: Object = {}

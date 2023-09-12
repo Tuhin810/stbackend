@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { MyLeftProfileProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyLeftProfileProps'
 import copy from "copy-to-clipboard";
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
+import { mode } from '../../../../../configs/apiConfig';
 const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProfileProps) => {
 
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
@@ -14,13 +15,14 @@ const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProf
         name = first_name + " " + last_name;
     }
     const copyToClipboard = () => {
-        const path = `http://localhost:5173/resume/${applicantDetails._id}`;
+        const baseUrl = (mode === "local") ? "http://localhost:5173/resume/" : "http://starmarks.in.s3-website.ap-south-1.amazonaws.com/"
+        const path = baseUrl + applicantDetails._id;
         copy(path);
         alert(`You have copied`)
     }
     return (
         <div>
-            <div className="md:w-72 m-auto max-w-sm bg-white  rounded-xl drop-shadow-xl ">
+            <div className="md:w-72 m-auto max-w-sm bg-white rounded-xl drop-shadow-xl ">
                 <div className="flex justify-end px-2 pt-3">
                     <button className='bg-transparent hover:bg-gray-50 p-3 rounded-lg' onClick={copyToClipboard}>
                         <span>
@@ -31,7 +33,7 @@ const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProf
                     </button>
                 </div>
                 <div className="flex flex-col items-center pb-10">
-                    <img className="w-32 h-32 mb-3 rounded-full border-4 shadow-lg shadow-gray-300 border-gray-400 "
+                    <img className="w-32 h-32 mb-3 rounded-full border-4 shadow-xl shadow-orange-200 border-orange-300 "
                         src="https://static.naukimg.com/s/0/0/i/ni-gnb-revamped/userdp.svg" alt="Bonnie image" />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
                     <span className="text-sm text-gray-500 ">Visual Designer</span>
@@ -39,59 +41,21 @@ const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProf
                         <div className="">  <img className='h-5 w-5'
                             src="https://cdn-icons-png.flaticon.com/128/873/873360.png" alt="" />
                         </div>
-                        <div className=""> <a className="text-blue-400 font-semibold text-sm mb-4" >{email}</a></div>
+                        <div className=""> <a className="text-blue-600 font-semibold text-sm mb-4" >{email}</a></div>
                     </div>
 
-                    <div className="flex gap-2">
-                    <button
-  type="button"
-  data-te-ripple-init
-  data-te-ripple-color="light"
-  className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
-  style={{backgroundColor:"#333"}}>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4"
-    fill="currentColor"
-    viewBox="0 0 24 24">
-    <path
-      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-  </svg>
-</button>
-
-
-<button
-  type="button"
-  data-te-ripple-init
-  data-te-ripple-color="light"
-  className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
-  style={{backgroundColor:"#1877f2"}}
-  >
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4"
-    fill="currentColor"
-    viewBox="0 0 24 24">
-    <path
-      d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-  </svg>
-</button>
-
-<button
-  type="button"
-  data-te-ripple-init
-  data-te-ripple-color="light"
-  className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
-  style={{backgroundColor:"#0077b5"}}>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4"
-    fill="currentColor"
-    viewBox="0 0 24 24">
-    <path
-      d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-  </svg>
-</button>
+                    <div className="sm:flex flex-row items-center space-x-6">
+                        <svg className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer" width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="#1F2937" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <svg className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer" width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8V8Z" stroke="#1F2937" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M6 9H2V21H6V9Z" stroke="#1F2937" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="#1F2937" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                        </svg>
                     </div>
                 </div>
             </div>

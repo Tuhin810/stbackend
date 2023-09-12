@@ -2,65 +2,56 @@
 
 function Testimonial() {
    return (
-      <div className='py-24'>
-         <section className=" text-gray-800 hidden md:inline">
-            <div className="container px-16 mx-auto">
-               <div className="grid items-center gap-4 xl:grid-cols-5">
-                  <div className="max-w-2xl mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
-                     <h2 className="text-4xl font-bold">Meet Client Satisfaction after working with us</h2>
-                     <p className="text-gray-600">Pri ex magna scaevola moderatius. Nullam accommodare no vix, est ei diceret alienum, et sit cetero malorum. Et sea iudico consequat, est sanctus adipisci ex.</p>
-                  </div>
-                  <div className="p-6 xl:col-span-3 ">
-                     <div className="grid gap-4 md:grid-cols-2">
-                        <div className="grid content-center gap-4">
-                           <div className="p-6 rounded shadow-md  bg-white">
-                              <p>An audire commodo habemus cum. Ne sed corrumpit repudiandae. Tota aliquip democritum pro in, nec democritum intellegam ne. Propriae volutpat dissentiet ea sit, nec at lorem inani tritani, an ius populo perfecto vituperatoribus. Eu cum case modus salutandi, ut eum vocent sensibus reprehendunt.</p>
-                              <div className="flex items-center mt-4 space-x-4">
-                                 <img src="https://source.unsplash.com/50x50/?portrait?1" alt="" className="w-12 h-12 bg-center bg-cover rounded-full  bg-white0" />
-                                 <div>
-                                    <p className="text-lg font-semibold">Leroy Jenkins</p>
-                                    <p className="text-sm text-gray-600">CTO of Company Co.</p>
-                                 </div>
-                              </div>
-                           </div>
-                           <div className="p-6 rounded shadow-md  bg-white">
-                              <p>Sit wisi sapientem ut, pri civibus temporibus voluptatibus et, ius cu hinc fabulas. Nam meliore minimum et, regione convenire cum id. Ex pro eros mucius consectetuer, pro magna nulla nonumy ne, eam putent iudicabit consulatu cu.</p>
-                              <div className="flex items-center mt-4 space-x-4">
-                                 <img src="https://source.unsplash.com/50x50/?portrait?2" alt="" className="w-12 h-12 bg-center bg-cover rounded-full  bg-white0" />
-                                 <div>
-                                    <p className="text-lg font-semibold">Leroy Jenkins</p>
-                                    <p className="text-sm text-gray-600">CTO of Company Co.</p>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div className="grid content-center gap-4">
-                           <div className="p-6 rounded shadow-md  bg-white">
-                              <p>Putant omnium elaboraret per ut. Id dicta tritani nominavi quo, mea id justo errem elaboraret. Agam mollis scripserit ea his, ut nec postea verear persecuti. Ea noster senserit eam, ferri omittantur ei nec. Id mel solet libris efficiantur, commune explicari et eos. Case movet ad est, sed tota vocent appetere ea.</p>
-                              <div className="flex items-center mt-4 space-x-4">
-                                 <img src="https://source.unsplash.com/50x50/?portrait?3" alt="" className="w-12 h-12 bg-center bg-cover rounded-full  bg-white0" />
-                                 <div>
-                                    <p className="text-lg font-semibold">Leroy Jenkins</p>
-                                    <p className="text-sm text-gray-600">CTO of Company Co.</p>
-                                 </div>
-                              </div>
-                           </div>
-                           <div className="p-6 rounded shadow-md  bg-white">
-                              <p>Te omnes virtute volutpat sed. Ei esse eros interesset vel, ei populo denique ocurreret vix, eu cum pertinax mandamus vituperatoribus. Solum nihil luptatum per ex, ei amet viderer eos. Ea illum labitur mnesarchum pro. Eius meis salutandi ei nam, alterum expetenda et nec. Expetenda intellegat at eum, per mazim sanctus honestatis ad. Ei noluisse invenire vix. Te ancillae patrioque qui, probo bonorum vivendum ex vim.</p>
-                              <div className="flex items-center mt-4 space-x-4">
-                                 <img src="https://source.unsplash.com/50x50/?portrait?4" alt="" className="w-12 h-12 bg-center bg-cover rounded-full  bg-white0" />
-                                 <div>
-                                    <p className="text-lg font-semibold">Leroy Jenkins</p>
-                                    <p className="text-sm text-gray-600">CTO of Company Co.</p>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+      <div>
+         <div className="bg-gray-50 py-20 flex flex-col items-center justify-center">
+            <div className="xl:w-1/2 w-11/12">
+                <h1 role="heading" tabIndex={0} className="text-6xl font-bold 2xl:leading-10 leading-0 text-center text-gray-800">
+                    Touching hundreds of lives
+                </h1>
+                <h2 role="contentinfo" tabIndex={0} className="text-base leading-normal text-center text-gray-600 mt-5">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing
+                </h2>
             </div>
-         </section>
+            <div className="2xl:px-20 lg:px-12 px-4 flex flex-wrap items-start mt-4">
+                <div className="mt-24">
+                    <div className="flex items-end ">
+                        <img tabIndex={0} src="https://i.ibb.co/kBgtHK6/Rectangle-5.png" alt="girl with blue background" className="w-20 h-20 rounded-lg mr-6" />
+                        <img tabIndex={0} src="https://i.ibb.co/9nLBtjx/Rectangle-3.png" alt="guy winking" className="w-48 h-36 rounded-lg" />
+                    </div>
+                    <div className="flex items-center justify-end my-6">
+                        <img tabIndex={0} src="https://i.ibb.co/jRbF1KF/Rectangle-4.png" alt="guy smiling" />
+                    </div>
+                    <div className="flex items-start">
+                        <img tabIndex={0} src="https://i.ibb.co/Sf4Q94L/Rectangle-6.png" alt="girl with bluw background" className="w-48 h-48 rounded-lg" />
+                        <img tabIndex={0} src="https://i.ibb.co/fnNqJrx/Rectangle-7.png" alt="guy with glasses" className="w-20 h-20 rounded-lg ml-6 flex-shrink-0 object-cover object-fit" />
+                    </div>
+                </div>
+                <div className="ml-6 mt-32">
+                    <img tabIndex={0} src="https://i.ibb.co/LSxy7fy/Rectangle-9.png" className="w-72 h-80 rounded-lg" alt="guy with sunglasses" />
+                    <div className="flex items-start mt-6">
+                        <img tabIndex={0} src="https://i.ibb.co/X8PKD3q/Rectangle-8.png" alt="girl  laughing" className="w-48 h-48 rounded-lg" />
+                        <img tabIndex={0} src="https://i.ibb.co/2Yj51CY/Rectangle-13.png" alt="guy with glasses" className="w-20 h-20 rounded-lg ml-6 object-cover object-fit" />
+                    </div>
+                </div>
+                <div className="mt-14 ml-6">
+                    <div className="lg:flex ">
+                        <div>
+                            <img tabIndex={0} src="https://i.ibb.co/bWGVSkP/Rectangle-10.png" alt="group of friends" className="w-96 h-72 rounded-lg object-center object-fit" />
+                        </div>
+                        <div>
+                            <div className="flex ml-6">
+                                <img tabIndex={0} src="https://i.ibb.co/80jvpSv/Rectangle-16.png" className="w-20 h-20 rounded-lg mt-14" alt="man" />
+                                <img tabIndex={0} src="https://i.ibb.co/6PR2Y74/Rectangle-15.png" className="w-20 h-24 rounded-lg ml-6" alt="woman" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mt-6 flex">
+                        <img tabIndex={0} className="w-48 h-48 rounded-lg" src="https://i.ibb.co/GPpMsbr/Rectangle-12.png" alt="young girl with red hair" />
+                        <img tabIndex={0} className="hidden sm:block w-72 h-56 rounded-lg ml-6" src="https://i.ibb.co/VBcgkVL/Rectangle-11.png" alt="young girl with red hair" />
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
    )
 }

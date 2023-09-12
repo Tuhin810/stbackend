@@ -1,5 +1,8 @@
+import { MultiValue, SingleValue } from "react-select"
+import { ISuggestion } from "../../Suggestion"
+
 export interface JobPostPage2Props{
-    pushMandatorySkills:(skill: string) => string[]
-    pushAdditonalSkills:(skill: string) => string[],
-    handleChangeJobDetails:(event: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void
+    handleChangeMandatorySkillList:(event: MultiValue<unknown>) => void
+    handleChangeAdditionalSkillList:(skill: MultiValue<unknown>) => void,
+    handleChangeQualification:(event: SingleValue<ISuggestion>) => void
 }

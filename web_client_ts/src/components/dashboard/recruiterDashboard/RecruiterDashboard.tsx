@@ -22,7 +22,7 @@ const RecruiterDashboard = () => {
       <div>
         <RecruitetNavbar />
         <SideBar />
-        <div className="p-4 px-12 sm:ml-64 mt-20">
+        <div className="p-4 px-12 sm:ml-64 mt-20 min-h-screen flex flex-col justify-center">
           <Outlet />
         </div>
       </div>

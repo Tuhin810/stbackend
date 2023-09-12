@@ -1,6 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
-import JobModel, { JobSchema } from "../jobs/JobSchema";
 
 // model for new registration 
 

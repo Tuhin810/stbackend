@@ -1,4 +1,4 @@
-export interface AlertData{
-    type:string,
+export interface AlertProps{
+    type?:string,
     text:string
 }

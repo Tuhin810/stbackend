@@ -13,6 +13,6 @@ export const postRecruiter = async (recruiterDetails: RecruiterSignUp) => {
 }
 
 export const getRecruiterByEmailAndPassword = async (recruiterCredential: UserCredential) => {
-    const recruiter = await RecruiterModel.findOne({ $and: [{ email: recruiterCredential.email }, { password: recruiterCredential.password }] }).populate("company_id").exec();
+    const recruiter = await RecruiterModel.findOne({ $and: [{ email: recruiterCredential.email }, { password: recruiterCredential.password }] }).populate("company_details").exec();
     return recruiter;
 }
