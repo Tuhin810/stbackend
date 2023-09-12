@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { MultiValue, SingleValue } from 'react-select';
 import { ISuggestion } from '../../../../@types/interfaces/Suggestion';
+import { pages } from '../../../../constants/navOptions';
 
 const PostJob = () => {
     const navigate = useNavigate();
@@ -149,9 +150,10 @@ const PostJob = () => {
         }
     }, [step]);
 
+   
     return (
         <>
-            <ProgressStep />
+            <ProgressStep currentStep={step}/>
             <div className="py-4">
                 <div className="max-w-2xl mx-auto p-6 bg-white mt-10 rounded shadow">
                     <h1 className="text-2xl font-semibold mb-4">Post a<span className='text-blue-500'> Job</span>

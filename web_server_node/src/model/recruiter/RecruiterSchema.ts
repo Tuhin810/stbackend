@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { RecruiterSignUp } from "../../@types/interfaces/RecruiterSignup";
+import { RecruiterSignUp } from "../../@types/interfaces/RecruiterDetails";
 import CompanyModel, { CompanySchema } from "../company/CompanySchema";
 
 // model for new registration 

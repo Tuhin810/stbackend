@@ -5,7 +5,6 @@ import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
 import ApplicantModel from "../../model/applicant/ApplicantSchema";
 import { sendInviteApplicantList } from "../applicant/applicant.service";
 import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
-import { MatchedApplicant } from "../../@types/interfaces/MatchedApplicant";
 import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
 
 export const postNewJob = async (jobDetails: JobPostDetails) => {
@@ -60,7 +59,7 @@ export const matchedJobApplicants = async (jobDetails: JobPostDetails): Promise<
         const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
         await sendInviteApplicantList(applicantList, jobDetails._id!);
     }
-    const postJobDetails = await getJobDetailsByJobId(jobDetails._id!);
+    const postJobDetails = await getJobDetailsByJobId(jobDetails._id!.toString());
     await updateMatchedApplicantNumbers(jobDetails._id!);
     if (postJobDetails) {
         return postJobDetails;
@@ -78,7 +77,7 @@ const updateMatchedApplicantNumbers = async (jobId: mongoose.Schema.Types.Object
     }
 }
 
-export const getJobDetailsByJobId = async (jobId: mongoose.Schema.Types.ObjectId) => {
+export const getJobDetailsByJobId = async (jobId: string) => {
     const response = await JobModel.findById(jobId).populate("company_details").exec();
     return response;
 }

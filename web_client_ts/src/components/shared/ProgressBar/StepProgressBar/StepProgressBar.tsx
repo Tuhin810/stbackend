@@ -37,7 +37,6 @@ const StepProgressBar = ({
               className="stepProgressBar__step__button"
               type="button"
               disabled={disableNavigation && !isStepNavigable(index)}
-              onClick={() => handleStepClicked(index + 1)}
             >
               <span className="stepProgressBar__step__button__indicator">
                 {isStepCompleted(index) && <svg

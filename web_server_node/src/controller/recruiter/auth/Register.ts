@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { RecruiterSignUp } from "../../../@types/interfaces/RecruiterSignup";
+import { RecruiterSignUp } from "../../../@types/interfaces/RecruiterDetails";
 import { getRecruiterByEmail, postRecruiter } from "../../../service/Recruiter/RecruiterService";
 import { getCompanyById, getCompanyByName } from "../../../service/Company/CompanyService";
 
@@ -31,7 +31,7 @@ export const registerNewRecruiter = async (req: Request, res: Response) => {
                         });
                     })
             }
-            else{
+            else {
                 return res.status(404).send({
                     success: false,
                     message: "Company not found",
