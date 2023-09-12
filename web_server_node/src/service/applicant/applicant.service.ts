@@ -58,7 +58,9 @@ export const deleteApplicantSkill = async (applicantId: string, skill: string) =
 }
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
+    console.log(applicantId);
     const response = (await MatchedApplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());
+    console.log(response);
     return response;
 }
 

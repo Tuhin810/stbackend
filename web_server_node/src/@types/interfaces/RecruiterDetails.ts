@@ -1,8 +1,8 @@
 import mongoose from "mongoose"
 
 export interface RecruiterSignUp {
-    firebase_id:string,
-    created_date:Date
+    firebase_id: string,
+    created_date: Date
     first_name: string,
     middle_name: string,
     last_name: string,
@@ -15,7 +15,10 @@ export interface RecruiterSignUp {
     country: string,
     pin: number,
     age: number,
-    dob:Date,
-    photo:Buffer,
-    company_id:mongoose.Schema.Types.ObjectId
+    isPlanActive: boolean,
+    active_plan: string,
+    job_post_left: number,
+    dob: Date,
+    photo: Buffer,
+    company_id: mongoose.Schema.Types.ObjectId
 }

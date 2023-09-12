@@ -92,8 +92,7 @@ export const getJobsRecruiter = async (req: Request, res: Response) => {
 }
 
 export const getJobDetails = async (req: Request, res: Response) => {
-    const id: string = req.params.jobId;
-    const jobId: mongoose.Schema.Types.ObjectId = new mongoose.Schema.Types.ObjectId(id);
+    const jobId: string = req.params.jobId;
     if (jobId === undefined || !jobId) {
         res.status(422).send({
             success: false,

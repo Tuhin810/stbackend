@@ -19,6 +19,12 @@ export const getApplicantInvitedJobList = async (req: Request, res: Response) =>
                         data: response
                     })
                 }
+                else {
+                    res.status(404).send({
+                        message: "no invited jobs yet",
+                        data: response
+                    })
+                }
             }
             else {
                 res.status(404).send({

@@ -1,4 +1,4 @@
-import { RecruiterSignUp } from "../../@types/interfaces/RecruiterSignup";
+import { RecruiterSignUp } from "../../@types/interfaces/RecruiterDetails";
 import { UserCredential } from "../../@types/interfaces/UserCredentail";
 import RecruiterModel from "../../model/recruiter/RecruiterSchema"
 

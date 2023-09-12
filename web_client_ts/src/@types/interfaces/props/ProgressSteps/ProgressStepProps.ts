@@ -3,5 +3,8 @@ export interface StepProgressBarProps {
     currentStep: number;
     completedStep: number;
     disableNavigation?: boolean;
-    handleStepClicked: (value: number) => void;
+}
+
+export interface ProgressStepProps{
+    currentStep:number
 }
