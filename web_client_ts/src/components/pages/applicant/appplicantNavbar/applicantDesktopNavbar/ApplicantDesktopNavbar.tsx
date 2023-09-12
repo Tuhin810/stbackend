@@ -14,7 +14,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                             <img src={logo} className="h-10" />
                         </div>
                         <ul className="hidden xl:flex items-center h-full">
-                            <Link to="/applicant/invitedjobs">
+                            <Link to="/applicant/RecommendedJobs/">
                                 <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mx-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -40,7 +40,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                     My Profile
                                 </li>
                             </Link>
-                            <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
+                            <Link to="/applicant/performance" className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
                                 <span className="mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-compass" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -49,7 +49,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                     </svg>
                                 </span>
                                 Performance
-                            </li>
+                            </Link>
                             <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black tracking-normal transition duration-150 ease-in-out">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="icon mr-2 icon-tabler icon-tabler-help" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
@@ -65,7 +65,21 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                         <div className="h-full flex">
                             <div className="flex items-center pl-8 relative cursor-pointer" onClick={() => setProfile(!profile)}>
                                 {profile && (
-                                    <ul className="p-2 w-40 border-r bg-white absolute rounded left-0 shadow mt-16 top-0 ">
+                                    <ul className="p-2 border  border-r bg-white absolute rounded -left-20 shadow mt-16 top-0 ">
+                                        <li>
+                                        <a href="#" className="flex w-56 items-center py-3 mt-1 
+                                        text-sm text-gray-600 transition-colors  duration-300 transform  hover:bg-gray-100 rounded-md">
+            <img className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
+             src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200" alt="jane avatar"/>
+            <div className="mx-1">
+                <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">Jane Doe</h1>
+                <p className="text-sm text-gray-500 dark-text-gray-400">janedoe@exampl.com</p>
+            </div>
+        </a>
+                                        </li>
+                                        <li>
+                                            <div className="px-10 border-2 w-full my-2"></div>
+                                        </li>
                                         <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                                             <div className="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -93,12 +107,11 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             </svg>
                                             <span className="ml-2">Settings</span>
                                         </li>
-                                        <li className="cursor-pointer rounded-md px-1  hover:bg-red-100 text-red-400 font-semibold text-sm leading-3 tracking-normal mt-2 py-2 hover:text-red-500 flex items-center " onClick={logout}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-settings" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" />
-                                                <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                                <circle cx={12} cy={12} r={3} />
-                                            </svg>
+                                        <li className="cursor-pointer transition-colors  duration-300 transform rounded-md px-1  hover:bg-red-100 text-red-400 font-semibold text-sm leading-3 tracking-normal mt-2 py-3 hover:text-red-500 flex items-center " onClick={logout}>
+                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" 
+                                        xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
+            </svg>
                                             <span className="ml-2">Log Out</span>
                                         </li>
                                     </ul>

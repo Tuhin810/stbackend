@@ -1,29 +1,62 @@
 import { Request, Response } from "express";
-import { updateApplicantSkill } from "../../../service/applicant/applicant.service";
+import { deleteApplicantSkill, updateApplicantSkill } from "../../../service/applicant/applicant.service";
 
-export const updateApplicantSkillById =async (req:Request,res:Response) => {
-    const applicantId:string=req.params.id!;
-    const skill:string= req.params.skill!;
+export const updateApplicantSkillById = async (req: Request, res: Response) => {
+    const applicantId: string = req.params.id!;
+    const skill: string = req.params.skill!;
 
-    if(applicantId===undefined || !skill){
+    if (applicantId === undefined || !skill) {
         res.status(422).send({
             success: false,
             messsage: "fields are empty"
         })
     }
-    else{
-        try{
-            const response = await updateApplicantSkill(applicantId,skill)
-            if(response){
+    else {
+        try {
+            const response = await updateApplicantSkill(applicantId, skill)
+            if (response) {
                 res.status(200).send({
                     success: true,
                     messsage: "fetched successfully",
-                    applicant:response
+                    applicant: response
                 })
-            }console.log(response);
-            
+            } console.log(response);
+
         }
-        catch(error){
+        catch (error) {
+            res.status(500).send({
+                success: false,
+                messsage: "error in server"
+            })
+        }
+    }
+}
+
+
+
+export const deleteApplicantSkillById = async (req: Request, res: Response) => {
+    const applicantId: string = req.params.id!;
+    const skill: string = req.params.skill!;
+
+    if (applicantId === undefined || !skill) {
+        res.status(422).send({
+            success: false,
+            messsage: "fields are empty"
+        })
+    }
+    else {
+        try {
+            const response = await deleteApplicantSkill(applicantId, skill)
+            if (response) {
+                res.status(200).send({
+                    success: true,
+                    messsage: "deleted successfully",
+                    applicant: response
+                })
+            } console.log(response);
+
+        }
+        catch (error) {
             res.status(500).send({
                 success: false,
                 messsage: "error in server"

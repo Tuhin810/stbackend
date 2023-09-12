@@ -45,6 +45,16 @@ export const updateApplicantSkill = async (applicantId: string, skill: string) =
     return applicantdetails;
 }
 
+export const deleteApplicantSkill = async (applicantId: string, skill: string) => {
+    const response = await ApplicantModel.deleteOne(
+        { _id: applicantId },
+        { $set: { skills: skill } },
+    )
+
+    const applicantdetails = await getApplicantDetails(applicantId);
+    return applicantdetails;
+}
+
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
     const response = (await MatchedApplicantModel.find({ applicantId: applicantId }, { jobId: 1, _id: 0 }).lean().populate("jobId").exec());
     return response;
