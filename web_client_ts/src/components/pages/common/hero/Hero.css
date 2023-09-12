@@ -29,7 +29,7 @@ body{
 }
 
 .right-home {
-    width: 25rem;
+   
     display: flex;
     justify-content: baseline;
 }

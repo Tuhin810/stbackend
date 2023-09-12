@@ -1,0 +1,9 @@
+.select{
+    padding:15px 55px 15px 15px;
+    border-radius:8px;
+    
+    position:relative;
+    min-height:61px;
+    z-index:1;
+ 
+}
