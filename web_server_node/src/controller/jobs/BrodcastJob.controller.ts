@@ -17,6 +17,8 @@ export const brodcastJob = async (req: Request, res: Response) => {
 					message: "brodcasting successfully",
 					data: response
 				})
+				console.log(response);
+
 			}
 			else {
 				res.status(404).json({
