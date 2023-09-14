@@ -20,11 +20,11 @@ const PostJobPage3 = ({handleChangeJobDetails}:JobPostPage1Props) => {
             </div>
             <div className="mb-4 flex">
                 <div className="w-1/2 pr-2">
-                    <label htmlFor="min_salary" className="block font-medium text-blue-600">Min Salary</label>
+                    <label htmlFor="min_salary" className="block font-medium text-blue-600">Min Salary (CTC)</label>
                     <input type="number" id="min_salary" name="min_salary" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={e=>handleChangeJobDetails(e)}/>
                 </div>
                 <div className="w-1/2 pr-2">
-                    <label htmlFor="max_salary" className="block font-medium text-blue-600">Max Salary</label>
+                    <label htmlFor="max_salary" className="block font-medium text-blue-600">Max Salary (CTC)</label>
                     <input type="number" id="max_salary" name="max_salary" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={e=>handleChangeJobDetails(e)}/>
                 </div>
             </div>

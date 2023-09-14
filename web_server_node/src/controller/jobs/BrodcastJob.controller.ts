@@ -13,7 +13,6 @@ export const brodcastJob = async (req: Request, res: Response) => {
 	else {
 		try {
 			const response = await matchedJobApplicants(jobId);
-			console.log(response);
 			if (response) {
 				res.status(200).json({
 					message: "brodcasting successfully",

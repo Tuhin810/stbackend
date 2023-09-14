@@ -71,6 +71,7 @@ export const updateApplicantProfileDetailsById = async (applicantId: string, app
                 first_name: applicantProfile.first_name,
                 middle_name: applicantProfile.middle_name,
                 last_name: applicantProfile.last_name,
+                photo:applicantProfile.photo,
                 current_address: applicantProfile.current_address,
                 permanent_address: applicantProfile.permanent_address,
                 gender: applicantProfile.gender,
