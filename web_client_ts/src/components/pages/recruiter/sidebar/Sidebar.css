@@ -8,3 +8,49 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  #change-image-button {
+    display: none;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 45%;
+    left:20%;
+    color:white;
+    font-size: 1em;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#profile-photo:hover #change-image-button {
+    display: block;
+}
+
+#profile-photo:hover #profile-src {
+  opacity: 0.5; 
+}
+
+#profile-photo {
+    padding: 3px;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 999999px;
+    position: relative;
+    max-width:140px;
+    max-height:140px;
+    overflow: hidden;
+}
+
+#profile-src {
+    box-sizing: border-box;
+    color: rgb(85, 85, 85);
+    display: block;
+    max-width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    perspective-origin: 80px 80px;
+    transform-origin: 80px 80px;
+    border: 0px none rgb(85, 85, 85);
+    border-radius: 999999px 999999px 999999px 999999px;
+    outline: rgb(85, 85, 85) none 0px;
+}
+

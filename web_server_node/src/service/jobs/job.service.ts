@@ -42,26 +42,21 @@ export const matchedJobApplicants = async (jobId: string) => {
                     { experience_year: { $lt: jobDetails.max_experience_year } },
                     { experience_year: { $gt: jobDetails.min_experience_year } },
                     { spoken_english: jobDetails.spoken_english_level },
-                    { min_expected_salary: { $lt: jobDetails.max_salary } },
-                    { min_duty_hours: { $gt: jobDetails.duty_hours } },
                     { qualification_to_search: jobDetails.qualification },
                     { skills: { $all: jobDetails.mandatory_skills } }
                 ]
             }
             const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
-            console.log("list", applicantList);
             await sendInviteApplicantList(applicantList, jobDetails._id!);
         }
         else {
             const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
                 $and: [
-                    { gender: jobDetails.gender },
+                    { age: { $lt: jobDetails.max_age_limit } },
                     { age: { $gt: jobDetails.min_age_limit } },
                     { experience_year: { $lt: jobDetails.max_experience_year } },
                     { experience_year: { $gt: jobDetails.min_experience_year } },
                     { spoken_english: jobDetails.spoken_english_level },
-                    { min_expected_salary: { $lt: jobDetails.max_salary } },
-                    { min_duty_hours: { $gt: jobDetails.duty_hours } },
                     { qualification_to_search: jobDetails.qualification },
                     { skills: { $all: jobDetails.mandatory_skills } }
                 ]

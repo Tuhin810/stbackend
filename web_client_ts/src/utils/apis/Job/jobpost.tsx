@@ -12,7 +12,7 @@ export const getJobDetailsByJobId =async (jobId:string) => {
     return response;
 }
 
-export const brodcastJob =async (jobDetails:JobPostDetails) => {
-    const response = await Post(`job/brodcast`,jobDetails,header);
+export const brodcastJob =async (jobId:string) => {
+    const response = await Post(`job/brodcast/${jobId}`,{},header);
     return response;
 }

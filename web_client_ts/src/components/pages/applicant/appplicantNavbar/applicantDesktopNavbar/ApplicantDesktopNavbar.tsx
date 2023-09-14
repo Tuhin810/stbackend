@@ -67,15 +67,15 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                 {profile && (
                                     <ul className="p-2 border  border-r bg-white absolute rounded -left-20 shadow mt-16 top-0 ">
                                         <li>
-                                        <a href="#" className="flex w-56 items-center py-3 mt-1 
+                                            <a href="#" className="flex w-56 items-center py-3 mt-1 
                                         text-sm text-gray-600 transition-colors  duration-300 transform  hover:bg-gray-100 rounded-md">
-            <img className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
-             src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200" alt="jane avatar"/>
-            <div className="mx-1">
-                <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">Jane Doe</h1>
-                <p className="text-sm text-gray-500 dark-text-gray-400">janedoe@exampl.com</p>
-            </div>
-        </a>
+                                                <img className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
+                                                    src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200" alt="jane avatar" />
+                                                <div className="mx-1">
+                                                    <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">Jane Doe</h1>
+                                                    <p className="text-sm text-gray-500 dark-text-gray-400">janedoe@exampl.com</p>
+                                                </div>
+                                            </a>
                                         </li>
                                         <li>
                                             <div className="px-10 border-2 w-full my-2"></div>
@@ -99,7 +99,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             </svg>
                                             <span className="ml-2">Help Center</span>
                                         </li>
-                                        <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center" onClick={()=>showModal("applicantSettings")}>
+                                        <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center" onClick={() => showModal("applicantSettings")}>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-settings" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" />
                                                 <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -108,10 +108,10 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             <span className="ml-2">Settings</span>
                                         </li>
                                         <li className="cursor-pointer transition-colors  duration-300 transform rounded-md px-1  hover:bg-red-100 text-red-400 font-semibold text-sm leading-3 tracking-normal mt-2 py-3 hover:text-red-500 flex items-center " onClick={logout}>
-                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" 
-                                        xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
-            </svg>
+                                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
+                                            </svg>
                                             <span className="ml-2">Log Out</span>
                                         </li>
                                     </ul>
@@ -127,77 +127,9 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center xl:hidden">
-                        <ul className="p-2 border-r absolute rounded top-0 left-0 right-0 shadow mt-16 md:mt-16 hidden">
-                            <li className="flex md:hidden cursor-pointer text-black text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <rect x={4} y={4} width={6} height={6} rx={1} />
-                                        <rect x={14} y={4} width={6} height={6} rx={1} />
-                                        <rect x={4} y={14} width={6} height={6} rx={1} />
-                                        <rect x={14} y={14} width={6} height={6} rx={1} />
-                                    </svg>
-                                    <span className="ml-2 font-bold text-black">Dashboard</span>
-                                </div>
-                            </li>
-                            <li className="flex md:hidden flex-col cursor-pointer text-black text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center" >
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-puzzle" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
-                                    </svg>
-                                    <span className="ml-2 font-bold">Products</span>
-                                </div>
-                            </li>
-                            <li className="flex md:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-compass" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <polyline points="8 16 10 10 16 8 14 14 8 16" />
-                                    <circle cx={12} cy={12} r={9} />
-                                </svg>
-                                <span className="ml-2 font-bold">Performance</span>
-                            </li>
-                            <li className="border-b border-gray-300 flex md:hidden flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pt-2 pb-4 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-code" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <polyline points="7 8 3 12 7 16" />
-                                        <polyline points="17 8 21 12 17 16" />
-                                        <line x1={14} y1={4} x2={10} y2={20} />
-                                    </svg>
-                                    <span className="ml-2 font-bold">Deliverables</span>
-                                </div>
-                            </li>
-                            <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
-                                <div className="flex items-center">
-                                    <div className="w-12 cursor-pointer flex text-sm border-2 border-transparent rounded focus:outline-none focus:border-white transition duration-150 ease-in-out">
-                                        <img className="rounded h-10 w-10 object-cover" src="https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_1.png" alt="logo" />
-                                    </div>
-                                    <p className="text-sm ml-2 cursor-pointer">Jane Doe</p>
-                                    <div className="sm:ml-2 text-white relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-down cursor-pointer" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <polyline points="6 9 12 15 18 9" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <circle cx={12} cy={7} r={4} />
-                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                    </svg>
-                                    <span className="ml-2">Profile</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </nav>
-            <ApplicantSettingsModal/>
+            <ApplicantSettingsModal />
         </div>
     )
 }

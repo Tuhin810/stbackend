@@ -107,11 +107,11 @@ const PostedJobList = () => {
                               <div className="my-1 cursor-pointer text-gray-800 
                               font-semibold text-lg leading-3  px-3 rounded-md tracking-normal 
                               py-3 hover:bg-gray-200 focus:outline-none">
-                                <button onClick={()=>brodcastJob(job)} className="flex items-center">
+                                <button onClick={()=>brodcastJob(job._id!)} className="flex items-center">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" className="bi bi-broadcast" viewBox="0 0 16 16">
                                     <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
                                   </svg>
-                                  <span className="ml-2 text-sm">Brodcust</span>
+                                  <span className="ml-2 text-sm">Brodcast</span>
                                 </button>
                               </div>
 

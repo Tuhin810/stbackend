@@ -6,13 +6,10 @@ import {
 } from "react-router-dom";
 
 import Home from "./components/pages/common/home/Home";
-import Login from "./components/pages/applicant/auth/Login/Login";
-import Signup from "./components/pages/applicant/auth/SignUp/Signup";
-import RecruiterSignup from "./components/pages/recruiter/auth/RecruiterSignUp/RecruiterSignup";
+import RecruiterSignup from "./components/pages/recruiter/auth/RecruiterSignUpForm/RecruiterSignupForm";
 import LandingPage from "./components/dashboard/landingpageDashboard/LandingPage";
 import RecruiterDashboard from "./components/dashboard/recruiterDashboard/RecruiterDashboard";
 import PostedJobList from "./components/pages/recruiter/postedJobList/PostedJobList";
-import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin/RecruiterLogin";
 import { useContext, useEffect, useState } from "react";
 import { getUserType } from "./guards/UserTypeGuard";
 import PostJob from "./components/pages/recruiter/PostJob/PostJob";
@@ -29,6 +26,9 @@ import ApplicantResume from "./components/pages/applicant/applicantResume/Applic
 import SharedResume from "./components/pages/common/ResumeShare.tsx/SharedResume";
 import { JobsPage } from "./components/pages/applicant/JobsPage/JobsPage";
 import { ApplicantPerformance } from "./components/pages/applicant/applicantPerformence/ApplicantPerformance";
+import ApplicantLogin from "./components/pages/applicant/auth/ApplicantLogin/ApplicantLogin";
+import ApplicantSignup from "./components/pages/applicant/auth/ApplicantSignup/ApplicantSignup";
+import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin/RecruiterLogin";
 
 const App = () => {
   const [userType$, setuserType$] = useState<string>("");
@@ -54,7 +54,7 @@ const App = () => {
           </Route>
           
           {/* recruiter */}
-          <Route path="/recruiter/login" element={<RecruiterLogin />} />
+          <Route path="/recruiter/login" element={< RecruiterLogin/>} />
           <Route path="/recruiter/signup" element={<RecruiterSignup />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
           {/* Recruiter Dashboard */}
@@ -66,8 +66,8 @@ const App = () => {
             <Route path="/recruiter/jobDashboard" element={<PostedJobDashboard />} />
           </Route>
 
-          <Route path="/applicant/signup" element={<Signup />} />
-          <Route path="/applicant/login" element={<Login />} />
+          <Route path="/applicant/signup" element={<ApplicantSignup />} />
+          <Route path="/applicant/login" element={<ApplicantLogin />} />
           <Route path="/profile/details/:id" element={<ApplicantProfile/>} />
 
           {/* applicant dashboard */}

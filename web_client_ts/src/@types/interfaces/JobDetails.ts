@@ -8,7 +8,7 @@ export interface JobDetails{
     jobDescription: string,
     no_of_vacancy: number,
     experience_year: number
-    skills: string[],
+    mandatory_skills: string[],
     additonal_skills: string[],
     no_of_applicants: number
     location: string[],
