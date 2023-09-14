@@ -25,7 +25,7 @@ const ApplicantProfile = () => {
                 <div className="body md:flex flex-col md:flex-row gap-10 px-3 md:px-32 py-10">
                     {/* Left Side  */}
                     <div className="left_side mb-5 md:h-screen md:fixed ">
-                        <MyLeftProfile first_name={applicantDetails?.first_name} middle_name={applicantDetails?.middle_name} last_name={applicantDetails?.last_name} email={applicantDetails?.email} profile_bio={applicantDetails?.profile_bio} />
+                        <MyLeftProfile defaultApplicantDetails={applicantDetails} />
                         <MyResumeContainer />
                     </div>
                     {/*RIGHT side  */} 

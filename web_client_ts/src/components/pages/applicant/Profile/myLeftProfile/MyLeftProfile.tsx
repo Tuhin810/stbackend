@@ -3,16 +3,20 @@ import { MyLeftProfileProps } from '../../../../../@types/interfaces/props/myPro
 import copy from "copy-to-clipboard";
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
 import { mode } from '../../../../../configs/apiConfig';
-const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProfileProps) => {
+import { updateApplicantDetailsById } from '../../../../../utils/apis/applicant/Applicant';
+import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps';
+const MyLeftProfile = ({defaultApplicantDetails }: MyProfileDetailsProps) => {
 
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
-const [selectedFile, setSelectedFile] = useState("")
+    const { applicantDispatch } = useContext(applicantContext);
+    const { applicantloggedinDetails } = useContext(applicantContext);
+const [selectedFile, setSelectedFile] = useState<string|ArrayBuffer>()
     let name = "";
-    if (middle_name !== undefined) {
-        name = first_name + " " + middle_name + " " + last_name;
+    if (defaultApplicantDetails.middle_name !== undefined) {
+        name = defaultApplicantDetails.first_name + " " + defaultApplicantDetails.middle_name + " " + defaultApplicantDetails.last_name;
     }
     else {
-        name = first_name + " " + last_name;
+        name = defaultApplicantDetails.first_name + " " + defaultApplicantDetails.last_name;
     }
     const copyToClipboard = () => {
         const baseUrl = (mode === "local") ? "http://localhost:5173/resume/" : "http://starmarks.in.s3-website.ap-south-1.amazonaws.com/"
@@ -22,19 +26,22 @@ const [selectedFile, setSelectedFile] = useState("")
     }
 
     
-    const convertImageToUrl = (e: any) => {
+    const convertImageToUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader();
-        if (e.target.files[0]) {
-          reader.readAsDataURL(e.target.files[0]);
+        if (e.target.files![0]) {
+          reader.readAsDataURL(e.target.files![0]);
         }
       
         reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
           const url = readerEvent.target?.result;
-        //   setSelectedFile(url);
-          console.log(url);
-          
+          setSelectedFile(url!);
+         defaultApplicantDetails.photo=url!;
+          updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!,defaultApplicantDetails)
         };
       };
+   
+
+
 
     
     return (
@@ -51,9 +58,10 @@ const [selectedFile, setSelectedFile] = useState("")
                 </div>
                 <div className="flex flex-col items-center pb-10">
                 <label htmlFor="file">
-                             
-                                  <img className="w-32 h-32 mb-3 rounded-full border-4 shadow-xl shadow-orange-200 border-orange-300 "
-                        src="https://static.naukimg.com/s/0/0/i/ni-gnb-revamped/userdp.svg"  />
+                <img className="w-32 h-32 mb-3 rounded-full border-4 shadow-xl shadow-orange-200 border-orange-300 "
+                        src={defaultApplicantDetails.photo?.toString()} />
+
+                                  
                       </label>
 
                          <input id="file" type="file"
@@ -66,7 +74,7 @@ const [selectedFile, setSelectedFile] = useState("")
                         <div className="">  <img className='h-5 w-5'
                             src="https://cdn-icons-png.flaticon.com/128/873/873360.png" alt="" />
                         </div>
-                        <div className=""> <a className="text-blue-600 font-semibold text-sm mb-4" >{email}</a></div>
+                        <div className=""> <a className="text-blue-600 font-semibold text-sm mb-4" >{defaultApplicantDetails?.email}</a></div>
                     </div>
 
                     <div className="sm:flex flex-row items-center space-x-6">

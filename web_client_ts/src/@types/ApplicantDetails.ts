@@ -1,6 +1,7 @@
 import { ApplicantEducation } from "./interfaces/ApplicantEducation"
 
 export interface ApplicantDetails {
+    applicantDetails: any
     is_fresher: boolean
     _id?: string,
     firebase_id?: string,
@@ -20,7 +21,7 @@ export interface ApplicantDetails {
     pin: number,
     age: number,
     birth_year: number,
-    photo?: string,
+    photo?: string | ArrayBuffer,
     cv?: BufferSource[],
     experience_year: number,
     skills: string[],
