@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext ,useState} from 'react';
 import { MyLeftProfileProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyLeftProfileProps'
 import copy from "copy-to-clipboard";
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
@@ -6,7 +6,7 @@ import { mode } from '../../../../../configs/apiConfig';
 const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProfileProps) => {
 
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
-
+const [selectedFile, setSelectedFile] = useState("")
     let name = "";
     if (middle_name !== undefined) {
         name = first_name + " " + middle_name + " " + last_name;
@@ -20,6 +20,23 @@ const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProf
         copy(path);
         alert(`You have copied`)
     }
+
+    
+    const convertImageToUrl = (e: any) => {
+        const reader = new FileReader();
+        if (e.target.files[0]) {
+          reader.readAsDataURL(e.target.files[0]);
+        }
+      
+        reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
+          const url = readerEvent.target?.result;
+        //   setSelectedFile(url);
+          console.log(url);
+          
+        };
+      };
+
+    
     return (
         <div>
             <div className="md:w-72 m-auto max-w-sm bg-white rounded-xl drop-shadow-xl ">
@@ -33,9 +50,17 @@ const MyLeftProfile = ({ first_name, middle_name, last_name, email }: MyLeftProf
                     </button>
                 </div>
                 <div className="flex flex-col items-center pb-10">
-                    <img className="w-32 h-32 mb-3 rounded-full border-4 shadow-xl shadow-orange-200 border-orange-300 "
-                        src="https://static.naukimg.com/s/0/0/i/ni-gnb-revamped/userdp.svg" alt="Bonnie image" />
-                    <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
+                <label htmlFor="file">
+                             
+                                  <img className="w-32 h-32 mb-3 rounded-full border-4 shadow-xl shadow-orange-200 border-orange-300 "
+                        src="https://static.naukimg.com/s/0/0/i/ni-gnb-revamped/userdp.svg"  />
+                      </label>
+
+                         <input id="file" type="file"
+                          hidden
+                             onChange={convertImageToUrl}
+                         />
+                     <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
                     <span className="text-sm text-gray-500 ">Visual Designer</span>
                     <div className="flex gap-2 mb-3 items-center">
                         <div className="">  <img className='h-5 w-5'

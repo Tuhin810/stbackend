@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext, useEffect} from "react";
 
 import AdditonalDetails from "./additionalDetails/AdditonalDetails";
 import MyLeftProfile from "./myLeftProfile/MyLeftProfile";
@@ -12,6 +12,11 @@ import MyResumeContainer from "./myResumeContainer/MyResumeContainer";
 const ApplicantProfile = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
+    useEffect(() => {
+     console.log(applicantDetails._id);
+     
+    }, [])
+    
 
     return (
         <>

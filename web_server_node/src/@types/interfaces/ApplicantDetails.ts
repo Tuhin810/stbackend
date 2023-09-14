@@ -20,7 +20,7 @@ export interface ApplicantDetails {
     pin: number,
     age: number,
     birth_year: number,
-    photo: Buffer,
+    photo: string,
     cv: Buffer[],
     experience_year: number,
     skills: string[],

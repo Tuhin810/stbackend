@@ -67,6 +67,9 @@ export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
         type: String,
         required: [true, "company name can not be null"]
     },
+    company_name: {
+        type: String
+    },
     min_age_limit: {
         type: Number,
         default: 60

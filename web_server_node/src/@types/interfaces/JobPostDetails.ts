@@ -16,6 +16,7 @@ export interface JobPostDetails {
     max_salary: number,
     currency_type: string,
     company_id: string,
+    company_name: string,
     min_age_limit: number,
     max_age_limit: number,
     job_poster_id: string,

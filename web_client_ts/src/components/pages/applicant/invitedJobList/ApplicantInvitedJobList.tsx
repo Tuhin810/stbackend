@@ -29,7 +29,7 @@ const ApplicantInvitedJobList = () => {
                             jobDetailsList.map((invitedJob, value) => {
                                 const {job_details} = invitedJob
                                 return (
-                                    <JobCard jobDetails={job_details} key={value} />
+                                    <JobCard jobDetails={job_details} key={value} InvitedJob={""} />
                                 )
                             })
                         }
