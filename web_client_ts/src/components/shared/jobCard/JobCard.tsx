@@ -14,12 +14,12 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
         const path = `/${globalLoggedIn.userType}/jobDetails/${jobDetails._id}`;
         navigate(path);
     }
-    const formatSalaryRange = (salary: number): string => {
-        if (salary === 0) {
-            return "Not Disclosed"
-        }
-        return salary.toString();
-    }
+    // const formatSalaryRange = (salary: number): string => {
+    //     if (salary === 0) {
+    //         return "Not Disclosed"
+    //     }
+    //     return salary.toString();
+    // }
 
     const brodcast = async () => {
         const response = await brodcastJob(jobDetails);
@@ -64,7 +64,7 @@ const JobCard = ({ jobDetails }: JobDetailsProps) => {
                     <p className="salary inline-flex items-center">
                         <svg className="w-4 h-5 me-2 text-red-600 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                             <path d="M15.045.007 9.31 0a1.965 1.965 0 0 0-1.4.585L.58 7.979a2 2 0 0 0 0 2.805l6.573 6.631a1.956 1.956 0 0 0 1.4.585 1.965 1.965 0 0 0 1.4-.585l7.409-7.477A2 2 0 0 0 18 8.479v-5.5A2.972 2.972 0 0 0 15.045.007Zm-2.452 6.438a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                        </svg><span className="font-semibold"> Salary Range :</span>  {formatSalaryRange(jobDetails.min_salary)} - {formatSalaryRange(jobDetails.max_salary)}
+                        </svg><span className="font-semibold"> Salary Range :</span>  {(jobDetails.min_salary)} - {(jobDetails.max_salary)}
                     </p>
                     <p className="salary inline-flex items-center">
                         <svg className="w-4 h-4 me-2 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 18">

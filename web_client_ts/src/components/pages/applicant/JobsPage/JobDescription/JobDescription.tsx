@@ -1,3 +1,4 @@
+import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetailsProps"
 import "../JobPage.css"
 
 export const JobDescription = () => {
@@ -5,7 +6,7 @@ export const JobDescription = () => {
     <div className=''>
         <div className="h-screen overflow-y-auto scroll bg-white w-full border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
             <div className="sticky top-0 z-10  w-full  bg-white h-44 shadow-lg border-b-2  px-8 py-3 ">
-                <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">Sales and Service Engineer</div>
+                <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">React</div>
                 <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
                 {/* <div className=""><Ratings/></div> */}
                 <div className="">Kolkata, West Bengal</div>

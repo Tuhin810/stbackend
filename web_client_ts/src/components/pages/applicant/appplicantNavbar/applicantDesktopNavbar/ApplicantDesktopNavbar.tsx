@@ -14,7 +14,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                             <img src={logo} className="h-10" />
                         </div>
                         <ul className="hidden xl:flex items-center h-full">
-                            <Link to="/applicant/invitedjobs/">
+                            <Link to="/applicant/RecommendedJobs/">
                                 <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mx-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">

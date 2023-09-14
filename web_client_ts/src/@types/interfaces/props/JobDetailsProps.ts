@@ -1,5 +1,6 @@
 import { JobPostDetails } from "../../JobPostDetails";
 
 export interface JobDetailsProps{
-    jobDetails:JobPostDetails
+    jobDetails:JobPostDetails,
+    InvitedJob:string
 }
