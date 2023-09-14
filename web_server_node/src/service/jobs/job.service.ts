@@ -31,6 +31,7 @@ export const matchedJobApplicants = async (jobId: string) => {
     console.log(response);
     if (response) {
         const jobDetails: JobPostDetails = response;
+        let applicantList: mongoose.Schema.Types.ObjectId[];
         console.log("r");
 
         if (jobDetails.gender != "all") {
@@ -46,8 +47,7 @@ export const matchedJobApplicants = async (jobId: string) => {
                     { skills: { $all: jobDetails.mandatory_skills } }
                 ]
             }
-            const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
-            await sendInviteApplicantList(applicantList, jobDetails._id!);
+            applicantList = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
         }
         else {
             const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
@@ -61,20 +61,18 @@ export const matchedJobApplicants = async (jobId: string) => {
                     { skills: { $all: jobDetails.mandatory_skills } }
                 ]
             }
-            const applicantList: mongoose.Schema.Types.ObjectId[] = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
+            applicantList= await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
             console.log("list", applicantList);
-            await sendInviteApplicantList(applicantList, jobDetails._id!);
         }
-        const postJobDetails = await getJobDetailsByJobId(jobId);
+        await sendInviteApplicantList(applicantList, jobDetails._id!);
         await updateMatchedApplicantNumbers(jobDetails._id!);
-        if (postJobDetails) {
-            return postJobDetails;
-        }
+        const matchedApplicantDetails = await getMatchedApplicantDetails(jobDetails._id!);
+        return matchedApplicantDetails;
     }
     else {
         console.log("noe");
     }
-    return {} as JobPostDetails;
+    return [];
 }
 
 const updateMatchedApplicantNumbers = async (jobId: string) => {
@@ -85,6 +83,11 @@ const updateMatchedApplicantNumbers = async (jobId: string) => {
             { $set: { no_of_matched_profiles: matchedApplicantNumber } }
         )
     }
+}
+
+const getMatchedApplicantDetails =async (jobId:string) => {
+    const matchedApplicantDetails=await MatchedApplicantModel.find({jobId:jobId}).lean().populate("applicant_details").exec();
+    return matchedApplicantDetails;
 }
 
 export const getJobDetailsByJobId = async (jobId: string) => {
