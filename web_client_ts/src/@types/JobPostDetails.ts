@@ -1,4 +1,5 @@
 export interface JobPostDetails {
+    [x: string]: any
     _id?: string,
     posted_date: Date,
     job_title: string,

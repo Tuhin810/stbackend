@@ -13,7 +13,8 @@ export const JobsPage = () => {
   const { applicantloggedinDetails } = useContext(applicantContext);
   const { applicantDetails } = applicantloggedinDetails;
   const [jobDetailsList, setJobDetailsList] = useState<InvitedJob[]>([]);
-
+  const [selectedJob, setSelectedJob] = useState<InvitedJob | null>(null);
+  
   const getInvitedJobList = async () => {
     const response = await getApplicantInvitedJobList(applicantDetails._id!);
     if (response?.status === 200) {
@@ -22,8 +23,18 @@ export const JobsPage = () => {
 
     }
   }
+  const handlesSet=(data:any)=>{
+    if (data && data.job_details) {
+      setSelectedJob(data);
+    }
+    console.log(data);
+    
+    
+  }
   useEffect(() => {
     getInvitedJobList();
+   
+    
   }, []);
   return (
     <div className="mt-20 h-screen">
@@ -40,7 +51,11 @@ export const JobsPage = () => {
                     jobDetailsList.map((invitedJob, value) => {
                       const { job_details } = invitedJob
                       return (
-                        <JobCard jobDetails={job_details} key={value} InvitedJob={""} />
+                        <div onClick={()=>handlesSet(invitedJob)}>
+                         <JobCard jobDetails={job_details}
+                          key={value} InvitedJob={""} jobId={""} applicantId={""} />
+                        </div>
+                       
                       )
                     })
                   }
@@ -57,10 +72,12 @@ export const JobsPage = () => {
           }
         </div>
         <div className="md:w-1/2 md:pr-16 hidden md:inline">
-          {
-            <JobDescription  />
-          }
-          
+        {selectedJob && (
+          <JobDescription
+              jobDetails={selectedJob.job_details}
+              jobId={selectedJob.jobId}
+              applicantId={selectedJob.applicantId} InvitedJob={""}          />
+        )}
         </div>
       </div>
     </div>

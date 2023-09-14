@@ -1,5 +1,4 @@
 import { useContext ,useState} from 'react';
-import { MyLeftProfileProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyLeftProfileProps'
 import copy from "copy-to-clipboard";
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
 import { mode } from '../../../../../configs/apiConfig';

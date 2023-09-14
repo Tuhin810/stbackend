@@ -1,22 +1,35 @@
+import { useState } from "react";
 import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetailsProps"
+import { applyJob } from "../../../../../utils/apis/applicant/Applicant";
+import { showModal } from "../../../../../utils/commonFunctions/HandleModal";
 import "../JobPage.css"
+import { SuccesModal } from "../jobAppliedSucces/SuccesModal";
 
-export const JobDescription = () => {
+export const JobDescription = ({ jobDetails ,jobId,applicantId}: JobDetailsProps  ) => {
+  const [applied, setapplied] = useState(false)
+  const handleApplyJob = async () => {
+    const response = await applyJob(jobId,applicantId);
+    if (response?.status === 200) {
+     console.log("job applied");
+      showModal("success")
+     
+    }
+}
   return (
-    <div className=''>
+    <div className='' id="jobdesc">
         <div className="h-screen overflow-y-auto scroll bg-white w-full border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
             <div className="sticky top-0 z-10  w-full  bg-white h-44 shadow-lg border-b-2  px-8 py-3 ">
-                <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">React</div>
+                <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">{jobDetails.job_title}</div>
                 <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
                 {/* <div className=""><Ratings/></div> */}
                 <div className="">Kolkata, West Bengal</div>
-                <div className="">₹25,000 a month</div>
+                <div className="">₹{jobDetails.min_salary} - ₹{jobDetails.max_salary}</div>
                 <div className="flex gap-4 mt-2 ">
-                    <button className="flex gap-1 items-center  bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 text-white rounded-lg py-2 px-4 py-2">
+                    <button onClick={handleApplyJob} className="flex gap-1 items-center  bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 text-white rounded-lg py-2 px-4 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" className="bi bi-check-lg" viewBox="0 0 16 16">
   <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
 </svg>Accept</button>
-                    <button className="flex gap-1 items-center bg-gradient-to-r from-gray-600 to-gray-800 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-900  text-white rounded-lg py-2 px-4 py-2">
+                    <button className="flex gap-1 items-center bg-gradient-to-r from-gray-600 to-gray-800 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-900  text-white rounded-lg py-2 px-4 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg>Reject</button>
@@ -52,7 +65,7 @@ export const JobDescription = () => {
                           </div>
                           <div className="">
                             <div className="text-lg text-gray-900">Pay</div>
-                            <div className="text-sm">25,000 a month</div>
+                            <div className="text-sm">₹{jobDetails.min_salary} - ₹{jobDetails.max_salary}</div>
                           </div>
                   </div>
 
@@ -65,7 +78,7 @@ export const JobDescription = () => {
                           </div>
                           <div className="">
                             <div className="text-lg text-gray-900">Job type</div>
-                            <div className="text-sm">Full-time</div>
+                            <div className="text-sm">{jobDetails.job_type}</div>
                           </div>
                   </div>
 
@@ -78,8 +91,8 @@ export const JobDescription = () => {
        </svg>
                           </div>
                           <div className="">
-                            <div className="text-lg text-gray-900 ">Shift and schedule</div>
-                            <div className="text-sm">Day shift</div>
+                            <div className="text-lg text-gray-900 ">Daily hours</div>
+                            <div className="text-sm">{jobDetails.duty_hours}&nbsp;hours</div>
                           </div>
                   </div>
                       </div>
@@ -90,7 +103,7 @@ export const JobDescription = () => {
                 {/* Description part starts */}
                 <div className="">
                   <div className="px-3">
-                    <p className="text-gray-800">  Sales and servicing of scientific and laboratory equipments, marketing of scientific and laboraotry equipments at pharmacy and medical colleges, pharmaceutical research laboratories and government research organizations, installation of the above equipments in the territory West Bengal, Assam and Orissa.</p>
+                    <p className="text-gray-800"> {jobDetails.job_description}</p>
                   </div>
                  
                  
@@ -119,26 +132,15 @@ export const JobDescription = () => {
                     
                   </div>
 
-                      {/* Qualifications */}
-                  <div className="py-5 px-3">
-                  
-                    <div className="text-lg font-semibold mb-2 ">Qualifications</div>
-                    <p className="text-gray-800">xperience with performance tools and methodologies
-Virtualization and Containers: Hyper-V, KVM, Linux, VMware, Docker or Kubernetes
-Familiarity with tools such as IDEs, Git, GitHub, Jira and/or Wikis
-Knowledge of web performance optimization techniques and tools
-Passion to responsive and adaptive design principles and UI/UX best practices</p>
-                  </div>
+                 
 
 
                   <div className="py-2 px-3 ">
                     
                     <div className="text-lg font-semibold mb-2 ">Skills:</div>
                     <div className="flex gap-2 ">
-                    <div  className="flex  justify-center items-center m-1   py-2 px-3  
-                                        rounded-xl  border bg-gray-100 border-gray-400 text-gray-900 ">
-                                            <div className="  flex-col leading-none max-w-full  text-gray-900 ">Javasript</div>
-                                        </div>
+                    {jobDetails?.mandatory_skills}
+                    
                                         <div  className="flex  justify-center items-center m-1   py-2 px-3  
                                         rounded-xl  border bg-gray-100 border-gray-400 text-gray-900 ">
                                             <div className="  flex-col leading-none max-w-full  text-gray-900 ">Css</div>
@@ -164,22 +166,24 @@ Passion to responsive and adaptive design principles and UI/UX best practices</p
                                             <div className="  flex-col leading-none max-w-full  text-gray-900 ">GUI</div>
                                         </div>
                                           </div>
-                  
-                  {/* COMPANY DETAILS STARTS*/}
-                                          <div className="py-2 ">
-                    <div className="text-lg font-semibold mb-2">Company Profile:</div>
-                    <p className="text-sm pb-1">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</p>
-                    <p className="text-md pb-2 text-gray-800">Intel Technology India Pvt.Ltd focuses on creating innovative products that advance the next generation of technology. Intel with its strong technology heritage, provides an opportunity to work on cutting-edge technology, pushing the boundaries of innovation and transforming the way people live and work.</p>
-                    
-                  </div>
-                  </div>
-                          {/* COMPANY DETAILS ENDS*/}
+                                            </div>
+                       
 
                 </div>    
+
+                     {/* Qualifications */}
+                     <div className="py-5 px-3">
+                  
+                  <div className="text-lg font-semibold mb-2 ">Qualifications</div>
+                  <p className="text-gray-800">{jobDetails?.qualification}</p>
+                </div>
                 </div>
                  
                  {/* Description part ends*/}
         </div>
+        <SuccesModal/>
     </div>
   )
 }
+
+
