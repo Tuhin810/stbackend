@@ -13,7 +13,7 @@ router.get("/jobs/getJobByRecruiterId/:recruiterId", getJobsRecruiter);
 router.get("/jobs/searchApplicant/:job", recruiterSearchPreferredJob);
 router.get("/jobs/getJobByJobId/:jobId", getJobDetails)
 router.post("/jobs/postjob", postNewJobs);
-router.post("/job/brodcast", brodcastJob);
+router.post("/job/brodcast/:id", brodcastJob);
 router.post("/job/addPreferredJob", postApplicantPreferredJob);
 router.delete("/jobs/deleteJobDetailsByJobId/:jobId", deleteJob);
 

@@ -64,7 +64,7 @@ export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
         default: "INR"
     },
     company_id: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: [true, "company name can not be null"]
     },
     min_age_limit: {
@@ -76,7 +76,7 @@ export const JobSchema: Schema<JobPostDetails> = new mongoose.Schema({
         default: 0
     },
     job_poster_id: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: [true, "job poster name can not be null"]
     },
     spoken_english_level: {

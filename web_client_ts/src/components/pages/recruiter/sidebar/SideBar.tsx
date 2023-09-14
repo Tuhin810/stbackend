@@ -18,10 +18,17 @@ const SideBar = () => {
                 <div className="h-full px-3 pb-2 overflow-y-auto bg-transparent hideScrollbar">
                     <div className="profile mt-5">
                         <div className="flex flex-col items-center pb-10">
-                            <img className="w-32 h-32 mb-3 rounded-full border-4 border-gray-400 "
-                                src="https://static.naukimg.com/s/0/0/i/ni-gnb-revamped/userdp.svg" alt="Bonnie image" />
+                            <div id="profile-photo" className="bg-orange-200 shadow-xl shadow-orange-100">
+                                <img src="https://static.naukimg.com/s/0/0/i/ni-gnb-revamped/userdp.svg" id="output" width="200" />
+                                <input type="hidden" name="profile-src-container" id="profile-src-container" value="" />
+                                <a href="#" id="change-image-button">Change image</a>
+                            </div>
+
+                            {/* <img className="w-32 h-32 mb-3 rounded-full border-4 border-gray-400 "
+                                src="" alt="Bonnie image" /> */}
                             <h5 className="mb-1 text-xl font-medium text-black ">{recruiterDetails?.first_name} {recruiterDetails?.last_name}</h5>
                         </div>
+
                     </div>
                     <ul className="space-y-5 font-medium font-light monospace">
                         <li>

@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../../context/recruiterDetails/RecruiterContext';
 import { globalContext } from '../../../../../context/GlobalDetails/GlobalContext';
 
-const RecruiterSignup = () => {
+const RecruiterSignupForm = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(recruiterContext);
   const { loggedIn } = useContext(globalContext);
@@ -123,4 +123,4 @@ const RecruiterSignup = () => {
   )
 }
 
-export default RecruiterSignup
+export default RecruiterSignupForm

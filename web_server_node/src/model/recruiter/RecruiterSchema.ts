@@ -74,7 +74,7 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         contentType: String,
     },
     company_id: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true
     },
 },

@@ -22,7 +22,7 @@ const postNewJobs = async (req: Request, res: Response) => {
                 .then((data) => {
                     const jobData = data;
                     try {
-                        matchedJobApplicants(data).
+                        matchedJobApplicants(data._id).
                             then(applicantDatalist => {
                                 res.status(200).send({
                                     success: true,

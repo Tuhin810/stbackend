@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 import { ApplicantQualification } from "./ApplicantEducation"
 
 export interface ApplicantDetails {
-    _id?: mongoose.Schema.Types.ObjectId,
+    _id?: string,
     firebase_id: string,
     created_date: Date
     first_name: string,

@@ -16,6 +16,10 @@ import home from './home.png';
 import searchIcon from './search-icon.gif';
 import notFound from './notFound.png';
 import defaultCompany from './defaultCompany.png';
+import applicant_login from './Tablet login-amico.svg'
+import recruiter_login from './Computer login-bro.svg'
+import applicant_signup from './Sign up-amico.svg'
+import success from './success.gif'
 
 export {
 	get_find,
@@ -35,5 +39,9 @@ export {
 	searchIcon,
 	notFound,
 	defaultCompany,
-	logo_white
+	logo_white,
+	applicant_login,
+	applicant_signup,
+	recruiter_login,
+	success
 };

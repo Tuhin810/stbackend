@@ -3,7 +3,6 @@ import "../JobPage.css"
 import { useContext, useEffect, useState } from "react"
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext"
 import { getApplicantInvitedJobList } from "../../../../../utils/apis/applicant/Applicant"
-import { tempJobId } from "../../../../../@types/temporaryJobId"
 import { Skelitoncard } from "../../../../shared/Skeliton/Skelitoncard"
 
 export const JobList = () => {

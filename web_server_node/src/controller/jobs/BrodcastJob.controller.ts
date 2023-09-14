@@ -3,15 +3,17 @@ import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import { matchedJobApplicants } from "../../service/jobs/job.service";
 
 export const brodcastJob = async (req: Request, res: Response) => {
-	const jobDetails: JobPostDetails = req.body;
-	if (!jobDetails) {
+	const jobId: string = req.params.id;
+	console.log("controller job", jobId);
+	if (!jobId) {
 		res.status(422).json({
 			message: "fields are empty",
 		})
 	}
 	else {
 		try {
-			const response = await matchedJobApplicants(jobDetails);
+			const response = await matchedJobApplicants(jobId);
+			console.log(response);
 			if (response) {
 				res.status(200).json({
 					message: "brodcasting successfully",
