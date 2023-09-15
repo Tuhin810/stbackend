@@ -71,12 +71,12 @@ const App = () => {
           <Route path="/profile/details/:id" element={<ApplicantProfile/>} />
 
           {/* applicant dashboard */}
-          <Route path="/applicant" element={<ApplicantDashboard />}>
-            <Route path="/applicant/profile/" element={<ApplicantProfile/>} />
-            <Route path="/applicant/resume/" element={<ApplicantResume />} />
-            <Route path="/applicant/invitedjobs/" element={<ApplicantInvitedJobList />} />
-            <Route path="/applicant/RecommendedJobs/" element={<JobsPage />} />
-            <Route path="/applicant/jobDetails/:jobId" element={<JobDescription />} />
+          <Route path="/applicant" element={<ApplicantDashboard/>}>
+            <Route path="/applicant/profile/" element={<ApplicantProfile/>}/>
+            <Route path="/applicant/resume/" element={<ApplicantResume/>}/>
+            <Route path="/applicant/invitedjobs/" element={<ApplicantInvitedJobList />}/>
+            <Route path="/applicant/RecommendedJobs/" element={<JobsPage/>} />
+            <Route path="/applicant/jobDetails/:jobId" element={<JobDescription/>} />
             <Route path="/applicant/performance/" element={<ApplicantPerformance/>} />
           </Route>
         </Routes>
