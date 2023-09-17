@@ -1,4 +1,4 @@
-import { useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 
 import AdditonalDetails from "./additionalDetails/AdditonalDetails";
 import MyLeftProfile from "./myLeftProfile/MyLeftProfile";
@@ -13,10 +13,10 @@ const ApplicantProfile = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
     useEffect(() => {
-     console.log(applicantDetails._id);
-     
+        console.log(applicantDetails._id);
+
     }, [])
-    
+
 
     return (
         <>
@@ -28,12 +28,12 @@ const ApplicantProfile = () => {
                         <MyLeftProfile defaultApplicantDetails={applicantDetails} />
                         <MyResumeContainer />
                     </div>
-                    {/*RIGHT side  */} 
+                    {/*RIGHT side  */}
                     <div className="w-full flex flex-col gap-7 md:ml-80">
-                        <MyProfileDetails defaultApplicantDetails={applicantDetails}/>
+                        <MyProfileDetails defaultApplicantDetails={applicantDetails} />
                         <MySkill skillList={applicantDetails?.skills} />
-                        <MyQualification qualificationDetails={applicantDetails?.qualification_details}/>
-                        <AdditonalDetails defaultApplicantDetails={applicantDetails}/>
+                        <MyQualification qualificationDetails={applicantDetails?.qualification_details} />
+                        <AdditonalDetails defaultApplicantDetails={applicantDetails} />
                     </div>
                 </div>
 

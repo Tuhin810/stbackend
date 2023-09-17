@@ -24,6 +24,7 @@ const NavBar = () => {
             const logo = document.getElementById("logo");
             const items = document.getElementById("items");
             if (window.scrollY > 100) {
+                navbar!.classList.remove("hidden")
                 logo!.classList.remove("hidden")
                 navbar!.classList.add("shadow");
                 items!.classList.remove("justify-end");
@@ -31,6 +32,7 @@ const NavBar = () => {
                 console.log(navbar);
 
             } else {
+                navbar!.classList.add("hidden")
                 logo!.classList.add("hidden");
                 items!.classList.remove("justify-between");
                 items!.classList.add("justify-end");
@@ -43,7 +45,7 @@ const NavBar = () => {
 
         <>
 
-            <nav className="navbar bg-white sticky py-2 w-full z-20 top-0 left-0 border-gray-200">
+            <nav className="navbar hidden bg-white sticky py-2 w-full z-20 top-0 left-0 border-gray-200">
                 <div className="max-w-screen-xl flex flex-wrap justify-end mx-auto p-4" id='items'>
                     <a href="https://flowbite.com/" className="flex items-center hidden" id="logo">
                         <img src={logo} className="h-10 mr-3" alt="Flowbite Logo" />

@@ -3,8 +3,18 @@ import { logo } from '../../../../../assets/images'
 import { IDesktopApplicantNavbarProps } from '../../../../../@types/interfaces/props/ApplicantProps/ApplicantNavbarProps'
 import ApplicantSettingsModal from '../../modals/applicantSettingsModal/ApplicantSettingsModal'
 import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
+import { useContext, useEffect } from 'react'
+import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext'
 
 const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplicantNavbarProps) => {
+    const { applicantloggedinDetails } = useContext(applicantContext);
+  const { applicantDetails } = applicantloggedinDetails;
+
+    useEffect(() => {
+     console.log(profile);
+     
+    }, [])
+    
     return (
         <div>
             <nav className="w-full px-10 fixed z-30 top-0 bg-white hidden xl:block drop-shadow-lg">
@@ -65,15 +75,15 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                         <div className="h-full flex">
                             <div className="flex items-center pl-8 relative cursor-pointer" onClick={() => setProfile(!profile)}>
                                 {profile && (
-                                    <ul className="p-2 border  border-r bg-white absolute rounded -left-20 shadow mt-16 top-0 ">
+                                    <ul className="p-2  border-t-2 bg-white absolute rounded -left-20 drop-shadow-xl  mt-10 top-0 ">
                                         <li>
                                             <a href="#" className="flex w-56 items-center py-3 mt-1 
                                         text-sm text-gray-600 transition-colors  duration-300 transform  hover:bg-gray-100 rounded-md">
                                                 <img className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
-                                                    src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200" alt="jane avatar" />
+                                                    src={applicantDetails?.photo} alt="jane avatar" />
                                                 <div className="mx-1">
-                                                    <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">Jane Doe</h1>
-                                                    <p className="text-sm text-gray-500 dark-text-gray-400">janedoe@exampl.com</p>
+                                                    <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">{applicantDetails.first_name}</h1>
+                                                    <p className="text-sm text-gray-500 dark-text-gray-400">{applicantDetails.email}</p>
                                                 </div>
                                             </a>
                                         </li>
