@@ -57,7 +57,7 @@ const [selectedFile, setSelectedFile] = useState<string|ArrayBuffer>()
                 </div>
                 <div className="flex flex-col items-center pb-10">
                 <label htmlFor="file">
-                <img className="w-32 h-32 mb-3 rounded-full border-4 shadow-xl shadow-orange-200 border-orange-300 "
+                <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-[#7a7a7a] border-y-4 border-x-4 border-[#dfdfdf] "
                         src={defaultApplicantDetails.photo?.toString()} />
 
                                   
@@ -71,7 +71,7 @@ const [selectedFile, setSelectedFile] = useState<string|ArrayBuffer>()
                     <span className="text-sm text-gray-500 ">Visual Designer</span>
                     <div className="flex gap-2 mb-3 items-center">
                         <div className="">  <img className='h-5 w-5'
-                            src="https://cdn-icons-png.flaticon.com/128/873/873360.png" alt="" />
+                            src="https://img.icons8.com/?size=2x&id=vmbcIlQ2bP8r&format=png" alt="" />
                         </div>
                         <div className=""> <a className="text-blue-600 font-semibold text-sm mb-4" >{defaultApplicantDetails?.email}</a></div>
                     </div>

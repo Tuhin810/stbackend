@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetailsProps"
 import { applyJob } from "../../../../../utils/apis/applicant/Applicant";
 import { showModal } from "../../../../../utils/commonFunctions/HandleModal";
@@ -6,7 +5,6 @@ import "../JobPage.css"
 import { SuccesModal } from "../jobAppliedSucces/SuccesModal";
 
 export const JobDescription = ({ jobDetails ,jobId,applicantId}: JobDetailsProps  ) => {
-  const [applied, setapplied] = useState(false)
   const handleApplyJob = async () => {
     const response = await applyJob(jobId,applicantId);
     if (response?.status === 200) {
@@ -16,8 +14,8 @@ export const JobDescription = ({ jobDetails ,jobId,applicantId}: JobDetailsProps
     }
 }
   return (
-    <div className='' id="jobdesc">
-        <div className="h-screen overflow-y-auto scroll bg-white w-full border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
+    <div className=''>
+        <div className=" overflow-y-auto h-screen scroll bg-white w-full border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
             <div className="sticky top-0 z-10  w-full  bg-white h-44 shadow-lg border-b-2  px-8 py-3 ">
                 <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">{jobDetails.job_title}</div>
                 <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>

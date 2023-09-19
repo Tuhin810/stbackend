@@ -8,6 +8,7 @@ import { getApplicantInvitedJobList } from "../../../controller/users/applicantI
 import { updateApplicntProfileDetails } from "../../../controller/users/applicantDetails/UpdateApplicantProfileDetails";
 import { getApplicantProfilePrivacy, getApplicantResumePrivacy, updateApplicantPrivacy } from "../../../controller/users/applicantPrivacy/ApplicantPrivacy";
 import { applicantApplyJob } from "../../../controller/users/applicantAppliedJobList/ApplicantApplyJob";
+import { getApplicantAcceptedJobList } from "../../../controller/users/ApplicantAcceptedjobList/GetApplicantAcceptedjobList";
 
 const router = express.Router();
 
@@ -15,6 +16,8 @@ router.get("/applicant/getApplicantDetailsById/:id", getApplicantDetailsById);
 router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
 router.get("/applicant/getApplicantProfilePrivacy/:id", getApplicantProfilePrivacy);
 router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
+router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantAcceptedJobList);
+
 router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);
 router.post("/applicant/applyJob/:jobId/:applicantId", applicantApplyJob);

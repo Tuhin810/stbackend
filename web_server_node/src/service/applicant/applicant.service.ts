@@ -71,7 +71,7 @@ export const updateApplicantProfileDetailsById = async (applicantId: string, app
                 first_name: applicantProfile.first_name,
                 middle_name: applicantProfile.middle_name,
                 last_name: applicantProfile.last_name,
-                photo:applicantProfile.photo,
+                photo: applicantProfile.photo,
                 current_address: applicantProfile.current_address,
                 permanent_address: applicantProfile.permanent_address,
                 gender: applicantProfile.gender,
@@ -202,4 +202,10 @@ export const addPreferredJob = async (applicantPreferredJob: ApplicantPreferredJ
         return true;
     }
     return false;
+}
+
+
+export const getApplicantAcceptedJobListService = async (applicantId: string) => {
+    const response = (await MatchedApplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());
+    return response;
 }

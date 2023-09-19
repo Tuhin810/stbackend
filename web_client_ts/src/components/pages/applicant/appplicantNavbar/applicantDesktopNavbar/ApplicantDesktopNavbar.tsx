@@ -3,8 +3,18 @@ import { logo } from '../../../../../assets/images'
 import { IDesktopApplicantNavbarProps } from '../../../../../@types/interfaces/props/ApplicantProps/ApplicantNavbarProps'
 import ApplicantSettingsModal from '../../modals/applicantSettingsModal/ApplicantSettingsModal'
 import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
+import { useContext, useEffect } from 'react'
+import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext'
 
 const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplicantNavbarProps) => {
+    const { applicantloggedinDetails } = useContext(applicantContext);
+  const { applicantDetails } = applicantloggedinDetails;
+
+    useEffect(() => {
+     console.log(profile);
+     
+    }, [])
+    
     return (
         <div>
             <nav className="w-full px-10 fixed z-30 top-0 bg-white hidden xl:block drop-shadow-lg">
@@ -65,15 +75,15 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                         <div className="h-full flex">
                             <div className="flex items-center pl-8 relative cursor-pointer" onClick={() => setProfile(!profile)}>
                                 {profile && (
-                                    <ul className="p-2 border  border-r bg-white absolute rounded -left-20 shadow mt-16 top-0 ">
+                                    <ul className="p-2  border-t-2 bg-white absolute rounded -left-20 drop-shadow-xl  mt-10 top-0 ">
                                         <li>
-                                            <a href="#" className="flex w-56 items-center py-3 mt-1 
-                                        text-sm text-gray-600 transition-colors  duration-300 transform  hover:bg-gray-100 rounded-md">
+                                            <a href="#" className="flex w-56 items-center py-3 px-2 mt-1 
+                                        text-sm text-gray-600 transition-colors  duration-300 transform bg-gray-50  hover:bg-gray-100 rounded-md">
                                                 <img className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
-                                                    src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200" alt="jane avatar" />
+                                                    src={applicantDetails?.photo} alt="jane avatar" />
                                                 <div className="mx-1">
-                                                    <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">Jane Doe</h1>
-                                                    <p className="text-sm text-gray-500 dark-text-gray-400">janedoe@exampl.com</p>
+                                                    <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">{applicantDetails.first_name}</h1>
+                                                    <p className="text-sm text-gray-500 dark-text-gray-400">{applicantDetails.email}</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -81,7 +91,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             <div className="px-10 border-2 w-full my-2"></div>
                                         </li>
                                         <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                                            <div className="flex items-center">
+                                            <div className="flex items-center  px-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" />
                                                     <circle cx={12} cy={7} r={4} />
@@ -90,7 +100,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                                 <span className="ml-2">My Profile</span>
                                             </div>
                                         </li>
-                                        <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
+                                        <li className="cursor-pointer  px-2 text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-help" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" />
                                                 <circle cx={12} cy={12} r={9} />
@@ -99,7 +109,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             </svg>
                                             <span className="ml-2">Help Center</span>
                                         </li>
-                                        <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center" onClick={() => showModal("applicantSettings")}>
+                                        <li className="cursor-pointer  px-2 text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center" onClick={() => showModal("applicantSettings")}>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-settings" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" />
                                                 <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -107,7 +117,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             </svg>
                                             <span className="ml-2">Settings</span>
                                         </li>
-                                        <li className="cursor-pointer transition-colors  duration-300 transform rounded-md px-1  hover:bg-red-100 text-red-400 font-semibold text-sm leading-3 tracking-normal mt-2 py-3 hover:text-red-500 flex items-center " onClick={logout}>
+                                        <li className="cursor-pointer  px-2 transition-colors  duration-300 transform rounded-md   hover:bg-red-100 text-red-400 font-semibold text-sm leading-3 tracking-normal mt-2 py-3 hover:text-red-500 flex items-center " onClick={logout}>
                                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
@@ -116,12 +126,13 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                         </li>
                                     </ul>
                                 )}
-                                <div className="px-2  border h-10 rounded-full flex items-center gap-2 hover:bg-gray-50">
-                                    <img className="rounded-full h-8 w-8 object-cover  "
-                                        src="https://cdn-icons-png.flaticon.com/128/3177/3177440.png" alt="logo" />
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                                <div className="px-2  border h-10 rounded-full flex items-center gap-2 hover:bg-gray-100 ">
+                                    <img className="rounded-full h-8 w-8   "
+                                        src={applicantDetails?.photo} alt="profile_pic" />
+                                        <div className="transition-all text-black  duration-500 focus:-rotate-180">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="tr" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                                    </svg>
+                                    </svg></div>
                                 </div>
 
                             </div>
