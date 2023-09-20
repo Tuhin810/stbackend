@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { IBrodcastJobProps } from "../../../../@types/interfaces/props/BrodcastJobProps.ts/BrodcastJobProps";
 import { brodcastJob } from "../../../../utils/apis/Job/jobpost";
-import { ApplicantDetails } from "../../../../@types/ApplicantDetails";
+// import { ApplicantDetails } from "../../../../@types/ApplicantDetails";
 import Spinner from "../../../shared/spinner/Spinner";
 import MatchedApplicantList from "../matchedApplicant/MatchedApplicantList";
 import { hideModal } from "../../../../utils/commonFunctions/HandleModal";
-import { IMatchedApplicantApplicant } from "../../../../@types/interfaces/props/BrodcastJobProps.ts/MatchedApplicantProps";
+// import { IMatchedApplicantApplicant } from "../../../../@types/interfaces/props/BrodcastJobProps.ts/MatchedApplicantProps";
 
 const BrodcastModal = ({ jobId }: IBrodcastJobProps) => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +29,7 @@ const BrodcastModal = ({ jobId }: IBrodcastJobProps) => {
     
     return (
         <div>
-            <div id="brodcast" className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+            <div id="brodcast" className="fixed inset-0 z-50  items-center justify-center bg-black bg-opacity-50 hidden">
                 <div className="relative w-full max-w-md max-h-full">
                     <div className="relative bg-white rounded-lg shadow darkno:bg-gray-700">
                         <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex
@@ -51,7 +51,7 @@ const BrodcastModal = ({ jobId }: IBrodcastJobProps) => {
                                 Yes, I'm sure
                             </button>
                             <button data-modal-hide="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 darkno:bg-gray-700 darkno:text-gray-300 darkno:border-gray-500 darkno:hover:text-whit
-                             darkno:hover:bg-gray-600 darkno:focus:ring-gray-600" onClick={hideModal}>No, cancel</button>
+                             darkno:hover:bg-gray-600 darkno:focus:ring-gray-600" onClick={()=>hideModal}>No, cancel</button>
                         </div>
                         }
                         

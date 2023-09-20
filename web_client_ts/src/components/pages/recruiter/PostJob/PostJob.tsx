@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { MultiValue, SingleValue } from 'react-select';
 import { ISuggestion } from '../../../../@types/interfaces/Suggestion';
-import { pages } from '../../../../constants/navOptions';
+// import { pages } from '../../../../constants/navOptions';
 
 const PostJob = () => {
     const navigate = useNavigate();
@@ -123,7 +123,7 @@ const PostJob = () => {
     
     const handleChangeMandatorySkillList = (event: MultiValue<unknown>) => {
         const tempArray:string[] = [];
-        event.forEach((skill)=>{
+        event.forEach((skill:any)=>{
             tempArray.push(skill.value);
         })
         setJobDetails(Object.assign({}, jobDetails, {["mandatory_skills"]: tempArray}))
@@ -131,7 +131,7 @@ const PostJob = () => {
 
     const handleChangeAdditionalSkillList = (event: MultiValue<unknown>) => {
         const tempArray:string[] = [];
-        event.forEach((skill)=>{
+        event.forEach((skill:any)=>{
             tempArray.push(skill.value);
         })
         setJobDetails(Object.assign({}, jobDetails, {["additonal_skills"]: tempArray}))
@@ -176,7 +176,7 @@ const PostJob = () => {
                     </div>
                 </div>
             </div>
-            <PostJobConfirmationModal jobDetails={jobDetails}/>
+            <PostJobConfirmationModal jobDetails={jobDetails} InvitedJob={''} jobId={''} applicantId={''}/>
         </>
     )
 }

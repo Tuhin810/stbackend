@@ -41,7 +41,8 @@ const Home = () => {
                     <div className="my-5"></div>
 
                 </div>
-            <Footer /> </>
+            <Footer />
+             </>
     )
 }
 

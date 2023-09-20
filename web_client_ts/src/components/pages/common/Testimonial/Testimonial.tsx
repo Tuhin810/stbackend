@@ -4,7 +4,7 @@ function Testimonial() {
    return (
       <div>
          <div className="bg-gray-50 py-20 flex flex-col items-center justify-center">
-            <div className="xl:w-1/2 w-11/12">
+            <div className="px-10 w-11/12">
                 <h1 role="heading" tabIndex={0} className="text-6xl font-bold 2xl:leading-10 leading-0 text-center text-gray-800">
                     Touching hundreds of lives
                 </h1>
@@ -12,7 +12,7 @@ function Testimonial() {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing
                 </h2>
             </div>
-            <div className="2xl:px-20 lg:px-12 px-4 flex flex-wrap items-start mt-4">
+            <div className="  md:px-4 2xl:px-0 flex flex-wrap items-center mt-4">
                 <div className="mt-24">
                     <div className="flex items-end ">
                         <img tabIndex={0} src="https://i.ibb.co/kBgtHK6/Rectangle-5.png" alt="girl with blue background" className="w-20 h-20 rounded-lg mr-6" />

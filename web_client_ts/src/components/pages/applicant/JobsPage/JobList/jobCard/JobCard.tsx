@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { JobDetailsProps } from '../../../../../../@types/interfaces/props/JobDetailsProps'
 import Ratings from '../../../../../shared/Rating_stars/Ratings'
-import { defaultCompany } from '../../../../../../assets/images';
-import { formatDate,formatTitle } from '../../../../../../utils/commonFunctions/Format';
+// import { defaultCompany } from '../../../../../../assets/images';
+// import { formatDate,formatTitle } from '../../../../../../utils/commonFunctions/Format';
 import { useContext } from "react";
 import { globalContext } from '../../../../../../context/GlobalDetails/GlobalContext';
-import { brodcastJob } from '../../../../../../utils/apis/Job/jobpost';
+// import { brodcastJob } from '../../../../../../utils/apis/Job/jobpost';
 
 
 export const JobCard = ({ jobDetails }: JobDetailsProps) => {
-  const navigate = useNavigate();
-  const { globalLoggedIn } = useContext(globalContext);
+  // const navigate = useNavigate();
+  // const { globalLoggedIn } = useContext(globalContext);
 
 
 
@@ -22,14 +22,14 @@ export const JobCard = ({ jobDetails }: JobDetailsProps) => {
         <div className="w-full cursor-pointer border-2 bg-white h-72 rounded-lg drop-shadow-md px-5 pt-5">
           <div className="flex justify-between">
             <div className="">
-            <div className="text-2xl  text-gray-800 font-semibold hover:underline mb-3">{jobDetails.job_title}</div>
-      <div className="company text-sm text-gray-600  uppercase">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
+            <div className="text-lg md:text-2xl  text-gray-800 font-semibold hover:underline mb-3">{jobDetails.job_title}</div>
+      <div className="company text-xs w-1/2 md:w-full md:text-sm text-gray-600  uppercase">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
             <div className="">
                 <Ratings/>
             </div>
             </div>
                <div className="mt-3 flex justify-end">
-                <img className='h-16 w-16 bg-gray-700 border-2 rounded-lg ' src="https://img.naukimg.com/logo_images/groups/v1/275530.gif" alt="" /></div>
+                <img className='h-16 w-20 md:h-16 md:w-16 bg-gray-700 border-2 rounded-lg ' src="https://img.naukimg.com/logo_images/groups/v1/275530.gif" alt="" /></div>
         </div>
              <div className="mt-3 flex gap-2 items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" className="bi bi-geo-alt-fill" viewBox="0 0 16 16">
@@ -41,26 +41,26 @@ export const JobCard = ({ jobDetails }: JobDetailsProps) => {
 
         <div className="Features mt-3 px-2 flex-col gap-3">
         <div className="flex gap-4 ">
-                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">      
-                   <p>₹{jobDetails.min_salary} - ₹{jobDetails.max_salary} </p>
+                <div className="flex text-sm w-auto items-center gap-1 bg-gray-200 px-2 md:py-1 rounded-md">      
+                   <p className=" text-sm">₹{jobDetails.min_salary}&nbsp;to&nbsp;₹{jobDetails.max_salary} </p>
                   
                 </div>
-                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">      
-                   <p>{jobDetails.job_type} </p>
+                <div className="hidden md:inline  items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">      
+                   <p className="h- text-sm">{jobDetails.job_type} </p>
                    
                  </div>
                 <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">      
-                   <p>Applicants&nbsp;{jobDetails.no_of_applicants}</p>
+                   <p className="h- text-sm">Applicants&nbsp;{jobDetails.no_of_applicants}</p>
                    
                 </div>
                 </div>
 
                 <div className="flex gap-4 mt-2 ">
                 <div className="flex items-center  gap-1 bg-gray-200 px-2 py-1 rounded-md">      
-                   <p className="mb-1">Vacancy <span className="px-2 text-white  py-1 text-xs rounded-full   bg-blue-400">{jobDetails.no_of_vacancy}</span> </p>
+                   <p className="md:mb-1 text-sm">Vacancy <span className="px-2 text-white  py-1 text-xs rounded-full   bg-blue-400">{jobDetails.no_of_vacancy}</span> </p>
                 </div>
                 <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">      
-                   <p>{jobDetails.max_experience_year}y experience </p>
+                   <p text-sm>{jobDetails.max_experience_year}y experience </p>
                  
                  </div>
                 

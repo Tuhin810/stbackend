@@ -80,7 +80,7 @@ const CompanyRegistration = () => {
     return (
         <div>
             <div className="flex flex-col items-center justify-center space-y-10 h-screen" id="company_registration">
-                <ProgressStep />
+                <ProgressStep currentStep={0} />
                 <div className="container mx-auto py-8">
                     <div className="max-w-md mx-auto bg-white p-8 rounded shadow-md">
                         <h2 className="text-2xl font-semibold mb-4">Register Your <span className="text-blue-700"> Company </span></h2>

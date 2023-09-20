@@ -1,5 +1,4 @@
-import React from 'react'
-
+ 
 export const Skelitoncard = () => {
   return (
     <div><div className=''>

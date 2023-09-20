@@ -14,8 +14,8 @@ export const JobDescription = ({ jobDetails ,jobId,applicantId}: JobDetailsProps
     }
 }
   return (
-    <div className=''>
-        <div className=" overflow-y-auto h-screen scroll bg-white w-full border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
+    <div className='px-5  -mt-10 md:mt-0 md:px-0'>
+        <div className=" overflow-y-auto h-screen scroll bg-white w-[400px] md:w-full  border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
             <div className="sticky top-0 z-10  w-full  bg-white h-44 shadow-lg border-b-2  px-8 py-3 ">
                 <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">{jobDetails.job_title}</div>
                 <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>

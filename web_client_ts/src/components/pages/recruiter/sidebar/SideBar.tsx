@@ -1,17 +1,17 @@
 import { useContext } from "react";
 import { recruiterContext } from "../../../../context/recruiterDetails/RecruiterContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Sidebar.css"
 const SideBar = () => {
-    const { dispatch } = useContext(recruiterContext);
+    
     const { recruiterDetails } = useContext(recruiterContext).recruiterloggedinDetails;
-    const navigate = useNavigate();
-    const logout = () => {
-        console.log('log out');
-        localStorage.clear();
-        dispatch({ type: "logout", payload: {} });
-        navigate('/home');
-    }
+
+    // const logout = () => {
+    //     console.log('log out');
+    //     localStorage.clear();
+    //     dispatch({ type: "logout", payload: {} });
+    //     navigate('/home');
+    // }
     return (
         <div>
             {/* <aside id="logo-sidebar" className="hidden md:inline fixed top-0 left-0  w-72 h-screen overflow-y-scroll  pt-20  bg-slate-100 border-r-2 sm:translate-x-0" aria-label="Sidebar">

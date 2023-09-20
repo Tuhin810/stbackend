@@ -10,7 +10,6 @@ import { applicantSignUp } from "../../../../../utils/apis/auth/login";
 import { useNavigate } from "react-router-dom";
 import SignUpPage4 from "./SignUpPage4/SignUpPage4";
 import { confirmationResult, sendOtp } from "../../../../../utils/service/firebase.service";
-import Success from "../../../../shared/success/Success";
 import Spinner from "../../../../shared/spinner/Spinner";
 
 const ApplicantSignupForm = () => {
@@ -20,7 +19,7 @@ const ApplicantSignupForm = () => {
   const { applicantDispatch } = useContext(applicantContext);
   const { loggedIn } = useContext(globalContext);
   const [otp, setOtp] = useState<string>("");
-  const [invaidOtp, setInvalidOtp] = useState<boolean>(false);
+  const [ setInvalidOtp] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({} as ApplicantDetails);

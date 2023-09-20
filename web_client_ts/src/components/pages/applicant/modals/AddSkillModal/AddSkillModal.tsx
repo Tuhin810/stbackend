@@ -13,7 +13,7 @@ const AddSkillModal = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const handleChangeSkillName = (event: MultiValue<unknown>) => {
         const tempArray:string[] = [];
-        event.forEach((skill)=>{
+        event.forEach((skill:any)=>{
             tempArray.push(skill.value);
         })
         setSkillList(tempArray);
@@ -27,7 +27,7 @@ const AddSkillModal = () => {
     }
     return (
         <div>
-            <div id="addSkills" className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden">
+            <div id="addSkills" className="fixed inset-0 z-50  items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden">
                 <div className="relative w-full max-w-md max-h-full">
                     <div className="relative bg-white -mt-56 rounded-lg">
                         <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-xl text-sm w-8 h-8 ml-auto

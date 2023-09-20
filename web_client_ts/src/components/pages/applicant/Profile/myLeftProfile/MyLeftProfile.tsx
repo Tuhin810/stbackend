@@ -7,9 +7,11 @@ import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/my
 const MyLeftProfile = ({defaultApplicantDetails }: MyProfileDetailsProps) => {
 
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
-    const { applicantDispatch } = useContext(applicantContext);
+ 
     const { applicantloggedinDetails } = useContext(applicantContext);
 const [selectedFile, setSelectedFile] = useState<string|ArrayBuffer>()
+console.log(selectedFile);
+
     let name = "";
     if (defaultApplicantDetails.middle_name !== undefined) {
         name = defaultApplicantDetails.first_name + " " + defaultApplicantDetails.middle_name + " " + defaultApplicantDetails.last_name;

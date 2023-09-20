@@ -6,7 +6,7 @@ const Hero = ({handleLoginButton,handleSignUpButton}:IHeroProps) => {
   return (
     <div>
         
-        <div className='home mb-10 px-5 py-20 pb-32 bg-white flex flex-col md:flex-row'>
+        <div className='home mb-10 px-5 py-20 md:pb-32 bg-white flex flex-col md:flex-row'>
                         <div className='left-home'>
 
                             <h2 className='text-3xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-cyan-400'>Success Your Future</span> Starts Here.</h2>
@@ -28,7 +28,7 @@ const Hero = ({handleLoginButton,handleSignUpButton}:IHeroProps) => {
                             </div>
 
                         </div>
-                        <div className='right-home w-96'>
+                        <div className='right-home w-96 hidden md:inline'>
                         <VerticacarouselAnimation/> {/* <img  role="img" aria-label="people smiling" className="mx-auto" src="https://cdn.tuk.dev/assets/templates/weCare/hero2-left.png"  alt="people smiling"/> */}
                         </div>
                     </div>

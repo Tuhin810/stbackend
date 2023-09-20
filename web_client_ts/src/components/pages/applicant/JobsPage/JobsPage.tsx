@@ -1,6 +1,6 @@
 import { JobDescription } from "./JobDescription/JobDescription"
 // import { JobHeader } from "./JobHeader/JobHeader"
-import { JobSearchBar } from "./SearchBar/JobSearchBar"
+// import { JobSearchBar } from "./SearchBar/JobSearchBar"
 import { useContext, useEffect, useState } from "react"
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext"
 import { getApplicantInvitedJobList } from "../../../../utils/apis/applicant/Applicant"
@@ -9,7 +9,7 @@ import { Skelitoncard } from "../../../shared/Skeliton/Skelitoncard"
 import { JobCard } from "./JobList/jobCard/JobCard"
 import "./JobPage.css"
 import { SearchBox } from "../../../shared/SearchBox/SearchBox"
-import { Animated_btn } from "../../../shared/Animated_button/Animated_btn"
+// import { Animated_btn } from "../../../shared/Animated_button/Animated_btn"
 import { FilterBtn } from "./FilterButton/FilterBtn"
 
 export const JobsPage = () => {
@@ -23,8 +23,6 @@ export const JobsPage = () => {
     if (response?.status === 200) {
       const filteredList = response.data.data.filter((job: { accept: boolean; }) => job.accept === false);
       setJobDetailsList(filteredList);
-     
-      console.log(response?.data.data.accept);
     }
   }
   const handlesSet = (data: any) => {
@@ -42,18 +40,18 @@ export const JobsPage = () => {
 
   return (
     <div className="mt-20 h-screen md:pl-28 md:pr-16">
-      <div className="flex  py-7  gap-2  items-center  ">
+      <div className="flex  py-7 px-8 md:px-0  gap-2  items-center  ">
         {/* <JobHeader /> */}
 
-       <FilterBtn/>
-       <SearchBox/>
+        <FilterBtn />
+        <SearchBox />
       </div>
       <div className="flex">
-        <div className="md:w-1/2 pr-4">
+        <div className="md:w-1/2  md:pr-4 ">
           {
             (jobDetailsList.length != 0) ?
               <>
-                <div className="flex  flex-col gap-3 pr-6 h-screen overflow-y-scroll hidescroll">
+                <div className="flex  flex-col gap-3 px-5 md:px-0 md:pr-6 h-screen overflow-y-scroll hidescroll">
                   {
                     jobDetailsList.map((invitedJob, value) => {
                       const { job_details } = invitedJob
@@ -73,12 +71,12 @@ export const JobsPage = () => {
                   <Skelitoncard />
                   <Skelitoncard />
                   <Skelitoncard />
-                </div>  
-                 </>
+                </div>
+              </>
           }
         </div>
-        <div className="md:w-1/2  -mt-10 hidden md:inline">
-          
+        <div className="md:w-1/2 hidden -mt-10  md:inline">
+
           {selectedJob && (
             <JobDescription
               jobDetails={selectedJob.job_details}

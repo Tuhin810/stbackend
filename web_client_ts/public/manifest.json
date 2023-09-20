@@ -1,0 +1,41 @@
+{
+    "short_name": "StarMark",
+    "name": "StarMark",
+    "icons": [
+      {
+        "src": "144.png",
+        "sizes": "144x144",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "512.png",
+        "sizes": "any",
+        "type": "image/png",
+        "purpose": "any"
+      }
+     
+    ],
+    "id": "/index.html",
+    "start_url": "/",
+    "background_color": "#000000",
+    "display": "standalone",
+    "orientation": "any",
+    "scope": "/",
+    "theme_color": "#fff",
+    "related_applications": [
+        {
+        "platform": "play",
+        "id": "com.google.samples.apps.iosched"
+        }],
+    "description": "devfolio",
+    "serviceworker": "sw.js"
+    
+    
+  }
