@@ -15,10 +15,10 @@ export const JobDescription = ({ jobDetails ,jobId,applicantId}: JobDetailsProps
   }
   
   return (
-    <div className='px-5  -mt-10 md:mt-0 md:px-0'>
-        <div className=" overflow-y-auto h-screen scroll bg-white w-[400px] md:w-full  border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
+    <div  className='    md:mt-0 md:px-0'>
+        <div className=" overflow-y-auto  h-screen scroll bg-white w-[99%] md:w-full  border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
             <div className="sticky top-0 z-10  w-full  bg-white h-44 shadow-lg border-b-2  px-8 py-3 ">
-                <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">{jobDetails.job_title}</div>
+                <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline pt-2 md:pt-0">{jobDetails.job_title}</div>
                 <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
                 {/* <div className=""><Ratings/></div> */}
                 <div className="">Kolkata, West Bengal</div>
@@ -143,11 +143,12 @@ export const JobDescription = ({ jobDetails ,jobId,applicantId}: JobDetailsProps
             </div>
           </div>
           {/* Qualifications */}
-          <div className="py-5 px-3">
+          <div className="py-5 px-3 ">
 
             <div className="text-lg font-semibold mb-2 ">Qualifications</div>
             <p className="text-gray-800">{jobDetails?.qualification}</p>
           </div>
+          <div className="md:hidden my-20">&nbsp;</div>
         </div>
 
         {/* Description part ends*/}
