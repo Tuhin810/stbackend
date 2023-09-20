@@ -5,7 +5,7 @@ import "../JobPage.css"
 import { SuccesModal } from "../jobAppliedSucces/SuccesModal";
 import Chip from "../../../../shared/chip/Chip";
 
-export const JobDescription = ({ jobDetails, jobId, applicantId }: JobDetailsProps) => {
+export const JobDescription = ({ jobDetails ,jobId,applicantId}: JobDetailsProps  ) => {
   const handleApplyJob = async () => {
     const response = await applyJob(jobId!, applicantId!);
     if (response?.status === 200) {
@@ -13,31 +13,31 @@ export const JobDescription = ({ jobDetails, jobId, applicantId }: JobDetailsPro
       showModal("success")
     }
   }
-
+  
   return (
-    <div className='md:mt-0 md:px-0'>
-      <div className=" overflow-y-auto h-screen scroll w-[400px] md:w-full    hidescroll ">
-        <div className="sticky top-0 z-10 w-full border-2 mb-2 rounded-lg drop-shadow-md bg-white h-44 shadow-lg px-8 py-3 ">
-          <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline">{jobDetails.job_title}</div>
-          <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
-          {/* <div className=""><Ratings/></div> */}
-          <div className="">Kolkata, West Bengal</div>
-          <div className="">₹{jobDetails.min_salary} - ₹{jobDetails.max_salary}</div>
-          <div className="flex gap-4 mt-2 ">
-            <button onClick={handleApplyJob} className="flex gap-1 items-center  bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 text-white rounded-lg py-2 px-4 ">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" className="bi bi-check-lg" viewBox="0 0 16 16">
-                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
-              </svg>Accept</button>
-            <button className="flex gap-1 items-center bg-gradient-to-r from-gray-600 to-gray-800 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-900  text-white rounded-lg py-2 px-4 ">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-              </svg>Ignore</button>
-          </div>
-        </div>
+    <div  className=' z-50   md:mt-0 md:px-0'>
+        <div className=" overflow-y-auto  h-screen scroll bg-white w-[99%] md:w-full  border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
+            <div className="sticky top-0 z-10  w-full  bg-white md:h-44 h-52 shadow-lg border-b-2  px-8 py-3 ">
+                <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline pt-5 md:pt-0">{jobDetails.job_title}</div>
+                <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
+                {/* <div className=""><Ratings/></div> */}
+                <div className="">Kolkata, West Bengal</div>
+                <div className="">₹{jobDetails.min_salary} - ₹{jobDetails.max_salary}</div>
+                <div className="flex gap-4 mt-2 ">
+                    <button onClick={handleApplyJob} className="flex gap-1 items-center  bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 text-white rounded-lg py-2 px-4 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" className="bi bi-check-lg" viewBox="0 0 16 16">
+  <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+</svg>Accept</button>
+                    <button className="flex gap-1 items-center bg-gradient-to-r from-gray-600 to-gray-800 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-900  text-white rounded-lg py-2 px-4 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>Reject</button>
+                </div>
+            </div>
 
 
         {/* Job Description */}
-        <div className="description min-h-3/4 px-5 border-2 mb-2 rounded-lg drop-shadow-md bg-white mt-5">
+        <div className="description  h-3/4  px-5 ">
           {/* Job heading starts*/}
           <div className="heading pt-3">
             <div className="text-2xl text-gray-700 font-semibold mb-2">Job details</div>
@@ -126,13 +126,17 @@ export const JobDescription = ({ jobDetails, jobId, applicantId }: JobDetailsPro
               <p className="text-gray-800">B.Sc in Computers,BCA in Computers,B.Tech/B.E. in Computers</p>
 
             </div>
+
+
+
+
             <div className="py-2 px-3 ">
 
               <div className="text-lg font-semibold mb-2 ">Skills:</div>
               <div className="flex gap-2 ">
-                {jobDetails?.mandatory_skills.map((skill, key) => {
-                  return (
-                    <Chip key={key} element={skill} />
+                {jobDetails?.mandatory_skills.map((skill,key)=>{
+                  return(
+                    <Chip key={key} element={skill}/>
                   )
                 })}
               </div>
