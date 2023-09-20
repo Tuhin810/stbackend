@@ -60,7 +60,7 @@ const ApplicantMobileNavbar = ({ show, setShow,logout }: IMobileApplicantNavbarP
                                         </div>
                                     </div>
                                     <ul className="font-extralight">
-                                        <Link className="cursor-pointer" to="/applicant/RecommendedJobs/">
+                                        <Link className="cursor-pointer" to="/applicant/RecommendedJobs/" onClick={() => setShow(!show)}>
                                             <li className=" pt-10">
                                                 <div className="flex items-center">
                                                     <div className="w-6 h-6 md:w-8 md:h-8 text-indigo-700">
@@ -70,7 +70,7 @@ const ApplicantMobileNavbar = ({ show, setShow,logout }: IMobileApplicantNavbarP
                                                 </div>
                                             </li>
                                         </Link>
-                                        <Link className="cursor-pointer" to="/applicant/profile">
+                                        <Link className="cursor-pointer" to="/applicant/profile" onClick={() => setShow(!show)}>
                                             <li className=" pt-10">
                                                 <div className="flex items-center">
                                                     <div className="w-6 h-6 md:w-8 md:h-8 text-black">
@@ -80,7 +80,7 @@ const ApplicantMobileNavbar = ({ show, setShow,logout }: IMobileApplicantNavbarP
                                                 </div>
                                             </li>
                                         </Link>
-                                        <Link className="cursor-pointer" to="/">
+                                        <Link className="cursor-pointer" to="/" onClick={() => setShow(!show)}>
                                             <li className="text-black pt-8">
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center">
@@ -92,7 +92,7 @@ const ApplicantMobileNavbar = ({ show, setShow,logout }: IMobileApplicantNavbarP
                                                 </div>
                                             </li>
                                         </Link>
-                                        <Link className="cursor-pointer" to="/">
+                                        <Link className="cursor-pointer" to="/" onClick={() => setShow(!show)}>
                                             <li className="text-black pt-8">
                                                 <div className="flex items-center">
                                                     <div className="w-6 h-6 md:w-8 md:h-8 text-black">

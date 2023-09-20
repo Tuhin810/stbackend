@@ -1,20 +1,21 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { logo } from '../../../../assets/images';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { useNavigate } from "react-router-dom";
+import SideBar from '../sidebar/SideBar';
 const RecruiterNavbar = () => {
-
+  const [show,setShow]=useState<boolean>(true);
   const { recruiterDetails } = useContext(recruiterContext).recruiterloggedinDetails;
   const { company_details } = recruiterDetails;
   const { dispatch } = useContext(recruiterContext);
-  useEffect(() => {
-    console.log(company_details);
-  }, [])
+  
   const navigate = useNavigate();
 
+  const handleSidebar = () =>{
+    setShow(!show);
+  }
 
   const logout = () => {
-    console.log('log out');
     localStorage.clear();
     dispatch({ type: "logout", payload: {} });
     navigate('/home');
@@ -27,7 +28,7 @@ const RecruiterNavbar = () => {
             <img src={logo} className="h-10" alt="Logo" />
           </a>
         </div>
-        <button className="block sm:hidden ml-auto pe-6 relative flex-shrink-0 rounded-full">
+        <button className="block md:hidden ml-auto pe-6 relative flex-shrink-0 rounded-full" onClick={handleSidebar}>
           <span className="sr-only">Menu</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
@@ -58,8 +59,6 @@ const RecruiterNavbar = () => {
               </svg>
             </button>
             <button onClick={logout} className="relative p-2 hidden  gap-2 md:inline text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
-              
-
               <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
@@ -67,6 +66,7 @@ const RecruiterNavbar = () => {
           </div>
         </div>
       </header>
+      <SideBar show={show} logout={logout}/>
     </div>
   );
 }

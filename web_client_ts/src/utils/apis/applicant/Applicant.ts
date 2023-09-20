@@ -30,6 +30,11 @@ export const getApplicantInvitedJobList =async (applicantId:string) => {
     return response;
 }
 
+export const getApplicantAppliedJobList =async (applicantId:string) => {
+    const response = await Get(`applicant/getApplicantAcceptedJobList/${applicantId}`,header);
+    return response;
+}
+
 export const getApplicantProfilePrivacy =async (applicantId:string) => {
     const response = await Get(`applicant/getApplicantProfilePrivacy/${applicantId}`,header);
     return response;
