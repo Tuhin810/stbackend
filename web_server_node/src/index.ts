@@ -13,16 +13,13 @@ const app: Express = express();
 const port = process.env.PORT!;
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://192.168.1.52:5173/",
-  "http://starmarks.in.s3-website.ap-south-1.amazonaws.com/"];
+  "http://localhost:5173", "http://192.168.1.31:5173"];
 
 const options: cors.CorsOptions = {
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+  origin: allowedOrigins
 };
 
-app.use(cors());
+app.use(cors(options));
 app.use(json());
 app.use([ApplicantRouter, authRecruiterRouter, companyRouter, jobRouter]);
 

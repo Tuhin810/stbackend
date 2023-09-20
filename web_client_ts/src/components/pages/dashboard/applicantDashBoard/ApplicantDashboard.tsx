@@ -4,6 +4,7 @@ import { applicantContext } from '../../../../context/applicantDetails/Applicant
 // import { globalContext } from '../../../context/GlobalDetails/GlobalContext';
 import { getuserDetails } from '../../../../utils/commonFunctions/GetuserDetails';
 import ApplicantNavbar from '../../applicant/appplicantNavbar/ApplicantNavbar';
+import InvitedAppliedJobListState from '../../../../context/invitedAppliedJobDetailsList/InvitedAcceptedJobDetailsState';
 const ApplicantDashboard = () => {
     const { applicantDispatch } = useContext(applicantContext);
 
@@ -13,8 +14,10 @@ const ApplicantDashboard = () => {
     }, [])
     return (
         <div>
-            <ApplicantNavbar />
+            <InvitedAppliedJobListState>
+                <ApplicantNavbar />
                 <Outlet />
+            </InvitedAppliedJobListState>
         </div>
     )
 }

@@ -38,7 +38,7 @@ export const updateApplicantQualification = async (applicantId: string, applican
 }
 
 export const updateApplicantSkill = async (applicantId: string, skillList: string[]) => {
-    const response = await ApplicantModel.updateOne(
+    await ApplicantModel.updateOne(
         { _id: applicantId },
         { $push: { skills: { $each: skillList } } }
     )
@@ -48,7 +48,7 @@ export const updateApplicantSkill = async (applicantId: string, skillList: strin
 }
 
 export const deleteApplicantSkill = async (applicantId: string, skill: string) => {
-    const response = await ApplicantModel.deleteOne(
+    await ApplicantModel.deleteOne(
         { _id: applicantId },
         { $set: { skills: skill } },
     )
@@ -208,8 +208,7 @@ export const addPreferredJob = async (applicantPreferredJob: ApplicantPreferredJ
     return false;
 }
 
-
 export const getApplicantAcceptedJobListService = async (applicantId: string) => {
-    const response = (await MatchedApplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());
+    const response = await MatchedApplicantModel.find({ applicantId: applicantId, accept: true }).lean().populate("job_details").exec();
     return response;
 }
