@@ -4,9 +4,7 @@ const StepProgressBar = ({
     steps,
     currentStep,
     completedStep,
-    disableNavigation,
-    handleStepClicked
-}:StepProgressBarProps) => {
+    disableNavigation}:StepProgressBarProps) => {
     const isStepCurrent = (index: number) => index + 1 === currentStep 
     const isStepCompleted = (index: number) => index + 1 !== currentStep && completedStep >= index + 1
     const isStepNavigable = (index: number) => completedStep >= index

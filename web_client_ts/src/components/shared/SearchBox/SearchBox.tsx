@@ -2,7 +2,7 @@ import "./SearchBox.css"
 export const SearchBox = () => {
   return (
 <>
-<div className="search-box ">
+<div className="search-box hidden md:inline ">
      <button className="btn-search py-2 ">
        <img className="h-7 w-7 ml-3" src="https://cdn-icons-png.flaticon.com/128/9135/9135995.png" alt="" />
     </button>

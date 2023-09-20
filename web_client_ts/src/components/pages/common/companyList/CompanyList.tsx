@@ -1,7 +1,7 @@
 
 const CompanyList = () => {
     return (
-        <div className="2xl:px-20 md:px-10 2xl:mx-auto 2xl:container bg-white py-16">
+        <div className="2xl:px-20 md:px-10 2xl:mx-auto 2xl:container bg-white py-10">
             <div className="md:pt-12 py-8 px-4">
                 <div className="flex flex-col items-center justify-center">
                     <h1 className="lg:text-5xl md:text-4xl text-2xl font-bold leading-10 text-gray-800">Our<span className="text-indigo-700"> Trusted</span> Partners</h1>

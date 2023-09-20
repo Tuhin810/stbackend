@@ -6,7 +6,7 @@ import { getJobsByRecruiter } from '../../../../utils/apis/recruiter/recruiter';
 import { JobDetailsListContext } from '../../../../context/jobDetails/JobDetailsContext';
 import BrodcastModal from '../brodcastModal/BrodcastModal';
 import NotFound from '../../../shared/notfound/NotFound';
-import { brodcastJob } from '../../../../utils/apis/Job/jobpost';
+// import { brodcastJob } from '../../../../utils/apis/Job/jobpost';
 import './PostedJobList.css';
 import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 
