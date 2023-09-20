@@ -1,35 +1,15 @@
 import "./SearchBox.css"
 export const SearchBox = () => {
   return (
-<>
-<div className="search-box hidden md:inline ">
-     <button className="btn-search py-2 ">
-       <img className="h-7 w-7 ml-3" src="https://cdn-icons-png.flaticon.com/128/9135/9135995.png" alt="" />
-    </button>
-    <input type="text" className="border-2  input-search focus:rounded-xl focus:bg-white focus:shadow-lg" placeholder="Type to Search..."/>
-  </div>
-
-
-{/* <footer>
-  <p>
-		Created with <i className="fa fa-heart"></i> by
-		<a target="_blank" href="https://codepen.io/ahmadbassamemran/">Ahmad Emran</a>
-    Follow me : 
-      <a target="_blank"  href="https://www.instagram.com/ahmadbassamemran/"><i className="fab fa-instagram"></i></a>
-    <a target="_blank"  href="https://www.linkedin.com/in/ahmademarn/"><i className="fab fa-linkedin"></i></a>
-    <a target="_blank" href="https://codepen.io/ahmadbassamemran/"><i className="fab fa-codepen"></i></a> 
-        <a target="_blank" href="https://dev.to/ahmadbassamemran"><i className="fab fa-dev"></i></a> 
-             <a target="_blank" href="https://twitter.com/ahmadbassamemra"><i className="fab fa-twitter-square"></i></a> 
-	</p>
-</footer>
-
-<div className="youtubeBtn">
-  <a target="_blank" href="https://www.youtube.com/AhmadEmran?sub_confirmation=1">
-      <span>Watch on YouTube</span>
-  <i className="fab fa-youtube"></i>
-    </a>
-
-</div>  */}
-</>
-  ) 
+    <>
+      <div className="relative w-full">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg className="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+          </svg>
+        </div>
+        <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 " placeholder="Search Mockups, Logos..." required />
+      </div>
+    </>
+  )
 }

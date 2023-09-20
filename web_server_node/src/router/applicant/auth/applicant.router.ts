@@ -16,7 +16,7 @@ router.get("/applicant/getApplicantDetailsById/:id", getApplicantDetailsById);
 router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
 router.get("/applicant/getApplicantProfilePrivacy/:id", getApplicantProfilePrivacy);
 router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
-router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantAcceptedJobList);
+router.get("/applicant/getApplicantAcceptedJobList/:id", getApplicantAcceptedJobList);
 
 router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);

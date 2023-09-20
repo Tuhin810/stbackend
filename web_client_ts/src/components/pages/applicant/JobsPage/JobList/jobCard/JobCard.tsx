@@ -42,21 +42,21 @@ export const JobCard = ({ jobDetails }: JobDetailsProps) => {
             </div>
           </div>
 
-          <div className="flex gap-4 mt-2 ">
-            <div className="flex items-center  gap-1 bg-gray-200 px-2 py-1 rounded-md">
-              <p className="md:mb-1 text-sm">Vacancy <span className="px-2 text-white  py-1 text-xs rounded-full   bg-blue-400">{jobDetails.no_of_vacancy}</span> </p>
-            </div>
-            <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">
-              <p text-sm>{jobDetails.max_experience_year}y experience </p>
-
-            </div>
-
-          </div>
-
+                <div className="flex gap-4 mt-2 ">
+                <div className="flex items-center  gap-1 bg-gray-200 px-2 py-1 rounded-md">      
+                   <p className="md:mb-1 text-sm">Vacancy <span className="px-2 text-white  py-1 text-xs rounded-full   bg-blue-400">{jobDetails.no_of_vacancy}</span> </p>
+                </div>
+                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">      
+                   <p text-sm>{jobDetails.max_experience_year}y experience </p>
+                 
+                 </div>
+                
+                </div>
+                 
+            </div>  
+            
         </div>
-
       </div>
-    </div>
-
+    
   )
 }
