@@ -24,7 +24,7 @@
     ],
     "id": "/index.html",
     "start_url": "/",
-    "background_color": "#000000",
+    "background_color": "#ffff",
     "display": "standalone",
     "orientation": "any",
     "scope": "/",

@@ -11,6 +11,7 @@ import "./JobPage.css"
 import { SearchBox } from "../../../shared/SearchBox/SearchBox"
 // import { Animated_btn } from "../../../shared/Animated_button/Animated_btn"
 import { FilterBtn } from "./FilterButton/FilterBtn"
+import { hideModal, showModal } from "../../../../utils/commonFunctions/HandleModal"
 
 export const JobsPage = () => {
   const { applicantloggedinDetails } = useContext(applicantContext);
@@ -29,6 +30,7 @@ export const JobsPage = () => {
     if (data && data.job_details) {
       setSelectedJob(data);
     }
+    showModal('jobdesc')
     console.log(data);
   }
   useEffect(() => {
@@ -56,7 +58,7 @@ export const JobsPage = () => {
                     jobDetailsList.map((invitedJob, value) => {
                       const { job_details } = invitedJob
                       return (
-                        <div onClick={() => handlesSet(invitedJob)}>
+                        <div  onClick={() => handlesSet(invitedJob)} >
                           <JobCard jobDetails={job_details}
                             key={value} InvitedJob={""} jobId={""} applicantId={""} />
                         </div>
@@ -75,8 +77,13 @@ export const JobsPage = () => {
               </>
           }
         </div>
-        <div className="md:w-1/2 hidden -mt-10  md:inline">
+        <div id="jobdesc" className="md:w-1/2 -mt-10 hidden md:inline fixed md:relative top-24 md:top-0">
 
+
+          <div onClick={()=>hideModal('jobdesc')} className="md:hidden z-50 flex items-center text-sm fixed top-20 left-80 pl-1">
+            <img className="h-7 w-7" src="https://cdn.iconscout.com/icon/free/png-512/free-close-1957281-1650975.png?f=avif&w=512" alt="" />
+            
+          </div>
           {selectedJob && (
             <JobDescription
               jobDetails={selectedJob.job_details}
