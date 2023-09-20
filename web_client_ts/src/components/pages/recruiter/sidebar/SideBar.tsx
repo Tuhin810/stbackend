@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { recruiterContext } from "../../../../context/recruiterDetails/RecruiterContext";
 import { Link } from "react-router-dom";
 import "./Sidebar.css"

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { JobDetailsProps } from '../../../../../../@types/interfaces/props/JobDetailsProps'
 import Ratings from '../../../../../shared/Rating_stars/Ratings'
 

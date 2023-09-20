@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { logo } from '../../../../assets/images';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { useNavigate } from "react-router-dom";

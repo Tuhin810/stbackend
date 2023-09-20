@@ -10,6 +10,7 @@ import { SearchBox } from "../../../shared/SearchBox/SearchBox"
 import Spinner from "../../../shared/spinner/Spinner"
 import { InvitedAppliedJobDetailsListContext } from "../../../../context/invitedAppliedJobDetailsList/InvitedAcceptedJobDetailsContext"
 import RefreshButton from "./RefreshButton/RefreshButton"
+import { hideModal } from "../../../../utils/commonFunctions/HandleModal"
 
 export const JobsPage = () => {
   const [selectedJob, setSelectedJob] = useState<InvitedJob | null>(null);

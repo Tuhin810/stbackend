@@ -29,8 +29,7 @@ import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin/Rec
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Contact from "./components/pages/common/Contact_us/Contact";
-import { JobDescription } from "./components/pages/applicant/JobsPage/JobDescription/JobDescription";
-import ApplicantInvitedJobList from "./components/pages/applicant/invitedJobList/ApplicantInvitedJobList";
+
 
 const App = () => {
   const [userType$, setuserType$] = useState<string>("");
