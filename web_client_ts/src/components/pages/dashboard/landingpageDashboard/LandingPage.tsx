@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom'
-import Header from '../../shared/header/Header'
-import NavBar from '../../shared/navbar/NavBar'
+// import Header from '../../shared/header/Header'
+import NavBar from '../../../shared/navbar/NavBar'
 
 const LandingPage = () => {
     return (
         <div>
-            <Header/>
+            {/* <Header/> */}
             <NavBar/>
             <Outlet/>
         </div>

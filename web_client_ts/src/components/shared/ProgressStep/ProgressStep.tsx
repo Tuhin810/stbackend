@@ -15,7 +15,7 @@ const ProgressStep = ({currentStep}:ProgressStepProps) => {
 
   
   return (
-    <div className="mb-2">
+    <div className="mb-2 w-full">
       <StepProgressBar
         steps={steps}
         currentStep={currentStep}

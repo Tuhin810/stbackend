@@ -6,23 +6,23 @@ import { AddAditionalModal } from '../../modals/AddAditionalModal/AddAditionalMo
 const AdditonalDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
     return (
         <div>
-            <div className="w-full bg-white drop-shadow-xl rounded-3xl px-5 py-8 flex flex-col">
+            <div className="w-full bg-white drop-shadow-xl rounded-3xl px-2 md:px-5 py-8 flex flex-col">
                 <div className="deatils px-3">
                     <div className="">
                         <div className="w-full  mx-2 ">
-                        <div className='flex justify-between pr-10'>
+                        <div className='flex justify-between pr-2 sm:pr-10'>
                             <div className="heading text-xl text-black  mb-4 inline-flex items-center font-semibold">Additional <span className="font-semibold text-blue-700 mx-1">Details</span>
                             </div>
                             <button onClick={() => { showModal('updateAdditionalProfile') }}
-                                type="button" className="text-black text-xl border border-blue-600 font-small rounded-md h-8 px-2 text-center inline-flex items-center" >
+                                type="button" className="text-black text-xl font-small rounded-md h-8 px-2 text-center inline-flex items-center" >
                                 <EditIcon/>
                             </button>
                         </div>
                             <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
 
                             </div>
-                            <div className="text-gray-700">
-                                <div className="grid md:grid-cols-2 text-sm">
+                            <div className="text-gray-700 text-md">
+                                <div className="grid md:grid-cols-2 text-md">
                                     <div className="grid grid-cols-2">
                                         <div className="text-gray-800 text-md py-2 font-semibold">English Profiency</div>
                                         <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails.spoken_english}</div>

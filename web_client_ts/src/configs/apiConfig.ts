@@ -1,4 +1,4 @@
-export const mode: string = "local";
+export const mode: string = "dev";
 
 export const baseURL: string =
     (mode === "local") ?

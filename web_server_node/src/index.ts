@@ -14,7 +14,8 @@ const port = process.env.PORT!;
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://192.168.1.52:5173/"];
+  "http://192.168.1.52:5173/",
+  "http://starmarks.in.s3-website.ap-south-1.amazonaws.com/"];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,

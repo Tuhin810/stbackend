@@ -8,7 +8,7 @@ const CompanyList = () => {
                     <p className="text-base leading-normal text-center text-gray-600 mt-4 xl:w-1/2 w-10/12">We just got featured in the following magazines and it has been the most incredible journey. We work with the best fashion magazines across the world</p>
                 </div>
                 <div className="flex items-center justify-center mt-10">
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-6 w-full">
+                    <div className="grid max-h-40 overflow-y-scroll sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-6 gap-6 w-full">
                         <div className="md:w-48 w-full h-32 bg-gray-50 flex items-center justify-center">
                             <svg width={73} height={24} viewBox="0 0 73 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M70.7259 14.6675L72.751 16.0202C72.0937 16.9902 70.5216 18.6544 67.8038 18.6544C64.4286 18.6544 61.915 16.038 61.915 12.7096C61.915 9.1677 64.4553 6.76489 67.5195 6.76489C70.6016 6.76489 72.1115 9.2211 72.6 10.5471L72.8664 11.2234L64.926 14.5162C65.53 15.7087 66.4715 16.3138 67.8038 16.3138C69.136 16.3138 70.0598 15.6553 70.7259 14.6675ZM64.4997 12.5227L69.8022 10.3157C69.5091 9.57707 68.6386 9.05201 67.5995 9.05201C66.2761 9.05201 64.4375 10.2267 64.4997 12.5227Z" fill="#4B5563" />

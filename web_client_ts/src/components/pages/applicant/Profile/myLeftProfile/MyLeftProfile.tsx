@@ -1,4 +1,4 @@
-import { useContext ,useState} from 'react';
+import { useContext} from 'react';
 import copy from "copy-to-clipboard";
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
 import { mode } from '../../../../../configs/apiConfig';
@@ -7,11 +7,7 @@ import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/my
 const MyLeftProfile = ({defaultApplicantDetails }: MyProfileDetailsProps) => {
 
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
- 
     const { applicantloggedinDetails } = useContext(applicantContext);
-const [selectedFile, setSelectedFile] = useState<string|ArrayBuffer>()
-console.log(selectedFile);
-
     let name = "";
     if (defaultApplicantDetails.middle_name !== undefined) {
         name = defaultApplicantDetails.first_name + " " + defaultApplicantDetails.middle_name + " " + defaultApplicantDetails.last_name;
@@ -32,19 +28,12 @@ console.log(selectedFile);
         if (e.target.files![0]) {
           reader.readAsDataURL(e.target.files![0]);
         }
-      
         reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
           const url = readerEvent.target?.result;
-          setSelectedFile(url!);
          defaultApplicantDetails.photo=url!;
           updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!,defaultApplicantDetails)
         };
       };
-   
-
-
-
-    
     return (
         <div>
             <div className="md:w-72 m-auto max-w-sm bg-white rounded-xl drop-shadow-xl ">
@@ -52,24 +41,24 @@ console.log(selectedFile);
                     <button className='bg-transparent hover:bg-gray-50 p-3 rounded-lg' onClick={copyToClipboard}>
                         <span>
                             <svg className="w-6 h-6 text-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 15">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="m13.717 1 5.518 4.95a1.05 1.05 0 0 1 0 1.549l-5.612 5.088m-5.73-3.214v1.615a.95.95 0 0 0 1.525.845l5.108-4.251a1.1 1.1 0 0 0 0-1.646L9.418 1.685a.95.95 0 0 0-1.525.846v1.7c-3.312 0-6 2.979-6 6.654v1.329a.7.7 0 0 0 1.344.353 5.174 5.174 0 0 1 4.652-3.191l.004-.003Z" />
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.9" d="m13.717 1 5.518 4.95a1.05 1.05 0 0 1 0 1.549l-5.612 5.088m-5.73-3.214v1.615a.95.95 0 0 0 1.525.845l5.108-4.251a1.1 1.1 0 0 0 0-1.646L9.418 1.685a.95.95 0 0 0-1.525.846v1.7c-3.312 0-6 2.979-6 6.654v1.329a.7.7 0 0 0 1.344.353 5.174 5.174 0 0 1 4.652-3.191l.004-.003Z" />
                             </svg>
                         </span>
                     </button>
                 </div>
                 <div className="flex flex-col items-center pb-10">
                 <label htmlFor="file">
-                <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-[#7a7a7a] border-y-4 border-x-4 border-[#dfdfdf] "
+                <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-orange-200 border-y-4 border-x-4 border-orange-200 "
                         src={defaultApplicantDetails.photo?.toString()} />
 
                                   
                       </label>
 
-                         <input id="file" type="file"
-                          hidden
-                             onChange={convertImageToUrl}
-                         />
-                     <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
+                    <input id="file" type="file"
+                        hidden
+                        onChange={e=>convertImageToUrl(e)}
+                    />
+                    <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
                     <span className="text-sm text-gray-500 ">Visual Designer</span>
                     <div className="flex gap-2 mb-3 items-center">
                         <div className="">  <img className='h-5 w-5'
@@ -78,7 +67,7 @@ console.log(selectedFile);
                         <div className=""> <a className="text-blue-600 font-semibold text-sm mb-4" >{defaultApplicantDetails?.email}</a></div>
                     </div>
 
-                    <div className="sm:flex flex-row items-center space-x-6">
+                    <div className="flex items-center space-x-6 mt-3 sm:mt-0">
                         <svg className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer" width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="#1F2937" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>

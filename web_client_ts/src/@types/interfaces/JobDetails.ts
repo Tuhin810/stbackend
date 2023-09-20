@@ -1,27 +1,31 @@
-import { CompanyDetails } from "../CompanyDetails";
-
 export interface JobDetails{
-    _id:string,
+    _id?: string,
     posted_date: Date,
-    jobTitle: string,
-    jobType: string,
-    jobDescription: string,
+    job_title: string,
+    job_type: string,
+    job_description: string,
     no_of_vacancy: number,
-    experience_year: number
+    min_experience_year: number,
+    max_experience_year: number,
     mandatory_skills: string[],
     additonal_skills: string[],
-    no_of_applicants: number
     location: string[],
-    salary: number,
+    no_of_expery_date: number,
+    min_salary: number,
+    max_salary: number,
     currency_type: string,
-    age_limit: number,
+    company_id: string,
+    company_name: string,
+    min_age_limit: number,
+    max_age_limit: number,
     job_poster_id: string,
-    spoken_english_required: boolean,
+    spoken_english_level: string,
+    is_disabled_alllow: boolean,
     is_target_based_salary: boolean,
     duty_hours: number,
-    is_fresher_allowed: boolean,
     gender: string,
     qualification: string,
     any_charges: boolean,
-    company_id:CompanyDetails
+    no_of_matched_profiles: number
+    no_of_applicants: number
 }

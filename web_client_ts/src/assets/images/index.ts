@@ -20,6 +20,8 @@ import applicant_login from './Tablet login-amico.svg'
 import recruiter_login from './Computer login-bro.svg'
 import applicant_signup from './Sign up-amico.svg'
 import success from './success.gif'
+import company_registration from './Company-amico.svg'
+import contact_us from './Service 24_7-amico.svg'
 
 export {
 	get_find,
@@ -43,5 +45,7 @@ export {
 	applicant_login,
 	applicant_signup,
 	recruiter_login,
-	success
+	success,
+	company_registration,
+	contact_us
 };

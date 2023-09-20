@@ -6,7 +6,7 @@ function Testimonial() {
          <div className="bg-gray-50 py-20 flex flex-col items-center justify-center">
             <div className="px-10 w-11/12">
                 <h1 role="heading" tabIndex={0} className="text-6xl font-bold 2xl:leading-10 leading-0 text-center text-gray-800">
-                    Touching hundreds of lives
+                    Touching <span className="text-indigo-600">hundreds</span> of lives
                 </h1>
                 <h2 role="contentinfo" tabIndex={0} className="text-base leading-normal text-center text-gray-600 mt-5">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing

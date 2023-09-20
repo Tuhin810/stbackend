@@ -45,7 +45,7 @@ export const updateApplicantPrivacy =async (applicantId:string,applicantPrivacy:
     return response;
 }
 
-export const applyJob =async (applicantId:string,jobId:string) => {
+export const applyJob =async (jobId:string,applicantId:string) => {
     const response = await Post(`applicant/applyJob/${jobId}/${applicantId}`,{},header);
     return response;
 }

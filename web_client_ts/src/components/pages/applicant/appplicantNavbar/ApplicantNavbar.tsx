@@ -4,6 +4,7 @@ import { applicantContext } from "../../../../context/applicantDetails/Applicant
 import { ApplicantDetails } from "../../../../@types/ApplicantDetails";
 import ApplicantMobileNavbar from "./applicantMobileNavbar/ApplicantMobileNavbar";
 import ApplicantDesktopNavbar from "./applicantDesktopNavbar/ApplicantDesktopNavbar";
+import ApplicantSettingsModal from "../modals/applicantSettingsModal/ApplicantSettingsModal";
 const ApplicantNavbar = () => {
     const navigate = useNavigate();
     const [show, setShow] = useState<boolean>(false);
@@ -23,6 +24,7 @@ const ApplicantNavbar = () => {
                 {/* Mobile Navbar */}
                 <ApplicantMobileNavbar show={show} setShow={setShow} logout={logout}/>
             </div>
+            <ApplicantSettingsModal />
         </>
     );
 }

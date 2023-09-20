@@ -5,14 +5,14 @@ import { AddProfileModal } from '../../modals/AddProfileDetailModa/AddProfileMod
 const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
     return (
         <div>
-            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72 px-9 md:px-5 pt-8">
+            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72 px-2 md:px-5 pt-8">
                 <div className="deatils">
                     <div>
                         <div className="w-full ">
 
-                            <div className='flex justify-between mb-4 pr-10 pl-3'>
-                                <div className="heading text-xl text-gray-500
-                              mb-4 font-sans inline-flex  font-semibold">My <span className="text-blue-500 mx-1 ">Profile</span>
+                            <div className='flex justify-between mb-4 pr-6 sm:pr-10 pl-3'>
+                                <div className="heading text-xl text-black
+                              mb-4 font-sans inline-flex  font-semibold">My <span className="text-blue-700 mx-1 ">Profile</span>
 
                                 </div>
 

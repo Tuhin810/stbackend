@@ -20,7 +20,7 @@ const ApplicantProfile = () => {
 
     return (
         <>
-            <div className="mt-16 my-16 min-h-screen px-6">
+            <div className="mt-16 my-16 min-h-screen">
 
                 <div className="body md:flex flex-col md:flex-row gap-10 px-3 md:px-32 py-10">
                     {/* Left Side  */}

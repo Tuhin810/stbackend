@@ -18,7 +18,7 @@ function Advertisement() {
 
             <div className="invisible absolute inset-0 flex h-full w-full items-center justify-center bg-white/70 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
                 <svg className="h-w-14 w-14 cursor-pointer text-gray-800 transition-all hover:text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"></path>
                 </svg>
             </div>
         </div>

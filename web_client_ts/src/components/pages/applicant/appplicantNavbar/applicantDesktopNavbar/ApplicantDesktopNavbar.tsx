@@ -1,39 +1,32 @@
 import { Link } from 'react-router-dom'
 import { logo } from '../../../../../assets/images'
 import { IDesktopApplicantNavbarProps } from '../../../../../@types/interfaces/props/ApplicantProps/ApplicantNavbarProps'
-import ApplicantSettingsModal from '../../modals/applicantSettingsModal/ApplicantSettingsModal'
 import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
-import { useContext, useEffect } from 'react'
+import FourBoxIcon from '../../../../shared/icons/fourBoxIcon/FourBoxIcon'
+import UserIcon from '../../../../shared/icons/userIcon/UserIcon'
+import CompassIcon from '../../../../shared/icons/compassIcon/CompassIcon'
+import QuestionIcon from '../../../../shared/icons/quetionIcon/QuestionIcon'
+import LogOutIcon from '../../../../shared/icons/logoutIcon/LogOutIcon'
+import SettingsIcon from '../../../../shared/icons/settingsIcons/SettingsIcon'
+import { useContext } from 'react'
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext'
+import ThreeLines from '../../../../shared/icons/threeLines/ThreeLines'
 
 const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplicantNavbarProps) => {
-    const { applicantloggedinDetails } = useContext(applicantContext);
-  const { applicantDetails } = applicantloggedinDetails;
-
-    useEffect(() => {
-     console.log(profile);
-     
-    }, [])
-    
+    const {applicantDetails} = useContext(applicantContext).applicantloggedinDetails;
     return (
         <div>
-            <nav className="w-full px-10 fixed z-30 top-0 bg-white hidden xl:block drop-shadow-lg">
+            <nav className="w-full px-10 fixed z-30 top-0 bg-white hidden md:block drop-shadow-lg">
                 <div className="py-7 px-6 h-20 flex justify-between items-center lg:items-stretch mx-auto">
                     <div className="flex items-center justify-around w-4/5">
-                        <div className="mr-10 flex items-center">
+                        <div className="mr-10">
                             <img src={logo} className="h-10" />
                         </div>
-                        <ul className="hidden xl:flex items-center h-full">
+                        <ul className="hidden md:flex items-center h-full">
                             <Link to="/applicant/RecommendedJobs/">
                                 <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mx-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <rect x={4} y={4} width={6} height={6} rx={1} />
-                                            <rect x={14} y={4} width={6} height={6} rx={1} />
-                                            <rect x={4} y={14} width={6} height={6} rx={1} />
-                                            <rect x={14} y={14} width={6} height={6} rx={1} />
-                                        </svg>
+                                        <FourBoxIcon />
                                     </span>
                                     Job Dashboard
                                 </li>
@@ -41,32 +34,19 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                             <Link to="/applicant/profile">
                                 <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <circle cx={12} cy={7} r={4} />
-                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                        </svg>
+                                        <UserIcon />
                                     </span>
                                     My Profile
                                 </li>
                             </Link>
                             <Link to="/applicant/performance" className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
                                 <span className="mr-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-compass" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <polyline points="8 16 10 10 16 8 14 14 8 16" />
-                                        <circle cx={12} cy={12} r={9} />
-                                    </svg>
+                                    <CompassIcon />
                                 </span>
                                 Performance
                             </Link>
                             <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black tracking-normal transition duration-150 ease-in-out">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon mr-2 icon-tabler icon-tabler-help" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <circle cx={12} cy={12} r={9} />
-                                    <line x1={12} y1={17} x2={12} y2="17.01" />
-                                    <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
-                                </svg>
+                                <QuestionIcon />
                                 Fraud
                             </li>
                         </ul>
@@ -80,10 +60,10 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             <a href="#" className="flex w-56 items-center py-3 px-2 mt-1 
                                         text-sm text-gray-600 transition-colors  duration-300 transform bg-gray-50  hover:bg-gray-100 rounded-md">
                                                 <img className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
-                                                    src={applicantDetails?.photo} alt="jane avatar" />
+                                                    src={applicantDetails.photo!.toString()} alt="jane avatar" />
                                                 <div className="mx-1">
-                                                    <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">{applicantDetails.first_name}</h1>
-                                                    <p className="text-sm text-gray-500 dark-text-gray-400">{applicantDetails.email}</p>
+                                                    <h1 className="text-sm font-semibold text-gray-700 dark-text-gray-200">{applicantDetails.first_name} {applicantDetails.last_name}</h1>
+                                                    <p className="text-sm text-gray-500 dark-text-gray-400">{applicantDetails.country_code} {applicantDetails.phone}</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -91,48 +71,29 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                             <div className="px-10 border-2 w-full my-2"></div>
                                         </li>
                                         <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                                            <div className="flex items-center  px-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                                    <circle cx={12} cy={7} r={4} />
-                                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                                </svg>
+                                            <div className="flex items-center">
+                                                <UserIcon />
                                                 <span className="ml-2">My Profile</span>
                                             </div>
                                         </li>
-                                        <li className="cursor-pointer  px-2 text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-help" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" />
-                                                <circle cx={12} cy={12} r={9} />
-                                                <line x1={12} y1={17} x2={12} y2="17.01" />
-                                                <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
-                                            </svg>
+                                        <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
+                                            <QuestionIcon />
                                             <span className="ml-2">Help Center</span>
                                         </li>
-                                        <li className="cursor-pointer  px-2 text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center" onClick={() => showModal("applicantSettings")}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-settings" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" />
-                                                <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                                <circle cx={12} cy={12} r={3} />
-                                            </svg>
+                                        <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center" onClick={() => showModal("applicantSettings")}>
+                                            <SettingsIcon />
                                             <span className="ml-2">Settings</span>
                                         </li>
-                                        <li className="cursor-pointer  px-2 transition-colors  duration-300 transform rounded-md   hover:bg-red-100 text-red-400 font-semibold text-sm leading-3 tracking-normal mt-2 py-3 hover:text-red-500 flex items-center " onClick={logout}>
-                                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
-                                            </svg>
+                                        <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center" onClick={logout}>
+                                            <LogOutIcon />
                                             <span className="ml-2">Log Out</span>
                                         </li>
                                     </ul>
                                 )}
-                                <div className="px-2  border h-10 rounded-full flex items-center gap-2 hover:bg-gray-100 ">
-                                    <img className="rounded-full h-8 w-8   "
-                                        src={applicantDetails?.photo} alt="profile_pic" />
-                                        <div className="transition-all text-black  duration-500 focus:-rotate-180">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="tr" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                                    </svg></div>
+                                <div className="px-2  border h-10 rounded-full flex items-center gap-2 hover:bg-gray-50">
+                                    <img className="rounded-full h-8 w-8 object-cover  "
+                                        src={applicantDetails.photo!.toString()} alt="logo" />
+                                        <ThreeLines/>
                                 </div>
 
                             </div>
@@ -140,7 +101,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                     </div>
                 </div>
             </nav>
-            <ApplicantSettingsModal />
+            
         </div>
     )
 }

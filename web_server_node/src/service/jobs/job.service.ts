@@ -61,7 +61,7 @@ export const matchedJobApplicants = async (jobId: string) => {
                     { skills: { $all: jobDetails.mandatory_skills } }
                 ]
             }
-            applicantList= await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
+            applicantList = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
             console.log("list", applicantList);
         }
         await sendInviteApplicantList(applicantList, jobDetails._id!);
@@ -85,17 +85,11 @@ const updateMatchedApplicantNumbers = async (jobId: string) => {
     }
 }
 
-const getMatchedApplicantDetails =async (jobId:string) => {
-    const matchedApplicantDetails=await MatchedApplicantModel.find({jobId:jobId}).lean().populate("applicant_details").exec();
+const getMatchedApplicantDetails = async (jobId: string) => {
+    const matchedApplicantDetails = await MatchedApplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
     return matchedApplicantDetails;
 }
 
-export const getJobDetailsByJobId = async (jobId: string) => {
-    console.log(jobId);
-    const response = await JobModel.findById(jobId);
-    console.log(response);
-    return response;
-}
 export const deleteJobDetailsByJobId = async (jobId: string) => {
     const response = await JobModel.findByIdAndDelete(jobId)
     return response;
@@ -103,5 +97,15 @@ export const deleteJobDetailsByJobId = async (jobId: string) => {
 
 export const searchApplicantByPreferredJobName = async (job: string) => {
     const response = await ApplicantPreferreJobModel.find({ preferred_job: job }).lean().populate("applicant_details").exec();
+    return response;
+}
+
+export const getJobDetailsByJobId = async (jobId: string) => {
+    const jobDetails = await JobModel.findById(jobId);
+    return jobDetails;
+}
+
+export const getApplicantDetailsByJob = async (jobId: string) => {
+    const response = await MatchedApplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
     return response;
 }

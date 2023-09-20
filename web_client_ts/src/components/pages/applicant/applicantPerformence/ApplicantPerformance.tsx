@@ -36,6 +36,9 @@ export const ApplicantPerformance = () => {
             <div
               className="mr-6 w-full md:w-1/2  py-2 flex-shrink-0 flex flex-col bg-white
 				dark-bg-gray-600 rounded-lg">
+
+
+
               <h3
                 className="flex items-center pt-1 pb-1 px-8 text-lg font-semibold
 					capitalize dark-text-gray-300">
@@ -250,6 +253,22 @@ export const ApplicantPerformance = () => {
             <span>Bill your Students</span>
 
           </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </aside>
 
       </div>

@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { MultiValue, SingleValue } from 'react-select';
 import { ISuggestion } from '../../../../@types/interfaces/Suggestion';
-// import { pages } from '../../../../constants/navOptions';
+import { AutoCompleteProps } from '../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps';
 
 const PostJob = () => {
     const navigate = useNavigate();
@@ -121,7 +121,7 @@ const PostJob = () => {
 
     //handle changes
     
-    const handleChangeMandatorySkillList = (event: MultiValue<unknown>) => {
+    const handleChangeMandatorySkillList = (event: MultiValue<AutoCompleteProps>) => {
         const tempArray:string[] = [];
         event.forEach((skill:any)=>{
             tempArray.push(skill.value);
@@ -129,7 +129,7 @@ const PostJob = () => {
         setJobDetails(Object.assign({}, jobDetails, {["mandatory_skills"]: tempArray}))
     }
 
-    const handleChangeAdditionalSkillList = (event: MultiValue<unknown>) => {
+    const handleChangeAdditionalSkillList = (event: MultiValue<AutoCompleteProps>) => {
         const tempArray:string[] = [];
         event.forEach((skill:any)=>{
             tempArray.push(skill.value);
