@@ -42,13 +42,19 @@ const Item = ({ title, children }:any) => {
 const FrequentlyAskedQuestion = () => {
   return (
     <div>
-      {/* <div className="px-2 md:px-56">
-        <div className=" head-text font-sans text-gray-700 text-3xl font-bold mx-auto flex justify-center my-5 Class
-Properties
- ">
-          Frequently Asked Questions
+      <div className="px-2 md:px-56 mb-20">
+       <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+          
+          <div className="flex justify-center font-sans text-3xl md:text-5xl font-bold leading-none tracking-tight text-gray-800 mb-1">Frequently Asked</div>
+          <div className="flex justify-center font-sans text-3xl md:text-5xl font-bold leading-none tracking-tight text-blue-700">Questions</div>
+          <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-700 sm:text-4xl md:mx-auto">
+               
+          </h2>
+          <p className="text-sm text-gray-700 md:text-lg ">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque rem aperiam, eaque ipsa quae.
+          </p>
         </div>
-
         <div className="m-2 space-y-2">
           <div
             className="group flex flex-col gap-2 rounded-lg bg-blue-100  p-5 text-white"
@@ -127,9 +133,9 @@ Properties
               commodo consequat.
             </div>
           </div>
-        </div></div> */}
+        </div></div>
 
-
+{/* 
 
 <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 ">
       <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
@@ -138,9 +144,7 @@ Properties
           <div className="flex justify-center font-sans text-3xl md:text-5xl font-bold leading-none tracking-tight text-gray-800 mb-1">Frequently Asked</div>
           <div className="flex justify-center font-sans text-3xl md:text-5xl font-bold leading-none tracking-tight text-blue-700">Questions</div>
           <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-700 sm:text-4xl md:mx-auto">
-           
-             
-          
+               
           </h2>
           <p className="text-sm text-gray-700 md:text-lg ">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -163,7 +167,7 @@ Properties
          
         </div>
       </div>
-    </div>
+    </div> */}
 
     </div>
   )
