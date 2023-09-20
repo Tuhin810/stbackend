@@ -5,13 +5,14 @@ import { applicantContext } from "../../../../../context/applicantDetails/Applic
 import { updateApplicantSkills } from "../../../../../utils/apis/applicant/Applicant";
 import { skillSuggestion } from "../../../../../constants/skillSuggestion";
 import makeAnimated from 'react-select/animated';
+import { AutoCompleteProps } from "../../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps";
 const animatedComponents = makeAnimated();
 
 const AddSkillModal = () => {
     const [skillList, setSkillList] = useState<string[]>([]);
     const { applicantDispatch } = useContext(applicantContext);
     const { applicantloggedinDetails } = useContext(applicantContext);
-    const handleChangeSkillName = (event: MultiValue<unknown>) => {
+    const handleChangeSkillName = (event: MultiValue<AutoCompleteProps>) => {
         const tempArray:string[] = [];
         event.forEach((skill:any)=>{
             tempArray.push(skill.value);
@@ -36,7 +37,7 @@ const AddSkillModal = () => {
                             data-modal-hide="authentication-modal"
                             onClick={() => { hideModal("addSkills") }}>
                             <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span className="sr-only">Close modal</span>
                         </button>
@@ -48,13 +49,13 @@ const AddSkillModal = () => {
                                     closeMenuOnSelect={false}
                                     isMulti
                                     components={animatedComponents}
-                                    onChange={e=>handleChangeSkillName(e)}
+                                    onChange={e=>handleChangeSkillName(e as MultiValue<AutoCompleteProps>)}
                                 />
                                 <button className="w-full inline-flex items-center justify-center text-white
                                  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center " onClick={handleAddSkill}>
                                     Add Skills
                                     <svg className="w-4 h-4 ms-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.153 15 19 8l-4.847-7H1l4.848 7L1 15h13.153Z" />
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.153 15 19 8l-4.847-7H1l4.848 7L1 15h13.153Z" />
                                     </svg>
                                 </button>
 

@@ -21,20 +21,13 @@ const NavBar = () => {
     useEffect(() => {
         window.addEventListener("scroll", () => {
             const navbar = document.querySelector(".navbar");
-            const logo = document.getElementById("logo");
             const items = document.getElementById("items");
             if (window.scrollY > 100) {
-                navbar!.classList.remove("hidden")
-                logo!.classList.remove("hidden")
                 navbar!.classList.add("shadow");
                 items!.classList.remove("justify-end");
-                items!.classList.add("justify-between");
                 console.log(navbar);
 
             } else {
-                navbar!.classList.add("hidden")
-                logo!.classList.add("hidden");
-                items!.classList.remove("justify-between");
                 items!.classList.add("justify-end");
                 navbar!.classList.remove("shadow");
             }
@@ -42,12 +35,10 @@ const NavBar = () => {
     })
 
     return (
-
         <>
-
-            <nav className="navbar hidden bg-white sticky py-2 w-full z-20 top-0 left-0 border-gray-200">
-                <div className="max-w-screen-xl flex flex-wrap justify-end mx-auto p-4" id='items'>
-                    <a href="https://flowbite.com/" className="flex items-center hidden" id="logo">
+            <nav className="navbar bg-white sticky py-1 sm:py-2 w-full z-20 top-0 left-0 border-gray-200">
+                <div className="max-w-screen-xl flex flex-wrap justify-center mx-auto p-4 sm:justify-between" id='items'>
+                    <a href="https://flowbite.com/" className="flex items-center " id="logo">
                         <img src={logo} className="h-10 mr-3" alt="Flowbite Logo" />
                     </a>
                     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
@@ -70,7 +61,7 @@ const NavBar = () => {
                                 <a href="#" className="inline-flex items-center justify-center  text-base font-medium text-center text-red-600 " onClick={handleSignUpButton}>
                                     Register
                                     <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                                     </svg>
                                 </a>
                             </li>

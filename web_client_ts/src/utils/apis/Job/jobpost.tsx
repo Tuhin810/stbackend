@@ -16,3 +16,8 @@ export const brodcastJob =async (jobId:string) => {
     const response = await Post(`job/brodcast/${jobId}`,{},header);
     return response;
 }
+
+export const getMatchedApplicantList =async (jobId:string) => {
+    const response = await Get(`jobs/getMatchedProfileListByJobId/${jobId}`,header);
+    return response;
+}

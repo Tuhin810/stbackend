@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
-import { getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId } from "../../service/jobs/job.service";
+import { getApplicantDetailsByJob, getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId } from "../../service/jobs/job.service";
 import ApplicantModel from "../../model/applicant/ApplicantSchema";
 import mongoose from "mongoose";
 
@@ -103,21 +103,50 @@ export const getJobDetails = async (req: Request, res: Response) => {
         try {
             const response = await getJobDetailsByJobId(jobId);
             if (response) {
-                res.status(200).send({
+                res.status(200).json({
                     success: true,
                     message: "Job Details fetched successfully",
-                    jobDetails: response
+                    data: response
                 })
             }
         }
-        catch (e) {
-            res.status(500).send({
+        catch (error) {
+            res.status(500).json({
                 success: false,
-                message: "internal problem",
-                e
+                message: "error in server",
+                error
             })
         }
     }
 
+}
+
+export const matchedApplicantDetailsList = async (req: Request, res: Response) => {
+    const jobId: string = req.params.jobId;
+    if (jobId === undefined) {
+        res.status(422).send({
+            success: false,
+            message: "job id is bad"
+        })
+    }
+    else {
+        try {
+            const response = await getApplicantDetailsByJob(jobId);
+            if (response) {
+                res.status(200).json({
+                    success: true,
+                    message: "Applicant Details fetched successfully",
+                    data: response
+                })
+            }
+        }
+        catch (error) {
+            res.status(500).json({
+                success: false,
+                message: "error in server",
+                error
+            })
+        }
+    }
 }
 

@@ -1,8 +1,9 @@
-import Select from 'react-select'
+import Select, { MultiValue } from 'react-select'
 import { JobPostPage2Props } from '../../../../../@types/interfaces/props/JobPostPageProps/JobPostPage2Props';
 import { skillSuggestion } from '../../../../../constants/skillSuggestion';
 import makeAnimated from 'react-select/animated';
 import { DegreeSuggestion } from '../../../../../constants/degreesSuggestion';
+import { AutoCompleteProps } from '../../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps';
 const animatedComponents = makeAnimated();
 
 const PostJobPage2 = ({ handleChangeMandatorySkillList, handleChangeAdditionalSkillList, handleChangeQualification }: JobPostPage2Props) => {
@@ -21,7 +22,7 @@ const PostJobPage2 = ({ handleChangeMandatorySkillList, handleChangeAdditionalSk
                     closeMenuOnSelect={false}
                     isMulti
                     components={animatedComponents}
-                    onChange={e=>handleChangeMandatorySkillList(e)}
+                    onChange={e=>handleChangeMandatorySkillList(e as MultiValue<AutoCompleteProps>)}
                     />
 
             </div>
@@ -32,7 +33,7 @@ const PostJobPage2 = ({ handleChangeMandatorySkillList, handleChangeAdditionalSk
                     closeMenuOnSelect={false}
                     isMulti
                     components={animatedComponents}
-                    onChange={e=>handleChangeAdditionalSkillList(e)}
+                    onChange={e=>handleChangeAdditionalSkillList(e as MultiValue<AutoCompleteProps>)}
                     />
             </div>
             <div className="mb-4">

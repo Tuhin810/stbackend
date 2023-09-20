@@ -1,7 +1,6 @@
 import { ApplicantEducation } from "./interfaces/ApplicantEducation"
 
 export interface ApplicantDetails {
-    applicantDetails: any
     is_fresher: boolean
     _id?: string,
     firebase_id?: string,

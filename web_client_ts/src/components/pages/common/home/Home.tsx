@@ -30,12 +30,9 @@ const Home = () => {
                     <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} />
                     <Stats/>
                     <Features/>
-                    {/* <HowWorks /> */}
                     <Testimonial />
                     <CustomerReview/>
                     <CompanyList />
-                    {/* <ServicesList /> */}
-                    {/* <Advertisement /> */}
                     <FrequentlyAskedQuestion />
 
                     <div className="my-5"></div>

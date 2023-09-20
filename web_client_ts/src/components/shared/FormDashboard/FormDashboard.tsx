@@ -13,7 +13,7 @@ const FormDashboard = ({image,child}:FormDashBoardProps) => {
                             
                         </div>
 
-                        <div className="w-1/2 bg-zinc-50">
+                        <div className="w-full md:w-1/2 bg-zinc-50">
                             
                         {child}
                         </div>

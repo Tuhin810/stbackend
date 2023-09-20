@@ -2,7 +2,7 @@
 const Features =()=> {
 
   return (
-    <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }}>
+    <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }} data-aos="fade-up">
       {/* Code block starts */}
         <section className="w-full mx-auto bg-white pt-16">
           <div>

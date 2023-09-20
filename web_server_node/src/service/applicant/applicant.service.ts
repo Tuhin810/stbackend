@@ -163,10 +163,13 @@ export const applyjob = async (jobId: string, applicantId: string) => {
             { jobId: jobId }
         ]
     }
+    const result = await MatchedApplicantModel.findOne(queryToFindApplicantAndJob);
+    console.log("result", result);
     const response = await MatchedApplicantModel.updateOne(
         queryToFindApplicantAndJob,
         { $set: { accept: true } }
     )
+    console.log(response);
     if (response.acknowledged) {
         await setAppliedJobNumber(jobId);
     }
@@ -180,6 +183,7 @@ const setAppliedJobNumber = async (jobId: string) => {
             { accept: true }
         ]
     })
+    console.log(no_of_applicants);
     await JobModel.updateOne(
         { _id: jobId },
         {
