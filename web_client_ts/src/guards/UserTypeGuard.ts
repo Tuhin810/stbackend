@@ -6,6 +6,6 @@ export const getUserType = ():string => {
     return "home";
 }
 
-export const guard = (userType:string):boolean =>{
-    return window.location.href.indexOf(userType)===-1;
+export const guard = ():boolean =>{
+    return window.location.href.indexOf(getUserType())===-1;
 }

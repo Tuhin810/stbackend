@@ -63,61 +63,81 @@ export const getApplicantInvitedJobListService = async (applicantId: string) => 
 }
 
 export const updateApplicantProfileDetailsById = async (applicantId: string, applicantProfile: ApplicantDetails) => {
-    await ApplicantModel.updateOne(
-        { _id: applicantId },
-        {
-            $set:
+    try {
+        await ApplicantModel.updateOne(
+            { _id: applicantId },
             {
-                first_name: applicantProfile.first_name,
-                middle_name: applicantProfile.middle_name,
-                last_name: applicantProfile.last_name,
-                photo: applicantProfile.photo,
-                current_address: applicantProfile.current_address,
-                permanent_address: applicantProfile.permanent_address,
-                gender: applicantProfile.gender,
-                birth_year: applicantProfile.birth_year,
-                profile_bio: applicantProfile.profile_bio,
-                phone: applicantProfile.phone,
-                state: applicantProfile.state,
-                country: applicantProfile.country,
-                pin: applicantProfile.state,
-                age: applicantProfile.age,
-                experience_year: applicantProfile.experience_year,
-                spoken_english: applicantProfile.spoken_english,
-                min_expected_salary: applicantProfile.min_expected_salary,
-                min_duty_hours: applicantProfile.min_duty_hours,
-                native_language: applicantProfile.min_duty_hours,
-                is_disabled: applicantProfile.is_disabled,
+                $set:
+                {
+                    first_name: applicantProfile.first_name,
+                    middle_name: applicantProfile.middle_name,
+                    last_name: applicantProfile.last_name,
+                    photo: applicantProfile.photo,
+                    current_address: applicantProfile.current_address,
+                    permanent_address: applicantProfile.permanent_address,
+                    gender: applicantProfile.gender,
+                    birth_year: applicantProfile.birth_year,
+                    profile_bio: applicantProfile.profile_bio,
+                    phone: applicantProfile.phone,
+                    state: applicantProfile.state,
+                    country: applicantProfile.country,
+                    pin: applicantProfile.state,
+                    age: applicantProfile.age,
+                    experience_year: applicantProfile.experience_year,
+                    spoken_english: applicantProfile.spoken_english,
+                    min_expected_salary: applicantProfile.min_expected_salary,
+                    min_duty_hours: applicantProfile.min_duty_hours,
+                    native_language: applicantProfile.min_duty_hours,
+                    is_disabled: applicantProfile.is_disabled,
+                }
             }
-        }
-    )
-    const applicantDetails = await getApplicantDetails(applicantId);
-    return applicantDetails;
+        )
+        const applicantDetails = await getApplicantDetails(applicantId);
+        return applicantDetails;
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 export const updateApplicantProfileAndResumePrivacy = async (applicantId: string, applicantPrivacy: IApplicantPrivacy) => {
-    await ApplicantModel.updateOne(
-        { _id: applicantId },
-        {
-            $set:
+    try {
+        await ApplicantModel.updateOne(
+            { _id: applicantId },
             {
-                is_profile_public: applicantPrivacy.is_profile_public,
-                is_resume_public: applicantPrivacy.is_resume_public
+                $set:
+                {
+                    is_profile_public: applicantPrivacy.is_profile_public,
+                    is_resume_public: applicantPrivacy.is_resume_public
+                }
             }
-        }
-    )
-    const response = await getApplicantDetails(applicantId);
-    return response;
+        )
+        const response = await getApplicantDetails(applicantId);
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 export const isApplicantProfilePrivate = async (applicantId: string) => {
-    const response = await ApplicantModel.findOne({ _id: applicantId }, { is_profile_public: 1, _id: 0 });
-    return response;
+    try {
+        const response = await ApplicantModel.findOne({ _id: applicantId }, { is_profile_public: 1, _id: 0 });
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 export const isApplicantResumePrivate = async (applicantId: string) => {
-    const response = await ApplicantModel.findOne({ _id: applicantId }, { is_resume_public: 1, _id: 0 });
-    return response;
+    try {
+        const response = await ApplicantModel.findOne({ _id: applicantId }, { is_resume_public: 1, _id: 0 });
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 
@@ -133,82 +153,111 @@ const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobI
         jobId: jobId,
         accept: false
     }
-    const isApplicantAlreadyMatched = await getIsApplicantAlreadyMatched(matchedApplicant);
-
-    if (!isApplicantAlreadyMatched) {
-        try {
-            MatchedApplicantModel.create(matchedApplicant);
+    try {
+        const isApplicantAlreadyMatched = await getIsApplicantAlreadyMatched(matchedApplicant);
+        if (!isApplicantAlreadyMatched) {
+            try {
+                MatchedApplicantModel.create(matchedApplicant);
+            }
+            catch (error) {
+                throw error;
+            }
         }
-        catch (error) {
-            console.log(error);
-        }
+    }
+    catch (error) {
+        throw error;
     }
 }
 
 const getIsApplicantAlreadyMatched = async (matchedApplicant: MatchedApplicant) => {
-    const response = await MatchedApplicantModel.findOne({
-        $and: [
-            { applicantId: matchedApplicant.applicantId },
-            { jobId: matchedApplicant.jobId }
-        ]
-    })
-    if (response) return true;
+    try {
+        const response = await MatchedApplicantModel.findOne({
+            $and: [
+                { applicantId: matchedApplicant.applicantId },
+                { jobId: matchedApplicant.jobId }
+            ]
+        })
+        if (response) return true;
+    }
+    catch (error) {
+        throw error;
+    }
     return false;
 }
 
 export const applyjob = async (jobId: string, applicantId: string) => {
-    const queryToFindApplicantAndJob: FilterQuery<MatchedApplicant> = {
-        $and: [
-            { applicantId: applicantId },
-            { jobId: jobId }
-        ]
+    try {
+        const queryToFindApplicantAndJob: FilterQuery<MatchedApplicant> = {
+            $and: [
+                { applicantId: applicantId },
+                { jobId: jobId }
+            ]
+        }
+        const result = await MatchedApplicantModel.findOne(queryToFindApplicantAndJob);
+        console.log("result", result);
+        const response = await MatchedApplicantModel.updateOne(
+            queryToFindApplicantAndJob,
+            { $set: { accept: true } }
+        )
+        console.log(response);
+        if (response.acknowledged) {
+            await setAppliedJobNumber(jobId);
+        }
+        return response
     }
-    const result = await MatchedApplicantModel.findOne(queryToFindApplicantAndJob);
-    console.log("result", result);
-    const response = await MatchedApplicantModel.updateOne(
-        queryToFindApplicantAndJob,
-        { $set: { accept: true } }
-    )
-    console.log(response);
-    if (response.acknowledged) {
-        await setAppliedJobNumber(jobId);
+    catch (error) {
+        throw error
     }
-    return response
 }
 
 const setAppliedJobNumber = async (jobId: string) => {
-    const no_of_applicants: number = await MatchedApplicantModel.countDocuments({
-        $and: [
-            { jobId: jobId },
-            { accept: true }
-        ]
-    })
-    console.log(no_of_applicants);
-    await JobModel.updateOne(
-        { _id: jobId },
-        {
-            $set: {
-                no_of_applicants: no_of_applicants
+    try {
+        const no_of_applicants: number = await MatchedApplicantModel.countDocuments({
+            $and: [
+                { jobId: jobId },
+                { accept: true }
+            ]
+        })
+        console.log(no_of_applicants);
+        await JobModel.updateOne(
+            { _id: jobId },
+            {
+                $set: {
+                    no_of_applicants: no_of_applicants
+                }
             }
-        }
-    )
+        )
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 export const addPreferredJob = async (applicantPreferredJob: ApplicantPreferredJob): Promise<boolean> => {
-    const response = await ApplicantPreferreJobModel.findOne({
-        $and: [
-            { applicant_id: applicantPreferredJob.applicant_id },
-            { preferred_job: applicantPreferredJob.preferred_job }
-        ]
-    })
-    if (!response) {
-        await ApplicantPreferreJobModel.create(applicantPreferredJob);
-        return true;
+    try {
+        const response = await ApplicantPreferreJobModel.findOne({
+            $and: [
+                { applicant_id: applicantPreferredJob.applicant_id },
+                { preferred_job: applicantPreferredJob.preferred_job }
+            ]
+        })
+        if (!response) {
+            await ApplicantPreferreJobModel.create(applicantPreferredJob);
+            return true;
+        }
+    }
+    catch (error) {
+        throw error;
     }
     return false;
 }
 
 export const getApplicantAcceptedJobListService = async (applicantId: string) => {
-    const response = await MatchedApplicantModel.find({ applicantId: applicantId, accept: true }).lean().populate("job_details").exec();
-    return response;
+    try {
+        const response = await MatchedApplicantModel.find({ applicantId: applicantId, accept: true }).lean().populate("job_details").exec();
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
 }
