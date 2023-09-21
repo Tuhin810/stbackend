@@ -87,6 +87,7 @@ const ApplicantSignupForm = () => {
     }
   }
 
+  
   useEffect(() => {
     if (page === 4) {
       setButtonText("Sign Up")
@@ -99,9 +100,9 @@ const ApplicantSignupForm = () => {
   return (
     <>
       <div className="applicant_signup" id="applicant_signup">
-        <div className="flex flex-col items-center justify-center gap-y-10 h-screen w-full px-5">
+        <div className="flex flex-col items-center justify-center gap-y-6 h-screen w-full px-5">
           <img src={logo} />
-          <ProgressStep currentStep={page}/>
+          <ProgressStep currentStep={page} stepcount={7}/>
           {
             (loading) ? <Spinner /> :
               <div className=" w-full max-w-sm">
@@ -131,7 +132,7 @@ const ApplicantSignupForm = () => {
                   <img src={google_icon} className="me-2"/>
                   Sign In With Google
                 </button>
-                <p className="text-sm text-gray-600 mt-3">Already have an account? <a href="#" className="text-blue-500 hover:underline">Log In</a></p>
+                {/* <p className="text-sm text-gray-600 mt-3">Already have an account? <a href="#" className="text-blue-500 hover:underline">Log In</a></p> */}
               </div>
           }
         </div>

@@ -21,7 +21,7 @@ const CommonModal = ({ message, leftButtonLink, rightButtonLink, leftButtonText,
   return (
     <div>
       <div id={id} className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
-        <div className="relative w-full max-w-md max-h-full">
+        <div className="relative px-4 md:px-0 w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-lg shadow">
             <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center " onClick={hideModal}>
               <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
