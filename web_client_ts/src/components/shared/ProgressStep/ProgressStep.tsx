@@ -8,7 +8,6 @@ const steps = [
   { id: 'step02', label: 'Step 2' },
   { id: 'step03', label: 'Step 3' },
   { id: 'step04', label: 'Step 4' },
-  { id: 'step05', label: 'Step 5' }
 ]
 
 const ProgressStep = ({currentStep}:ProgressStepProps) => {

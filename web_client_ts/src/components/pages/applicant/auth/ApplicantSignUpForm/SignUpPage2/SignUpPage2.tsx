@@ -4,10 +4,13 @@ const SignUpPage2 = ({applicantDetails, handleChangeApplicantDetails}:IApplicant
     return (
         <div id='signup2'>
             <div className="mb-4">
-            <label htmlFor="gender" className="block text-gray-700 text-sm font-medium mb-1">Gender</label>
-                    <select id="gender" name="gender" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" onChange={(e) => handleChangeApplicantDetails(e)}>
-                        <option value="male" defaultChecked={applicantDetails.gender==="male"}>Male</option>
-                        <option value="female" defaultChecked={applicantDetails.gender==="female"}>Fe Male</option>
+            <label htmlFor="birth_year" className="block mb-2 text-sm font-medium text-gray-900">Gender</label>
+                    <select id="gender" name="gender" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " onChange={(e) => handleChangeApplicantDetails(e)}>
+                        <option value="male" className="" defaultChecked={applicantDetails.gender==="male"}>Male</option>
+                        <option value="female" defaultChecked={applicantDetails.gender==="female"}>Female</option>
+                        <option value="Non-Binary" className="" defaultChecked={applicantDetails.gender==="Non-Binary"}>Non-Binary</option>
+                        <option value="Other" defaultChecked={applicantDetails.gender==="Other"}>Other</option>
+                        <option value="Perfer not to Answer" defaultChecked={applicantDetails.gender==="Perfer not to Answer"}>Perfer not to Answer</option>
                     </select>
             </div>
             <div className="mb-4">

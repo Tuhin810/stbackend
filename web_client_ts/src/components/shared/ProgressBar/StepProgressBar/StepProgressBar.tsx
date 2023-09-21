@@ -24,7 +24,7 @@ const StepProgressBar = ({
     }
     
     return (
-      <ol className='stepProgressBar'>
+      <ol className='stepProgressBar '>
         {steps.map((step, index) =>
           <li
             key={step.id}

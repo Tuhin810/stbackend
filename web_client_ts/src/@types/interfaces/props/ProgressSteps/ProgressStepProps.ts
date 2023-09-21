@@ -6,5 +6,6 @@ export interface StepProgressBarProps {
 }
 
 export interface ProgressStepProps{
-    currentStep:number
+    currentStep:number,
+    stepcount:number
 }
