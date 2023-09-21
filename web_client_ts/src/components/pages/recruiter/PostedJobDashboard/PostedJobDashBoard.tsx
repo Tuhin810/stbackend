@@ -16,7 +16,7 @@ const PostedJobDashboard = () => {
     setIsLoading(true);
     await getJobDetailsByJobId(jobId!).then(response => {
       if (response?.status === 200) {
-        setJobDetails(response.data.jobDetails);
+        setJobDetails(response.data.data);
         setIsLoading(false);
         console.log(jobDetails);
       }
@@ -79,7 +79,7 @@ const PostedJobDashboard = () => {
                   <div className="mt-2">
 
                     {/* job details start */}
-                    <div className="flex justify-between gap-5 pb-4">
+                    <div className="flex justify-between flex-wrap gap-5 pb-4">
                       <div className="money flex gap-5">
                         <div className="bg-blue-100 rounded-full p-1 w-8 items-center justify-center flex h-8">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue"
@@ -117,6 +117,18 @@ const PostedJobDashboard = () => {
                         <div className="">
                           <div className="text-lg text-gray-900 ">Daily hours</div>
                           <div className="text-sm">{jobDetails.duty_hours}&nbsp;hours</div>
+                        </div>
+                      </div>
+                      <div className="money flex gap-5">
+                        <div className="bg-blue-100 rounded-full p-1 w-8 items-center justify-center flex h-8">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue"
+                            className="bi bi-currency-rupee" viewBox="0 0 16 16">
+                            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z" />
+                          </svg>
+                        </div>
+                        <div className="">
+                          <div className="text-lg text-gray-900">Experience</div>
+                          <div className="text-sm">{jobDetails.min_experience_year}y - {jobDetails.max_experience_year}y</div>
                         </div>
                       </div>
                     </div>
