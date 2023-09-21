@@ -1,10 +1,10 @@
-import { useContext} from 'react';
+import { useContext } from 'react';
 import copy from "copy-to-clipboard";
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
 import { mode } from '../../../../../configs/apiConfig';
 import { updateApplicantDetailsById } from '../../../../../utils/apis/applicant/Applicant';
 import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps';
-const MyLeftProfile = ({defaultApplicantDetails }: MyProfileDetailsProps) => {
+const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
 
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
     const { applicantloggedinDetails } = useContext(applicantContext);
@@ -21,19 +21,17 @@ const MyLeftProfile = ({defaultApplicantDetails }: MyProfileDetailsProps) => {
         copy(path);
         alert(`You have copied`)
     }
-
-    
     const convertImageToUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader();
         if (e.target.files![0]) {
-          reader.readAsDataURL(e.target.files![0]);
+            reader.readAsDataURL(e.target.files![0]);
         }
         reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
-          const url = readerEvent.target?.result;
-         defaultApplicantDetails.photo=url!;
-          updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!,defaultApplicantDetails)
+            const url = readerEvent.target?.result;
+            defaultApplicantDetails.photo = url!;
+            updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!, defaultApplicantDetails)
         };
-      };
+    };
     return (
         <div>
             <div className="md:w-72 m-auto max-w-sm bg-white rounded-xl drop-shadow-xl ">
@@ -47,16 +45,13 @@ const MyLeftProfile = ({defaultApplicantDetails }: MyProfileDetailsProps) => {
                     </button>
                 </div>
                 <div className="flex flex-col items-center pb-10">
-                <label htmlFor="file">
-                <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-orange-200 border-y-4 border-x-4 border-orange-200 "
-                        src={defaultApplicantDetails.photo?.toString()} />
-
-                                  
-                      </label>
-
+                    <label htmlFor="file">
+                        <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-orange-200 border-y-4 border-x-4 border-orange-200 "
+                            src={defaultApplicantDetails.photo?.toString()} />
+                    </label>
                     <input id="file" type="file"
                         hidden
-                        onChange={e=>convertImageToUrl(e)}
+                        onChange={e => convertImageToUrl(e)}
                     />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
                     <span className="text-sm text-gray-500 ">Visual Designer</span>

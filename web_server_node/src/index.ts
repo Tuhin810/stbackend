@@ -13,7 +13,7 @@ const app: Express = express();
 const port = process.env.PORT!;
 
 const allowedOrigins = [
-  "http://localhost:5173", "http://192.168.1.27:5173"];
+  "http://localhost:5173", "http://192.168.1.8:5173"];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins
