@@ -18,7 +18,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
   }
 
   return (
-    <div className=' z-50   md:mt-0 md:px-0'>
+    <div className=' z-50   md:-mt-10 md:px-0'>
       <div className=" overflow-y-auto  h-screen scroll bg-white w-[99%] md:w-full  border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
         <div className="sticky top-0 z-10  w-full  bg-white md:h-44 h-52 shadow-lg border-b-2  px-8 py-3 ">
           <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline pt-5 md:pt-0">{jobDetails.job_title}</div>
