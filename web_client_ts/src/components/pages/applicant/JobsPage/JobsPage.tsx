@@ -12,50 +12,60 @@ import { SearchBox } from "../../../shared/SearchBox/SearchBox"
 // import { Animated_btn } from "../../../shared/Animated_button/Animated_btn"
 
 import { hideModal, showModal } from "../../../../utils/commonFunctions/HandleModal"
+import { InvitedAppliedJobDetailsListContext } from "../../../../context/invitedAppliedJobDetailsList/InvitedAcceptedJobDetailsContext"
+import Spinner from "../../../shared/spinner/Spinner"
+import RefreshButton from "./RefreshButton/RefreshButton"
 
 export const JobsPage = () => {
-  const { applicantloggedinDetails } = useContext(applicantContext);
-  const { applicantDetails } = applicantloggedinDetails;
-  const [jobDetailsList, setJobDetailsList] = useState<InvitedJob[]>([]);
+  const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
+  const {invitedAppliedJobDetailsListDetails,invitedAppliedJobListDispatch} = useContext(InvitedAppliedJobDetailsListContext);
+  const {invitedJobList,isInvitedFetched} = invitedAppliedJobDetailsListDetails;
   const [selectedJob, setSelectedJob] = useState<InvitedJob | null>(null);
+  const [loading,setLoading]=useState<boolean>(false);
 
   const getInvitedJobList = async () => {
+    setLoading(true);
     const response = await getApplicantInvitedJobList(applicantDetails._id!);
+    setLoading(false);
     if (response?.status === 200) {
-      const filteredList = response.data.data.filter((job: { accept: boolean; }) => job.accept === false);
-      setJobDetailsList(filteredList);
+      invitedAppliedJobListDispatch({type:"invited",payload:response.data.data});
     }
   }
-  const handlesSet = (data: any) => {
+
+  const handlesSet = (data: InvitedJob) => {
     if (data && data.job_details) {
       setSelectedJob(data);
     }
     showModal('jobdesc')
     console.log(data);
   }
+
   useEffect(() => {
-    getInvitedJobList();
-    if (!selectedJob) {
-      setSelectedJob(jobDetailsList[0]);
+    if(!isInvitedFetched){
+      getInvitedJobList();
     }
-  }, [jobDetailsList]);
+  }, []);
+  
+  useEffect(()=>{
+      setSelectedJob(invitedJobList[0]);
+  },[invitedJobList])
 
   return (
     <div className="mt-20 h-screen md:pl-28 md:pr-16">
       <div className="flex  py-7 px-8 md:px-0  gap-2  items-center  ">
         {/* <JobHeader /> */}
-
-      
+        <RefreshButton/>
         <SearchBox />
       </div>
       <div className="flex">
         <div className="md:w-1/2  md:pr-4 ">
           {
-            (jobDetailsList.length != 0) ?
+            (loading)?<Spinner/>:
+            (invitedJobList.length != 0) ?
               <>
                 <div className="flex  flex-col gap-3 px-5 md:px-0 md:pr-6 h-screen overflow-y-scroll hidescroll">
                   {
-                    jobDetailsList.map((invitedJob, value) => {
+                    invitedJobList.map((invitedJob, value) => {
                       const { job_details } = invitedJob
                       return (
                         <div  onClick={() => handlesSet(invitedJob)} >
@@ -68,11 +78,7 @@ export const JobsPage = () => {
                 </div>
               </> : <>
                 <div className="flex  flex-col gap-3 px-6 h-screen overflow-y-scroll hidescroll">
-
-                  <Skelitoncard />
-                  <Skelitoncard />
-                  <Skelitoncard />
-                  <Skelitoncard />
+                  <h2>No Job Here</h2>
                 </div>
               </>
           }
@@ -87,6 +93,7 @@ export const JobsPage = () => {
           {selectedJob && (
             <JobDescription
               jobDetails={selectedJob.job_details}
+              isAccept={selectedJob.accept}
               jobId={selectedJob.jobId}
               applicantId={selectedJob.applicantId} InvitedJob={""} />
           )}
