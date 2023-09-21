@@ -12,6 +12,7 @@ import SignUpPage4 from "./SignUpPage4/SignUpPage4";
 import { confirmationResult, sendOtp } from "../../../../../utils/service/firebase.service";
 import Spinner from "../../../../shared/spinner/Spinner";
 import ProgressStep from "../../../../shared/ProgressStep/ProgressStep";
+import { signInWithGoogle } from "../../../../../configs/firebaseConfig";
 
 const ApplicantSignupForm = () => {
 
@@ -124,7 +125,9 @@ const ApplicantSignupForm = () => {
                   <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
              focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2" onClick={handlePageIncrement}>{buttonText}</button>
                 </div>
-                <button type="button" className="text-gray-900 w-full bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center mr-2 my-3">
+                <button type="button" onClick={signInWithGoogle} className="text-gray-900 w-full bg-white hover:bg-gray-100 border
+                 border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium
+                  rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center mr-2 my-3">
                   <img src={google_icon} className="me-2"/>
                   Sign In With Google
                 </button>
