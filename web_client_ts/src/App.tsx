@@ -11,7 +11,7 @@ import LandingPage from "./components/pages/dashboard/landingpageDashboard/Landi
 import RecruiterDashboard from "./components/pages/dashboard/recruiterDashboard/RecruiterDashboard";
 import PostedJobList from "./components/pages/recruiter/postedJobList/PostedJobList";
 import { useContext, useEffect, useState } from "react";
-import { getUserType } from "./guards/UserTypeGuard";
+import { getUserType, guard } from "./guards/UserTypeGuard";
 import PostJob from "./components/pages/recruiter/PostJob/PostJob";
 import RecruiterPricing from "./components/pages/recruiter/recruiterPricing/RecruiterPricing";
 import PostedJobDashboard from "./components/pages/recruiter/PostedJobDashboard/PostedJobDashBoard";
@@ -48,8 +48,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
-          <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
-          <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
+          <Route path="/recruiter" element={<Navigate to={(!guard())?'/recruiter/jobs':'/applicant'} />} />
+          <Route path="/applicant" element={<Navigate to={(!guard())?'/applicant/profile':'/recruiter'} />} />
           <Route path="/resume/:id" element={<SharedResume />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
           {/* landing page */}

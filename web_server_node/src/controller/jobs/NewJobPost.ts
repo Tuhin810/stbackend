@@ -23,7 +23,7 @@ const postNewJobs = async (req: Request, res: Response) => {
                     const jobData = data;
                     try {
                         matchedJobApplicants(data._id).
-                            then(applicantDatalist => {
+                            then(()=> {
                                 res.status(200).send({
                                     success: true,
                                     message: "Job posted Successfully",
