@@ -7,8 +7,6 @@ import ApplicantModel from "../../model/applicant/ApplicantSchema";
 import { sendInviteApplicantList } from "../applicant/applicant.service";
 import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
 import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
-import { JobDetails } from "../../@types/interfaces/JobDetailsWithCompany";
-import { OAS3Options } from "swagger-jsdoc";
 
 export const postNewJob = async (jobDetails: JobPostDetails) => {
     const data = await JobModel.create(jobDetails);
@@ -25,7 +23,6 @@ export const getJobsByCompanyId = async (companyId: string) => {
     return jobList;
 }
 
-
 export const matchedJobApplicants = async (jobId: string) => {
     const response = await getJobDetailsByJobId(jobId)!;
     console.log(response);
@@ -38,8 +35,8 @@ export const matchedJobApplicants = async (jobId: string) => {
             const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
                 $and: [
                     { gender: jobDetails.gender },
-                    { age: { $lt: jobDetails.max_age_limit } },
-                    { age: { $gt: jobDetails.min_age_limit } },
+                    { birth_year: { $gt: new Date().getFullYear() - jobDetails.max_age_limit - 1 } },
+                    { birth_year: { $lt: new Date().getFullYear() - jobDetails.min_age_limit + 1 } },
                     { experience_year: { $lt: jobDetails.max_experience_year } },
                     { experience_year: { $gt: jobDetails.min_experience_year } },
                     { spoken_english: jobDetails.spoken_english_level },
@@ -52,8 +49,8 @@ export const matchedJobApplicants = async (jobId: string) => {
         else {
             const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
                 $and: [
-                    { age: { $lt: jobDetails.max_age_limit } },
-                    { age: { $gt: jobDetails.min_age_limit } },
+                    { birth_year: { $gt: new Date().getFullYear() - jobDetails.max_age_limit - 1 } },
+                    { birth_year: { $lt: new Date().getFullYear() - jobDetails.min_age_limit + 1 } },
                     { experience_year: { $lt: jobDetails.max_experience_year } },
                     { experience_year: { $gt: jobDetails.min_experience_year } },
                     { spoken_english: jobDetails.spoken_english_level },

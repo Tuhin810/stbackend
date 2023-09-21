@@ -1,73 +1,83 @@
 import { JobDescription } from "./JobDescription/JobDescription"
-
+// import { JobHeader } from "./JobHeader/JobHeader"
+// import { JobSearchBar } from "./SearchBar/JobSearchBar"
 import { useContext, useEffect, useState } from "react"
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext"
 import { getApplicantInvitedJobList } from "../../../../utils/apis/applicant/Applicant"
 import { InvitedJob } from "../../../../@types/interfaces/InvitedJobList"
+import { Skelitoncard } from "../../../shared/Skeliton/Skelitoncard"
 import { JobCard } from "./JobList/jobCard/JobCard"
 import "./JobPage.css"
 import { SearchBox } from "../../../shared/SearchBox/SearchBox"
-import Spinner from "../../../shared/spinner/Spinner"
-import { InvitedAppliedJobDetailsListContext } from "../../../../context/invitedAppliedJobDetailsList/InvitedAcceptedJobDetailsContext"
-import RefreshButton from "./RefreshButton/RefreshButton"
-import { hideModal } from "../../../../utils/commonFunctions/HandleModal"
+// import { Animated_btn } from "../../../shared/Animated_button/Animated_btn"
+
+import { hideModal, showModal } from "../../../../utils/commonFunctions/HandleModal"
 
 export const JobsPage = () => {
-  const [selectedJob, setSelectedJob] = useState<InvitedJob | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
   const { applicantloggedinDetails } = useContext(applicantContext);
-  const { isInvitedFetched, invitedJobList } = useContext(InvitedAppliedJobDetailsListContext).invitedAppliedJobDetailsListDetails;
-  const { invitedAppliedJobListDispatch } = useContext(InvitedAppliedJobDetailsListContext);
   const { applicantDetails } = applicantloggedinDetails;
+  const [jobDetailsList, setJobDetailsList] = useState<InvitedJob[]>([]);
+  const [selectedJob, setSelectedJob] = useState<InvitedJob | null>(null);
 
   const getInvitedJobList = async () => {
-    setLoading(true);
     const response = await getApplicantInvitedJobList(applicantDetails._id!);
-    setLoading(false);
     if (response?.status === 200) {
-      invitedAppliedJobListDispatch({ type: "invited", payload: response.data.data })
+      const filteredList = response.data.data.filter((job: { accept: boolean; }) => job.accept === false);
+      setJobDetailsList(filteredList);
     }
   }
-  useEffect(() => {
-    if (!isInvitedFetched) {
-      getInvitedJobList();
+  const handlesSet = (data: any) => {
+    if (data && data.job_details) {
+      setSelectedJob(data);
     }
-  }, []);
-
+    showModal('jobdesc')
+    console.log(data);
+  }
   useEffect(() => {
-    setSelectedJob(invitedJobList[0]);
-  }, [invitedJobList])
+    getInvitedJobList();
+    if (!selectedJob) {
+      setSelectedJob(jobDetailsList[0]);
+    }
+  }, [jobDetailsList]);
 
   return (
-    <div className="mt-16 my-16 min-h-screen">
+    <div className="mt-20 h-screen md:pl-28 md:pr-16">
+      <div className="flex  py-7 px-8 md:px-0  gap-2  items-center  ">
+        {/* <JobHeader /> */}
 
-      <div className="body md:flex flex-col md:flex-row gap-10 md:px-32 py-10">
-        <div className="md:w-1/2 px-5 md:px-0 md:pr-6">
-          <div className="inline-flex w-full mb-5 items-center">
-            <div onClick={getInvitedJobList} className="mt-1.5">
-              <RefreshButton />
-            </div>
-            <SearchBox />
-          </div>
-
+      
+        <SearchBox />
+      </div>
+      <div className="flex">
+        <div className="md:w-1/2  md:pr-4 ">
           {
-            (loading) ? <Spinner /> :
-              <div className="flex w-full flex-col gap-3  h-screen overflow-y-scroll hidescroll">
-                {
-                  invitedJobList.map((invitedJob, value) => {
-                    const { job_details } = invitedJob
-                    return (
-                      <div>
-                        <JobCard jobDetails={job_details}
-                          key={value} InvitedJob={""} jobId={""} applicantId={""} />
-                      </div>
-                    )
-                  })
-                }
-              </div>
+            (jobDetailsList.length != 0) ?
+              <>
+                <div className="flex  flex-col gap-3 px-5 md:px-0 md:pr-6 h-screen overflow-y-scroll hidescroll">
+                  {
+                    jobDetailsList.map((invitedJob, value) => {
+                      const { job_details } = invitedJob
+                      return (
+                        <div  onClick={() => handlesSet(invitedJob)} >
+                          <JobCard jobDetails={job_details}
+                            key={value} InvitedJob={""} jobId={""} applicantId={""} />
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </> : <>
+                <div className="flex  flex-col gap-3 px-6 h-screen overflow-y-scroll hidescroll">
+
+                  <Skelitoncard />
+                  <Skelitoncard />
+                  <Skelitoncard />
+                  <Skelitoncard />
+                </div>
+              </>
           }
         </div>
-        <div className="md:w-1/2 hidden md:inline">
+        <div id="jobdesc" className="md:w-1/2 -mt-10 hidden md:inline fixed md:relative top-24 md:top-0">
 
 
           <div onClick={()=>hideModal('jobdesc')} className="md:hidden z-50 flex items-center text-sm fixed top-20 left-80 pl-1">
