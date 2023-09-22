@@ -2,11 +2,11 @@ export const mode: string = "local";
 
 export const baseURL: string =
     (mode === "local") ?
-        'http://127.0.0.1:8989/' :
+        'http://192.168.34.155:8989/' :
         (mode==="mobile")?
-            'http://192.168.1.24:8989/':
+            'http://192.168.34.155:8989/':
         (mode === "dev") ?
-            'http://13.50.177.162:8282/' :
+            'http://192.168.137.1:8282/' :
             (mode === "prod") ?
                 'http://localhost:8989/' :
                 ""

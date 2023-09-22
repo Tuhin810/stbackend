@@ -9,14 +9,16 @@ import { updateApplicntProfileDetails } from "../../../controller/users/applican
 import { getApplicantProfilePrivacy, getApplicantResumePrivacy, updateApplicantPrivacy } from "../../../controller/users/applicantPrivacy/ApplicantPrivacy";
 import { applicantApplyJob } from "../../../controller/users/applicantAppliedJobList/ApplicantApplyJob";
 import { getApplicantAcceptedJobList } from "../../../controller/users/ApplicantAcceptedjobList/GetApplicantAcceptedjobList";
+import { authenticateApplicant } from "../../../middleware/authenticate";
+
 
 const router = express.Router();
 
-router.get("/applicant/getApplicantDetailsById/:id", getApplicantDetailsById);
-router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
-router.get("/applicant/getApplicantProfilePrivacy/:id", getApplicantProfilePrivacy);
-router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
-router.get("/applicant/getApplicantAcceptedJobList/:id", getApplicantAcceptedJobList);
+router.get("/applicant/getApplicantDetailsById/:id", authenticateApplicant, getApplicantDetailsById);
+router.get("/applicant/getApplicantInvitedJobDetailsList/:id", authenticateApplicant, getApplicantInvitedJobList);
+router.get("/applicant/getApplicantProfilePrivacy/:id", authenticateApplicant, getApplicantProfilePrivacy);
+router.get("/applicant/getApplicantResumePrivacy/:id", authenticateApplicant, getApplicantResumePrivacy);
+router.get("/applicant/getApplicantAcceptedJobList/:id", authenticateApplicant, getApplicantAcceptedJobList);
 
 router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);

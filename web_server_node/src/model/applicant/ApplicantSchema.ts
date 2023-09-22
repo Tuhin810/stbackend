@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
-
+var jwt = require('jsonwebtoken');
 // model for new registration 
 
 export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
@@ -137,7 +137,15 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     is_resume_public: {
         type: Boolean,
         default: false
-    }
+    },
+    tokens: [
+        {
+            token: {
+                type: String,
+                require: true
+            }
+        }
+    ]
 },
     // JobSchema.virtual("invited_job_details_list", {
     //     ref: "Jobs",
@@ -146,6 +154,8 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     //     justOne: true
     // });
 );
+
+
 
 const ApplicantModel = mongoose.model<ApplicantDetails>("applicants", applicantSchema);
 

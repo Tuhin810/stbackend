@@ -34,5 +34,6 @@ export interface ApplicantDetails {
     native_language: string,
     is_disabled: boolean,
     is_profile_public: boolean,
-    is_resume_public: boolean
+    is_resume_public: boolean,
+    tokens: any
 }
