@@ -19,15 +19,16 @@ const BrodcastModal = ({ jobId }: IBrodcastJobProps) => {
         }
     }
 
-    const closeModal = () =>{
+    const closeModal = () => {
         hideModal("brodcast");
         setFetched(false);
         setApplicantList([]);
     }
-    
+
     return (
         <div>
-            <div id="brodcast" className="fixed inset-0 z-50  items-center justify-center bg-black bg-opacity-50 hidden">
+
+            <div id="brodcast" className="min-w-screen h-screen hidden px-4 md:px-0 animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-coverfixed  bg-black bg-opacity-50 ">
                 <div className="relative w-full max-w-md max-h-full">
                     <div className="relative bg-white rounded-lg shadow darkno:bg-gray-700">
                         <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex
@@ -38,21 +39,23 @@ const BrodcastModal = ({ jobId }: IBrodcastJobProps) => {
                             <span className="sr-only">Close modal</span>
                         </button>
                         {
-                            (fetched)?<MatchedApplicantList applicantList={applicantList}/>:
-                            (loading)?<Spinner/>:
-                            <div className="p-6 text-center">
-                            <svg className="mx-auto mb-4 text-gray-400 w-12 h-12 darkno:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                            <h3 className="mb-5 text-lg font-normal text-gray-500 darkno:text-gray-400">Are you sure you want to Brodcast this Job?</h3>
-                            <button data-modal-hide="popup-modal" type="button" className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" onClick={brodcast}>
-                                Yes, I'm sure
-                            </button>
-                            <button data-modal-hide="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 darkno:bg-gray-700 darkno:text-gray-300 darkno:border-gray-500 darkno:hover:text-whit
-                             darkno:hover:bg-gray-600 darkno:focus:ring-gray-600" onClick={()=>hideModal("brodcast")}>No, cancel</button>
-                        </div>
+                            (fetched) ? <MatchedApplicantList applicantList={applicantList} /> :
+                                (loading) ? <div className="flex justify-center"><Spinner /></div> :
+                                    <div className="p-6 text-center">
+                                        <img className="mx-auto" src="https://img.icons8.com/?size=96&id=y90AvUi7gdGS&format=png" alt="" />
+                                        <h2 className="text-xl font-bold py-4 ">Are you sure?</h2>
+                                        <h3 className="mb-5 text-lg font-normal text-gray-500 darkno:text-gray-400">Are you sure you want to Brodcast this Job?</h3>
+                                        <button
+                                            onClick={brodcast} className="mb-2 mr-5 md:mb-0 bg-blue-500 border
+             border-blue-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-600">
+                                            Yes, I'm sure
+                                        </button>
+                                        <button onClick={() => hideModal("brodcast")} className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+                                            No,  Cancel it
+                                        </button>
+                                    </div>
                         }
-                        
+
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ const MatchedApplicantBoard = ({matched_applicant_no,jobId}:MatchedApplicantProp
   return (
     <>
     {
-        (isLoading)?<Spinner/>:
+        (isLoading)?<><div className="flex justify-center"><Spinner/></div></>:
         <MatchedApplicantList applicantList={applicantDetailsList}/>
     }
     </>

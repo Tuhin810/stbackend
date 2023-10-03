@@ -8,16 +8,23 @@ import MyQualification from "./qualification/MyQualification";
 import "./profile.css";
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext";
 import MyResumeContainer from "./myResumeContainer/MyResumeContainer";
+import Home from "../../common/home/Home";
+import { useNavigate } from "react-router-dom";
 
 const ApplicantProfile = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
+    const navigate = useNavigate();
+    
     useEffect(() => {
         console.log(applicantDetails._id);
-
+        
     }, [])
 
-
+    if (!applicantloggedinDetails) {
+        navigate("/home");
+        return null;
+      }
     return (
         <>
             <div className="mt-16 my-16 min-h-screen">
@@ -43,3 +50,7 @@ const ApplicantProfile = () => {
 }
 
 export default ApplicantProfile
+
+function useRoute() {
+    throw new Error("Function not implemented.");
+}

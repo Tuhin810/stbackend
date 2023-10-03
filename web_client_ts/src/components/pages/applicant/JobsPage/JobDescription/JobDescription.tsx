@@ -1,27 +1,42 @@
 import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetailsProps"
 import { applyJob } from "../../../../../utils/apis/applicant/Applicant";
-import { showModal } from "../../../../../utils/commonFunctions/HandleModal";
+import { hideModal, showModal } from "../../../../../utils/commonFunctions/HandleModal";
 import "../JobPage.css"
 import { SuccesModal } from "../jobAppliedSucces/SuccesModal";
 import Chip from "../../../../shared/chip/Chip";
 import { useState } from "react";
+import Alert from "../../../../shared/alert/Alert";
 
 export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: JobDetailsProps) => {
   const [apply,setApply]=useState<boolean>(false);
+  const [accept, setAccept] = useState("Accept")
   const handleApplyJob = async () => {
     const response = await applyJob(jobId!, applicantId!);
     setApply(true);
     if (response?.status === 200) {
       console.log("job applied");
       showModal("success")
+         setAccept("accepted")
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     }
   }
 
   return (
     <div className=' z-50   md:-mt-10 md:px-0'>
+      {
+          (accept=="accepted")?<><div className="fixed top-24 left-96 z-50"><Alert title={"Succes"} text={"Job Accepted"} color={"green"} img={""}/></div></>:null
+        }
       <div className=" overflow-y-auto  h-screen scroll bg-white w-[99%] md:w-full  border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
+      
         <div className="sticky top-0 z-10  w-full  bg-white md:h-44 h-52 shadow-lg border-b-2  px-8 py-3 ">
+          <div className="flex justify-between items-center">
           <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline pt-5 md:pt-0">{jobDetails.job_title}</div>
+          <div onClick={() => hideModal('jobdesc')} className="z-50 ">
+                    <img className="h-7 w-7" src="https://cdn.iconscout.com/icon/free/png-512/free-close-1957281-1650975.png?f=avif&w=512" alt="" />
+                  </div>
+          </div>
           <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
           {/* <div className=""><Ratings/></div> */}
           <div className="">Kolkata, West Bengal</div>
@@ -29,15 +44,20 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
           {
             (!isAccept || apply) ?
               <div className="flex gap-4 mt-2 ">
-                <button onClick={handleApplyJob} className="flex gap-1 items-center  bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 text-white rounded-lg py-2 px-4 ">
+                {(!apply)?<button onClick={handleApplyJob} className="flex gap-1 items-center  bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 text-white rounded-lg py-2 px-4 ">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" className="bi bi-check-lg" viewBox="0 0 16 16">
                     <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
-                  </svg>Accept</button>
+                  </svg>Accept</button>:
+                  <button onClick={handleApplyJob} className="flex gap-1 items-center  bg-gradient-to-r from-green-500 to-green-600 hover:bg-gradient-to-r text-white rounded-lg py-2 px-4 ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" className="bi bi-check-lg" viewBox="0 0 16 16">
+                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                  </svg>Accepted</button>}
+                
                 <button className="flex gap-1 items-center bg-gradient-to-r from-gray-600 to-gray-800 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-900  text-white rounded-lg py-2 px-4 ">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                   </svg>Reject</button>
-              </div> : <button type="button" className="text-gray-900 mt-2 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Accepted</button>
+              </div> : <button type="button" className="text-gray-50 mt-2 bg-gradient-to-r from-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Accepted</button>
           }
         </div>
 

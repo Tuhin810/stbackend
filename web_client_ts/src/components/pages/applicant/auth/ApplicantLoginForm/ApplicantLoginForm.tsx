@@ -47,10 +47,9 @@ const ApplicantLoginForm = () => {
       }
       
     }).catch((err) => {
-      if(err.response.status === 404){
-        setError(true);
-        console.log("error");  
-      }
+      console.log(err);
+      setError(true)
+      
     })
   }
   //om hit login
@@ -62,7 +61,7 @@ const ApplicantLoginForm = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-y-10 h-screen w-full">
       {
-        (error)?<Alert text="Invalid Credential" type="danger" color={'red'} img={''}/>:null
+        (error)?<Alert text="Invalid Credential" type="danger" color={'red'} img={''} title={'Error'}/>:null
       }
       <div className=' max-w-md flex justify-center'>
         <img src={logo} />

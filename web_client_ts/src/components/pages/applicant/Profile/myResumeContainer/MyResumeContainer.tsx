@@ -9,9 +9,9 @@ const MyResumeContainer = () => {
 
   return (
     <div>
-      <div className="w-full  mt-4 h-40 max-w-sm p-4 bg-blue-50
+      <div className="hidden xl:inline w-full  mt-4 h-40 max-w-sm p-4 bg-blue-50
        text-blue-500 font-bold border border-gray-200 cursor-pointer
-        rounded-lg shadow sm:p-6 flex items-center justify-center"
+        rounded-lg shadow sm:p-6 xl:flex items-center justify-center"
         onClick={routeTo}
         >
    

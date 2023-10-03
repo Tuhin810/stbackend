@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { UserCredential } from "../../../@types/interfaces/UserCredentail";
-import { getRecruiterByEmailAndPassword } from "../../../service/Recruiter/RecruiterService";
-
+import { getRecruiterByEmail, getRecruiterByEmailAndPassword } from "../../../service/Recruiter/RecruiterService";
+var jwt = require('jsonwebtoken');
 export const loginRecruiter = async (req: Request, res: Response) => {
     const recruiterCredentail: UserCredential = req.body;
 
@@ -14,12 +14,19 @@ export const loginRecruiter = async (req: Request, res: Response) => {
     try {
 
         const recruiter = await getRecruiterByEmailAndPassword(recruiterCredentail);
+        const matchedrecruiter = await getRecruiterByEmail(recruiterCredentail.email)
+
+        const token = jwt.sign({ _id: matchedrecruiter!._id }, process.env.JWTKEY);
+        matchedrecruiter!.tokens = matchedrecruiter!.tokens.concat({ token: token })
+        matchedrecruiter!.save()
+
         if (recruiter) {
             recruiter.password = "";
             res.status(200).json({
                 success: true,
-                message: "login successful",
-                recruiter: recruiter
+                message: "login successful from ts",
+                recruiter: recruiter,
+                token
             });
         }
         else {

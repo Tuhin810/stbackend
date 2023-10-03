@@ -9,6 +9,7 @@ import CompanyList from '../companyList/CompanyList';
 import Stats from '../stats/Stats';
 import Hero from '../hero/Hero';
 import CustomerReview from '../../../shared/customerReview/CustomerReview';
+import modeImg from "../../../../assets/images/modelImg.svg"
 const Home = () => {
     const modalId='home-modal'
     const [action,setAction] =useState<string>('');
@@ -27,7 +28,7 @@ const Home = () => {
             </div>
                 <div className="home-page">
                     <Hero handleLoginButton={handleLoginButton} handleSignUpButton={handleSignUpButton}/> 
-                    <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} />
+                    <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} Img={modeImg} />
                     <Stats/>
                     <Features/>
                     <Testimonial />
