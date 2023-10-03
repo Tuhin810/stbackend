@@ -29,7 +29,7 @@ const PostedJobList = () => {
         })
     }
   }
-  const openBrodcastModal = (jobId:string)=>{
+  const openBrodcastModal = (jobId: string) => {
     setJobId(jobId);
     showModal("brodcast");
   }
@@ -39,7 +39,7 @@ const PostedJobList = () => {
       getJobList(recruiterDetails._id!);
     }
   }, []);
- 
+
   return (
     <div className=" items-center w-full">
       {
@@ -49,7 +49,7 @@ const PostedJobList = () => {
           </> : <>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
               <table className="w-full text-sm text-left  text-gray-500 ">
-                <thead className="text-xs text-gray-700  uppercase bg-orange-100 ">
+                <thead className="text-xs text-gray-50  uppercase bg-[#0e4163] ">
                   <tr>
                     <th scope="col" className="px-6 py-3 ">
                       Job Title
@@ -120,7 +120,7 @@ const PostedJobList = () => {
             </div>
           </>
       }
-      <BrodcastModal jobId={jobId}/>
+      <BrodcastModal jobId={jobId} />
     </div>
 
 

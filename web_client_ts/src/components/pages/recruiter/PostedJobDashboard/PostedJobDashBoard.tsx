@@ -29,7 +29,7 @@ const PostedJobDashboard = () => {
   return (
     <main className="job-dashboard">
       {
-        (isLoading) ? <Spinner /> :
+        (isLoading) ?<div className="flex justify-center"><Spinner/></div>:
           <>
             <section className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
               <div className="flex items-center p-8 bg-white shadow rounded-lg">

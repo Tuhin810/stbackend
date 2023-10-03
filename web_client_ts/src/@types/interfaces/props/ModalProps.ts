@@ -6,5 +6,6 @@ export interface ModalProps{
     leftButtonText:string,
     rightButtontext:string,
     leftRoute:boolean,
-    rightRoute:boolean
+    rightRoute:boolean,
+    Img:string
 }

@@ -77,6 +77,14 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         type: String,
         required: true
     },
+    tokens: [
+        {
+            token: {
+                type: String,
+                require: true
+            }
+        }
+    ]
 },
     {
         toJSON: { virtuals: true }

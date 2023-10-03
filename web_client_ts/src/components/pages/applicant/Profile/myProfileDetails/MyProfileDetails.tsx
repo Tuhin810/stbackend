@@ -28,33 +28,33 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                             <div className="text-gray-700 ">
                                 <div className="grid md:grid-cols-2 text-md">
                                     <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">First Name</div>
-                                        <div className="px-4 py-2 ">{defaultApplicantDetails?.first_name}</div>
+                                        <div className="px-4 :py-12 xl:py-2 font-semibold">First Name</div>
+                                        <div className="px-4 xl:py-2 ">{defaultApplicantDetails?.first_name}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">Last Name</div>
-                                        <div className="px-4 py-2">{defaultApplicantDetails?.last_name}</div>
+                                        <div className="px-4 xl:py-2 font-semibold">Last Name</div>
+                                        <div className="px-4 xl:py-2">{defaultApplicantDetails?.last_name}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">Gender</div>
-                                        <div className="px-4 py-2">{defaultApplicantDetails?.gender}</div>
+                                        <div className="px-4 xl:py-2 font-semibold">Gender</div>
+                                        <div className="px-4 xl:py-2">{defaultApplicantDetails?.gender}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">Contact No.</div>
-                                        <div className="px-4 py-2">{defaultApplicantDetails?.country_code} {defaultApplicantDetails?.phone}</div>
+                                        <div className="px-4 xl:py-2 font-semibold">Contact No.</div>
+                                        <div className="px-4 xl:py-2 xl:text-sm text-xs">{defaultApplicantDetails?.country_code} {defaultApplicantDetails?.phone}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">Current Address</div>
-                                        <div className="px-4 py-2">{defaultApplicantDetails?.current_address}</div>
+                                        <div className="px-4 xl:py-2 font-semibold">Current Address</div>
+                                        <div className="px-4 xl:py-2">{defaultApplicantDetails?.current_address}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">Permanant Address</div>
-                                        <div className="px-4 py-2">{defaultApplicantDetails?.permanent_address}</div>
+                                        <div className="px-4 xl:py-2 font-semibold">Permanant Address</div>
+                                        <div className="px-4 xl:py-2">{defaultApplicantDetails?.permanent_address}</div>
                                     </div>
 
                                     <div className="grid grid-cols-2 md:mb-0 mb-10">
-                                        <div className="px-4 py-2 font-semibold">Birthday</div>
-                                        <div className="px-4 py-2">{defaultApplicantDetails?.birth_year}</div>
+                                        <div className="px-4 xl:py-2 font-semibold">Birthday</div>
+                                        <div className="px-4 xl:py-2">{defaultApplicantDetails?.birth_year}</div>
                                     </div>
                                 </div>
                             </div>

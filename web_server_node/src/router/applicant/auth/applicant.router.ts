@@ -14,8 +14,8 @@ import { authenticateApplicant } from "../../../middleware/authenticate";
 
 const router = express.Router();
 
-router.get("/applicant/getApplicantDetailsById/:id", authenticateApplicant, getApplicantDetailsById);
-router.get("/applicant/getApplicantInvitedJobDetailsList/:id", authenticateApplicant, getApplicantInvitedJobList);
+router.get("/applicant/getApplicantDetailsById/:id",  getApplicantDetailsById);
+router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
 router.get("/applicant/getApplicantProfilePrivacy/:id", authenticateApplicant, getApplicantProfilePrivacy);
 router.get("/applicant/getApplicantResumePrivacy/:id", authenticateApplicant, getApplicantResumePrivacy);
 router.get("/applicant/getApplicantAcceptedJobList/:id", authenticateApplicant, getApplicantAcceptedJobList);

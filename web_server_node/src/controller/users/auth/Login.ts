@@ -7,7 +7,7 @@ export const loginUser = async (req: Request, res: Response) => {
     const userCredentail: UserCredential = req.body;
 
     if (!userCredentail.email || !userCredentail.password) {
-        return res.status(422).send({
+        return res.status(422).json({
             success: false,
             message: "Invalid email or password",
         });

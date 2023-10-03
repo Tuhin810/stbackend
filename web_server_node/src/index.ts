@@ -19,6 +19,10 @@ const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
 
+app.get('/', (req, res) => {
+  res.send(`Server is running at http://localhost:${port}`)
+})
+
 app.use(cors(options));
 app.use(json());
 app.use([ApplicantRouter, authRecruiterRouter, companyRouter, jobRouter]);

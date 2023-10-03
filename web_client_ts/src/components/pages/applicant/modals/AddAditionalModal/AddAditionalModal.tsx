@@ -13,10 +13,10 @@ export const AddAditionalModal = ({ defaultApplicantDetails }: MyProfileDetailsP
 
   const handleChangeApplicantDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
-    if(name==="is_disabled"){
-      setApplicantDetails(Object.assign({}, applicantDetails, { [name]: (value==="true") }));
+    if (name === "is_disabled") {
+      setApplicantDetails(Object.assign({}, applicantDetails, { [name]: (value === "true") }));
     }
-    else if(name==="min_expected_salary" || name==="min_duty_hours" || name==="experience_year"){
+    else if (name === "min_expected_salary" || name === "min_duty_hours" || name === "experience_year") {
       setApplicantDetails(Object.assign({}, applicantDetails, { [name]: Number(value) }));
     }
     else setApplicantDetails(Object.assign({}, applicantDetails, { [name]: value }));
@@ -49,7 +49,7 @@ export const AddAditionalModal = ({ defaultApplicantDetails }: MyProfileDetailsP
                 <div className="mb-4 flex">
                   <div className="w-1/2 pr-2">
                     <label htmlFor="spoken_english" className="block text-sm font-medium mb-1 text-blue-600">Spoken English Level</label>
-                    <select id="spoken_english" name="spoken_english" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={e=>handleChangeApplicantDetails(e)}>
+                    <select id="spoken_english" name="spoken_english" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" onChange={e => handleChangeApplicantDetails(e)}>
                       <option value="beginner">Beginner</option>
                       <option value="intermediate">Intermediate</option>
                       <option value="fluent">Fluent</option>
@@ -57,28 +57,28 @@ export const AddAditionalModal = ({ defaultApplicantDetails }: MyProfileDetailsP
                   </div>
                   <div className="w-1/2 pr-2">
                     <label htmlFor="native_language" className="block text-gray-700 text-sm font-medium mb-1">Native Language</label>
-                    <input type="text" id="native_language" name="native_language" defaultValue={defaultApplicantDetails.native_language} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required onChange={e=>handleChangeApplicantDetails(e)} />
+                    <input type="text" id="native_language" name="native_language" defaultValue={defaultApplicantDetails.native_language} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required onChange={e => handleChangeApplicantDetails(e)} />
                   </div>
                 </div>
 
                 <div className="mb-4 flex">
                   <div className="w-1/2 pr-2">
                     <label htmlFor="experience_year" className="block text-gray-700 text-sm font-medium mb-1">Experience</label>
-                    <input type="number" id="experience_year" name="experience_year" defaultValue={defaultApplicantDetails.experience_year} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required onChange={e=>handleChangeApplicantDetails(e)}/>
+                    <input type="number" id="experience_year" name="experience_year" defaultValue={defaultApplicantDetails.experience_year} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required onChange={e => handleChangeApplicantDetails(e)} />
                   </div>
                   <div className="w-1/2 pr-2">
                     <label htmlFor="min_expected_salary" className="block text-gray-700 text-sm font-medium mb-1">Exp. Salaray</label>
-                    <input type="number" id="min_expected_salary" name="min_expected_salary" defaultValue={defaultApplicantDetails.min_expected_salary} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" onChange={e=>handleChangeApplicantDetails(e)} required />
+                    <input type="number" id="min_expected_salary" name="min_expected_salary" defaultValue={defaultApplicantDetails.min_expected_salary} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" onChange={e => handleChangeApplicantDetails(e)} required />
                   </div>
                 </div>
 
                 <div className="mb-4 flex">
                   <div className="w-1/2 pr-2">
                     <label htmlFor="min_duty_hours" className="block text-gray-700 text-sm font-medium mb-1">Preferred Duty Hours</label>
-                    <input type="number" id="min_duty_hours" name="min_duty_hours" defaultValue={defaultApplicantDetails.min_duty_hours} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" onChange={e=>handleChangeApplicantDetails(e)} required />
+                    <input type="number" id="min_duty_hours" name="min_duty_hours" defaultValue={defaultApplicantDetails.min_duty_hours} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" onChange={e => handleChangeApplicantDetails(e)} required />
                   </div>
                   <div className="w-1/2 pr-2">
-                  <label htmlFor="is_disabled" className="block text-sm font-medium mb-1 text-blue-600">Physcically Disabled</label>
+                    <label htmlFor="is_disabled" className="block text-sm font-medium mb-1 text-blue-600">Physcically Disabled</label>
                     <select id="is_disabled" name="is_disabled" className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" >
                       <option value="true">Yes</option>
                       <option value="false">No</option>
