@@ -5,7 +5,7 @@ import CompanyRegistrationForm from "./CompanyRegistrationForm/CompanyRegistrati
 const CompanyRegistration = () => {
   return (
     <>
-         <FormDashboard image={company_registration} child={<CompanyRegistrationForm/>}/>
+         <FormDashboard image={company_registration} child={<CompanyRegistrationForm />} HeadingContent={"empty"}/>
     </>
   )
 }

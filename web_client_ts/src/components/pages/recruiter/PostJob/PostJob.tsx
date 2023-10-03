@@ -153,7 +153,7 @@ const PostJob = () => {
    
     return (
         <>
-            <ProgressStep currentStep={step}/>
+            <ProgressStep currentStep={step} stepcount={0}/>
             <div className="py-4">
                 <div className="max-w-2xl mx-auto p-6 bg-white mt-10 rounded shadow">
                     <h1 className="text-2xl font-semibold mb-4">Post a<span className='text-blue-500'> Job</span>

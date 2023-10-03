@@ -1,6 +1,6 @@
 import { IApplicantSignUpProps } from "../../../../../../@types/interfaces/props/ApplicantProps/ApplicantSignUpProps"
 
-const SignUpPage3 = ({applicantDetails, handleChangeApplicantDetails, passwordError }: IApplicantSignUpProps) => {
+const SignUpPage3 = ({handleChangeApplicantDetails, passwordError }: IApplicantSignUpProps) => {
 
     return (
         <div id='signup2'>

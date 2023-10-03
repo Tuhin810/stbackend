@@ -8,7 +8,7 @@ import MyQualification from "./qualification/MyQualification";
 import "./profile.css";
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext";
 import MyResumeContainer from "./myResumeContainer/MyResumeContainer";
-import Home from "../../common/home/Home";
+// import Home from "../../common/home/Home";
 import { useNavigate } from "react-router-dom";
 
 const ApplicantProfile = () => {
@@ -51,6 +51,3 @@ const ApplicantProfile = () => {
 
 export default ApplicantProfile
 
-function useRoute() {
-    throw new Error("Function not implemented.");
-}

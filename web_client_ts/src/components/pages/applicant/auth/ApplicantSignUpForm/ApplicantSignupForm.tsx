@@ -47,6 +47,10 @@ const ApplicantSignupForm = () => {
     }
   }
 
+  useEffect(() => {
+    setDisable(false)
+  }, [])
+  
 
   const handleChangeApplicantDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = event.target;
