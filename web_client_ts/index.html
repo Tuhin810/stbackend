@@ -12,6 +12,13 @@
  
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Starmarks -Job is waiting just for one click</title>
+    <script>
+      if('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        })
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
