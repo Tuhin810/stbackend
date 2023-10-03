@@ -6,7 +6,7 @@ import ApplicantLoginForm from "../ApplicantLoginForm/ApplicantLoginForm"
 const ApplicantLogin = () => {
     return (
         <>
-        <FormDashboard image={applicant_login} child={<ApplicantLoginForm />} HeadingContent={<LoginContent/>}/>
+            <FormDashboard image={applicant_login} child={<ApplicantLoginForm />} HeadingContent={<LoginContent />} />
         </>
     )
 }

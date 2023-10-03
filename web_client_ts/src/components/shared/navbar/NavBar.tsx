@@ -36,7 +36,7 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="navbar bg-white sticky py-1 sm:py-2 w-full z-20 top-0 left-0 border-gray-200">
+            <nav className="navbar backdrop-blur-lg bg-[#f5f9ff] sticky py-1 sm:py-2 w-full z-20 top-0 left-0 border-gray-200">
                 <div className="max-w-screen-xl flex flex-wrap justify-center mx-auto p-4 sm:justify-between" id='items'>
                     <a href="https://flowbite.com/" className="flex items-center " id="logo">
                         <img src={logo} className="h-10 mr-3" alt="Flowbite Logo" />
