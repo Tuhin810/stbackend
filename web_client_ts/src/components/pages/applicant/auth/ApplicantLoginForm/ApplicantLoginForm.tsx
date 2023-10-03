@@ -13,8 +13,8 @@ import Spinner from '../../../../shared/spinner/Spinner';
 const ApplicantLoginForm = () => {
   const navigate = useNavigate();
   const [applicantCredential, setApplicantCredential] = useState<UserCredentials>({} as UserCredentials);
-  const [error,setError]=useState<boolean>(false);
-  const [loading,setLoading]=useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   // const [message,setMessage]=useState();
   const { applicantDispatch } = useContext(applicantContext);
   const { loggedIn } = useContext(globalContext);
@@ -23,7 +23,7 @@ const ApplicantLoginForm = () => {
     const { value } = event.target
     console.log("event", event)
     setApplicantCredential(Object.assign({}, applicantCredential, {
-      email: value
+      userId: value
     }))
   }
   //password change
@@ -45,45 +45,45 @@ const ApplicantLoginForm = () => {
         loggedIn({ type: "login", userType: "applicant" });
         navigate('/applicant/profile');
       }
-      
+
     }).catch((err) => {
       console.log(err);
       setError(true)
-      
+
     })
   }
   //om hit login
   const handleLogin = () => {
     loginApplicant();
   }
-  
+
 
   return (
     <div className="flex flex-col items-center justify-center gap-y-10 h-screen w-full">
       {
-        (error)?<Alert text="Invalid Credential" type="danger" color={'red'} img={''} title={'Error'}/>:null
+        (error) ? <Alert text="Invalid Credential" type="danger" color={'red'} img={''} title={'Error'} /> : null
       }
       <div className=' max-w-md flex justify-center'>
         <img src={logo} />
       </div>
       {
-        (error)?<>
-        <div className="p-8 w-full max-w-md">
-        <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
-        <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 shadow-lg shadow-blue-500/50 darkno:shadow-lg darkno:shadow-blue-800/80 font-medium
+        (error) ? <>
+          <div className="p-8 w-full max-w-md">
+            <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
+            <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 shadow-lg shadow-blue-500/50 darkno:shadow-lg darkno:shadow-blue-800/80 font-medium
          rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleLogin}>Log In</button>
-        <p className="text-sm text-gray-600 mt-3">Don't have an account? <a href="#" className="text-blue-500 hover:underline">Sign up</a></p>
-      </div></>:
-        (loading)?<Spinner/>:
-        <div className="p-8 w-full max-w-md">
-        <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
-        <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 shadow-lg shadow-blue-500/50 darkno:shadow-lg darkno:shadow-blue-800/80 font-medium
+            <p className="text-sm text-gray-600 mt-3">Don't have an account? <a href="#" className="text-blue-500 hover:underline">Sign up</a></p>
+          </div></> :
+          (loading) ? <Spinner /> :
+            <div className="p-8 w-full max-w-md">
+              <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
+              <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 shadow-lg shadow-blue-500/50 darkno:shadow-lg darkno:shadow-blue-800/80 font-medium
          rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleLogin}>Log In</button>
-        <p className="text-sm text-gray-600 mt-3">Don't have an account? <a href="#" className="text-blue-500 hover:underline">Sign up</a></p>
-      </div>
+              <p className="text-sm text-gray-600 mt-3">Don't have an account? <a href="#" className="text-blue-500 hover:underline">Sign up</a></p>
+            </div>
       }
-      
-      
+
+
     </div>
   )
 }
