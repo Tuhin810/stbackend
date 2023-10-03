@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Tooltip } from '../../../shared/Tootip/Tooltip';
 import { AcceptedJobsCard } from './ApplicantAcceptedJobList/AcceptedJobsCard/acceptedJobsCard';
 import { JobDescription } from '../JobsPage/JobDescription/JobDescription';
-import { hideModal, showModal } from '../../../../utils/commonFunctions/HandleModal';
+import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 
 
 export const ApplicantPerformance = () => {

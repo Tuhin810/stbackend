@@ -4,7 +4,7 @@ import RecruiterLoginForm from "../RecruiterLoginForm/RecruiterLoginForm"
 
 const RecruiterLogin = () => {
   return (
-    <FormDashboard image={recruiter_login} child={<RecruiterLoginForm/>}/>
+    <FormDashboard image={recruiter_login} child={<RecruiterLoginForm />} HeadingContent={"Empty"}/>
   )
 }
 

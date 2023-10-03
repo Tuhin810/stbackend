@@ -1,7 +1,7 @@
 import { AlertProps } from '../../../@types/interfaces/props/AlertProps'
 
 // Test Push
-const Alert = ({ title,text, type ,color,img,}: AlertProps) => {
+const Alert = ({ title,text, type ,color}: AlertProps) => {
     console.log(type);
     return (
         <div className='alert shadow-2xl shadow-green-300' id='alert'>

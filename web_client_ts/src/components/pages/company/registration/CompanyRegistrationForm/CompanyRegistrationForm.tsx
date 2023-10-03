@@ -82,7 +82,7 @@ const CompanyRegistrationForm = () => {
         <div>
             <div className="flex flex-col items-center space-y-16 justify-center h-screen" id="company_registration">
                 <img src={logo}/>
-                <ProgressStep currentStep={page+1}/>
+                <ProgressStep currentStep={page + 1} stepcount={0}/>
                 <div className="w-full max-w-sm">
                     <div className="max-w-md mx-auto">
                         <h2 className="text-2xl font-semibold mb-4">Register Your <span className="text-blue-700"> Company </span></h2>

@@ -1,4 +1,4 @@
-import { logo } from "../../../../assets/images"
+// import { logo } from "../../../../assets/images"
 import starmarkdarklogo from "../../../../assets/footer/starmarkdarklogo.png"
 
 const Footer = () => {

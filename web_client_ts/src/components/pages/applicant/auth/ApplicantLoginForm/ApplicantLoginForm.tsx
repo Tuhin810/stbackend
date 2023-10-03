@@ -15,7 +15,7 @@ const ApplicantLoginForm = () => {
   const [applicantCredential, setApplicantCredential] = useState<UserCredentials>({} as UserCredentials);
   const [error,setError]=useState<boolean>(false);
   const [loading,setLoading]=useState<boolean>(false);
-  const [message,setMessage]=useState();
+  // const [message,setMessage]=useState();
   const { applicantDispatch } = useContext(applicantContext);
   const { loggedIn } = useContext(globalContext);
   //email change

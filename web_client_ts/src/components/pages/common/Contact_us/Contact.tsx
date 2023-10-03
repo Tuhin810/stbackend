@@ -4,7 +4,7 @@ import ContactUsForm from "./Contact_Form/ContactUsForm"
 
 const Contact = () => {
   return (
-    <FormDashboard image={contact_us} child={<ContactUsForm/>}/>
+    <FormDashboard image={contact_us} child={<ContactUsForm />} HeadingContent={"empty"}/>
   )
 }
 
