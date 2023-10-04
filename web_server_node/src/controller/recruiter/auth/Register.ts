@@ -22,8 +22,7 @@ export const registerNewRecruiter = async (req: Request, res: Response) => {
             if (comapny) {
                 postRecruiter(recruiterDetails)
                     .then((data) => {
-                        const recruiterDetails: RecruiterSignUp = data;
-                        recruiterDetails.password = "";
+                        const recruiterDetails = data;
                         res.status(200).send({
                             success: true,
                             message: "Users Register Successfully",

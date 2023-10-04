@@ -90,7 +90,6 @@ const ApplicantSignupForm = () => {
       navigate("/applicant");
     }
   }
-
   
   useEffect(() => {
     if (page === 4) {

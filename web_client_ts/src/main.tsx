@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import App from './App.tsx'
 import './index.css'
 import GlobalState from './context/GlobalDetails/GlobalState.tsx'
@@ -16,3 +17,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </GlobalState>
   
 )
+
+serviceWorkerRegistration.register();

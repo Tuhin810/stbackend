@@ -9,31 +9,32 @@ import { RecruiterDetails } from '../../../../../@types/RecruiterDetails';
 import { logo } from '../../../../../assets/images';
 import LogInForm from '../../../../shared/forms/LogInForm';
 import Spinner from '../../../../shared/spinner/Spinner';
+import { UserCredentials } from '../../../../../@types/UserCredential';
 
 const RecruiterLoginForm = () => {
   const navigate = useNavigate();
   const [loading,setLoading]=useState<boolean>(false);
-  const [recruiterSignUpDetail, setRecruiterSignUpDetail] = useState<RecruiterDetails>({} as RecruiterDetails);
+  const [recruiterLoginCredential, setRecruiterLoginCredential] = useState<UserCredentials>({} as UserCredentials);
   const { dispatch } = useContext(recruiterContext);
   const { loggedIn } = useContext(globalContext);
   //email change
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
-    setRecruiterSignUpDetail(Object.assign({}, recruiterSignUpDetail, {
-      email: value
+    setRecruiterLoginCredential(Object.assign({}, recruiterLoginCredential, {
+      userId: value
     }))
   }
   //password change
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
-    setRecruiterSignUpDetail(Object.assign({}, recruiterSignUpDetail, {
+    setRecruiterLoginCredential(Object.assign({}, recruiterLoginCredential, {
       password: value
     }))
   }
   //api calling function
   const loginRec = async () => {
     setLoading(true);
-     await LoginRecruiter(recruiterSignUpDetail).then(response=>{
+     await LoginRecruiter(recruiterLoginCredential).then(response=>{
       setLoading(false);
       if (response?.status === 200) {
         const recruiterDetails = response.data.recruiter as RecruiterDetails;

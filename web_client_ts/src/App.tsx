@@ -29,6 +29,7 @@ import RecruiterLogin from "./components/pages/recruiter/auth/RecruiterLogin/Rec
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Contact from "./components/pages/common/Contact_us/Contact";
+import About from "./components/pages/common/About_us/About";
 
 
 const App = () => {
@@ -55,6 +56,7 @@ const App = () => {
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
             <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/support" element={<Contact />} />
           </Route>
 

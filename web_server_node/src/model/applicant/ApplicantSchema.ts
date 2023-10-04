@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
-var jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 // model for new registration 
 
 export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
@@ -74,8 +74,8 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: Number
     },
     photo: {
-        data: Buffer,
-        contentType: String,
+        type: String,
+        default: "https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg",
     },
     cv: {
         data: [Buffer],
