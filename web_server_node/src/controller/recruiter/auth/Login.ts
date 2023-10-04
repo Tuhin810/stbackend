@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { UserCredential } from "../../../@types/interfaces/UserCredentail";
 import { getRecruiterByEmail, getRecruiterByEmailAndPassword } from "../../../service/Recruiter/RecruiterService";
-var jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 export const loginRecruiter = async (req: Request, res: Response) => {
     const recruiterCredentail: UserCredential = req.body;
 
-    if (!recruiterCredentail.email || !recruiterCredentail.password) {
+    if (!recruiterCredentail.userId || !recruiterCredentail.password) {
         return res.status(422).json({
             success: false,
             message: "Invalid email or password",
@@ -14,23 +14,25 @@ export const loginRecruiter = async (req: Request, res: Response) => {
     try {
 
         const recruiter = await getRecruiterByEmailAndPassword(recruiterCredentail);
-        const matchedrecruiter = await getRecruiterByEmail(recruiterCredentail.email)
+        const matchedrecruiter = await getRecruiterByEmail(recruiterCredentail.userId)
 
         const token = jwt.sign({ _id: matchedrecruiter!._id }, process.env.JWTKEY);
         matchedrecruiter!.tokens = matchedrecruiter!.tokens.concat({ token: token })
         matchedrecruiter!.save()
+        console.log("recwithpass", recruiter);
+        console.log("recdet", recruiter);
+
 
         if (recruiter) {
-            recruiter.password = "";
             res.status(200).json({
                 success: true,
-                message: "login successful from ts",
+                message: "login successful",
                 recruiter: recruiter,
                 token
             });
         }
         else {
-            res.status(404).json({
+            res.status(401).json({
                 success: false,
                 message: "invalid credentials",
 

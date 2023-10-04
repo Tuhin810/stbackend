@@ -7,6 +7,7 @@ import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/my
 const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
 
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
+    const {applicantDispatch} = useContext(applicantContext);
     const { applicantloggedinDetails } = useContext(applicantContext);
     let name = "";
     if (defaultApplicantDetails.middle_name !== undefined) {
@@ -26,10 +27,13 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
         if (e.target.files![0]) {
             reader.readAsDataURL(e.target.files![0]);
         }
-        reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
+        reader.onload = async(readerEvent: ProgressEvent<FileReader>) => {
             const url = readerEvent.target?.result;
             defaultApplicantDetails.photo = url!;
-            updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!, defaultApplicantDetails)
+            const response = await updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!, defaultApplicantDetails);
+            if (response?.status === 200) {
+                applicantDispatch({ type: "updateDetails", payload: response?.data.data })
+            }
         };
     };
     return (

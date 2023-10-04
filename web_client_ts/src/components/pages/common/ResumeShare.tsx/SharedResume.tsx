@@ -58,6 +58,7 @@ const SharedResume = () => {
     useEffect(() => {
         const applicantId = params.id!;
         isResumePublic(applicantId);
+        console.log("is public",isPublic);
         if (isPublic) {
             getApplicantDetails(applicantId);
         }

@@ -1,6 +1,8 @@
 // import React from 'react'
 
-export const AcceptedJobsCard = ({ job_details}:any) => {
+import { JobProps } from "../../../../../../@types/interfaces/props/JobProps/JobProps"
+
+export const AcceptedJobsCard = ({ job_details}:JobProps) => {
   return (
     <div>
 

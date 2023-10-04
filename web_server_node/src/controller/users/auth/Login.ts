@@ -1,21 +1,31 @@
 import { Request, Response } from "express";
 import ApplicantModel from "../../../model/applicant/ApplicantSchema";
 import { UserCredential } from "../../../@types/interfaces/UserCredentail";
-var jwt = require('jsonwebtoken');
+import { loginExistingUser } from "../../../service/applicant/applicant.service";
+import { isEmail } from "../../../service/commonFunction/CommonFunctions";
+const jwt = require("jsonwebtoken");
 
 export const loginUser = async (req: Request, res: Response) => {
     const userCredentail: UserCredential = req.body;
 
-    if (!userCredentail.email || !userCredentail.password) {
+    if (!userCredentail.userId || !userCredentail.password) {
+        console.log("unprocessable");
+
         return res.status(422).json({
             success: false,
-            message: "Invalid email or password",
+            message: "user credential empty",
         });
     }
     try {
+        let matchedUser = null;
+        if (!isEmail(userCredentail.userId)) {
+            matchedUser = await ApplicantModel.findOne({ email: userCredentail.userId })
+        }
+        else {
+            matchedUser = await ApplicantModel.findOne({ phone: userCredentail.userId })
+        }
 
-        const matchedUser = await ApplicantModel.findOne({ email: userCredentail.email })
-        const user = await ApplicantModel.findOne({ $and: [{ email: userCredentail.email }, { password: userCredentail.password }] });
+        const user = await loginExistingUser(userCredentail.userId, userCredentail.password);
 
         if (user) {
             const token = jwt.sign({ _id: matchedUser!._id }, process.env.JWTKEY);

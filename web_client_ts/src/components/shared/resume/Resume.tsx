@@ -9,7 +9,7 @@ const Resume = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
                     <div className="resume-heading text-center mb-6">
                         <h1 className="text-3xl font-bold mb-1">{defaultApplicantDetails?.first_name} <span className='text-blue-600'>{defaultApplicantDetails?.last_name}</span></h1>
                         <p className="text-lg mb-1">Frontend Developer</p>
-                        <p className='contact'> <span className='text-blue-600'>{defaultApplicantDetails?.email}</span> | {defaultApplicantDetails?.country_code} {defaultApplicantDetails.phone}</p>
+                        <p className='contact'> <span className='text-blue-600'>{defaultApplicantDetails?.email}</span> | {defaultApplicantDetails?.country_code} {defaultApplicantDetails?.phone}</p>
                     </div>
                     <hr className='mb-4' />
                     <div className="mb-4">

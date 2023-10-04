@@ -8,10 +8,41 @@ import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant
 import JobModel from "../../model/jobs/JobSchema";
 import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
 import { ApplicantPreferredJob } from "../../@types/interfaces/ApplicantPreferredJobs";
+import { encryptPass, isEmail, isPasswordMatched } from "../commonFunction/CommonFunctions";
 
 export const registerNewApplicant = async (applicantDetails: ApplicantDetails) => {
-    const response: ApplicantDetails = await ApplicantModel.create(applicantDetails);
-    return response;
+    try {
+        const hashPass = await encryptPass(applicantDetails.password!);
+        if (hashPass != undefined) {
+            applicantDetails.password = hashPass
+            const response: ApplicantDetails = await ApplicantModel.create(applicantDetails);
+            return response;
+        }
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+export const loginExistingUser = async (userId: string | number, password: string) => {
+    try {
+        let response;
+        if (!isEmail(userId)) {
+            response = await ApplicantModel.findOne({ email: userId });
+        }
+        else {
+            response = await ApplicantModel.findOne({ phone: userId });
+        }
+        const isPassMatched = await isPasswordMatched(password, response?.password || "")
+
+        if (isPassMatched) {
+            return response;
+        }
+        else return null;
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 export const getApplicantDetails = async (applicantId: string) => {

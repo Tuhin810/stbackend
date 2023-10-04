@@ -1,6 +1,4 @@
 import { JobDescription } from "./JobDescription/JobDescription"
-// import { JobHeader } from "./JobHeader/JobHeader"
-// import { JobSearchBar } from "./SearchBar/JobSearchBar"
 import { useContext, useEffect, useState } from "react"
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext"
 import { getApplicantInvitedJobList } from "../../../../utils/apis/applicant/Applicant"

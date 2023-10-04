@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import UserModel from "../../../model/applicant/ApplicantSchema";
 import { ApplicantDetails } from "../../../@types/interfaces/ApplicantDetails";
-import { getApplicantDetailsByEmail, registerNewApplicant } from "../../../service/applicant/applicant.service";
+import {getApplicantDetailsByEmail, registerNewApplicant } from "../../../service/applicant/applicant.service";
 
 export const registerNewUser = async (req: Request, res: Response) => {
     const userDetails: ApplicantDetails = req.body;
@@ -21,22 +21,22 @@ export const registerNewUser = async (req: Request, res: Response) => {
         } else {
             const data = await registerNewApplicant(userDetails);
             if (data) {
-                const applicantResponse= await getApplicantDetailsByEmail(userDetails.email);
-                if(applicantResponse){
+                const applicantResponse = await getApplicantDetailsByEmail(userDetails.email);
+                if (applicantResponse) {
                     res.status(200).send({
                         success: true,
                         message: "User Register Successfully",
                         user: applicantResponse
                     });
                 }
-                else{
+                else {
                     res.status(207).send({
                         success: true,
                         message: "User Register Successfully but failed to get",
                         user: applicantResponse
                     });
                 }
-                
+
             }
 
 

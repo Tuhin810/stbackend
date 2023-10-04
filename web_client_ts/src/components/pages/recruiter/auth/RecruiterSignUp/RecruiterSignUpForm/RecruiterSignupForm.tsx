@@ -3,19 +3,27 @@ import { CompanyList } from '../../../../../../@types/CompanyList';
 import { getCompanyList } from '../../../../../../utils/apis/company/company';
 import { RecruiterDetails } from '../../../../../../@types/RecruiterDetails';
 import { registerRecruiter } from '../../../../../../utils/apis/recruiter/recruiter';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../../../context/recruiterDetails/RecruiterContext';
 import { globalContext } from '../../../../../../context/GlobalDetails/GlobalContext';
 import { logo } from '../../../../../../assets/images';
+import RecruiterSignUpPage1 from '../RecruiterSignUpPage1/RecruiterSignUpPage1';
+import RecruiterSignUpPage2 from '../RecruiterSignUpPage2/RecruiterSignUpPage2';
+import RecruiterSignUpPage3 from '../RecruiterSignUpPage3/RecruiterSignUpPage3';
+import OtpVerification from '../OtpVerificationPage/OtpVerification';
+import { confirmationResult, sendOtp } from '../../../../../../utils/service/firebase.service';
+import Spinner from '../../../../../shared/spinner/Spinner';
 
 const RecruiterSignupForm = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(recruiterContext);
   const { loggedIn } = useContext(globalContext);
-
+  const [otp, setOtp] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
   const [companyList, setCompanyList] = useState<CompanyList[]>([]);
   const [page, setPage] = useState<number>(0);
-  const [button, setButton] = useState<string>('Next');
+  const [buttonText, setButtonText] = useState<string>('Next');
   const [recruiterSignUpDetail, setRecruiterSignUpDetail] = useState<RecruiterDetails>({
     first_name: "",
     middle_name: "",
@@ -34,7 +42,9 @@ const RecruiterSignupForm = () => {
   } as RecruiterDetails);
 
   const signUpRecruiter = async () => {
+    setLoading(true);
     const response = await registerRecruiter(recruiterSignUpDetail);
+    setLoading(false);
     if (response?.status === 200) {
       const recruiterDetails = response.data.recruiter as RecruiterDetails;
       dispatch({ type: "login", payload: recruiterDetails })
@@ -45,17 +55,50 @@ const RecruiterSignupForm = () => {
 
   const handleChnageRecruiterDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
+    if (name === "cnf_password") {
+      (recruiterSignUpDetail.password !== value) ? setPasswordError(true) : setPasswordError(false);
+    }
     setRecruiterSignUpDetail(Object.assign({}, recruiterSignUpDetail, { [name]: value }))
   }, [recruiterSignUpDetail])
 
-  const handleNext = async () => {
-    if (page == 0 && recruiterSignUpDetail.first_name != null && recruiterSignUpDetail.last_name != null) {
-      setPage(1);
-      setButton("Submit");
-    }
-    if (page != 0 && recruiterSignUpDetail.email != null && recruiterSignUpDetail.password != null) {
-      console.log(page);
+  const handleChangeOtp = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setOtp(value);
+  }
+
+  const senOtpToPhone = () => {
+    const phone = "+91" + recruiterSignUpDetail.phone.toString();
+    console.log(phone);
+    sendOtp(phone);
+  }
+
+  const validateOtp = async () => {
+    confirmationResult.confirm(otp).then(async () => {
       await signUpRecruiter();
+    }).catch((error) => {
+      // setInvalidOtp(true);
+      console.log(error);
+    });
+  }
+
+
+  const handlePageIncrement = async () => {
+    console.log(page);
+    if (page < 4) {
+      setPage(prev => prev + 1);
+    }
+    if (page === 1) {
+      console.log("otp");
+      senOtpToPhone();
+    }
+    else if (page === 3) {
+      console.log("page 4");
+      await validateOtp();
+    }
+  }
+  const handlePageDecrease = async () => {
+    if (page > 0) {
+      setPage(prev => prev - 1);
     }
   }
 
@@ -65,59 +108,43 @@ const RecruiterSignupForm = () => {
       setCompanyList(companyList)
     });
   }, []);
+
+  useEffect(() => {
+    if (page === 4) {
+      setButtonText("")
+    }
+    else {
+      setButtonText("Continue");
+    }
+  }, [page]);
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-       <img src={logo} className='mb-2'/>
+      <img src={logo} className='mb-2' />
       <div className=" p-8 w-full max-w-sm">
-        <h1 className="text-2xl font-semibold mb-6">Sign Up</h1>
         {
-          (page === 0) ?
-            <>
-              <div className="mb-2">
-                <label htmlFor="company_id" className="block text-gray-700 text-sm font-medium mb-1">Company</label>
-                <select placeholder='Select Company Name' onChange={(e) => handleChnageRecruiterDetails(e)} id="company_id" name="company_id" className="w-full px-4 py-2 border border-2 focus:border-blue-300 rounded-md focus:outline-none  focus:border-blue-300">
-                  <option value={"others"}>Select Company</option>
-                  {
-                    companyList.map(company => {
-                      return (
-                        <option value={company._id}>{company.name}</option>
-                      )
-                    })
-                  }
-                </select>
-              </div>
-              <p className="text-sm text-gray-600 mb-2">If your company is not listed <Link to="/newCompany" className="text-blue-500 hover:underline">register here</Link></p>
-              <div className="mb-4">
-                <label htmlFor="first_name" className="block text-gray-700 text-sm font-medium mb-1 flex justify-between"><span>First Name</span> </label>
-                <input type="text" id="first_name" name="first_name" className={'w-full px-4 py-2 border border-2 focus:border-blue-300 rounded-md focus:outline-none  focus:border-blue-300'} required onChange={(e) => handleChnageRecruiterDetails(e)} />
-
-              </div>
-              <div className="mb-4">
-                <label htmlFor="last_name" className="block text-gray-700 text-sm font-medium mb-1 flex justify-between"><span>Last Name</span></label>
-                <input type="text" id="last_name" name="last_name" className={'w-full px-4 py-2 border border-2 focus:border-blue-300 rounded-md focus:outline-none  focus:border-blue-300'} required onChange={(e) => handleChnageRecruiterDetails(e)} />
-              </div>
-            </>
-            :
-            <>
-              <div className="relative">
-                <input type="search" id="search" className="w-full px-4 py-2 border border-2 focus:border-blue-300 rounded-md focus:outline-none  focus:border-blue-300 " placeholder="Search" required />
-                <button className="text-black absolute right-1 bottom-1 bg-gray-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">
-                  <span>
-                    <svg className="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.9" d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z" />
-                    </svg>
-                  </span>
-                </button>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="password" className="block text-gray-700 text-sm font-medium mb-1 flex justify-between"><span>Password</span>{<span className="inline-block text-red-500 text-right w-auto">Required</span>}</label>
-                <input type="password" id="password" name="password" className={'w-full px-4 py-2 border border-2 focus:border-blue-300 rounded-md focus:outline-none  focus:border-blue-300'} required onChange={(e) => handleChnageRecruiterDetails(e)} />
-
-              </div>
-            </>
+          (loading) ? <Spinner /> :
+            <div>
+              <h1 className="text-2xl font-semibold mb-6">Sign Up</h1>
+              {
+                (page === 0) ?
+                  <RecruiterSignUpPage1 companyList={companyList} handleChnageRecruiterDetails={handleChnageRecruiterDetails} />
+                  :
+                  (page === 1) ?
+                    <RecruiterSignUpPage2 handleChnageRecruiterDetails={handleChnageRecruiterDetails} />
+                    :
+                    (page === 2) ?
+                      <RecruiterSignUpPage3 handleChnageRecruiterDetails={handleChnageRecruiterDetails} passwordError={passwordError} />
+                      :
+                      (page === 3) ?
+                        <OtpVerification handleChangeOtp={handleChangeOtp} />
+                        : null
+              }
+            </div>
         }
 
-        <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300" onClick={handleNext}>{button}</button>
+
+        <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300" id="sign-in-button" onClick={handlePageIncrement}>{buttonText}</button>
         <p className="text-sm text-gray-600 mt-3">Already have an account? <a href="#" className="text-blue-500 hover:underline">Log in</a></p>
       </div>
 
