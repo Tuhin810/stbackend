@@ -23,6 +23,7 @@ import success from './success.gif'
 import company_registration from './Company-amico.svg'
 import contact_us from './Service 24_7-amico.svg'
 import google_icon from './google.svg'
+import job_not_found from './Job-Not-Found.svg'
 
 export {
 	get_find,
@@ -49,5 +50,6 @@ export {
 	success,
 	company_registration,
 	contact_us,
-	google_icon
+	google_icon,
+	job_not_found
 };

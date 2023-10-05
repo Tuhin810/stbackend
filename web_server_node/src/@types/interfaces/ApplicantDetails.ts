@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import { ApplicantQualification } from "./ApplicantEducation"
+import { ApplicantExperience } from "./ApplicantExperience"
 
 export interface ApplicantDetails {
     _id?: string,
@@ -29,11 +30,14 @@ export interface ApplicantDetails {
     gender: string,
     qualification_to_search: string[],
     qualification_details: ApplicantQualification[],
+    experience_details: ApplicantExperience[],
     min_expected_salary: number,
     min_duty_hours: number,
     native_language: string,
     is_disabled: boolean,
     is_profile_public: boolean,
     is_resume_public: boolean,
-    tokens: any
+    tokens: any,
+    is_phone_verified: boolean,
+    is_email_verified: boolean
 }

@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { registerNewUser } from "../../../controller/users/auth/Register";
 import { loginUser } from "../../../controller/users/auth/Login";
 import { getApplicantDetailsById } from "../../../controller/users/applicantDetails/GetApplicantDetails";
@@ -10,11 +10,12 @@ import { getApplicantProfilePrivacy, getApplicantResumePrivacy, updateApplicantP
 import { applicantApplyJob } from "../../../controller/users/applicantAppliedJobList/ApplicantApplyJob";
 import { getApplicantAcceptedJobList } from "../../../controller/users/ApplicantAcceptedjobList/GetApplicantAcceptedjobList";
 import { authenticateApplicant } from "../../../middleware/authenticate";
+import { updateExperience } from "../../../controller/users/applicantExperience/ApplicantExperience";
 
 
 const router = express.Router();
 
-router.get("/applicant/getApplicantDetailsById/:id",  getApplicantDetailsById);
+router.get("/applicant/getApplicantDetailsById/:id", getApplicantDetailsById);
 router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
 router.get("/applicant/getApplicantProfilePrivacy/:id", getApplicantProfilePrivacy);
 router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
@@ -24,6 +25,7 @@ router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);
 router.post("/applicant/applyJob/:jobId/:applicantId", applicantApplyJob);
 router.put("/applicant/updateApplicantEducation/:id", updateQualification);
+router.put("/applicant/updateApplicantExperience/:id", updateExperience);
 router.put("/applicant/updateApplicantSkills/:id", updateApplicantSkillById);
 router.patch("/applicant/updateApplicantProfile/:id", updateApplicntProfileDetails);
 router.patch("/applicant/updateApplicantPrivacy/:id", updateApplicantPrivacy);

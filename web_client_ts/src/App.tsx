@@ -49,8 +49,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
-          <Route path="/recruiter" element={<Navigate to={(!guard()) ? '/recruiter/jobs' : '/applicant'} />} />
-          <Route path="/applicant" element={<Navigate to={(!guard()) ? '/applicant/profile' : '/recruiter'} />} />
+          <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
+          <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
           <Route path="/resume/:id" element={<SharedResume />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
           {/* landing page */}
