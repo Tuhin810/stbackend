@@ -17,9 +17,9 @@ const router = express.Router();
 
 router.get("/applicant/getApplicantDetailsById/:id", getApplicantDetailsById);
 router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
-router.get("/applicant/getApplicantProfilePrivacy/:id", authenticateApplicant, getApplicantProfilePrivacy);
-router.get("/applicant/getApplicantResumePrivacy/:id", authenticateApplicant, getApplicantResumePrivacy);
-router.get("/applicant/getApplicantAcceptedJobList/:id", authenticateApplicant, getApplicantAcceptedJobList);
+router.get("/applicant/getApplicantProfilePrivacy/:id", getApplicantProfilePrivacy);
+router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
+router.get("/applicant/getApplicantAcceptedJobList/:id",  getApplicantAcceptedJobList);
 
 router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);

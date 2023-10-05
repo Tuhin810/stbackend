@@ -1,6 +1,7 @@
 import { ApplicantEducation } from "./interfaces/ApplicantEducation"
 
 export interface ApplicantDetails {
+    experience_details: ApplicantExperience[]
     is_fresher: boolean
     _id?: string,
     firebase_id?: string,

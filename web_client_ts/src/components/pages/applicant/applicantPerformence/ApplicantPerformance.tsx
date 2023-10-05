@@ -49,7 +49,7 @@ export const ApplicantPerformance = () => {
 
           <div className="flex flex-col md:flex-row">
             <div
-              className="mr-6 w-full md:w-1/2  py-2 flex-shrink-0 flex flex-col bg-white
+              className="mr-6 w-full md:w-1/2  py-2 flex-shrink-0 flex flex-col 
 				dark-bg-gray-600 rounded-lg">
 
 
@@ -209,18 +209,7 @@ export const ApplicantPerformance = () => {
               </div>
             </div>
           </div>
-          <button
-            className="mt-8 flex items-center py-4 px-3 text-white rounded-lg
-			bg-red-600 shadow -:outline-none">
-            {/* <!-- Action --> */}
-
-            <svg className="h-5 w-5 fill-current mr-2 ml-3" viewBox="0 0 24 24">
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-            </svg>
-
-            <span>Bill your Students</span>
-
-          </button>
+        
 
         </aside>
 

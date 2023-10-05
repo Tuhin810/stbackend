@@ -10,6 +10,7 @@ import { applicantContext } from "../../../../context/applicantDetails/Applicant
 import MyResumeContainer from "./myResumeContainer/MyResumeContainer";
 // import Home from "../../common/home/Home";
 import { useNavigate } from "react-router-dom";
+import { MyExperience } from "./myExperience/MyExperience";
 
 const ApplicantProfile = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
@@ -40,6 +41,7 @@ const ApplicantProfile = () => {
                         <MyProfileDetails defaultApplicantDetails={applicantDetails} />
                         <MySkill skillList={applicantDetails?.skills} />
                         <MyQualification qualificationDetails={applicantDetails?.qualification_details} />
+                        <MyExperience Experience={applicantDetails?.experience_details}/>
                         <AdditonalDetails defaultApplicantDetails={applicantDetails} />
                     </div>
                 </div>
