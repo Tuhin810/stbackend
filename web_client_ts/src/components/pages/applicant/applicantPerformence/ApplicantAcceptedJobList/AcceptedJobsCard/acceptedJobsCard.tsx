@@ -6,7 +6,7 @@ export const AcceptedJobsCard = ({ job_details}:JobProps) => {
   return (
     <div>
 
-<li className="mt-2">
+{/* <li className="mt-2">
 
 <a
   className="p-5 flex flex-col justify-between
@@ -56,7 +56,36 @@ text-gray-600">
   </div>
 
 </a>
-</li>
+</li> */}
+
+
+
+
+
+<div className="">
+	<div
+		className="relative  flex flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 md:max-w-3xl mx-auto border border-white bg-white">
+		<div className="-mt-3 -mr-4 w-1/6   bg-white grid place-items-center">
+			<img  src="https://img.naukimg.com/logo_images/groups/v1/223346.gif" alt="tailwind logo" 
+      className="rounded-xl border-2" />
+    </div>
+			<div className="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
+				<div className="flex justify-between item-center">
+					<p className="text-gray-500 font-medium  ">Xyz company</p>
+					
+					
+					<div className="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
+          14 hours ago</div>
+				</div>
+				<h3 className="font-black text-gray-800 md:text-xl text-xl capitalize">{job_details.job_title}</h3>
+				
+				<p className="text-md  text-gray-600">
+        ₹{job_details.min_salary} - ₹{job_details.max_salary}
+					<span className="font-normal text-gray-600 text-base">/night</span>
+				</p>
+			</div>
+		</div>
+	</div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { ApplicantDetails } from "../../../@types/ApplicantDetails";
 import { ApplicantEducation } from "../../../@types/interfaces/ApplicantEducation";
+import { ApplicantExperience } from "../../../@types/interfaces/ApplicantExp";
 import { IApplicantPrivacyProps } from "../../../@types/interfaces/props/ApplicantProps/ApplicantPrivacyProps";
 import { header } from "../../../configs/apiConfig"
 import { Get, Put, Patch, Post } from "../apiCall"
@@ -22,6 +23,10 @@ export const updateApplicantSkills =async (applicantId:string,skillList:string[]
 
 export const updateApplicantEducation =async (applicantId:string,applicantEducation:ApplicantEducation) => {
     const response = await Put(`applicant/updateApplicantEducation/${applicantId}`,applicantEducation,header);
+    return response;
+}
+export const updateApplicantExperience =async (applicantId:string,applicantExp:ApplicantExperience) => {
+    const response = await Put(`applicant/updateApplicantExperience/${applicantId}`,applicantExp,header);
     return response;
 }
 
