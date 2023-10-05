@@ -110,6 +110,10 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: [Object],
         default: []
     },
+    experience_details: {
+        type: [Object],
+        default: []
+    },
     min_expected_salary: {
         type: Number,
         default: 0
@@ -135,6 +139,14 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         default: false
     },
     is_resume_public: {
+        type: Boolean,
+        default: false
+    },
+    is_email_verified: {
+        type: Boolean,
+        default: false
+    },
+    is_phone_verified: {
         type: Boolean,
         default: false
     },
