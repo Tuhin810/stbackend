@@ -1,3 +1,6 @@
+import { CompanyDetails } from "../CompanyDetails"
+import { RecruiterDetails } from "../RecruiterDetails"
+
 export interface JobDetails{
     _id?: string,
     posted_date: Date,
@@ -15,7 +18,7 @@ export interface JobDetails{
     max_salary: number,
     currency_type: string,
     company_id: string,
-    company_name: string,
+    company_name?: string,
     min_age_limit: number,
     max_age_limit: number,
     job_poster_id: string,
@@ -26,6 +29,8 @@ export interface JobDetails{
     gender: string,
     qualification: string,
     any_charges: boolean,
-    no_of_matched_profiles: number
-    no_of_applicants: number
+    no_of_matched_profiles?: number
+    no_of_applicants?: number,
+    company_details?:CompanyDetails,
+    recruiter_details?:RecruiterDetails
 }

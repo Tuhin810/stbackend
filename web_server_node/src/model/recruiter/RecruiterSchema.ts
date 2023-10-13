@@ -8,6 +8,9 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
     firebase_id: {
         type: String
     },
+    _id: {
+        type: String
+    },
     first_name: {
         type: String,
         trim: true,

@@ -96,11 +96,11 @@ const RecruiterSignupForm = () => {
       await validateOtp();
     }
   }
-  const handlePageDecrease = async () => {
-    if (page > 0) {
-      setPage(prev => prev - 1);
-    }
-  }
+  // const handlePageDecrease = async () => {
+  //   if (page > 0) {
+  //     setPage(prev => prev - 1);
+  //   }
+  // }
 
   useEffect(() => {
     getCompanyList().then((response) => {

@@ -151,7 +151,7 @@ export const ApplicantPerformance = () => {
                   Find your first job
                 </span>
 
-                <Link to="/applicant/RecommendedJobs/" className="my-12 bg-purple-800 rounded-lg py-2 px-4" >
+                <Link to="/applicant/matchedJobs/" className="my-12 bg-purple-800 rounded-lg py-2 px-4" >
                   Find a Job
                 </Link>
 

@@ -1,4 +1,3 @@
-import Footer from '../footer/Footer';
 import FrequentlyAskedQuestion from '../frequentlyAskedQuestion/FrequentlyAskedQuestion';
 import Testimonial from '../Testimonial/Testimonial';
 import { showModal } from '../../../../utils/commonFunctions/HandleModal';
@@ -10,6 +9,7 @@ import Stats from '../stats/Stats';
 import Hero from '../hero/Hero';
 import CustomerReview from '../../../shared/customerReview/CustomerReview';
 import modeImg from "../../../../assets/images/modelImg.svg"
+
 const Home = () => {
     const modalId='home-modal'
     const [action,setAction] =useState<string>('');
@@ -39,7 +39,6 @@ const Home = () => {
                     <div className="my-5"></div>
 
                 </div>
-            <Footer />
              </>
     )
 }

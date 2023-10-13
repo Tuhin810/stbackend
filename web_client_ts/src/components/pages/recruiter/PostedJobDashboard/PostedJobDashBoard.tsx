@@ -171,7 +171,7 @@ const PostedJobDashboard = () => {
               </div>
               <div className="row-span-3 bg-white shadow rounded-lg">
                 <div className="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
-                  <span>job aplies by average mark</span>
+                  <span>Matched Applicant List</span>
                   <button type="button" className="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600" id="options-menu" aria-haspopup="true" aria-expanded="true">
                     Descending
                     <svg className="-mr-1 ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -180,8 +180,7 @@ const PostedJobDashboard = () => {
                   </button>
                   {/* <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns --> */}
                 </div>
-                <MatchedApplicantBoard matched_applicant_no={jobDetails?.no_of_matched_profiles} jobId={jobId!} />
-
+                <MatchedApplicantBoard matched_applicant_no={jobDetails?.no_of_matched_profiles ||0} jobId={jobId!} />
               </div>
 
             </section>

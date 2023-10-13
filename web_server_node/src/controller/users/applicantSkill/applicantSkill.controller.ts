@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { deleteApplicantSkill, updateApplicantSkill } from "../../../service/applicant/applicant.service";
+import { updateApplicantSkill } from "../../../service/applicant/applicant.service";
 
 export const updateApplicantSkillById = async (req: Request, res: Response) => {
     const applicantId: string = req.params.id!;
@@ -18,9 +18,9 @@ export const updateApplicantSkillById = async (req: Request, res: Response) => {
                 res.status(200).send({
                     success: true,
                     messsage: "fetched successfully",
-                    applicant: response
+                    data: response
                 })
-            } console.log(response);
+            }
 
         }
         catch (error) {

@@ -23,7 +23,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                             <img src={logo} className="h-10" />
                         </div>
                         <ul className="hidden md:flex items-center h-full">
-                            <Link to="/applicant/RecommendedJobs/">
+                            <Link to="/applicant/matchedJobs/">
                                 <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mx-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
                                         <FourBoxIcon />

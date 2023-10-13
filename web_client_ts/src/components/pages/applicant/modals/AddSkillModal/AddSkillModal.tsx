@@ -22,7 +22,7 @@ const AddSkillModal = () => {
     const handleAddSkill = async () => {
         const response = await updateApplicantSkills(applicantloggedinDetails.applicantDetails._id!, skillList);
         if (response?.status === 200) {
-            applicantDispatch({ type: "updateDetails", payload: response?.data.applicant })
+            applicantDispatch({ type: "updateDetails", payload: response?.data.data })
             hideModal("addSkills")
         }
     }

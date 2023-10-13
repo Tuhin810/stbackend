@@ -6,10 +6,9 @@ import { updateQualification } from "../../../controller/users/applicantQualific
 import { updateApplicantSkillById } from "../../../controller/users/applicantSkill/applicantSkill.controller";
 import { getApplicantInvitedJobList } from "../../../controller/users/applicantInvitedJobLisit/GetInvitedJobList.Controller";
 import { updateApplicntProfileDetails } from "../../../controller/users/applicantDetails/UpdateApplicantProfileDetails";
-import { getApplicantProfilePrivacy, getApplicantResumePrivacy, updateApplicantPrivacy } from "../../../controller/users/applicantPrivacy/ApplicantPrivacy";
+import { getApplicantResumePrivacy, updateApplicantPrivacy } from "../../../controller/users/applicantPrivacy/ApplicantPrivacy";
 import { applicantApplyJob } from "../../../controller/users/applicantAppliedJobList/ApplicantApplyJob";
 import { getApplicantAcceptedJobList } from "../../../controller/users/ApplicantAcceptedjobList/GetApplicantAcceptedjobList";
-import { authenticateApplicant } from "../../../middleware/authenticate";
 import { updateExperience } from "../../../controller/users/applicantExperience/ApplicantExperience";
 
 
@@ -17,9 +16,8 @@ const router = express.Router();
 
 router.get("/applicant/getApplicantDetailsById/:id", getApplicantDetailsById);
 router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
-router.get("/applicant/getApplicantProfilePrivacy/:id", getApplicantProfilePrivacy);
 router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
-router.get("/applicant/getApplicantAcceptedJobList/:id",  getApplicantAcceptedJobList);
+router.get("/applicant/getApplicantAcceptedJobList/:id", getApplicantAcceptedJobList);
 
 router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);
@@ -28,6 +26,6 @@ router.put("/applicant/updateApplicantEducation/:id", updateQualification);
 router.put("/applicant/updateApplicantExperience/:id", updateExperience);
 router.put("/applicant/updateApplicantSkills/:id", updateApplicantSkillById);
 router.patch("/applicant/updateApplicantProfile/:id", updateApplicntProfileDetails);
-router.patch("/applicant/updateApplicantPrivacy/:id", updateApplicantPrivacy);
+router.patch("/applicant/updateApplicantPrivacy/:id/:visibilty", updateApplicantPrivacy);
 
 export { router as ApplicantRouter }

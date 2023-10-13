@@ -16,19 +16,17 @@ const ApplicantProfile = () => {
     const { applicantloggedinDetails } = useContext(applicantContext);
     const { applicantDetails } = applicantloggedinDetails;
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         console.log(applicantDetails._id);
-        
+        if (!applicantloggedinDetails.applicantDetails || applicantloggedinDetails.applicantDetails === undefined) {
+            navigate("/home");
+        }
     }, [])
 
-    if (!applicantloggedinDetails) {
-        navigate("/home");
-        return null;
-      }
     return (
         <>
-            <div className="mt-16 my-16 min-h-screen">
+            <div className="mt-16 my-16 min-h-screen capitalize">
 
                 <div className="body md:flex flex-col md:flex-row gap-10 px-3 md:px-32 py-10">
                     {/* Left Side  */}
@@ -41,7 +39,7 @@ const ApplicantProfile = () => {
                         <MyProfileDetails defaultApplicantDetails={applicantDetails} />
                         <MySkill skillList={applicantDetails?.skills} />
                         <MyQualification qualificationDetails={applicantDetails?.qualification_details} />
-                        <MyExperience Experience={applicantDetails?.experience_details}/>
+                        <MyExperience Experience={applicantDetails?.experience_details} />
                         <AdditonalDetails defaultApplicantDetails={applicantDetails} />
                     </div>
                 </div>

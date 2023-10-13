@@ -11,7 +11,7 @@ import LandingPage from "./components/pages/dashboard/landingpageDashboard/Landi
 import RecruiterDashboard from "./components/pages/dashboard/recruiterDashboard/RecruiterDashboard";
 import PostedJobList from "./components/pages/recruiter/postedJobList/PostedJobList";
 import { useContext, useEffect, useState } from "react";
-import { getUserType, guard } from "./guards/UserTypeGuard";
+import { getUserType } from "./guards/UserTypeGuard";
 import PostJob from "./components/pages/recruiter/PostJob/PostJob";
 import RecruiterPricing from "./components/pages/recruiter/recruiterPricing/RecruiterPricing";
 import PostedJobDashboard from "./components/pages/recruiter/PostedJobDashboard/PostedJobDashBoard";
@@ -30,7 +30,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Contact from "./components/pages/common/Contact_us/Contact";
 import About from "./components/pages/common/About_us/About";
-import PaymentPage from "./components/pages/recruiter/payment/PaymentPage";
+import Pricing from "./components/shared/pricing/Pricing";
+import AdminDashBoard from "./components/pages/admin/dashboard/AdminDashBoard";
+import AllJobList from "./components/pages/admin/jobs/jobList/AllJobList";
+import ResumeView from "./components/pages/recruiter/resumeView/ResumeView";
+import ProfileCard from "./components/pages/applicant/profile_card/ProfileCard";
 
 
 const App = () => {
@@ -52,13 +56,14 @@ const App = () => {
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
           <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
           <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
+          <Route path="/admin" element={<Navigate to={'/admin/jobs'} />} />
           <Route path="/resume/:id" element={<SharedResume />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
-          <Route path="/testPay" element={<PaymentPage />} />
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/support" element={<Contact />} />
           </Route>
 
@@ -69,6 +74,7 @@ const App = () => {
           {/* Recruiter Dashboard */}
           <Route path="/recruiter" element={<RecruiterDashboard />}>
             <Route path="/recruiter/jobs" element={<PostedJobList />} />
+            <Route path="/recruiter/applicant-resume/:id" element={<ResumeView />} />
             <Route path="/recruiter/postjob" element={<PostJob />} />
             <Route path="/recruiter/pricing" element={<RecruiterPricing />} />
             <Route path="/recruiter/jobDetails/:jobId" element={<PostedJobDashboard />} />
@@ -81,10 +87,19 @@ const App = () => {
           {/* applicant dashboard */}
           <Route path="/applicant" element={<ApplicantDashboard />}>
             <Route path="/applicant/profile/" element={<ApplicantProfile />} />
+            <Route path="/applicant/Card/" element={<ProfileCard />} />
             <Route path="/applicant/resume/" element={<ApplicantResume />} />
-            <Route path="/applicant/RecommendedJobs/" element={<JobsPage />} />
+            <Route path="/applicant/matchedJobs/" element={<JobsPage />} />
             <Route path="/applicant/performance/" element={<ApplicantPerformance />} />
           </Route>
+
+          <Route path="/admin" element={<AdminDashBoard />}>
+            <Route path="/admin/jobs" element={<AllJobList />} />
+            <Route path="/admin/recruiters" element={<PostJob />} />
+            <Route path="/admin/applicants" element={<RecruiterPricing />} />
+            <Route path="/admin/jobDetails/:jobId" element={<PostedJobDashboard />} />
+          </Route>
+
         </Routes>
 
       </BrowserRouter>

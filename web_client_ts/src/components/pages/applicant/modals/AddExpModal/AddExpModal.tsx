@@ -30,7 +30,7 @@ const AddExpModal = () => {
         try {
             const response = await updateApplicantExperience(applicantloggedinDetails.applicantDetails._id!, ExpDetails);
         if (response?.status === 200) {
-            applicantDispatch({ type: "updateDetails", payload: response?.data.applicant })
+            applicantDispatch({ type: "updateDetails", payload: response?.data.data })
             hideModal('addExp')
         }
         } catch (error) {

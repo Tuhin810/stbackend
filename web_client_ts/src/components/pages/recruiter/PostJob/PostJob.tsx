@@ -1,6 +1,5 @@
 import React, { useState, useEffect,useContext, useCallback} from 'react'
 import ProgressStep from '../../../shared/ProgressStep/ProgressStep';
-import { JobPostDetails } from '../../../../@types/JobPostDetails';
 import PostJobPage1 from './postJob1/PostJobPage1';
 import PostJobPage2 from './postJob2/PostJobPage2';
 import PostJobPage3 from './postJob3/PostJobPage3';
@@ -12,13 +11,14 @@ import { recruiterContext } from '../../../../context/recruiterDetails/Recruiter
 import { MultiValue, SingleValue } from 'react-select';
 import { ISuggestion } from '../../../../@types/interfaces/Suggestion';
 import { AutoCompleteProps } from '../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps';
+import { JobDetails } from '../../../../@types/interfaces/JobDetails';
 
 const PostJob = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState<number>(1);
     const [buttonText, setButtontext] = useState<string>("Continue");
     const {recruiterDetails} = useContext(recruiterContext).recruiterloggedinDetails;
-    const [jobDetails, setJobDetails] = useState<JobPostDetails>(
+    const [jobDetails, setJobDetails] = useState<JobDetails>(
         {
             _id:'',
             posted_date: new Date(),

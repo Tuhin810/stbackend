@@ -4,28 +4,27 @@ import mongoose from "mongoose";
 import cors from "cors";
 import { json } from "body-parser";
 import { ApplicantRouter } from "./router/applicant/auth/applicant.router";
-import { authRecruiterRouter } from "./router/recruiter/auth/auth";
 import { companyRouter } from "./router/company/company";
 import { jobRouter } from "./router/jobs/jobs";
+import { RecruiterRouter } from "./router/recruiter/Recruiter";
 
 dotenv.config();
 const app: Express = express();
 const port = process.env.PORT!;
 
-const allowedOrigins = [
-  "http://localhost:5173", "http://192.168.1.8:5173"];
+const allowedOrigins = ["https://starmarks.in"];
 
 const options: cors.CorsOptions = {
-  origin: allowedOrigins
+  allowedHeaders: ["sessionId", "Content-Type"],
+  exposedHeaders: ["sessionId"],
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false
 };
-
-app.get('/', (req, res) => {
-  res.send(`Server is running at http://localhost:${port}`)
-})
 
 app.use(cors(options));
 app.use(json());
-app.use([ApplicantRouter, authRecruiterRouter, companyRouter, jobRouter]);
+app.use([ApplicantRouter, RecruiterRouter, companyRouter, jobRouter]);
 
 mongoose
   .connect(process.env.MONGO_URL!)

@@ -1,13 +1,13 @@
-export const mode: string = "local";
+export const mode: string = "dev";
 
 export const baseURL: string =
     (mode === "local") ?
 
         'http://localhost:8989/' :
-        (mode === "mobile") ?
-            'http://192.168.1.49:8989/' :
+        (mode === "mobile") ? 
+            'http://192.168.1.164:8989/' :
             (mode === "dev") ?
-                'http://192.168.1.49:8989/' :
+                'https://dnjggwx9e25i6.cloudfront.net/' :
                 (mode === "prod") ?
                     'http://localhost:8989/' :
                     ""

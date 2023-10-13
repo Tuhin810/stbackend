@@ -134,13 +134,9 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: String,
         default: ""
     },
-    is_profile_public: {
-        type: Boolean,
-        default: false
-    },
-    is_resume_public: {
-        type: Boolean,
-        default: false
+    resume_visibilty_status: {
+        type: Number,
+        default: 0
     },
     is_email_verified: {
         type: Boolean,
