@@ -24,13 +24,15 @@ const NavBar = () => {
             const items = document.getElementById("items");
             if (window.scrollY > 100) {
                 navbar!.classList.add("shadow");
+                navbar!.classList.add("bg-[#f5f9ff]/30");
                 navbar!.classList.remove("bg-[#f5f9ff]");
                 items!.classList.remove("justify-end");
                 console.log(navbar);
 
             } else {
                 items!.classList.add("justify-end");
-                navbar!.classList.add("bg-[#f5f9ff]/30");
+                navbar!.classList.add("bg-[#f5f9ff]");
+                navbar!.classList.remove("bg-[#f5f9ff]/30");
                 navbar!.classList.remove("shadow");
             }
         });
@@ -38,7 +40,7 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="navbar backdrop-blur-lg  sticky py-1 sm:py-2 w-full z-20 top-0 left-0 border-gray-200">
+            <nav className="navbar bg-[#f5f9ff] backdrop-blur-lg  sticky py-1 sm:py-2 w-full z-20 top-0 left-0 border-gray-200">
                 <div className="max-w-screen-xl flex flex-wrap justify-center mx-auto p-4 sm:justify-between" id='items'>
                     <a href="https://flowbite.com/" className="flex items-center " id="logo">
                         <img src={logo} className="h-10 mr-3" alt="Flowbite Logo" />

@@ -50,7 +50,7 @@ const FrequentlyAskedQuestion = () => {
           <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-700 sm:text-4xl md:mx-auto">
                
           </h2>
-          <p className="text-sm text-gray-700 md:text-lg ">
+          <p className="text-sm text-gray-700 md:text-lg px-10 ">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque rem aperiam, eaque ipsa quae.
           </p>
