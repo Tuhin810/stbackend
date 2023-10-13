@@ -1,5 +1,5 @@
-import { JobPostDetails } from "../../../JobPostDetails";
+import { JobDetails } from "../../JobDetails";
 
 export interface JobProps{
-    job_details:JobPostDetails
+    job_details:JobDetails
 }

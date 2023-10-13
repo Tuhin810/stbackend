@@ -30,7 +30,7 @@ const AddQualificationModal = () => {
     const handleSubmit = async () => {
         const response = await updateApplicantEducation(applicantloggedinDetails.applicantDetails._id!, educationDetails);
         if (response?.status === 200) {
-            applicantDispatch({ type: "updateDetails", payload: response?.data.applicant })
+            applicantDispatch({ type: "updateDetails", payload: response?.data.data })
             hideModal("addDegrees")
         }
     }

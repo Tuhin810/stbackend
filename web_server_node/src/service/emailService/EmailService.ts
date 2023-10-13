@@ -24,7 +24,7 @@ export const sendMessage = () => {
             console.log(err);
         }
         else {
-            console.log(info);
+
         }
     })
 }

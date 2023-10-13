@@ -17,16 +17,16 @@ export const updateQualification = async (req: Request, res: Response) => {
             res.status(200).send({
                 success: true,
                 message: "qualification details is successfully updated",
-                applicant: response
+                data: response
             })
         }
     }
-    catch(e){
+    catch (e) {
         res.status(500).send({
             success: false,
             message: "error in server",
-            error:e
+            error: e
         })
     }
-    
+
 }

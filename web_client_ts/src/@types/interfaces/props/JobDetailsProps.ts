@@ -1,7 +1,7 @@
-import { JobPostDetails } from "../../JobPostDetails";
+import { JobDetails } from "../JobDetails";
 
 export interface JobDetailsProps{
-    jobDetails:JobPostDetails,
+    jobDetails:JobDetails,
     isAccept?:boolean,
     InvitedJob?:string,
     jobId?:string,

@@ -7,7 +7,7 @@ import { ApplicantDetails } from '../../@types/ApplicantDetails';
 
 
 const ApplicantState = (props: any) => {    
-    const [applicantloggedinDetails, applicantDispatch] = useReducer(applicantLoggedInReducer, {
+    const [applicantloggedinDetails, applicantDispatch] =  useReducer(applicantLoggedInReducer, {
         isLoggedin: false,
         applicantDetails: JSON.parse(localStorage.getItem("details")!) as ApplicantDetails
     });

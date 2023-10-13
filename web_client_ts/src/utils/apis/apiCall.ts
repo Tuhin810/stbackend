@@ -19,7 +19,6 @@ export const Post = async (url: string, payload: Object, headers: Object) => {
             const response = await axios.post(baseURL + url, payload, headers);
             return response;
         }
-        throw "erro";
     } catch (exception) {
         throw exception;
     }

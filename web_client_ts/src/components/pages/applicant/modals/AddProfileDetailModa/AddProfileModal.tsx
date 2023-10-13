@@ -69,8 +69,8 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                                         <select
                                             id="gender" name="gender" className="w-full px-4 py-2  bg-gray-50 focus:outline-none border border-gray-300 text-gray-900
                                       rounded-lg"  onChange={(e) => { handleChangeApplicantDetails(e) }}>
-                                            <option value="male" defaultChecked={defaultApplicantDetails.gender === "male"}>Male</option>
-                                            <option value="female" defaultChecked={defaultApplicantDetails.gender === "female"}>Female</option>
+                                            <option value="male" defaultChecked={defaultApplicantDetails?.gender === "male"}>Male</option>
+                                            <option value="female" defaultChecked={defaultApplicantDetails?.gender === "female"}>Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                                     <label htmlFor="current_assress" className="block  text-sm font-medium text-gray-900 ">Current Address</label>
                                     <input
                                         onChange={(e) => { handleChangeApplicantDetails(e) }}
-                                        defaultValue={defaultApplicantDetails.current_address}
+                                        defaultValue={defaultApplicantDetails?.current_address}
                                         type="text" name="current_address" id="current_address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="St. Pauls School" />
                                 </div>
@@ -92,7 +92,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                                     <div className="">
                                         <input
                                             onChange={(e) => { handleChangeApplicantDetails(e) }}
-                                            defaultValue={defaultApplicantDetails.permanent_address}
+                                            defaultValue={defaultApplicantDetails?.permanent_address}
                                             type="text" name="permanent_address" id="permanent_address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="St. Pauls School" /></div>
 
@@ -102,7 +102,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                                         <label htmlFor="phone" className="block  text-sm font-medium text-gray-900 darkno:text-white">Contact number</label>
                                         <input
                                             onChange={(e) => handleChangeApplicantDetails(e)}
-                                            defaultValue={defaultApplicantDetails.phone}
+                                            defaultValue={defaultApplicantDetails?.phone}
 
                                             type="number" name="phone" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                                             placeholder="secondary education" required />
@@ -111,7 +111,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                                         <label htmlFor="inst_name" className="block  text-sm font-medium text-gray-900 ">Birth Year</label>
                                         <input
                                             onChange={(e) => handleChangeApplicantDetails(e)}
-                                            defaultValue={defaultApplicantDetails.birth_year}
+                                            defaultValue={defaultApplicantDetails?.birth_year}
                                             type="text" name="birthday" id="birthday" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                                      focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="2000" />
                                     </div>

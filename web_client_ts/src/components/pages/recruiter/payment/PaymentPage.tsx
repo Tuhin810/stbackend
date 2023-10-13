@@ -25,7 +25,7 @@ const PaymentPage = ({price,package_name}:PaymentProps) => {
         }
 
         const options = {
-            key: "rzp_test_jEoQb1iBVreRa1", // Enter the Key ID generated from the Dashboard
+            key: "rzp_test_p6ZGihCuMWqf1X", // Enter the Key ID generated from the Dashboard
             amount: (price*100*12).toString(),
             currency: 'INR',
             name: "StarMark ",

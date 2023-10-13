@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, UserCredential, getAuth, signInWithPopup } from "firebase/auth";
 // import { Auth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -29,11 +29,11 @@ export const actionCodeSettings = {
   },
 };
 
-export const signInWithGoogle = async () => {
+export const signInWithGoogle = async ():Promise<UserCredential> => {
   const provider = new GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/user.birthday.read")
   const result = await signInWithPopup(auth, provider)
-  console.log(result);
+  return result;
 }
 
 
