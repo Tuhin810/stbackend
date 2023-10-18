@@ -41,11 +41,9 @@ export const getJobsByCompanyId = async (companyId: string) => {
 export const matchedJobApplicants = async (jobId: string) => {
     try {
         const response = await getJobDetailsByJobId(jobId)!;
-        console.log(response);
         if (response) {
             const jobDetails: JobPostDetails = response;
             let applicantList: mongoose.Schema.Types.ObjectId[];
-            console.log("r");
 
             if (jobDetails.gender != "all") {
                 const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
@@ -75,15 +73,11 @@ export const matchedJobApplicants = async (jobId: string) => {
                     ]
                 }
                 applicantList = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
-                console.log("list", applicantList);
             }
             await sendInviteApplicantList(applicantList, jobDetails._id!);
             await updateMatchedApplicantNumbers(jobDetails._id!);
             const matchedApplicantDetails = await getMatchedApplicantDetails(jobDetails._id!);
             return matchedApplicantDetails;
-        }
-        else {
-            console.log("noe");
         }
     }
     catch (error) {
@@ -151,6 +145,42 @@ export const getApplicantDetailsByJob = async (jobId: string) => {
     try {
         const response = await MatchedApplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
         return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+export const allJobs = async () => {
+    try {
+        const response = await JobModel.find({}).lean().populate("company_details").populate("recruiter_details").exec();
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+export const getMatchedJobDetailsService = async (jobId: string, applicant_id: string) => {
+    try {
+        const response = await MatchedApplicantModel.findOne({ jobId: jobId, applicantId: applicant_id });
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+export const updateJobStatus = async (jobId: string, applicant_id: string, status: string) => {
+    try {
+        await MatchedApplicantModel.updateOne(
+            { jobId: jobId, applicantId: applicant_id },
+            {
+                $set: {
+                    status: status
+                }
+            }
+        )
     }
     catch (error) {
         throw error;

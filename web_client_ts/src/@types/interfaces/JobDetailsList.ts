@@ -1,6 +1,6 @@
-import { JobPostDetails } from "../JobPostDetails";
+import { JobDetails } from "./JobDetails";
 
 export interface JobDetailsList{ 
     isFetched:boolean,
-    jobList:JobPostDetails[],
+    jobList:JobDetails[],
 }

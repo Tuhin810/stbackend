@@ -1,5 +1,6 @@
 import { ApplicantDetails } from "../../../ApplicantDetails";
 
 export interface MyProfileDetailsProps{
-    defaultApplicantDetails:ApplicantDetails
+    defaultApplicantDetails?:ApplicantDetails,
+    componentRef?:React.LegacyRef<HTMLDivElement>,
 }

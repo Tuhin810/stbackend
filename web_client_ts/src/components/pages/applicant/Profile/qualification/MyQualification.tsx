@@ -23,7 +23,7 @@ const MyQualification = ({ qualificationDetails }: ApplicantEducationProps) => {
                             qualificationDetails.map((qualification, value) => {
                                 return (
                                     <div className="flex justify-between mb-2" key={value}>
-                                        <div className=""> <h3 className="text-gray-800 font-semibold text-lg flex gap-2">{qualification.qualification.toUpperCase()}</h3>
+                                        <div className=""> <h3 className="text-gray-800 font-semibold text-lg flex gap-2">{qualification.qualification}</h3>
                                         <p className="text-gray-600">{qualification.inst_name}</p></div>
                                        
                                         <p className="text-gray-700 text-sm font-medium mt-2">From {qualification.from_year} To {qualification.to_year} </p>

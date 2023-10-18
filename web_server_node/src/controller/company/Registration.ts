@@ -5,21 +5,20 @@ import { addNewCompany, getCompanyByEmail } from "../../service/Company/CompanyS
 
 //creating new company
 
-const registerNewCompany =async (req:Request,res:Response) => {
-    
-    const companyDetails:CompanyDetails=req.body;
+const registerNewCompany = async (req: Request, res: Response) => {
 
-    if(!companyDetails.name || !companyDetails.email || !companyDetails.website){
+    const companyDetails: CompanyDetails = req.body;
+
+    if (!companyDetails.name || !companyDetails.email || !companyDetails.website) {
         return res.status(422).send({
             success: false,
             message: "Fields are empty",
         });
     }
-    else{
+    else {
         try {
             const company = await getCompanyByEmail(companyDetails.email);
-            console.log(company);
-            
+
             if (company) {
                 return res.status(409).send({
                     success: false,
@@ -28,14 +27,14 @@ const registerNewCompany =async (req:Request,res:Response) => {
             } else {
                 addNewCompany(companyDetails)
                     .then((data) => {
-                        const companyDetails:CompanyDetails=data;
+                        const companyDetails: CompanyDetails = data;
                         res.status(200).send({
                             success: true,
                             message: "Company Registered Successfully",
-                            company:companyDetails
+                            company: companyDetails
                         });
                     })
-    
+
             }
         } catch (e) {
             res.status(500).send({

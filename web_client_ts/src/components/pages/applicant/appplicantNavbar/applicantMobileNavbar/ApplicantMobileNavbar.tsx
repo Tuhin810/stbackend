@@ -60,7 +60,7 @@ const ApplicantMobileNavbar = ({ show, setShow,logout }: IMobileApplicantNavbarP
                                         </div>
                                     </div>
                                     <ul className="font-extralight">
-                                        <Link className="cursor-pointer" to="/applicant/RecommendedJobs/" onClick={() => setShow(!show)}>
+                                        <Link className="cursor-pointer" to="/applicant/matchedJobs/" onClick={() => setShow(!show)}>
                                             <li className=" pt-10">
                                                 <div className="flex items-center">
                                                     <div className="w-6 h-6 md:w-8 md:h-8 text-indigo-700">

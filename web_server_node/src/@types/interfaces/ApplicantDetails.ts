@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
 import { ApplicantQualification } from "./ApplicantEducation"
 import { ApplicantExperience } from "./ApplicantExperience"
+import { ReviewDetails } from "./ReviewDetails"
 
 export interface ApplicantDetails {
     _id?: string,
@@ -35,8 +35,9 @@ export interface ApplicantDetails {
     min_duty_hours: number,
     native_language: string,
     is_disabled: boolean,
-    is_profile_public: boolean,
-    is_resume_public: boolean,
+    resume_visibilty_status: number,
+    rating: number,
+    reviews: ReviewDetails[],
     tokens: any,
     is_phone_verified: boolean,
     is_email_verified: boolean

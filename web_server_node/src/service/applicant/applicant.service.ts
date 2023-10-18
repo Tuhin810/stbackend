@@ -25,6 +25,16 @@ export const registerNewApplicant = async (applicantDetails: ApplicantDetails) =
     }
 }
 
+export const googleLogin = async (email: string) => {
+    try {
+        const response = await ApplicantModel.findOne({ email: email });
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
 export const loginExistingUser = async (userId: string | number, password: string) => {
     try {
         let response;
@@ -128,7 +138,7 @@ export const updateApplicantProfileDetailsById = async (applicantId: string, app
                     spoken_english: applicantProfile.spoken_english,
                     min_expected_salary: applicantProfile.min_expected_salary,
                     min_duty_hours: applicantProfile.min_duty_hours,
-                    native_language: applicantProfile.min_duty_hours,
+                    native_language: applicantProfile.native_language,
                     is_disabled: applicantProfile.is_disabled,
                 }
             }
@@ -141,18 +151,18 @@ export const updateApplicantProfileDetailsById = async (applicantId: string, app
     }
 }
 
-export const updateApplicantProfileAndResumePrivacy = async (applicantId: string, applicantPrivacy: IApplicantPrivacy) => {
+export const updateApplicantProfileAndResumePrivacy = async (applicantId: string, applicantResumePrivacy: number) => {
     try {
         await ApplicantModel.updateOne(
             { _id: applicantId },
             {
                 $set:
                 {
-                    is_profile_public: applicantPrivacy.is_profile_public,
-                    is_resume_public: applicantPrivacy.is_resume_public
+                    resume_visibilty_status: applicantResumePrivacy
                 }
             }
         )
+
         const response = await getApplicantDetails(applicantId);
         return response;
     }
@@ -161,19 +171,9 @@ export const updateApplicantProfileAndResumePrivacy = async (applicantId: string
     }
 }
 
-export const isApplicantProfilePrivate = async (applicantId: string) => {
+export const getApplicantResumeVisibility = async (applicantId: string) => {
     try {
-        const response = await ApplicantModel.findOne({ _id: applicantId }, { is_profile_public: 1, _id: 0 });
-        return response;
-    }
-    catch (error) {
-        throw error;
-    }
-}
-
-export const isApplicantResumePrivate = async (applicantId: string) => {
-    try {
-        const response = await ApplicantModel.findOne({ _id: applicantId }, { is_resume_public: 1, _id: 0 });
+        const response = await ApplicantModel.findOne({ _id: applicantId }, { resume_visibilty_status: 1, _id: 0 });
         return response;
     }
     catch (error) {
@@ -192,7 +192,8 @@ const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobI
     const matchedApplicant: MatchedApplicant = {
         applicantId: applicantId,
         jobId: jobId,
-        accept: false
+        accept: false,
+        status: "matched"
     }
     try {
         const isApplicantAlreadyMatched = await getIsApplicantAlreadyMatched(matchedApplicant);
@@ -235,12 +236,10 @@ export const applyjob = async (jobId: string, applicantId: string) => {
             ]
         }
         const result = await MatchedApplicantModel.findOne(queryToFindApplicantAndJob);
-        console.log("result", result);
         const response = await MatchedApplicantModel.updateOne(
             queryToFindApplicantAndJob,
             { $set: { accept: true } }
         )
-        console.log(response);
         if (response.acknowledged) {
             await setAppliedJobNumber(jobId);
         }
@@ -259,7 +258,6 @@ const setAppliedJobNumber = async (jobId: string) => {
                 { accept: true }
             ]
         })
-        console.log(no_of_applicants);
         await JobModel.updateOne(
             { _id: jobId },
             {

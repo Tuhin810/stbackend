@@ -12,7 +12,7 @@ const setRecruiterLoggedIn = (recruiterloggedin: RecruiterLoggedInDetails, actio
                 recruiterDetails: action.payload
             };
         case "refreshPage":
-            let recruiterDetails: RecruiterDetails = JSON.parse(localStorage.getItem("details")!);
+            const recruiterDetails: RecruiterDetails = JSON.parse(localStorage.getItem("details")!);
             return {
                 ...recruiterloggedin,
                 isLoggedin: true,

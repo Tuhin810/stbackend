@@ -8,6 +8,7 @@ export const baseURL: string =
             'http://192.168.1.6:8989/' :
             (mode === "dev") ?
                 'http://192.168.1.6:8989/' :
+
                 (mode === "prod") ?
                     'http://localhost:8989/' :
                     ""

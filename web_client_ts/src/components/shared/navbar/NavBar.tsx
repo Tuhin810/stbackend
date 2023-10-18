@@ -27,8 +27,6 @@ const NavBar = () => {
                 navbar!.classList.add("bg-[#f5f9ff]/30");
                 navbar!.classList.remove("bg-[#f5f9ff]");
                 items!.classList.remove("justify-end");
-                console.log(navbar);
-
             } else {
                 items!.classList.add("justify-end");
                 navbar!.classList.add("bg-[#f5f9ff]");
@@ -52,6 +50,9 @@ const NavBar = () => {
                             </li>
                             <li>
                                 <Link to="/about" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</Link>
+                            </li>
+                            <li>
+                                <Link to="/pricing" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Pricing</Link>
                             </li>
                             <li>
                                 <Link to="/support" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Support</Link>

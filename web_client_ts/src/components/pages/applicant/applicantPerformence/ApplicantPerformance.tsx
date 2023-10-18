@@ -85,7 +85,6 @@ export const ApplicantPerformance = () => {
               <img className="object-cover object-center w-full h-full " src="https://img.icons8.com/?size=128&id=7YSSAzKNXqOk&format=png" />
             </a>
 
-           
           </div>
         </div>
 

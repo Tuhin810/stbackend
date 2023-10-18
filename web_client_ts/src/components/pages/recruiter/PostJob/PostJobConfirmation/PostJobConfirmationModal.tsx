@@ -3,7 +3,7 @@ import { newJobPost } from "../../../../../utils/apis/Job/jobpost";
 import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetailsProps";
 import { useContext } from "react";
 import { JobDetailsListContext } from "../../../../../context/jobDetails/JobDetailsContext";
-import { JobPostDetails } from "../../../../../@types/JobPostDetails";
+import { JobDetails } from "../../../../../@types/interfaces/JobDetails";
 
 const PostJobConfirmationModal = ({ jobDetails }: JobDetailsProps) => {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ const PostJobConfirmationModal = ({ jobDetails }: JobDetailsProps) => {
         document.getElementById('modal-overlay')!.classList.add('hidden');
     }
     const postJob = async () => {
-        const fetchedJobList: JobPostDetails[] = jobList;
+        const fetchedJobList: JobDetails[] = jobList;
         const response = await newJobPost(jobDetails);
         if (response?.status === 200) {
             fetchedJobList.push(response?.data.job);

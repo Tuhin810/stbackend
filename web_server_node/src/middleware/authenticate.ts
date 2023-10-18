@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 
 
 //job seeker 
-export const authenticateApplicant = async (req: Request, res: Response, next: any) => {
+export const authenticateApplicant = async (req: any, res: Response, next: any) => {
 
   if (req.headers.authorization != undefined) {
     try {
@@ -15,7 +15,6 @@ export const authenticateApplicant = async (req: Request, res: Response, next: a
       req.user = decode;
       next();
     } catch (error) {
-      console.log(error);
     }
   }
 

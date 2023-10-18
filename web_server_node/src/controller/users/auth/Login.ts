@@ -9,8 +9,6 @@ export const loginUser = async (req: Request, res: Response) => {
     const userCredentail: UserCredential = req.body;
 
     if (!userCredentail.userId || !userCredentail.password) {
-        console.log("unprocessable");
-
         return res.status(422).json({
             success: false,
             message: "user credential empty",

@@ -16,14 +16,11 @@ export const loginRecruiter = async (req: Request, res: Response) => {
         const recruiter = await getRecruiterByEmailAndPassword(recruiterCredentail);
         const matchedrecruiter = await getRecruiterByEmail(recruiterCredentail.userId)
 
-        const token = jwt.sign({ _id: matchedrecruiter!._id }, process.env.JWTKEY);
-        matchedrecruiter!.tokens = matchedrecruiter!.tokens.concat({ token: token })
-        matchedrecruiter!.save()
-        console.log("recwithpass", recruiter);
-        console.log("recdet", recruiter);
+        if (recruiter && matchedrecruiter) {
+            const token = jwt.sign({ _id: matchedrecruiter._id }, process.env.JWTKEY);
+            matchedrecruiter.tokens = matchedrecruiter.tokens.concat({ token: token })
+            matchedrecruiter.save()
 
-
-        if (recruiter) {
             res.status(200).json({
                 success: true,
                 message: "login successful",
@@ -35,7 +32,6 @@ export const loginRecruiter = async (req: Request, res: Response) => {
             res.status(401).json({
                 success: false,
                 message: "invalid credentials",
-
             });
 
         }

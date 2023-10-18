@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    width: 100%;
+
     padding: 0 12px;
     opacity: 0;
     filter: drop-shadow(0 2px 2px #555);
@@ -91,7 +91,7 @@
   }
   
   .carousel__item-body {
-    width: 100%;
+    
     background-color: #fff;
     border-radius: 8px;
     padding: 16px 20px 16px 70px;

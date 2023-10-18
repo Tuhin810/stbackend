@@ -25,28 +25,28 @@ const AdditonalDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                 <div className="grid md:grid-cols-2 text-md">
                                     <div className="grid grid-cols-2">
                                         <div className="text-gray-800 text-md py-2 font-semibold">English Profiency</div>
-                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails.spoken_english}</div>
+                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails?.spoken_english}</div>
                                     </div>
 
                                     <div className="grid grid-cols-2">
                                         <div className="text-gray-800 text-md py-2 font-semibold">Native Language</div>
-                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails.native_language}</div>
+                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails?.native_language}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="text-gray-800 text-md py-2 font-semibold">Experience</div>
-                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails.experience_year} yrs.</div>
+                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails?.experience_year} yrs.</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="text-gray-800 text-md py-2 font-semibold">Min. Expected Salary</div>
-                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails.min_expected_salary} LPA</div>
+                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails?.min_expected_salary} LPA</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="text-gray-800 text-md py-2 font-semibold">Max. Duty Hours</div>
-                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails.min_duty_hours} hrs</div>
+                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails?.min_duty_hours} hrs</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="text-gray-800 text-md py-2 font-semibold">Physically Disabled</div>
-                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails.is_disabled?"Yes":"No"}</div>
+                                        <div className=" py-2 text-gray-700 text-sm font-medium">{defaultApplicantDetails?.is_disabled?"Yes":"No"}</div>
                                     </div>
                                     
                                 </div>

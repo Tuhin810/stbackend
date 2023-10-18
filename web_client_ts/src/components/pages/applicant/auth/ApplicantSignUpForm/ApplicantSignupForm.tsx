@@ -13,6 +13,9 @@ import { confirmationResult, sendOtp } from "../../../../../utils/service/fireba
 import Spinner from "../../../../shared/spinner/Spinner";
 import ProgressStep from "../../../../shared/ProgressStep/ProgressStep";
 import { signInWithGoogle } from "../../../../../configs/firebaseConfig";
+import { UserCredential } from "firebase/auth";
+import { getFormattedtName } from "../../../../../utils/commonFunctions/FormatName";
+import Alert from "../../../../shared/alert/Alert";
 
 const ApplicantSignupForm = () => {
 
@@ -23,6 +26,8 @@ const ApplicantSignupForm = () => {
   const [otp, setOtp] = useState<string>("");
   const [disable, setDisable] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({} as ApplicantDetails);
   const [buttonText, setButtonText] = useState<string>("Continue");
@@ -85,13 +90,46 @@ const ApplicantSignupForm = () => {
 
   const signUp = async () => {
     setLoading(true);
-    const response = await applicantSignUp(applicantDetails);
-    setLoading(false);
-    if (response?.status === 200) {
-      const resonseApplicant: ApplicantDetails = response?.data.user;
-      applicantDispatch({ type: "signup", payload: resonseApplicant })
-      loggedIn({ type: "login", userType: "applicant" });
-      navigate("/applicant");
+    await applicantSignUp(applicantDetails).then(response => {
+      setLoading(false);
+      if (response?.status === 200) {
+        const resonseApplicant: ApplicantDetails = response?.data.user;
+        applicantDispatch({ type: "signup", payload: resonseApplicant })
+        loggedIn({ type: "login", userType: "applicant" });
+        navigate("/applicant");
+      }
+    }).catch(error => {
+      setLoading(false);
+      setHasError(true);
+      setErrorMessage(error.response.data.message);
+    })
+  }
+
+  const generatePassword = (length: number) => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+  }
+
+
+  const googleSignIn = async () => {
+    const response: UserCredential = await signInWithGoogle();
+    if (response) {
+      const { user } = response;
+      const name = getFormattedtName(user.displayName)
+      applicantDetails.email = user.email!;
+      applicantDetails.is_email_verified = user.emailVerified;
+      applicantDetails.photo = user.photoURL || '';
+      applicantDetails.first_name = name[0];
+      applicantDetails.last_name = name[name.length - 1];
+      applicantDetails.password = generatePassword(8);
+      await signUp();
     }
   }
 
@@ -108,6 +146,9 @@ const ApplicantSignupForm = () => {
     <>
       <div className="applicant_signup" id="applicant_signup">
         <div className="flex flex-col items-center justify-center gap-y-6 h-screen w-full px-5">
+        {
+          (hasError) ? <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> : null
+        }
           <img src={logo} />
           <ProgressStep currentStep={page} stepcount={7} />
           {
@@ -119,7 +160,7 @@ const ApplicantSignupForm = () => {
                   (page === 1) ?
                     <SignUpPage1 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} /> :
                     (page === 2) ?
-                      <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} passwordError={passwordError} /> :
+                      <SignUpPage2 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} passwordError={passwordError} /> :
                       (page === 3) ?
 
                         <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails}  emailError={emailError} passwordError={passwordError} /> :
@@ -135,13 +176,12 @@ const ApplicantSignupForm = () => {
                   <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
              focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2" onClick={handlePageIncrement}>{buttonText}</button>
                 </div>
-                <button type="button" onClick={signInWithGoogle} className="text-gray-900 w-full bg-white hover:bg-gray-100 border
+                <button type="button" onClick={googleSignIn} className="text-gray-900 w-full bg-white hover:bg-gray-100 border
                  border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium
                   rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center mr-2 my-3">
                   <img src={google_icon} className="me-2" />
                   Sign In With Google
                 </button>
-                {/* <p className="text-sm text-gray-600 mt-3">Already have an account? <a href="#" className="text-blue-500 hover:underline">Log In</a></p> */}
               </div>
           }
         </div>

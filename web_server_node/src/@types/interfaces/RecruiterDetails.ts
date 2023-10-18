@@ -1,7 +1,6 @@
-import mongoose from "mongoose"
-
 export interface RecruiterSignUp {
     firebase_id: string,
+    _id?: string,
     created_date: Date
     first_name: string,
     middle_name: string,

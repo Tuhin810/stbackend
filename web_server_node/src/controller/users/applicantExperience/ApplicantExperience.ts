@@ -17,7 +17,7 @@ export const updateExperience = async (req: Request, res: Response) => {
 			res.status(200).send({
 				success: true,
 				message: "experience details is successfully updated",
-				applicant: response
+				data: response
 			})
 		}
 	}

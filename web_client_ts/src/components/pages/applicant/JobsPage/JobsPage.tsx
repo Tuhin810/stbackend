@@ -7,14 +7,12 @@ import { InvitedJob } from "../../../../@types/interfaces/InvitedJobList"
 import { JobCard } from "./JobList/jobCard/JobCard"
 import "./JobPage.css"
 import { SearchBox } from "../../../shared/SearchBox/SearchBox"
-import NojobImg from "../../../../assets/images/NoJOb.svg"
-// import { Animated_btn } from "../../../shared/Animated_button/Animated_btn"
 
 import {  showModal } from "../../../../utils/commonFunctions/HandleModal"
 import { InvitedAppliedJobDetailsListContext } from "../../../../context/invitedAppliedJobDetailsList/InvitedAcceptedJobDetailsContext"
 import Spinner from "../../../shared/spinner/Spinner"
 import RefreshButton from "./RefreshButton/RefreshButton"
-import { Link } from "react-router-dom"
+import NotFound from "../../../shared/notfound/NotFound"
 
 export const JobsPage = () => {
   const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
@@ -32,13 +30,11 @@ export const JobsPage = () => {
 
       console.log("data", response.data.data);
 
-      const filteredList = response.data.data.filter((job: { accept: boolean; }) => job.accept === false);
+      const filteredList = response.data.data;
 
       invitedAppliedJobListDispatch({ type: "invited", payload: filteredList });
 
       console.log("invited jobs ", filteredList);
-
-
     }
   }
 
@@ -105,21 +101,8 @@ export const JobsPage = () => {
             </>
           }
         </div>
-        </> : <>
-          <div className="flex md:flex-row flex-col  pt-28 gap-3 mx-auto px-6 h-screen overflow-y-scroll hidescroll">
-            <div className="md:w-1/2 pl-8">
-              <h1 className="text-6xl mb-7 font-bold text-gray-800">No jobs Yet!</h1>
-              <p className="text-sm pr-10 font-semibold text-gray-600">Upskilling yourself can be a great way to improve your job prospects and make yourself more competitive in the marketplace. It can also help you stay ahead of the curve in your field and prepare for new challenges.</p>
-              <Link to="/applicant/profile" className="w-64 mt-9 text-blue-400 text-xl bg-white drop-shadow-lg border px-5 py-3 rounded-lg flex items-center"> Update your Skills
-                <img className="h-10 w-10 ml-2" src="https://img.icons8.com/?size=96&id=gkgXdvj3Owk3&format=png" alt="" />
-              </Link>
-            </div>
-            <div className="md:w-1/2">
-              <img className="-mt-16 p-7" src={NojobImg} alt="" />
-            </div>
-
-          </div>
-        </>
+        </> :
+        <NotFound message="Please Complete Your Profile to get Job Invitattion"/>
       }
     </>
   )

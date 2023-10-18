@@ -8,14 +8,24 @@ const Hero = ({handleLoginButton,handleSignUpButton}:IHeroProps) => {
         <div className='home bg-[#f5f9ff] mb-10 px-5 pt-2 pb-14 sm:py-12 sm:pb-32  flex flex-col md:flex-row'>
                         <div className='left-home' data-aos="fade-right">
 
-                            <h2 className='text-3xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-cyan-400'>Success Your Future</span> Starts Here.</h2>
-                            <p className='text-sm font-normal text-gray-500 lg:text-xl  mt-9'>
+                            <h2 className='text-4xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-cyan-400'>Success Your Future</span> Starts Here.</h2>
+
+
+                            
+                            <p className='text-xs  md:text-sm font-normal text-gray-500 lg:text-xl  mt-9'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum similique sequi iure! Rem, sapiente! Iste, in ab! Obcaecati iure voluptatum ex cum at dignissimos adipisci! Veritatis, sed voluptatibus. Neque, tempora?
                             </p>
+                            
+                            <div className='right-home sm:hidden  w-80 '>
+                            <div className='w-full '>
+                        <VerticacarouselAnimation/> 
+                            </div>
+                        </div>
+                           
                             <div className='mt-10 flex flex-row md:justify-start justify-center gap-5'>
                                 <button type="button" className=" text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4
                                  focus:outline-none focus:ring-blue-300  font-medium rounded-lg text-sm px-10 py-3 text-center mr-2 mb-2" onClick={handleLoginButton}>
-                                    Login
+                                   &nbsp;&nbsp; Login&nbsp;&nbsp;
                                 </button>
                                 <button type="button" className=" text-gray-700 border border-gray-700 focus:ring-4 focus:outline-none
                                  focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-3  mr-2 mb-2 text-center inline-flex items-center" onClick={handleSignUpButton}>
@@ -27,7 +37,7 @@ const Hero = ({handleLoginButton,handleSignUpButton}:IHeroProps) => {
                             </div>
 
                         </div>
-                        <div className='right-home w-96 hidden sm:block'>
+                        <div className='right-home hidden sm:block w-96 '>
                             <div className='w-full '>
                         <VerticacarouselAnimation/> {/* <img  role="img" aria-label="people smiling" className="mx-auto" src="https://cdn.tuk.dev/assets/templates/weCare/hero2-left.png"  alt="people smiling"/> */}
                             </div>
