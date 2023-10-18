@@ -1,14 +1,18 @@
 import { useParams } from "react-router-dom"
 import { getApplicantDetailsById, getApplicantResumePrivacy } from "../../../../utils/apis/applicant/Applicant";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ApplicantDetails } from "../../../../@types/ApplicantDetails";
 import Resume from "../../../shared/resume/Resume";
 import Spinner from "../../../shared/spinner/Spinner";
 import NotFound from "../../../shared/notfound/NotFound";
+import { SharedResumeProps } from "../../../../@types/interfaces/props/SharedResumeProps/SharedResumeProps";
 
-const SharedResume = () => {
+const SharedResume = ({ jobApplied }: SharedResumeProps) => {
     const params = useParams();
     const [isAccessable, setIsAccesable] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [resume_visibilty_status, setResume_visibilty_status] = useState<number>(0);
+    
     const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({
         first_name: "",
         middle_name: "",
@@ -36,9 +40,7 @@ const SharedResume = () => {
         min_expected_salary: 0,
         min_duty_hours: 0
     });
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [resume_visibilty_status, setResume_visibilty_status] = useState<number>(0);
-
+    
     const isResumePublic = async (applicantId: string) => {
         setIsLoading(true);
         const response = await getApplicantResumePrivacy(applicantId);
@@ -48,14 +50,20 @@ const SharedResume = () => {
         }
     }
 
-    const getApplicantDetails = async (applicantId: string) => {
-        setIsLoading(true);
-        const response = await getApplicantDetailsById(applicantId);
-        setIsLoading(false);
-        if (response?.status === 200) {
-            setApplicantDetails(response?.data.applicant);
-        }
-    }
+
+    const getApplicantDetails = useCallback( async(applicantId: string) => {
+            setIsLoading(true);
+            const response = await getApplicantDetailsById(applicantId);
+            setIsLoading(false);
+            if (response?.status === 200) {
+                if(!jobApplied){
+                    response.data.applicant.phone = 0;
+                    response.data.applicant.email = "******@****.com";
+                }
+                setApplicantDetails(response?.data.applicant);
+            }
+        },[jobApplied]
+    )
 
     useEffect(() => {
         const applicantId = params.id!;
@@ -73,7 +81,7 @@ const SharedResume = () => {
                 }
             }
         }
-    }, [resume_visibilty_status, params.id])
+    }, [resume_visibilty_status, params.id,getApplicantDetails])
 
     return (
         <div>

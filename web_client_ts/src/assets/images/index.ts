@@ -27,6 +27,7 @@ import job_not_found from './Job-Not-Found.svg'
 import correct from './correct.svg'
 import wrong from './wrong.svg'
 import modeImg from './modelImg.svg'
+import yes_no from './yes_no.svg'
 
 export {
 	get_find,
@@ -57,5 +58,6 @@ export {
 	job_not_found,
 	correct,
 	wrong,
-	modeImg
+	modeImg,
+	yes_no
 };

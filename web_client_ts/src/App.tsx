@@ -57,7 +57,7 @@ const App = () => {
           <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
           <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
           <Route path="/admin" element={<Navigate to={'/admin/jobs'} />} />
-          <Route path="/resume/:id" element={<SharedResume />} />
+          <Route path="/resume/:id" element={<SharedResume jobApplied={true} />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
@@ -74,7 +74,7 @@ const App = () => {
           {/* Recruiter Dashboard */}
           <Route path="/recruiter" element={<RecruiterDashboard />}>
             <Route path="/recruiter/jobs" element={<PostedJobList />} />
-            <Route path="/recruiter/applicant-resume/:id" element={<ResumeView />} />
+            <Route path="/recruiter/applicant-resume/:id/:jobId" element={<ResumeView />} />
             <Route path="/recruiter/postjob" element={<PostJob />} />
             <Route path="/recruiter/pricing" element={<RecruiterPricing />} />
             <Route path="/recruiter/jobDetails/:jobId" element={<PostedJobDashboard />} />
