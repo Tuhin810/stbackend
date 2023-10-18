@@ -18,8 +18,6 @@ export const Common_modal = () => {
                             </svg>
                             <span className="sr-only">Close modal</span>
                         </button>
-                      
-
                     </div>
                 </div>
             </div>

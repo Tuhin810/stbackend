@@ -192,7 +192,8 @@ const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobI
     const matchedApplicant: MatchedApplicant = {
         applicantId: applicantId,
         jobId: jobId,
-        accept: false
+        accept: false,
+        status: "matched"
     }
     try {
         const isApplicantAlreadyMatched = await getIsApplicantAlreadyMatched(matchedApplicant);

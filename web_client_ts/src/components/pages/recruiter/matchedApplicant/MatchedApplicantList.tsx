@@ -1,12 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IMatchedApplicantApplicant } from "../../../../@types/interfaces/props/BrodcastJobProps.ts/MatchedApplicantProps"
 import AngleRightIcon from "../../../shared/icons/angleRight/AngleRightIcon";
 // import { hideModal } from "../../../../utils/commonFunctions/HandleModal";
 
 const MatchedApplicantList = ({ applicantList }: IMatchedApplicantApplicant) => {
     const navigte=useNavigate();
+    const params = useParams();
     const viewApplicantResume = (applicantId:string) =>{
-        const path = `/recruiter/applicant-resume/${applicantId}`;
+        const jobId = params.jobId;
+        const path = `/recruiter/applicant-resume/${applicantId}/${jobId}`;
         navigte(path);
     }
     return (

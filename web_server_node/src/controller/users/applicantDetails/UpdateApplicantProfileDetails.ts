@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { IApplicantProfileDetails } from "../../../@types/interfaces/ApplicantProfileDetails";
 import { updateApplicantProfileDetailsById } from "../../../service/applicant/applicant.service";
 import { ApplicantDetails } from "../../../@types/interfaces/ApplicantDetails";
 

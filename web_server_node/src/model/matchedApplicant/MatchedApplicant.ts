@@ -15,6 +15,11 @@ export const matchedApplicantSchema: Schema<MatchedApplicant> = new mongoose.Sch
 	accept: {
 		type: Boolean,
 		default: false
+	},
+	status: {
+		type: String,
+		enum: ["applied", "matched", "hired", "rejected"],
+		default: "matched"
 	}
 },
 	{

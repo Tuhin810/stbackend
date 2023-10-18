@@ -14,7 +14,7 @@ const Resume = forwardRef(({ defaultApplicantDetails, componentRef }: MyProfileD
                     <div className="resume-heading">
                         <h1 className="text-3xl font-bold mb-1">{defaultApplicantDetails?.first_name} <span className='text-blue-600'>{defaultApplicantDetails?.last_name}</span></h1>
                         <p className="text-lg mb-1">Frontend Developer</p>
-                        <p className='contact'> <span className='text-blue-600'>{defaultApplicantDetails?.email}</span> | {defaultApplicantDetails?.country_code} {defaultApplicantDetails?.phone}</p>
+                        <p className='contact'> <span className='text-blue-600'>{defaultApplicantDetails?.email}</span> | {defaultApplicantDetails?.country_code} {defaultApplicantDetails?.phone===0?"**********":defaultApplicantDetails?.phone}</p>
                     </div>
                 </div>
                 <hr className='mb-4' />

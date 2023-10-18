@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
-import { allJobs, getApplicantDetailsByJob, getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId } from "../../service/jobs/job.service";
-import ApplicantModel from "../../model/applicant/ApplicantSchema";
-import mongoose from "mongoose";
+import { allJobs, getApplicantDetailsByJob, getJobDetailsByJobId, getJobsByCompanyId, getJobsByRecruiterId, getMatchedJobDetailsService } from "../../service/jobs/job.service";
 
 //get jobs by company
 
@@ -157,6 +155,36 @@ export const matchedApplicantDetailsList = async (req: Request, res: Response) =
                 res.status(200).json({
                     success: true,
                     message: "Applicant Details fetched successfully",
+                    data: response
+                })
+            }
+        }
+        catch (error) {
+            res.status(500).json({
+                success: false,
+                message: "error in server",
+                error
+            })
+        }
+    }
+}
+
+export const getMatchedJobDetails = async (req: Request, res: Response) => {
+    const jobId: string = req.params.jobId;
+    const applicantId: string = req.params.applicantId;
+    if (jobId === "undefined" || applicantId === "undefined") {
+        res.status(422).send({
+            success: false,
+            message: "jobid and applicantid is send properly"
+        })
+    }
+    else {
+        try {
+            const response = await getMatchedJobDetailsService(jobId, applicantId);
+            if (response) {
+                res.status(200).json({
+                    success: true,
+                    message: "Matched Job Details fetched successfully",
                     data: response
                 })
             }

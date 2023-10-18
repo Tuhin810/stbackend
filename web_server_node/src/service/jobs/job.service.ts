@@ -160,3 +160,29 @@ export const allJobs = async () => {
         throw error;
     }
 }
+
+export const getMatchedJobDetailsService = async (jobId: string, applicant_id: string) => {
+    try {
+        const response = await MatchedApplicantModel.findOne({ jobId: jobId, applicantId: applicant_id });
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+export const updateJobStatus = async (jobId: string, applicant_id: string, status: string) => {
+    try {
+        await MatchedApplicantModel.updateOne(
+            { jobId: jobId, applicantId: applicant_id },
+            {
+                $set: {
+                    status: status
+                }
+            }
+        )
+    }
+    catch (error) {
+        throw error;
+    }
+}

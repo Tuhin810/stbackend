@@ -26,3 +26,8 @@ export const getAllJobs = async () => {
     const response = await Get(`jobs/getAllJobs`,header);
     return response;
 }
+
+export const getMatchedJobDetails = async (jobId:string,applicantId:string) => {
+    const response = await Get(`jobs/getMatchedJobDetails/${jobId}/${applicantId}`,header);
+    return response;
+}
