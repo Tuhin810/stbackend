@@ -21,6 +21,7 @@ const RecruiterSignupForm = () => {
   const [otp, setOtp] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<boolean>(false);
   const [companyList, setCompanyList] = useState<CompanyList[]>([]);
   const [page, setPage] = useState<number>(0);
   const [buttonText, setButtonText] = useState<string>('Next');
@@ -52,14 +53,23 @@ const RecruiterSignupForm = () => {
       navigate('/recruiter/jobs');
     }
   }
-
+  const [disable, setDisable] = useState<boolean>(false);
+ 
   const handleChnageRecruiterDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
     if (name === "cnf_password") {
       (recruiterSignUpDetail.password !== value) ? setPasswordError(true) : setPasswordError(false);
     }
+
+    if (name === "email") {
+      const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+      (!emailRegex.test(recruiterSignUpDetail?.email)) ? setEmailError(true) : setEmailError(false)
+    }
     setRecruiterSignUpDetail(Object.assign({}, recruiterSignUpDetail, { [name]: value }))
   }, [recruiterSignUpDetail])
+
+
+
 
   const handleChangeOtp = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -96,11 +106,12 @@ const RecruiterSignupForm = () => {
       await validateOtp();
     }
   }
-  // const handlePageDecrease = async () => {
-  //   if (page > 0) {
-  //     setPage(prev => prev - 1);
-  //   }
-  // }
+
+  const handlePageDecrease = async () => {
+    if (page > 0) {
+      setPage(prev => prev - 1);
+    }
+  }
 
   useEffect(() => {
     getCompanyList().then((response) => {
@@ -109,6 +120,9 @@ const RecruiterSignupForm = () => {
     });
   }, []);
 
+
+
+
   useEffect(() => {
     if (page === 4) {
       setButtonText("")
@@ -116,6 +130,8 @@ const RecruiterSignupForm = () => {
     else {
       setButtonText("Continue");
     }
+
+    setDisable(false)
   }, [page]);
 
   return (
@@ -131,7 +147,7 @@ const RecruiterSignupForm = () => {
                   <RecruiterSignUpPage1 companyList={companyList} handleChnageRecruiterDetails={handleChnageRecruiterDetails} />
                   :
                   (page === 1) ?
-                    <RecruiterSignUpPage2 handleChnageRecruiterDetails={handleChnageRecruiterDetails} />
+                    <RecruiterSignUpPage2 handleChnageRecruiterDetails={handleChnageRecruiterDetails} emailError={emailError} />
                     :
                     (page === 2) ?
                       <RecruiterSignUpPage3 handleChnageRecruiterDetails={handleChnageRecruiterDetails} passwordError={passwordError} />
@@ -143,9 +159,14 @@ const RecruiterSignupForm = () => {
             </div>
         }
 
+        <div className="flex w-full">
 
-        <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300" id="sign-in-button" onClick={handlePageIncrement}>{buttonText}</button>
-        <p className="text-sm text-gray-600 mt-3">Already have an account? <a href="#" className="text-blue-500 hover:underline">Log in</a></p>
+          <button type="button" disabled={page === 0} className={`text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
+                  py-2.5 text-center mr-2 mb-2`} onClick={handlePageDecrease}>Back</button>
+
+          <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+             focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2" onClick={handlePageIncrement}>{buttonText}</button>
+        </div>
       </div>
 
     </div>

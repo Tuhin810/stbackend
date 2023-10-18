@@ -19,10 +19,14 @@ const ApplicantLoginForm = () => {
   // const [message,setMessage]=useState();
   const { applicantDispatch } = useContext(applicantContext);
   const { loggedIn } = useContext(globalContext);
+  const [emailError, setEmailError] = useState<boolean>(false);
   //email change
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     console.log("event", event)
+      const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+   (!emailRegex.test(value)) ?setEmailError(true):setEmailError(false)
+
     setApplicantCredential(Object.assign({}, applicantCredential, {
       userId: value
     }))
@@ -49,9 +53,15 @@ const ApplicantLoginForm = () => {
 
     }).catch((err) => {
       console.log(err);
+
+      setError(true)
+      navigate('/applicant/login');
+
+
       setLoading(false);
-      setError(true);
+   
       setErrorMsg(err.response.data.message);
+
     })
   }
 
@@ -85,14 +95,14 @@ const ApplicantLoginForm = () => {
       {
         (error) ? <>
           <div className="p-8 w-full max-w-md">
-            <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
+            <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} emailError={emailError} />
             <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 shadow-lg shadow-blue-500/50 darkno:shadow-lg darkno:shadow-blue-800/80 font-medium
          rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleLogin}>Log In</button>
             <p className="text-sm text-gray-600 mt-3">Don't have an account? <Link to="/applicant/signup" className="text-blue-500 hover:underline">Sign up</Link></p>
           </div></> :
           (loading) ? <Spinner /> :
             <div className="p-8 w-full max-w-md">
-              <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
+              <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} emailError={emailError} />
               <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 shadow-lg shadow-blue-500/50 darkno:shadow-lg darkno:shadow-blue-800/80 font-medium
          rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleLogin}>Log In</button>
               {/* <button type="button" onClick={googleSignIn} className="text-gray-900 w-full bg-white hover:bg-gray-100 border

@@ -4,7 +4,7 @@ const Features =()=> {
   return (
     <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }} data-aos="fade-up">
       {/* Code block starts */}
-        <section className="w-full mx-auto bg-white pt-16">
+        <section className="w-full mx-auto bg-white pt-16 ">
           <div>
             <div role="contentinfo" className="flex items-center flex-col px-4">
               <h1 tabIndex={0} className="focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 pt-4">Why <span className='text-red-500'>Star</span><span className='text-cyan-500'>Mark</span>?</h1>
@@ -13,7 +13,7 @@ const Features =()=> {
               <div tabIndex={0} aria-label="card 1" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                 <div className="w-20 h-20 relative mr-5">
                   <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mt-2 mr-3">
                     <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG1.svg" alt="drawer" />
                   </div>
                 </div>
@@ -25,7 +25,7 @@ const Features =()=> {
               <div tabIndex={0} aria-label="card 2" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                 <div className="w-20 h-20 relative mr-5">
                   <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mt-2 mr-3">
                     <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG2.svg" alt="check" />
                   </div>
                 </div>
@@ -37,7 +37,7 @@ const Features =()=> {
               <div tabIndex={0} aria-label="card 3" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                 <div className="w-20 h-20 relative mr-5">
                   <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mt-2 mr-3">
                     <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG3.svg" alt="html tag" />
                   </div>
                 </div>
@@ -49,7 +49,7 @@ const Features =()=> {
               <div tabIndex={0} aria-label="card 4" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                 <div className="w-20 h-20 relative mr-5">
                   <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                  <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mt-2 mr-3">
                     <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG4.svg" alt="monitor" />
                   </div>
                 </div>

@@ -21,7 +21,7 @@ export const MyExperience = ({ Experience }:ApplicantExperienceProps) => {
                             </div>
                         <div className="flex-col md:w-3/4 justify-around">
                         {
-                            Experience.map((experience:any, value:any) => {
+                            Experience?.map((experience:any, value:any) => {
                                 return (
                                     <div className="flex justify-between mb-2" key={value}>
                                         <div className=""> <h3 className="text-gray-800 font-semibold text-lg flex gap-2">{experience?.job_role}</h3>

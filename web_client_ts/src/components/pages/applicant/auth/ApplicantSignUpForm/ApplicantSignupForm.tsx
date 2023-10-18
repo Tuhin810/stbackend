@@ -32,7 +32,7 @@ const ApplicantSignupForm = () => {
   const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({} as ApplicantDetails);
   const [buttonText, setButtonText] = useState<string>("Continue");
   const [passwordError, setPasswordError] = useState<boolean>(false);
-
+  const [emailError, setEmailError] = useState<boolean>(false);
   const handlePageIncrement = async () => {
     if (page < 4) {
       setPage(prev => prev + 1);
@@ -62,6 +62,10 @@ const ApplicantSignupForm = () => {
     if (name === "cnf_password") {
       (applicantDetails.password !== value) ? setPasswordError(true) : setPasswordError(false);
     }
+    if(name === "email"){
+      const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+   (!emailRegex.test(applicantDetails?.email)) ?setEmailError(true):setEmailError(false)
+   }
     setApplicantDetails(Object.assign({}, applicantDetails, { [name]: value }));
   }, [applicantDetails]);
 
@@ -156,9 +160,11 @@ const ApplicantSignupForm = () => {
                   (page === 1) ?
                     <SignUpPage1 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} /> :
                     (page === 2) ?
-                      <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} passwordError={passwordError} /> :
+                      <SignUpPage2 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} passwordError={passwordError} /> :
                       (page === 3) ?
-                        <SignUpPage2 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} /> :
+
+                        <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails}  emailError={emailError} passwordError={passwordError} /> :
+
                         (page === 4) ?
                           <SignUpPage4 handleChangeOtp={handleChangeOtp} /> : null
                 }

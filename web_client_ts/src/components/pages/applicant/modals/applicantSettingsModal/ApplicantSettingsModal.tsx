@@ -1,31 +1,55 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal"
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext"
-import { updateApplicantPrivacy } from "../../../../../utils/apis/applicant/Applicant";
+import { getApplicantResumePrivacy, updateApplicantPrivacy } from "../../../../../utils/apis/applicant/Applicant";
 import CopyIcons from "../../../../shared/icons/copyIcons/CopyIcons";
 
 const ApplicantSettingsModal = () => {
     const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
-    const {applicantDispatch} = useContext(applicantContext);
+    const { applicantDispatch } = useContext(applicantContext);
     const resumeLink = window.location.host + '/resume/' + applicantDetails._id;
+    const [resumeVisibilityStatus, setResumeVisibilityStatus] = useState(applicantDetails.resume_visibility_status);
 
-    const handleChangeResumePrivacy = async(event:React.ChangeEvent<HTMLSelectElement>) => {
-      const {value} =event.target;
-      updatePrivacy(Number(value));
+
+    const handleChangeResumePrivacy = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const { value } = event.target;
+        setResumeVisibilityStatus(Number(value));
+        localStorage.setItem("resumeVisibilityStatus", value); // Save to local storage
+        updatePrivacy(Number(value));
     }
 
-    const updatePrivacy = async (resumeVisibilty:number) => {
-        await updateApplicantPrivacy(applicantDetails._id!, resumeVisibilty).then(response=>{
+
+  
+    const updatePrivacy = async (resumeVisibilty: number) => {
+        await updateApplicantPrivacy(applicantDetails._id!, resumeVisibilty).then(response => {
             if (response?.status === 200) {
                 applicantDispatch({ type: "updateDetails", payload: response?.data.data })
+                   
             }
-        }).catch(error=>{
+        }).catch(error => {
             console.log(error);
         })
     }
+
+    const getPrivecy = async ()=>{
+        await getApplicantResumePrivacy(applicantDetails._id!).then(response=>{
+            if (response?.status === 200) {
+                setResumeVisibilityStatus(response?.data.data.resume_visibilty_status)
+                console.log("data",response?.data.data.resume_visibilty_status);
+                
+            }
+        }).catch(error => {
+            console.log(error);
+        })
+        }
+    
     const copyLink = () => {
         navigator.clipboard.writeText(resumeLink);
     }
+
+    useEffect(() => {
+        getPrivecy()
+    }, []);
     return (
         <>
             <div id="applicantSettings" className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden">
@@ -42,10 +66,11 @@ const ApplicantSettingsModal = () => {
                             <h3 className="mb-4 text-xl font-medium text-gray-900 ">My Resume <span className="text-blue-600">Link</span></h3>
                             <div className="mb-5">
                                 <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 ">Who Can See My Resume ?</label>
-                                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onChange={e=>handleChangeResumePrivacy(e)}>
-                                    <option selected={applicantDetails.resume_visibility_status===0} value={0}>No One</option>
-                                    <option selected={applicantDetails.resume_visibility_status===1} value={1}>Only Employers</option>
-                                    <option selected={applicantDetails.resume_visibility_status===2} value={2}>Anyone With the Link</option>
+                                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                                value={resumeVisibilityStatus}  onChange={e => handleChangeResumePrivacy(e)}>
+                                    <option selected={applicantDetails.resume_visibility_status === 0} value={0}>No One</option>
+                                    <option selected={applicantDetails.resume_visibility_status === 1} value={1}>Only Employers</option>
+                                    <option selected={applicantDetails.resume_visibility_status === 2} value={2}>Anyone With the Link</option>
                                 </select>
                             </div>
                             <div className="flex flex-col mb-4 w-full">

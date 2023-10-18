@@ -5,7 +5,7 @@ export const VerticacarouselAnimation = () => {
 
     <div className='wrapper h-96'>
       <div className='carousel'>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             🧑‍🎓
           </div>
@@ -15,7 +15,7 @@ export const VerticacarouselAnimation = () => {
             </p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👷
           </div>
@@ -24,7 +24,7 @@ export const VerticacarouselAnimation = () => {
             <p>"StarMark আমার ক্যারিয়ার তৈরি করেছে"</p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👩‍🏫
           </div>
@@ -34,7 +34,7 @@ export const VerticacarouselAnimation = () => {
             </p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👩‍💼
           </div>
@@ -43,7 +43,7 @@ export const VerticacarouselAnimation = () => {
             <p>"StarMark আমার ক্যারিয়ার তৈরি করেছে"</p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👩‍🍳
           </div>
@@ -52,7 +52,7 @@ export const VerticacarouselAnimation = () => {
             <p>स्टार मार्क ने मेरा कैरियर बनाया है</p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👩‍⚕️
           </div>
@@ -61,7 +61,7 @@ export const VerticacarouselAnimation = () => {
             <p>"StarMark আমার ক্যারিয়ার তৈরি করেছে"</p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👩‍🍳
           </div>
@@ -70,7 +70,7 @@ export const VerticacarouselAnimation = () => {
             <p>स्टार मार्क ने मेरा कैरियर बनाया है</p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👩‍⚕️
           </div>
@@ -79,7 +79,7 @@ export const VerticacarouselAnimation = () => {
             <p>"StarMark has made my carrier"</p>
           </div>
         </div>
-        <div className='carousel__item'>
+        <div className='carousel__item w-[140%]  md:w-full'>
           <div className='carousel__item-head'>
             👩‍💼
           </div>

@@ -53,6 +53,7 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                         {(defaultApplicantDetails?.current_address)?defaultApplicantDetails?.current_address:<>null</>}
                                             </div>
                                     </div>
+                                    
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Permanant Address</div>
                                         <div className="px-4 xl:py-2">
