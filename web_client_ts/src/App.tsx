@@ -30,6 +30,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Contact from "./components/pages/common/Contact_us/Contact";
 import About from "./components/pages/common/About_us/About";
+import PaymentPage from "./components/pages/recruiter/payment/PaymentPage";
 
 
 const App = () => {
@@ -49,10 +50,11 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
-          <Route path="/recruiter" element={<Navigate to={(!guard()) ? '/recruiter/jobs' : '/applicant'} />} />
-          <Route path="/applicant" element={<Navigate to={(!guard()) ? '/applicant/profile' : '/recruiter'} />} />
+          <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
+          <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
           <Route path="/resume/:id" element={<SharedResume />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
+          <Route path="/testPay" element={<PaymentPage />} />
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
             <Route path="/home" element={<Home />} />

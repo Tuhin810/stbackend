@@ -50,7 +50,7 @@ const ApplicantSignupForm = () => {
   useEffect(() => {
     setDisable(false)
   }, [])
-  
+
 
   const handleChangeApplicantDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -94,7 +94,7 @@ const ApplicantSignupForm = () => {
       navigate("/applicant");
     }
   }
-  
+
   useEffect(() => {
     if (page === 4) {
       setButtonText("Sign Up")
@@ -109,7 +109,7 @@ const ApplicantSignupForm = () => {
       <div className="applicant_signup" id="applicant_signup">
         <div className="flex flex-col items-center justify-center gap-y-6 h-screen w-full px-5">
           <img src={logo} />
-          <ProgressStep currentStep={page} stepcount={7}/>
+          <ProgressStep currentStep={page} stepcount={7} />
           {
             (loading) ? <Spinner /> :
               <div className=" w-full max-w-sm">
@@ -119,9 +119,11 @@ const ApplicantSignupForm = () => {
                   (page === 1) ?
                     <SignUpPage1 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} /> :
                     (page === 2) ?
-                      <SignUpPage2 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} /> :
+                      <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} passwordError={passwordError} /> :
                       (page === 3) ?
+
                         <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails}  emailError={emailError} passwordError={passwordError} /> :
+
                         (page === 4) ?
                           <SignUpPage4 handleChangeOtp={handleChangeOtp} /> : null
                 }
@@ -136,7 +138,7 @@ const ApplicantSignupForm = () => {
                 <button type="button" onClick={signInWithGoogle} className="text-gray-900 w-full bg-white hover:bg-gray-100 border
                  border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium
                   rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center mr-2 my-3">
-                  <img src={google_icon} className="me-2"/>
+                  <img src={google_icon} className="me-2" />
                   Sign In With Google
                 </button>
                 {/* <p className="text-sm text-gray-600 mt-3">Already have an account? <a href="#" className="text-blue-500 hover:underline">Log In</a></p> */}

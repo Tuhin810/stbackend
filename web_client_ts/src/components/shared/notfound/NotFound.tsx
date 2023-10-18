@@ -1,14 +1,14 @@
 import { NotFoundProps } from "../../../@types/interfaces/props/NotFoundProps"
-import { notFound } from "../../../assets/images"
+import { job_not_found } from "../../../assets/images"
 
 
 
 const NotFound = ({ message }: NotFoundProps) => {
     return (
-        <div className="flex justify-center min-h-screen align-middle">
+        <div className="flex flex-col justify-center items-center min-h-screen align-middle">
+            <img className="w-full sm:w-1/2" src={job_not_found} />
             <div className="text-center">
-                <img className="w-100" src={notFound} />
-                <h2 className="text-2xl italic font-sans font-normal">{message}</h2>
+                <h2 className="text-2xl uppercase font-semibold tracking-wide font-sans">{message}</h2>
             </div>
         </div>
     )

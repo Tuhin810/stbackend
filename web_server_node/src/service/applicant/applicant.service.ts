@@ -9,6 +9,7 @@ import JobModel from "../../model/jobs/JobSchema";
 import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
 import { ApplicantPreferredJob } from "../../@types/interfaces/ApplicantPreferredJobs";
 import { encryptPass, isEmail, isPasswordMatched } from "../commonFunction/CommonFunctions";
+import { ApplicantExperience } from "../../@types/interfaces/ApplicantExperience";
 
 export const registerNewApplicant = async (applicantDetails: ApplicantDetails) => {
     try {
@@ -63,6 +64,15 @@ export const updateApplicantQualification = async (applicantId: string, applican
     await ApplicantModel.updateOne(
         { _id: applicantId },
         { $push: { qualification_details: applicantQualification } },
+    )
+    const applicantdetails = await getApplicantDetails(applicantId);
+    return applicantdetails;
+}
+
+export const updateApplicantExperience = async (applicantId: string, applicantExperience: ApplicantExperience) => {
+    await ApplicantModel.updateOne(
+        { _id: applicantId },
+        { $push: { experience_details: applicantExperience } },
     )
     const applicantdetails = await getApplicantDetails(applicantId);
     return applicantdetails;
