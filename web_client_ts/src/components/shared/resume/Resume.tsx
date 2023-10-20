@@ -9,7 +9,7 @@ const Resume = forwardRef(({ defaultApplicantDetails, componentRef }: MyProfileD
             <div id='resume' className="container mx-auto p-8 bg-white mt-8 rounded shadow">
                 <div className="flex items-center justify-between pb-6">
                     <div className="profile">
-                        <img src={defaultApplicantDetails?.photo?.toString() || ""} alt="profile" className="rounded-xl h-24  sm:h-36" />
+                        <img src={defaultApplicantDetails?.photo?.toString() || ""} alt="profile" className="rounded-xl h-24  sm:h-32" />
                     </div>
                     <div className="resume-heading">
                         <h1 className="text-3xl font-bold mb-1">{defaultApplicantDetails?.first_name} <span className='text-blue-600'>{defaultApplicantDetails?.last_name}</span></h1>

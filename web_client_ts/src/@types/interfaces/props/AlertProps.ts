@@ -3,5 +3,6 @@ export interface AlertProps{
     text:string,
     color:string,
     img:string,
-    title:string
+    title:string,
+    handleClose?:()=>void
 }

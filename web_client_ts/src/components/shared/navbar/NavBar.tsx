@@ -1,14 +1,15 @@
 
 import { useEffect, useState } from 'react'
-import { logo } from '../../../assets/images'
-import { Link } from 'react-router-dom';
+import { logo, modeImg } from '../../../assets/images'
+import { Link, useNavigate } from 'react-router-dom';
 import CommonModal from '../modal/CommonModal';
 import { showModal } from '../../../utils/commonFunctions/HandleModal';
 
 
 
 const NavBar = () => {
-    const modalId= 'navbar-modal'
+    const modalId= 'navbar-modal';
+    const navigate=useNavigate();
     const [action, setAction] = useState<string>('login');
     const handleLoginButton = () => {
         setAction('login')
@@ -17,6 +18,14 @@ const NavBar = () => {
     const handleSignUpButton = () => {
         setAction('signup')
         showModal(modalId);
+    }
+    const leftMethod = () =>{
+        const path=`/recruiter/${action}`;
+        navigate(path);
+    }
+    const rightMethod = () =>{
+        const path=`/applicant/${action}`;
+        navigate(path);
     }
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -75,7 +84,7 @@ const NavBar = () => {
                     </div>
                 </div>
             </nav>
-            <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} Img={''} />
+            <CommonModal leftMethod={leftMethod} leftButtonText='Employer' rightMethod={rightMethod} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} Img={modeImg} />
         </>
     )
 }

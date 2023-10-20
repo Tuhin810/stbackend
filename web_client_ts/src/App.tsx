@@ -35,6 +35,8 @@ import AdminDashBoard from "./components/pages/admin/dashboard/AdminDashBoard";
 import AllJobList from "./components/pages/admin/jobs/jobList/AllJobList";
 import ResumeView from "./components/pages/recruiter/resumeView/ResumeView";
 import ProfileCard from "./components/pages/applicant/profile_card/ProfileCard";
+import EmployerChat from "./components/pages/recruiter/chat/EmployerChat";
+import ApplicantChat from "./components/pages/applicant/chat/ApplicantChat";
 
 
 const App = () => {
@@ -76,6 +78,7 @@ const App = () => {
             <Route path="/recruiter/jobs" element={<PostedJobList />} />
             <Route path="/recruiter/applicant-resume/:id/:jobId" element={<ResumeView />} />
             <Route path="/recruiter/postjob" element={<PostJob />} />
+            <Route path="/recruiter/chat/:applicantId" element={<EmployerChat />} />
             <Route path="/recruiter/pricing" element={<RecruiterPricing />} />
             <Route path="/recruiter/jobDetails/:jobId" element={<PostedJobDashboard />} />
           </Route>
@@ -89,6 +92,7 @@ const App = () => {
             <Route path="/applicant/profile/" element={<ApplicantProfile />} />
             <Route path="/applicant/Card/" element={<ProfileCard />} />
             <Route path="/applicant/resume/" element={<ApplicantResume />} />
+            <Route path="/applicant/chat/:recruiterId" element={<ApplicantChat />} />
             <Route path="/applicant/matchedJobs/" element={<JobsPage />} />
             <Route path="/applicant/performance/" element={<ApplicantPerformance />} />
           </Route>

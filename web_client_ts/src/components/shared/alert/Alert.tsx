@@ -1,24 +1,25 @@
 import { AlertProps } from '../../../@types/interfaces/props/AlertProps'
 
 // Test Push
-const Alert = ({ title,text, type ,color}: AlertProps) => {
+const Alert = ({ title,text, type ,color,handleClose}: AlertProps) => {
     console.log(type);
     return (
-        <div className='alert shadow-2xl shadow-green-300' id='alert'>
-            <div className={`flex w-96 border-2 border-${color}-400 max-w-lg overflow-hidden bg-gray-100  rounded-lg shadow-xl `}>
+        <div className={`alert shadow-2xl md:w-1/3 z-50 shadow-${color}-300 fixed left-1/3 top-16`} id='alert'>
+            <div className={`flex w-full border-2 border-${color}-400 overflow-hidden bg-gray-100 rounded-lg shadow-xl `}>
                 <div className={`flex items-center justify-center w-12 bg-${color}-500` }>
                     <svg className="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z" />
                     </svg>
                 </div>
 
-                <div className="px-4 py-2 -mx-3 ">
+                <div className="px-4 py-2 -mx-3 w-full flex items-center justify-between">
                     <div className="mx-3 ">
                         <span className={`font-semibold text-${color}-500 `}>{title}</span>
                         <p className="text-sm text-gray-800 ">
                             {text}!
                         </p>
                     </div>
+                    <p className='me-2 cursor-pointer' onClick={handleClose}>X</p>
                 </div>
             </div>
             {/* <div className="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">

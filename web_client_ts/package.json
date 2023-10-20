@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/socket.io-client": "^3.0.0",
     "aos": "^2.3.4",
     "apexcharts": "^3.42.0",
     "axios": "^1.4.0",
@@ -22,6 +23,7 @@
     "react-router-dom": "^6.15.0",
     "react-select": "^5.7.4",
     "react-to-print": "^2.14.15",
+    "socket.io-client": "^4.7.2",
     "use-count-up": "^3.0.1"
   },
   "devDependencies": {

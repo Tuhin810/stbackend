@@ -11,13 +11,29 @@ import MyResumeContainer from "./myResumeContainer/MyResumeContainer";
 // import Home from "../../common/home/Home";
 import { useNavigate } from "react-router-dom";
 import { MyExperience } from "./myExperience/MyExperience";
-import { updateApplicantPrivacy } from "../../../../utils/apis/applicant/Applicant"
+// import { updateApplicantPrivacy } from "../../../../utils/apis/applicant/Applicant"
 import { showModal } from "../../../../utils/commonFunctions/HandleModal";
 
 const ApplicantProfile = () => {
   const { applicantloggedinDetails } = useContext(applicantContext);
-
   const navigate = useNavigate();
+  const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
+  // const { applicantDispatch } = useContext(applicantContext);
+  // const resumeLink = window.location.host + '/resume/' + applicantDetails._id;
+  // const handleChangeResumePrivacy = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const { value } = event.target;
+  //   updatePrivacy(Number(value));
+  // }
+
+  // const updatePrivacy = async (resumeVisibilty: number) => {
+  //   await updateApplicantPrivacy(applicantDetails._id!, resumeVisibilty).then(response => {
+  //     if (response?.status === 200) {
+  //       applicantDispatch({ type: "updateDetails", payload: response?.data.data })
+  //     }
+  //   }).catch(error => {
+  //     console.log(error);
+  //   })
+  // }
 
   useEffect(() => {
     console.log(applicantDetails._id);
@@ -25,31 +41,6 @@ const ApplicantProfile = () => {
       navigate("/home");
     }
   }, [])
-
-
-  if (!applicantloggedinDetails) {
-    navigate("/home");
-    return null;
-  }
-
-  const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
-  const { applicantDispatch } = useContext(applicantContext);
-  const resumeLink = window.location.host + '/resume/' + applicantDetails._id;
-
-  const handleChangeResumePrivacy = async (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.target;
-    updatePrivacy(Number(value));
-  }
-
-  const updatePrivacy = async (resumeVisibilty: number) => {
-    await updateApplicantPrivacy(applicantDetails._id!, resumeVisibilty).then(response => {
-      if (response?.status === 200) {
-        applicantDispatch({ type: "updateDetails", payload: response?.data.data })
-      }
-    }).catch(error => {
-      console.log(error);
-    })
-  }
 
 
   return (
