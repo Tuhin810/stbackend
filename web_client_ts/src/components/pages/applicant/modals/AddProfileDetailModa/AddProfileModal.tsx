@@ -1,11 +1,9 @@
-
-import React, { useState, useContext, useCallback, useEffect } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { ApplicantDetails } from "../../../../../@types/ApplicantDetails";
 import { updateApplicantDetailsById } from "../../../../../utils/apis/applicant/Applicant";
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext";
 import { MyProfileDetailsProps } from "../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps";
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal";
-
 
 export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
   const { applicantDispatch } = useContext(applicantContext);
@@ -49,8 +47,6 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
       hideModal("updateprofile");
     }
   };
-
-
 
   return (
     <div>

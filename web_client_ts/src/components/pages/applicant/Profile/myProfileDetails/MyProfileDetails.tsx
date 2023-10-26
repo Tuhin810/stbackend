@@ -29,7 +29,7 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                 <div className="grid md:grid-cols-2 text-md">
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 :py-12 xl:py-2 font-semibold">First Name</div>
-                                        <div className="px-4 xl:py-2 ">{(defaultApplicantDetails?.first_name)?defaultApplicantDetails?.first_name:<>"null</>}</div>
+                                        <div className="px-4 xl:py-2 ">{(defaultApplicantDetails?.first_name)?defaultApplicantDetails?.first_name:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Last Name</div>
@@ -38,7 +38,7 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Gender</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.gender)?defaultApplicantDetails?.gender:<>null</>}</div>
+                                        {(defaultApplicantDetails?.gender)?defaultApplicantDetails?.gender:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Contact No.</div>
@@ -50,14 +50,14 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Current Address</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.current_address)?defaultApplicantDetails?.current_address:<>null</>}
+                                        {(defaultApplicantDetails?.current_address)?defaultApplicantDetails?.current_address.slice(0, 15):<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
                                             </div>
                                     </div>
                                     
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Permanant Address</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.permanent_address)?defaultApplicantDetails?.permanent_address:<>null</>}
+                                        {(defaultApplicantDetails?.permanent_address)?defaultApplicantDetails?.permanent_address.slice(0, 15):<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
                                    
                                             </div>
                                     </div>

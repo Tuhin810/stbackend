@@ -3,7 +3,7 @@ import { applicantContext } from '../../../../../context/applicantDetails/Applic
 import { updateApplicantDetailsById } from '../../../../../utils/apis/applicant/Applicant';
 import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps';
 import ApplicantSettingsModal from '../../modals/applicantSettingsModal/ApplicantSettingsModal';
-import { showModal } from '../../../../../utils/commonFunctions/HandleModal';
+// import { showModal } from '../../../../../utils/commonFunctions/HandleModal';
 import Rating from '../../../../shared/rating/Rating';
 
 
@@ -20,9 +20,7 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
         name = defaultApplicantDetails?.first_name + " " + defaultApplicantDetails?.last_name;
     }
 
-    const shareResume = () => {
-        showModal("applicantSettings");
-    }
+  
 
     const convertImageToUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader();

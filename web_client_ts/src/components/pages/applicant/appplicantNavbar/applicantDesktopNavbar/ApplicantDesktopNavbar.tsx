@@ -22,9 +22,26 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                         <div className="mr-10">
                             <img src={logo} className="h-10" />
                         </div>
-                        <ul className="hidden md:flex items-center h-full">
+                        <ul className="flex items-center gap-5">
+            <li className="p-4 border-b-2 focus:ring border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active">
+              <Link to="/applicant/matchedJobs/" className='focus:text-blue-700 flex gap-1 items-center'><FourBoxIcon />Job Dashboard</Link>
+            </li>
+            <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
+            <Link to="/applicant/profile" className='focus:text-blue-700 flex gap-1 items-center'><UserIcon />My Profile</Link>
+         
+            </li>
+            <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
+            <Link to="/applicant/performance" className='focus:text-blue-700 flex gap-1 items-center'><CompassIcon />Performance</Link>
+         
+            </li>
+            <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
+            <Link to="/applicant/matchedJobs/" className='focus:text-blue-700 flex gap-1 items-center'><QuestionIcon /> Fraud</Link>
+         
+            </li>
+        </ul>
+                        {/* <ul className="hidden md:flex items-center h-full">
                             <Link to="/applicant/matchedJobs/">
-                                <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mx-10 tracking-normal transition duration-150 ease-in-out">
+                                <li className="cursor-pointer p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mx-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
                                         <FourBoxIcon />
                                     </span>
@@ -32,24 +49,24 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                 </li>
                             </Link>
                             <Link to="/applicant/profile">
-                                <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
+                                <div className="cursor-pointer  p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
                                         <UserIcon />
                                     </span>
                                     My Profile
-                                </li>
+                                </div>
                             </Link>
-                            <Link to="/applicant/performance" className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
+                            <Link to="/applicant/performance" className="cursor-pointer p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
                                 <span className="mr-2">
                                     <CompassIcon />
                                 </span>
                                 Performance
                             </Link>
-                            <li className="cursor-pointer h-full flex items-center text-md font-medium hover:text-indigo-700 text-black tracking-normal transition duration-150 ease-in-out">
+                            <li className="cursor-pointer p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black tracking-normal transition duration-150 ease-in-out">
                                 <QuestionIcon />
                                 Fraud
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
                     <div className="h-full hidden xl:flex items-center justify-end">
                         <div className="h-full flex">
