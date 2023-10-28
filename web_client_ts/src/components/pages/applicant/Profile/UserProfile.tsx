@@ -16,8 +16,25 @@ import { showModal } from "../../../../utils/commonFunctions/HandleModal";
 
 const ApplicantProfile = () => {
   const { applicantloggedinDetails } = useContext(applicantContext);
-
   const navigate = useNavigate();
+  const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
+  // const { applicantDispatch } = useContext(applicantContext);
+  // const resumeLink = window.location.host + '/resume/' + applicantDetails._id;
+  // const handleChangeResumePrivacy = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const { value } = event.target;
+  //   updatePrivacy(Number(value));
+  // }
+
+  // const updatePrivacy = async (resumeVisibilty: number) => {
+  //   await updateApplicantPrivacy(applicantDetails._id!, resumeVisibilty).then(response => {
+  //     if (response?.status === 200) {
+  //       applicantDispatch({ type: "updateDetails", payload: response?.data.data })
+  //     }
+  //   }).catch(error => {
+  //     console.log(error);
+  //   })
+  // }
+
 
   
   
@@ -50,10 +67,12 @@ const ApplicantProfile = () => {
   useEffect(() => {
     console.log("id:",applicantDetails._id);
     console.log("location", window.location.host + '/resume/' + applicantDetails._id);
+
     if (!applicantloggedinDetails.applicantDetails || applicantloggedinDetails.applicantDetails === undefined) {
       navigate("/home");
     }
   }, [])
+
   return (
     <>
       <div className="mt-16 my-16 min-h-screen capitalize">

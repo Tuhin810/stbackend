@@ -1,19 +1,23 @@
 import { useCallback, useEffect, useState } from 'react'
 import SharedResume from '../../common/ResumeShare.tsx/SharedResume'
-import { showModal } from '../../../../utils/commonFunctions/HandleModal';
-import MailIcon from '../../../shared/icons/mailIcon/MailIcon';
-import CallIcon from '../../../shared/icons/callIcon/CallIcon';
+import { hideModal, showModal } from '../../../../utils/commonFunctions/HandleModal';
 import UserRemoveIcon from '../../../shared/icons/userRemoveIcon/UserRemoveIcon';
 import UserPlusIcon from '../../../shared/icons/userPlusIcon/UserPlusIcon';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getMatchedJobDetails } from '../../../../utils/apis/Job/jobpost';
 import { MatchedApplicant } from '../../../../@types/interfaces/models/MatchedApplicant';
 import CommonModal from '../../../shared/modal/CommonModal';
-import { yes_no } from '../../../../assets/images';
+import { question, yes_no } from '../../../../assets/images';
+import Alert from '../../../shared/alert/Alert';
+import ChatIcon from '../../../shared/icons/chatIcon/ChatIcon';
 
 const ResumeView = () => {
     const params = useParams();
+    const applicantId = params.id!;
+    const navigate = useNavigate();
     const [show, setShow] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>("");
     const [message, setMessage] = useState<string>("");
     const [jobDetails, setJobDetails] = useState<MatchedApplicant>({
         jobId: "",
@@ -37,22 +41,53 @@ const ResumeView = () => {
     const hideOptions = () => {
         setShow(false);
     }
-    const handleShare = () => {
-        showModal("applicantSettings");
+    const handleClose = () => {
+        setError(false);
     }
     const handleHire = () => {
-        setMessage("Are You Sure to Hire This Candidate ?")
-        showModal("selectionModal");
+        if (jobDetails.accept) {
+            setMessage("Are You Sure to Hire This Candidate ?")
+            showModal("hireModal");
+        }
+        else {
+            setError(true);
+            setErrorMessage("This User has not accepeted the job invitation yet");
+            console.log("true");
+        }
+    }
+
+    const handleReject = () => {
+        if (jobDetails.status !== "hired") {
+            setMessage("Are You Sure to Reject This Candidate ?")
+            showModal("rejectModal");
+        }
+        else {
+            setError(true);
+            setErrorMessage("You have Already Hired this Candidate.")
+            console.log("true");
+        }
+    }
+
+    const leftHireMethod = () => {
         console.log("hired");
+    }
+    const rightHireMethod = () => {
+        hideModal("hireModal");
+        console.log("closed");
+    }
+
+    const handleChat = () => {
+        const path = `/recruiter/chat/${applicantId}`
+        navigate(path);
     }
 
     useEffect(() => {
-        const applicantId = params.id!;
         getJobApplicantRelation(applicantId);
     }, [])
 
     return (
         <div>
+            {error ? <Alert title={"Try Again Later"} type={"Danger"} text={errorMessage} color={"red"} img={""} handleClose={handleClose} /> : null}
             <SharedResume jobApplied={jobDetails.accept} />
             <div className=''>
                 <div className='fixed right-8 bottom-5'>
@@ -60,24 +95,19 @@ const ResumeView = () => {
                         {
                             (show) ?
                                 <div id="speed-dial-menu-default" className="flex flex-col items-center mb-4 space-y-2">
-                                    <button type="button" disabled={!jobDetails.accept} onClick={handleShare} data-tooltip-target="tooltip-share" data-tooltip-placement="left" className="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-gray-800 rounded-full border border-gray-200 shadow-sm hover:bg-gray-600 focus:ring-4
-                                     focus:ring-gray-300 focus:outline-none">
-                                        <MailIcon />
-                                        <span className="sr-only">Mail</span>
+                                    <button type="button" data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center 
+                                    w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-gray-800 rounded-full border
+                                     border-gray-200  shadow-sm " onClick={handleChat}>
+                                        <ChatIcon />
+                                        <span className="sr-only">Chat</span>
                                     </button>
-                                    <div id="tooltip-share" role="tooltip" className="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
-                                        Mail
+                                    <div id="tooltip-download" role="tooltip" className="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
+                                        Chat
                                         <div className="tooltip-arrow" data-popper-arrow></div>
                                     </div>
-                                    <button type="button" disabled={!jobDetails.accept} data-tooltip-target="tooltip-print" data-tooltip-placement="left" className="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-gray-800 rounded-full border border-gray-200 shadow-sm hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none ">
-                                        <CallIcon />
-                                        <span className="sr-only">Call</span>
-                                    </button>
-                                    <div id="tooltip-print" role="tooltip" className="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
-                                        Call
-                                        <div className="tooltip-arrow" data-popper-arrow></div>
-                                    </div>
-                                    <button type="button" data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-gray-800 rounded-full border border-gray-200  shadow-sm ">
+                                    <button type="button" data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center
+                                     w-[52px] h-[52px] text-gray-500 hover:text-gray-900
+                                      bg-gray-800 rounded-full border border-gray-200  shadow-sm " onClick={handleReject}>
                                         <UserRemoveIcon />
                                         <span className="sr-only">Download</span>
                                     </button>
@@ -108,7 +138,8 @@ const ResumeView = () => {
                     </div>
                 </div>
             </div>
-            <CommonModal leftButtonLink={`/recruiter/`} leftRoute={true} leftButtonText='Yes,Sure' rightButtonLink={`/applicant/`} rightRoute={true} rightButtontext='No,Thanks' message={message} id={"selectionModal"} Img={yes_no} />
+            <CommonModal leftMethod={leftHireMethod} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} />
+            <CommonModal leftMethod={leftHireMethod} leftButtonText='No,Thanks' rightMethod={rightHireMethod} rightButtontext='Yes,Sure' message={message} id={"rejectModal"} Img={question} />
         </div>
     )
 }
