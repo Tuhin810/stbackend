@@ -9,6 +9,7 @@ import Stats from '../stats/Stats';
 import Hero from '../hero/Hero';
 import CustomerReview from '../../../shared/customerReview/CustomerReview';
 import modeImg from "../../../../assets/images/modelImg.svg"
+import { CvScan } from './CVScan/CvScan';
 
 const Home = () => {
     const modalId='home-modal'
@@ -31,6 +32,7 @@ const Home = () => {
                     <CommonModal leftButtonLink={`/recruiter/${action}`} leftRoute={true} leftButtonText='Employer' rightButtonLink={`/applicant/${action}`} rightRoute={true} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} Img={modeImg} />
                     <Stats/>
                     <Features/>
+                    <CvScan/>
                     <Testimonial />
                     <CustomerReview/>
              

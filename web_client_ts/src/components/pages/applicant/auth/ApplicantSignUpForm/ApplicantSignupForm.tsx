@@ -47,8 +47,11 @@ const ApplicantSignupForm = () => {
   }
 
   const handlePageDecrease = async () => {
-    if (page > 0) {
+    if (page > 1) {
       setPage(prev => prev - 1);
+    }
+    else{
+      navigate("/home");
     }
   }
 
@@ -147,14 +150,15 @@ const ApplicantSignupForm = () => {
       <div className="applicant_signup" id="applicant_signup">
         <div className="flex flex-col items-center justify-center gap-y-6 h-screen w-full px-5">
         {
-          (hasError) ? <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> : null
+          (hasError) ? 
+          <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> </div> : null
         }
           <img src={logo} />
           <ProgressStep currentStep={page} stepcount={7} />
           {
             (loading) ? <Spinner /> :
               <div className=" w-full max-w-sm">
-                <h1 className="text-2xl font-semibold mb-2">Sign <span className="text-indigo-700">Up</span></h1>
+                <h1 className="text-2xl font-semibold mb-8">Sign <span className="text-indigo-700">Up</span> <span className="text-xs ml-1  text-gray-500">{"(* quistions are required to answer)"}</span></h1>
 
                 {
                   (page === 1) ?
@@ -170,7 +174,7 @@ const ApplicantSignupForm = () => {
                 }
 
                 <div className="flex w-full">
-                  <button type="button" disabled={page === 1} className="text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
+                  <button type="button"  className="text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
                   py-2.5 text-center mr-2 mb-2" onClick={handlePageDecrease}>Back</button>
 
                   <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none

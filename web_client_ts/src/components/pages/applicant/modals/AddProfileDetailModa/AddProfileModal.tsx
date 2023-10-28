@@ -28,13 +28,19 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
   );
 
   const handleCopyCurrentToPermanent = () => {
-    // Copy the unsaved current address to permanent address
+
+    if(!checked){
+       // Copy the unsaved current address to permanent address
     setApplicantDetails((prevApplicantDetails) => ({
       ...prevApplicantDetails,
       permanent_address: unsavedCurrentAddress,
     }));
     // Update the 'checked' state to reflect the change
     setChecked(true);
+    }else{
+      setChecked(false)
+    }
+   
   };
 
   const handleUpdate = async () => {
@@ -160,6 +166,12 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                         handleChangeApplicantDetails(e);
                       }}
                     >
+                      <option value="others" defaultChecked={defaultApplicantDetails?.gender === "others"}>
+                        others
+                      </option>
+                      <option value="non_binary" defaultChecked={defaultApplicantDetails?.gender === "non_binary"}>
+                        Female
+                      </option>
                       <option value="male" defaultChecked={defaultApplicantDetails?.gender === "male"}>
                         Male
                       </option>
@@ -211,8 +223,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
           <input
             onChange={(e) => {
               handleChangeApplicantDetails(e);
-              // Update the 'checked' state to reflect the change
-              setChecked(true);
+              
             }}
             value={checked ? unsavedCurrentAddress : applicantDetails.permanent_address}
             type="text"

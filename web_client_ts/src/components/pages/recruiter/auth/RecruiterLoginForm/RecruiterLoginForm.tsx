@@ -60,7 +60,7 @@ const RecruiterLoginForm = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-y-10 h-screen">
-      {(hasError) ? <Alert text={errorMsg} type="danger" color={'red'} img={''} title={'Error'} /> :null}
+      {(hasError) ?<> <Alert text={errorMsg} type="danger" color={'red'} img={''} title={'Error'} /> </>:null}
       <img src={logo} />
       {
           (loading) ? <Spinner /> :

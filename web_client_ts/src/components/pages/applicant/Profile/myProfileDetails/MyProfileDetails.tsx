@@ -5,7 +5,7 @@ import { AddProfileModal } from '../../modals/AddProfileDetailModa/AddProfileMod
 const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
     return (
         <div>
-            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto md:h-72 px-2 md:px-5 pt-8">
+            <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto pb-5 px-2 md:px-5 pt-8">
                 <div className="deatils">
                     <div>
                         <div className="w-full ">
@@ -50,14 +50,14 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Current Address</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.current_address)?defaultApplicantDetails?.current_address.slice(0, 15):<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
+                                        {(defaultApplicantDetails?.current_address)?defaultApplicantDetails?.current_address:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
                                             </div>
                                     </div>
                                     
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Permanant Address</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.permanent_address)?defaultApplicantDetails?.permanent_address.slice(0, 15):<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
+                                        {(defaultApplicantDetails?.permanent_address)?defaultApplicantDetails?.permanent_address:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
                                    
                                             </div>
                                     </div>
