@@ -9,7 +9,7 @@ const EmployerChat = () => {
   const { recruiterDetails } = useContext(recruiterContext).recruiterloggedinDetails;
   console.log(recruiterDetails._id);
   return (
-    <div><ChatBoard recruiterId={recruiterDetails._id!} applicantId={applicantId!} /></div>
+    <div><ChatBoard recruiterId={recruiterDetails._id!} applicantId={applicantId!} sender="employer" /></div>
   )
 }
 

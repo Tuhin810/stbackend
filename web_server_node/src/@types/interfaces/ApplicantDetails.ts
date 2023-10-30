@@ -40,5 +40,8 @@ export interface ApplicantDetails {
     reviews: ReviewDetails[],
     tokens: any,
     is_phone_verified: boolean,
-    is_email_verified: boolean
+    is_email_verified: boolean,
+    facebook_link: string,
+    github_link: string,
+    linkedin_link: string
 }
