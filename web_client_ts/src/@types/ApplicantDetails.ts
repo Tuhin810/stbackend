@@ -39,5 +39,7 @@ export interface ApplicantDetails {
     invited_job_list?: string[],
     applied_job_list?: string[],
     resume_visibility_status?: number,
-
+    facebook_link:string,
+    linkedin_link:string,
+    github_link:string
 }
