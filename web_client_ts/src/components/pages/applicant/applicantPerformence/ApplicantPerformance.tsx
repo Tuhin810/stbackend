@@ -3,22 +3,15 @@ import { useEffect, useContext, useState } from 'react'
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext";
 import { InvitedJob } from '../../../../@types/interfaces/InvitedJobList';
 import { getApplicantInvitedJobList } from '../../../../utils/apis/applicant/Applicant';
-import { Link } from 'react-router-dom';
-import { Tooltip } from '../../../shared/Tootip/Tooltip';
-import { AcceptedJobsCard } from './ApplicantAcceptedJobList/AcceptedJobsCard/acceptedJobsCard';
-import { JobDescription } from '../JobsPage/JobDescription/JobDescription';
-import { showModal } from '../../../../utils/commonFunctions/HandleModal';
-import SideBar from '../../recruiter/sidebar/SideBar';
+// import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 import { ApplicantPerformanceSidebar } from './ApplicantPerformanceSidebar/ApplicantPerformanceSidebar';
 import { AccepctJobCard2 } from './ApplicantAcceptedJobList/AcceptedJobsCard/AccepctJobCard2';
-
 
 export const ApplicantPerformance = () => {
 
   const { applicantloggedinDetails } = useContext(applicantContext);
   const { applicantDetails } = applicantloggedinDetails;
-  const [jobDetailsList, setJobDetailsList] = useState<InvitedJob[]>([]);
-  const [selectedJob, setSelectedJob] = useState<InvitedJob | null>(null);
+  const [, setJobDetailsList] = useState<InvitedJob[]>([]);
 
   const getInvitedJobList = async () => {
     const response = await getApplicantInvitedJobList(applicantDetails._id!);
@@ -30,13 +23,13 @@ export const ApplicantPerformance = () => {
     }
   }
 
-  const handlesSet = (data: InvitedJob) => {
-    if (data && data.job_details) {
-      setSelectedJob(data)
-    }
-    showModal('jobdesc')
-    console.log(data);
-  }
+  // const handlesSet = (data: InvitedJob) => {
+  //   if (data && data.job_details) {
+  //     setSelectedJob(data)
+  //   }
+  //   showModal('jobdesc')
+  //   console.log(data);
+  // }
   useEffect(() => {
     getInvitedJobList();
   }, []);
@@ -44,7 +37,7 @@ export const ApplicantPerformance = () => {
   return (
     <div className='mt-20 flex'>
 
-      {/* <!-- component --> */}
+
       <ApplicantPerformanceSidebar />
       <div id="wrapper" className="flex h-[92vh]  bg-white sm:flex-col md:flex-row font-light w-full">
 
@@ -64,8 +57,6 @@ export const ApplicantPerformance = () => {
                       Help
                     </span>
                   </li>
-
-
                 </ul>
               </div>
             </div>
@@ -77,20 +68,14 @@ export const ApplicantPerformance = () => {
             <AccepctJobCard2 />
           </div>
         </div>
-
-
         <div className=" flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10 ">
           <div>
             <a title="Help" href="https://img.icons8.com/?size=128&id=7YSSAzKNXqOk&format=png" target="_blank" className="block h-16 w-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
               <img className="object-cover object-center w-full h-full " src="https://img.icons8.com/?size=128&id=7YSSAzKNXqOk&format=png" />
             </a>
-
           </div>
         </div>
-
       </div>
-
-
     </div>
   )
 }

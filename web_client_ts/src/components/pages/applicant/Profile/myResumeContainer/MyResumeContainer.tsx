@@ -10,7 +10,8 @@ const MyResumeContainer = () => {
     const path = "/applicant/resume"
     navgate(path)
   }
-
+  const currentUrl = window.location.host + '/resume/' + applicantDetails._id;
+  
   return (
     <div>
       <div className="w-full mt-4 h-40 max-w-sm p-4 
@@ -19,7 +20,7 @@ const MyResumeContainer = () => {
         onClick={routeTo}>
 
         <div className="me-3">
-          <QRCode value={`http://starmarks.in/resume/${applicantDetails._id}`} size={50} />
+          <QRCode value={currentUrl} size={50} />
         </div>
 
         <div className="">

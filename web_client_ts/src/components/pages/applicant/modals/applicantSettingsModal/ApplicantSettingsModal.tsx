@@ -18,34 +18,41 @@ const ApplicantSettingsModal = () => {
         updatePrivacy(Number(value));
     }
 
-
-  
     const updatePrivacy = async (resumeVisibilty: number) => {
         await updateApplicantPrivacy(applicantDetails._id!, resumeVisibilty).then(response => {
             if (response?.status === 200) {
                 applicantDispatch({ type: "updateDetails", payload: response?.data.data })
-                   
+
+            }
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+    const getPrivecy = async () => {
+        await getApplicantResumePrivacy(applicantDetails._id!).then(response => {
+            if (response?.status === 200) {
+                setResumeVisibilityStatus(response?.data.data.resume_visibilty_status)
+                console.log("data", response?.data.data.resume_visibilty_status);
             }
         }).catch(error => {
             console.log(error);
         })
     }
 
-    const getPrivecy = async ()=>{
-        await getApplicantResumePrivacy(applicantDetails._id!).then(response=>{
-            if (response?.status === 200) {
-                setResumeVisibilityStatus(response?.data.data.resume_visibilty_status)
-                console.log("data",response?.data.data.resume_visibilty_status);
-                
-            }
-        }).catch(error => {
-            console.log(error);
-        })
-        }
-    
-    const copyLink = () => {
-        navigator.clipboard.writeText(resumeLink);
-    }
+    // const copyLink = () => {
+    //     navigator.clipboard.writeText(resumeLink);
+    // }
+
+    const handleCopyToClipboard = () => {
+        const textarea = document.createElement('textarea');
+        textarea.textContent = resumeLink;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        console.log("adress copied");
+        alert("adress copied")
+    };
 
     useEffect(() => {
         getPrivecy()
@@ -66,8 +73,8 @@ const ApplicantSettingsModal = () => {
                             <h3 className="mb-4 text-xl font-medium text-gray-900 ">My Resume <span className="text-blue-600">Link</span></h3>
                             <div className="mb-5">
                                 <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 ">Who Can See My Resume ?</label>
-                                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
-                                value={resumeVisibilityStatus}  onChange={e => handleChangeResumePrivacy(e)}>
+                                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    value={resumeVisibilityStatus} onChange={e => handleChangeResumePrivacy(e)}>
                                     <option selected={applicantDetails.resume_visibility_status === 0} value={0}>No One</option>
                                     <option selected={applicantDetails.resume_visibility_status === 1} value={1}>Only Employers</option>
                                     <option selected={applicantDetails.resume_visibility_status === 2} value={2}>Anyone With the Link</option>
@@ -75,7 +82,7 @@ const ApplicantSettingsModal = () => {
                             </div>
                             <div className="flex flex-col mb-4 w-full">
                                 <div className="relative w-full">
-                                    <div className="absolute text-gray-600 flex items-center pl-4 h-full cursor-pointer" onClick={copyLink}>
+                                    <div className="absolute text-gray-600 flex items-center pl-4 h-full cursor-pointer" onClick={handleCopyToClipboard}>
                                         <CopyIcons />
                                     </div>
                                     <input id="link" className="text-gray-600  focus:outlin-none focus:border focus:border-indigo-700  bg-white font-normal w-full h-10 flex items-center pl-12 text-sm border-gray-300 rounded border shadow" disabled defaultValue={resumeLink} />

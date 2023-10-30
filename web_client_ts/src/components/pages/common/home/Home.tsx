@@ -9,7 +9,11 @@ import Stats from '../stats/Stats';
 import Hero from '../hero/Hero';
 import CustomerReview from '../../../shared/customerReview/CustomerReview';
 import modeImg from "../../../../assets/images/modelImg.svg"
+
+import { CvScan } from './CVScan/CvScan';
+
 import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
     const modalId='home-modal'
@@ -41,6 +45,7 @@ const Home = () => {
                     <CommonModal leftMethod={leftMethod} leftButtonText='Employer' rightMethod={rightMethod} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} Img={modeImg} />
                     <Stats/>
                     <Features/>
+                    <CvScan/>
                     <Testimonial />
                     <CustomerReview/>
              

@@ -11,7 +11,7 @@ const FormDashboard = ({ image, child,HeadingContent }: FormDashBoardProps) => {
                             </div>
                         <img
                             src={image}
-                            className="w-[55%]"
+                            className="w-[50%]"
                             alt="Phone image" />
                     </div>
 

@@ -38,5 +38,6 @@ export interface ApplicantDetails {
     is_disabled?: boolean,
     invited_job_list?: string[],
     applied_job_list?: string[],
-    resume_visibility_status?: number
+    resume_visibility_status?: number,
+
 }

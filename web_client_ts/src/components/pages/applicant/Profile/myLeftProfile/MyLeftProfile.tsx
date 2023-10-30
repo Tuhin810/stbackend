@@ -4,11 +4,12 @@ import { updateApplicantDetailsById } from '../../../../../utils/apis/applicant/
 import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps';
 import ApplicantSettingsModal from '../../modals/applicantSettingsModal/ApplicantSettingsModal';
 import Rating from '../../../../shared/rating/Rating';
+// import { showModal } from '../../../../../utils/commonFunctions/HandleModal';
 
 
 const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
 
-    const {applicantDispatch} = useContext(applicantContext);
+    const { applicantDispatch } = useContext(applicantContext);
     const { applicantloggedinDetails } = useContext(applicantContext);
     // const url=window.location.hostname + '/resume/';
     let name = "";
@@ -24,13 +25,15 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
         if (e.target.files![0]) {
             reader.readAsDataURL(e.target.files![0]);
         }
-        reader.onload = async(readerEvent: ProgressEvent<FileReader>) => {
-            if(defaultApplicantDetails){
+        reader.onload = async (readerEvent: ProgressEvent<FileReader>) => {
+            if (defaultApplicantDetails) {
                 const url = readerEvent.target?.result;
                 defaultApplicantDetails.photo = url?.toString();
                 const response = await updateApplicantDetailsById(applicantloggedinDetails.applicantDetails._id!, defaultApplicantDetails);
                 if (response?.status === 200) {
                     applicantDispatch({ type: "updateDetails", payload: response?.data.data })
+                } else {
+                    alert("please upload image less than 1 mb")
                 }
             }
         };
@@ -44,11 +47,11 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
 
                 </div>
                 <div className="flex flex-col items-center pb-10 " >
-                <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-orange-200 border-y-4 border-x-4 border-orange-200 "
-                            src={defaultApplicantDetails?.photo?.toString()} />
+                    <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-orange-200 border-y-4 border-x-4 border-orange-200 "
+                        src={defaultApplicantDetails?.photo?.toString()} />
                     <label htmlFor="file">
-                        
-                            <img className='h-10 w-10 -mt-12 ml-20' src="https://img.icons8.com/?size=160&id=102714&format=png" alt="" />
+
+                        <img className='h-10 w-10 -mt-12 ml-20 cursor-pointer' src="https://img.icons8.com/?size=160&id=102714&format=png" alt="" />
                     </label>
                     <input id="file" type="file"
                         hidden
@@ -56,7 +59,7 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
                     />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
                     <div className='my-2'>
-                        <Rating/>
+                        <Rating />
                     </div>
                     <div className="flex gap-2 mb-3 items-center">
                         <div className="">  <img className='h-5 w-5'
@@ -67,12 +70,12 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
 
                     <div className="flex items-center space-x-6 mt-3 sm:mt-0">
                         <img className='h-7 w-7' src="https://img.icons8.com/?size=96&id=114445&format=png" alt="" />
-                       <img  className='h-7 w-7' src="https://img.icons8.com/?size=160&id=LoL4bFzqmAa0&format=png" alt="" />
-                       <img className='h-7 w-7' src="https://img.icons8.com/?size=96&id=uLWV5A9vXIPu&format=png" alt="" />
+                        <img className='h-7 w-7' src="https://img.icons8.com/?size=160&id=LoL4bFzqmAa0&format=png" alt="" />
+                        <img className='h-7 w-7' src="https://img.icons8.com/?size=96&id=uLWV5A9vXIPu&format=png" alt="" />
                     </div>
                 </div>
             </div>
-            <ApplicantSettingsModal/>
+            <ApplicantSettingsModal />
         </div>
     )
 }

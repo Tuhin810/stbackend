@@ -51,6 +51,8 @@ const RecruiterSignupForm = () => {
       dispatch({ type: "login", payload: recruiterDetails })
       loggedIn({ type: "login", userType: "recruiter" });
       navigate('/recruiter/jobs');
+    }else{
+      alert("error")
     }
   }
   const [disable, setDisable] = useState<boolean>(false);
@@ -111,6 +113,9 @@ const RecruiterSignupForm = () => {
     if (page > 0) {
       setPage(prev => prev - 1);
     }
+    else{
+      navigate("/home");
+    }
   }
 
   useEffect(() => {
@@ -161,7 +166,7 @@ const RecruiterSignupForm = () => {
 
         <div className="flex w-full">
 
-          <button type="button" disabled={page === 0} className={`text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
+          <button type="button"  className={`text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
                   py-2.5 text-center mr-2 mb-2`} onClick={handlePageDecrease}>Back</button>
 
           <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
