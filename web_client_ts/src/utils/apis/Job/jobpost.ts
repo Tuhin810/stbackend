@@ -1,6 +1,6 @@
 import { JobDetails } from "../../../@types/interfaces/JobDetails";
 import { header } from "../../../configs/apiConfig";
-import { Get, Post } from "../apiCall";
+import { Get, Post ,Put} from "../apiCall";
 
 export const newJobPost = async (jobDetails: JobDetails) => {
     const response = await Post('jobs/postjob', jobDetails, header);
@@ -31,3 +31,10 @@ export const getMatchedJobDetails = async (jobId:string,applicantId:string) => {
     const response = await Get(`jobs/getMatchedJobDetails/${jobId}/${applicantId}`,header);
     return response;
 }
+
+export const getMatchedApplicantStatus = async (jobId:string,status: string) => {
+    const response = await Put(`job/${status}/${jobId}`,{},header);
+    return response;
+}
+
+

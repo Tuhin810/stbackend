@@ -5,6 +5,8 @@ import { deleteJob } from "../../controller/jobs/DeleteJob";
 import { brodcastJob } from "../../controller/jobs/BrodcastJob.controller";
 import { postApplicantPreferredJob } from "../../controller/users/applicantPreferredJob/ApplicantPreferredJob";
 import { recruiterSearchPreferredJob } from "../../controller/recruiter/searchJob/RecruiterSearchPreferredJob";
+import { matchedApplicantHire } from "../../controller/users/applicantHired/ApplicantHired";
+import { matchedApplicantstatus } from "../../controller/users/applicantHired/ApplicantStatus";
 
 const router = express.Router();
 
@@ -18,6 +20,9 @@ router.get("/jobs/getMatchedJobDetails/:jobId/:applicantId", getMatchedJobDetail
 router.post("/jobs/postjob", postNewJobs);
 router.post("/job/brodcast/:id", brodcastJob);
 router.post("/job/addPreferredJob", postApplicantPreferredJob);
+router.put("/job/hire/:jobId", matchedApplicantHire)
+router.put("/job/:status/:jobId", matchedApplicantstatus)
+
 router.delete("/jobs/deleteJobDetailsByJobId/:jobId", deleteJob);
 
 export { router as jobRouter }
