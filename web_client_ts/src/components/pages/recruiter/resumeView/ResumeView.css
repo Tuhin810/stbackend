@@ -131,11 +131,15 @@ html, body {
     background: #4CAF50;
   box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
 }
-.floating-container .float-element:nth-child(4) {
+.floating-container .float-element button:nth-child(4) {
     background: #FF9800;
     box-shadow: 0 20px 20px -10px rgba(60, 255, 0, 0.5);
   }
-
+  .floating-container .float-element button:disabled {
+   color: black;
+    opacity: 0.5; 
+    cursor: not-allowed; 
+  }
 
 
 

@@ -12,7 +12,7 @@ const SharedResume = ({ jobApplied }: SharedResumeProps) => {
     const [isAccessable, setIsAccesable] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [resume_visibilty_status, setResume_visibilty_status] = useState<number>(0);
-    
+
     const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({
         first_name: "",
         middle_name: "",
@@ -40,7 +40,7 @@ const SharedResume = ({ jobApplied }: SharedResumeProps) => {
         min_expected_salary: 0,
         min_duty_hours: 0
     });
-    
+
     const isResumePublic = async (applicantId: string) => {
         setIsLoading(true);
         const response = await getApplicantResumePrivacy(applicantId);
@@ -51,18 +51,18 @@ const SharedResume = ({ jobApplied }: SharedResumeProps) => {
     }
 
 
-    const getApplicantDetails = useCallback( async(applicantId: string) => {
-            setIsLoading(true);
-            const response = await getApplicantDetailsById(applicantId);
-            setIsLoading(false);
-            if (response?.status === 200) {
-                if(!jobApplied){
-                    response.data.applicant.phone = 0;
-                    response.data.applicant.email = "******@****.com";
-                }
-                setApplicantDetails(response?.data.applicant);
+    const getApplicantDetails = useCallback(async (applicantId: string) => {
+        setIsLoading(true);
+        const response = await getApplicantDetailsById(applicantId);
+        setIsLoading(false);
+        if (response?.status === 200) {
+            if (!jobApplied) {
+                response.data.applicant.phone = 0;
+                response.data.applicant.email = "******@****.com";
             }
-        },[jobApplied]
+            setApplicantDetails(response?.data.applicant);
+        }
+    }, [jobApplied]
     )
 
     useEffect(() => {
@@ -81,16 +81,17 @@ const SharedResume = ({ jobApplied }: SharedResumeProps) => {
                 }
             }
         }
-    }, [resume_visibilty_status, params.id,getApplicantDetails])
+    }, [resume_visibilty_status, params.id, getApplicantDetails])
 
     return (
         <div>
             {
                 (isLoading) ?
-                    <Spinner /> :
+                    <div className="m-auto flex justify-center"><Spinner /></div>
+                    :
                     (isAccessable) ?
-                        <div className="flex justify-center mt-16" id='resume'>
-                            <div className="w-1/2">
+                        <div className="flex justify-center mt-8" id='resume'>
+                            <div className=" md:w-3/4">
                                 <Resume defaultApplicantDetails={applicantDetails} />
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import SharedResume from '../../common/ResumeShare.tsx/SharedResume'
-import { showModal } from '../../../../utils/commonFunctions/HandleModal';
+// import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 import MailIcon from '../../../shared/icons/mailIcon/MailIcon';
 // import CallIcon from '../../../shared/icons/callIcon/CallIcon';
 import UserRemoveIcon from '../../../shared/icons/userRemoveIcon/UserRemoveIcon';
@@ -8,14 +8,18 @@ import UserPlusIcon from '../../../shared/icons/userPlusIcon/UserPlusIcon';
 import { useParams } from 'react-router-dom';
 import { getMatchedApplicantStatus, getMatchedJobDetails } from '../../../../utils/apis/Job/jobpost';
 import { MatchedApplicant } from '../../../../@types/interfaces/models/MatchedApplicant';
+import { useNavigate } from "react-router-dom";
+
 // import CommonModal from '../../../shared/modal/CommonModal';
 // import { yes_no } from '../../../../assets/images';
+
 import "./ResumeView.css"
 const ResumeView = () => {
+    const navigate = useNavigate();
     const params = useParams();
-    const [show, setShow] = useState<boolean>(false);
-    const [message, setMessage] = useState<string>("");
-    const [status, setStatus] = useState(true)
+    const [, setShow] = useState<boolean>(false);
+    const [, setMessage] = useState<string>("");
+    const [status, setStatus] = useState("")
     const [jobDetails, setJobDetails] = useState<MatchedApplicant>({
         jobId: "",
         applicantId: "",
@@ -30,6 +34,7 @@ const ResumeView = () => {
         if (response?.status === 200) {
             setJobDetails(response?.data.data);
             console.log("matched",response?.data.data.status);
+            setStatus(response?.data.data.status)
             
         }
     }, [params.jobId]);
@@ -40,14 +45,15 @@ const ResumeView = () => {
     const hideOptions = () => {
         setShow(false);
     }
-    const handleShare = () => {
-        showModal("applicantSettings");
-    }
-    const handleseStatus = (status:string) => {
+  
+    const handleseStatus = async(status:string) => {
         setMessage("Are You Sure to Hire This Candidate ?")
         // showModal("selectionModal");
         getMatchedApplicantStatus(jobDetails.jobId, status)
         console.log(status);
+       
+        await alert(`this resume is ${status}`)
+         navigate("/recruiter/jobs");
     }
 
     useEffect(() => {
@@ -61,19 +67,20 @@ const ResumeView = () => {
             <div className=''>
 
                 <div className="floating-container">
-                    <div className="floating-button">+</div>
+                    <div className="floating-button">+
+                    </div>
                     <div className="element-container">
-
-                        <span className="float-element items-center justify-center flex">
-                            <button className='m-auto mt-3'><MailIcon /></button>
-
-                        </span>
-                        <span className="float-element items-center justify-center flex">
-                            <button  onClick={()=>handleseStatus("rejected")} className='m-auto mt-3'><UserRemoveIcon /></button>
+                        
+                        <span className={`float-element items-center justify-center flex`}>
+                            <button disabled={status==="rejected"}  className='m-auto mt-3'><MailIcon /></button>
 
                         </span>
                         <span className="float-element items-center justify-center flex">
-                            <button onClick={()=>handleseStatus("hired")} className='m-auto mt-3'><UserPlusIcon /></button>
+                            <button disabled={status!=="matched"}  onClick={()=>handleseStatus("rejected")} className='m-auto mt-3'><UserRemoveIcon /></button>
+
+                        </span>
+                        <span className="float-element items-center justify-center flex">
+                            <button disabled={status!=="matched"} onClick={()=>handleseStatus("hired")} className='m-auto mt-3'><UserPlusIcon /></button>
 
                         </span>
                     </div>
