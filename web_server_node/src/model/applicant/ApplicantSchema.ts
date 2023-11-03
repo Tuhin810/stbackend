@@ -146,6 +146,18 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    facebook_link: {
+        type: String,
+        default: ""
+    },
+    github_link: {
+        type: String,
+        default: ""
+    },
+    linkedin_link: {
+        type: String,
+        default: ""
+    },
     tokens: [
         {
             token: {

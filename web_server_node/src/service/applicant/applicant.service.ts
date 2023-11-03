@@ -140,6 +140,9 @@ export const updateApplicantProfileDetailsById = async (applicantId: string, app
                     min_duty_hours: applicantProfile.min_duty_hours,
                     native_language: applicantProfile.native_language,
                     is_disabled: applicantProfile.is_disabled,
+                    facebook_link: applicantProfile.facebook_link,
+                    github_link: applicantProfile.github_link,
+                    linkedin_link: applicantProfile.linkedin_link
                 }
             }
         )

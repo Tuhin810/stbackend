@@ -28,6 +28,7 @@ import correct from './correct.svg'
 import wrong from './wrong.svg'
 import modeImg from './modelImg.svg'
 import yes_no from './yes_no.svg'
+import question from './question.svg'
 
 export {
 	get_find,
@@ -59,5 +60,6 @@ export {
 	correct,
 	wrong,
 	modeImg,
-	yes_no
+	yes_no,
+	question
 };
