@@ -1,18 +1,25 @@
 import { useCallback, useEffect, useState } from 'react'
 import SharedResume from '../../common/ResumeShare.tsx/SharedResume'
+// import { showModal } from '../../../../utils/commonFunctions/HandleModal';
+import { getMatchedApplicantStatus, getMatchedJobDetails } from '../../../../utils/apis/Job/jobpost';
+import { MatchedApplicant } from '../../../../@types/interfaces/models/MatchedApplicant';
 import { hideModal, showModal } from '../../../../utils/commonFunctions/HandleModal';
 import UserRemoveIcon from '../../../shared/icons/userRemoveIcon/UserRemoveIcon';
 import UserPlusIcon from '../../../shared/icons/userPlusIcon/UserPlusIcon';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getMatchedJobDetails } from '../../../../utils/apis/Job/jobpost';
-import { MatchedApplicant } from '../../../../@types/interfaces/models/MatchedApplicant';
 import CommonModal from '../../../shared/modal/CommonModal';
 import { question, yes_no } from '../../../../assets/images';
 import Alert from '../../../shared/alert/Alert';
 import ChatIcon from '../../../shared/icons/chatIcon/ChatIcon';
 
+// import CommonModal from '../../../shared/modal/CommonModal';
+// import { yes_no } from '../../../../assets/images';
+
+import "./ResumeView.css"
 const ResumeView = () => {
+    const navigate = useNavigate();
     const params = useParams();
+    const [status, setStatus] = useState("")
     const applicantId = params.id!;
     const navigate = useNavigate();
     const [show, setShow] = useState<boolean>(false);
@@ -32,6 +39,9 @@ const ResumeView = () => {
         const response = await getMatchedJobDetails(jobId, applicantId);
         if (response?.status === 200) {
             setJobDetails(response?.data.data);
+            console.log("matched",response?.data.data.status);
+            setStatus(response?.data.data.status)
+            
         }
     }, [params.jobId]);
 
@@ -41,6 +51,16 @@ const ResumeView = () => {
     const hideOptions = () => {
         setShow(false);
     }
+  
+    const handleseStatus = async(status:string) => {
+        setMessage("Are You Sure to Hire This Candidate ?")
+        // showModal("selectionModal");
+        getMatchedApplicantStatus(jobDetails.jobId, status)
+        console.log(status);
+       
+        await alert(`this resume is ${status}`)
+         navigate("/recruiter/jobs");
+
     const handleClose = () => {
         setError(false);
     }
@@ -68,9 +88,7 @@ const ResumeView = () => {
         }
     }
 
-    const leftHireMethod = () => {
-        console.log("hired");
-    }
+ 
     const rightHireMethod = () => {
         hideModal("hireModal");
         console.log("closed");
@@ -90,9 +108,29 @@ const ResumeView = () => {
             {error ? <Alert title={"Try Again Later"} type={"Danger"} text={errorMessage} color={"red"} img={""} handleClose={handleClose} /> : null}
             <SharedResume jobApplied={jobDetails.accept} />
             <div className=''>
+
+                <div className="floating-container">
+                    <div className="floating-button">+
+                    </div>
+                    <div className="element-container">
+                        
+                        <span className={`float-element items-center justify-center flex`}>
+                            <button disabled={status==="rejected"}  className='m-auto mt-3'><MailIcon /></button>
+
+                        </span>
+                        <span className="float-element items-center justify-center flex">
+                            <button disabled={status!=="matched"}  onClick={()=>handleseStatus("rejected")} className='m-auto mt-3'><UserRemoveIcon /></button>
+
+                        </span>
+                        <span className="float-element items-center justify-center flex">
+                            <button disabled={status!=="matched"} onClick={()=>handleseStatus("hired")} className='m-auto mt-3'><UserPlusIcon /></button>
+
+                        </span>
+                    </div>
+                </div>
                 <div className='fixed right-8 bottom-5'>
                     <div onMouseEnter={openOptions} onMouseLeave={hideOptions} className="fixed right-6 bottom-6 group">
-                        {
+                        {/* {
                             (show) ?
                                 <div id="speed-dial-menu-default" className="flex flex-col items-center mb-4 space-y-2">
                                     <button type="button" data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center 
@@ -105,17 +143,19 @@ const ResumeView = () => {
                                         Chat
                                         <div className="tooltip-arrow" data-popper-arrow></div>
                                     </div>
+
+                                    <button title='reject' onClick={()=>getMatchedApplicantStatus(jobDetails.jobId,"rejected")} type="button" data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-gray-800 rounded-full border border-gray-200  shadow-sm ">
                                     <button type="button" data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center
                                      w-[52px] h-[52px] text-gray-500 hover:text-gray-900
                                       bg-gray-800 rounded-full border border-gray-200  shadow-sm " onClick={handleReject}>
                                         <UserRemoveIcon />
-                                        <span className="sr-only">Download</span>
+                                        <span className="sr-only">reject</span>
                                     </button>
-                                    <div id="tooltip-download" role="tooltip" className="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
+                                    <div  id="tooltip-download" role="tooltip" className="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
                                         Reject
                                         <div className="tooltip-arrow" data-popper-arrow></div>
                                     </div>
-                                    <button type="button" onClick={handleHire} data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-gray-800 rounded-full border border-gray-200  shadow-sm ">
+                                    <button type="button" title='hire' onClick={handleHire} data-tooltip-target="tooltip-download" data-tooltip-placement="left" className="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-green-600 bg-green-500 rounded-full border border-gray-200  shadow-sm ">
                                         <UserPlusIcon />
                                         <span className="sr-only">Hire</span>
                                     </button>
@@ -134,10 +174,13 @@ const ResumeView = () => {
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
                             </svg>
                             <span className="sr-only">Open actions menu</span>
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>
+
+            {/* <CommonModal leftButtonLink={`/recruiter/`} leftRoute={true} leftButtonText='Yes,Sure!' rightButtonLink={``} rightRoute={true} rightButtontext='No,Thanks' message={message} id={"selectionModal"} Img={yes_no} /> */}
+
             <CommonModal leftMethod={leftHireMethod} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} />
             <CommonModal leftMethod={leftHireMethod} leftButtonText='No,Thanks' rightMethod={rightHireMethod} rightButtontext='Yes,Sure' message={message} id={"rejectModal"} Img={question} />
         </div>

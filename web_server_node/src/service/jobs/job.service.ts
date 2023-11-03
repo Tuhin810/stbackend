@@ -151,6 +151,17 @@ export const getApplicantDetailsByJob = async (jobId: string) => {
     }
 }
 
+export const getApplicantDetailsByJobmatched = async (jobId: string, status: string) => {
+    try {
+        const response = await MatchedApplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+
 export const allJobs = async () => {
     try {
         const response = await JobModel.find({}).lean().populate("company_details").populate("recruiter_details").exec();
@@ -186,3 +197,4 @@ export const updateJobStatus = async (jobId: string, applicant_id: string, statu
         throw error;
     }
 }
+

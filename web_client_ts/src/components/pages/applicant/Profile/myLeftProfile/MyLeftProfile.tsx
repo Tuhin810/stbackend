@@ -45,7 +45,7 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
                 <div className="flex justify-end px-2 pt-3">
 
                 </div>
-                <div className="flex flex-col items-center pb-10 " >
+                <div className="flex flex-col items-center pb-5 " >
                     <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-orange-200 border-y-4 border-x-4 border-orange-200 "
                         src={defaultApplicantDetails?.photo?.toString()} />
                     <label htmlFor="file">

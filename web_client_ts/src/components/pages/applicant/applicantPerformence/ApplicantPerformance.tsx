@@ -11,7 +11,7 @@ export const ApplicantPerformance = () => {
 
   const { applicantloggedinDetails } = useContext(applicantContext);
   const { applicantDetails } = applicantloggedinDetails;
-  const [, setJobDetailsList] = useState<InvitedJob[]>([]);
+  const [jobDetailsList, setJobDetailsList] = useState<InvitedJob[]>([]);
 
   const getInvitedJobList = async () => {
     const response = await getApplicantInvitedJobList(applicantDetails._id!);
@@ -23,13 +23,7 @@ export const ApplicantPerformance = () => {
     }
   }
 
-  // const handlesSet = (data: InvitedJob) => {
-  //   if (data && data.job_details) {
-  //     setSelectedJob(data)
-  //   }
-  //   showModal('jobdesc')
-  //   console.log(data);
-  // }
+
   useEffect(() => {
     getInvitedJobList();
   }, []);
@@ -38,7 +32,7 @@ export const ApplicantPerformance = () => {
     <div className='mt-20 flex'>
 
 
-      <ApplicantPerformanceSidebar />
+      <ApplicantPerformanceSidebar defaultApplicantDetails ={applicantDetails} count={jobDetailsList?.length}/>
       <div id="wrapper" className="flex h-[92vh]  bg-white sm:flex-col md:flex-row font-light w-full">
 
         <div id="content" className="px-8 hidescroll bg-transparent flex-grow flex-shrink flex-auto overflow-y-scroll">
@@ -62,10 +56,19 @@ export const ApplicantPerformance = () => {
             </div>
           </div>
           <div className="flex w-full md:w-3/4 flex-col gap-5 mt-5 hidescroll h-screen ">
-            <AccepctJobCard2 />
-            <AccepctJobCard2 />
-            <AccepctJobCard2 />
-            <AccepctJobCard2 />
+          {
+                      jobDetailsList.map((invitedJob, value) => {
+                        const { job_details } = invitedJob
+                        return (
+                          <div  >
+                             <AccepctJobCard2 jobDetails={job_details} key={value}/>
+                            {/* <JobCard jobDetails={job_details}
+                              key={value} InvitedJob={""} jobId={""} applicantId={""} /> */}
+                          </div>
+                        )
+                      })
+                    }
+        
           </div>
         </div>
         <div className=" flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10 ">
