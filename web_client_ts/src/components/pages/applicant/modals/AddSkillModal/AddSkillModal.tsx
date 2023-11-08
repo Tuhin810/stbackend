@@ -77,8 +77,6 @@ const AddSkillModal = () => {
                 </div>
             </div>
         </div>
-
-
     )
 }
 

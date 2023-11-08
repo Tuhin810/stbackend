@@ -7,12 +7,11 @@ import { ApplicantRouter } from "./router/applicant/auth/applicant.router";
 import { companyRouter } from "./router/company/company";
 import { jobRouter } from "./router/jobs/jobs";
 import { RecruiterRouter } from "./router/recruiter/Recruiter";
+import { messageRouter } from "./router/message/Message";
 
 dotenv.config();
 const app: Express = express();
 const port = process.env.PORT!;
-
-const allowedOrigins = ["https://starmarks.in"];
 
 const options: cors.CorsOptions = {
   allowedHeaders: ["sessionId", "Content-Type"],
@@ -24,7 +23,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 app.use(json());
-app.use([ApplicantRouter, RecruiterRouter, companyRouter, jobRouter]);
+app.use([ApplicantRouter, RecruiterRouter, companyRouter, jobRouter, messageRouter]);
 
 mongoose
   .connect(process.env.MONGO_URL!)
