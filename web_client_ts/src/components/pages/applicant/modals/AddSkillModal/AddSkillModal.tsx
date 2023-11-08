@@ -1,17 +1,20 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Select, { MultiValue } from 'react-select'
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal"
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext";
 import { updateApplicantSkills } from "../../../../../utils/apis/applicant/Applicant";
-import { skillSuggestion } from "../../../../../constants/skillSuggestion";
+// import { skillSuggestion } from "../../../../../constants/skillSuggestion";
 import makeAnimated from 'react-select/animated';
 import { AutoCompleteProps } from "../../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps";
+import { skillSuggestion } from "../../../../../constants/skillSuggestion";
 const animatedComponents = makeAnimated();
 
 const AddSkillModal = () => {
     const [skillList, setSkillList] = useState<string[]>([]);
+    const [applicantSkillList,setApplicantSkillList] =useState<string[]>([]);
     const { applicantDispatch } = useContext(applicantContext);
     const { applicantloggedinDetails } = useContext(applicantContext);
+
     const handleChangeSkillName = (event: MultiValue<AutoCompleteProps>) => {
         const tempArray:string[] = [];
         event.forEach((skill:any)=>{
@@ -26,6 +29,15 @@ const AddSkillModal = () => {
             hideModal("addSkills")
         }
     }
+
+    useEffect(() => {
+        setApplicantSkillList(applicantloggedinDetails.applicantDetails.skills)
+       console.log("skills",applicantloggedinDetails.applicantDetails.skills );
+       
+    }, [])
+    // Filter out options that are already in applicantSkillList
+  const filteredSkillSuggestion = skillSuggestion.filter((option) => !applicantSkillList.includes(option.value));
+
     return (
         <div>
             <div id="addSkills" className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden">
@@ -43,7 +55,7 @@ const AddSkillModal = () => {
                             <h3 className="mb-4 text-xl font-medium text-gray-900 darkno:text-white">Enter Your<span className="text-blue-600"> Qualification </span>Details</h3>
                             <div className="space-y-6">
                                 <Select
-                                    options={skillSuggestion}
+                                    options={filteredSkillSuggestion}
                                     closeMenuOnSelect={false}
                                     isMulti
                                     components={animatedComponents}

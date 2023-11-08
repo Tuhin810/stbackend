@@ -17,6 +17,7 @@ const RecruiterSignUpPage1 = ({companyList,handleChnageRecruiterDetails}:IRecrui
                     }
                 </select>
             </div>
+          
             <p className="text-sm text-gray-600 mb-2">If your company is not listed <Link to="/newCompany" className="text-blue-500 hover:underline">register here</Link></p>
             <div className="mb-4">
                 <label htmlFor="first_name" className="block text-gray-700 text-sm font-medium mb-1 flex justify-between"><span>First Name <span className="text-red-500">*</span></span> </label>

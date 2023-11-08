@@ -29,18 +29,17 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
 
   const handleCopyCurrentToPermanent = () => {
 
-    if(!checked){
-       // Copy the unsaved current address to permanent address
-    setApplicantDetails((prevApplicantDetails) => ({
-      ...prevApplicantDetails,
-      permanent_address: unsavedCurrentAddress,
-    }));
-    // Update the 'checked' state to reflect the change
-    setChecked(true);
-    }else{
+    if (!checked) {
+      // Copy the unsaved current address to permanent address
+      setApplicantDetails((prevApplicantDetails) => ({
+        ...prevApplicantDetails,
+        permanent_address: unsavedCurrentAddress,
+      }));
+      // Update the 'checked' state to reflect the change
+      setChecked(true);
+    } else {
       setChecked(false)
     }
-   
   };
 
   const handleUpdate = async () => {
@@ -58,7 +57,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
     <div>
       <div
         id="updateprofile"
-        className={` fixed inset-0 z-40 flex items-center hidden justify-center bg-black bg-opacity-50 backdrop-blur-sm`}
+        className={`fixed inset-0 z-40 flex items-center hidden justify-center bg-black bg-opacity-50 backdrop-blur-sm`}
       >
         <div className="relative w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-xl shadow ">
@@ -169,9 +168,7 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                       <option value="others" defaultChecked={defaultApplicantDetails?.gender === "others"}>
                         others
                       </option>
-                      <option value="non_binary" defaultChecked={defaultApplicantDetails?.gender === "non_binary"}>
-                        Female
-                      </option>
+
                       <option value="male" defaultChecked={defaultApplicantDetails?.gender === "male"}>
                         Male
                       </option>
@@ -182,59 +179,59 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                   </div>
                 </div>
                 <div>
-        <label htmlFor="current_address" className="block text-sm font-medium text-gray-900">
-          Current Address
-        </label>
-        <input
-          onChange={(e) => {
-            handleChangeApplicantDetails(e);
-            // Update the unsavedCurrentAddress when the user types in the input
-            setUnsavedCurrentAddress(e.target.value);
-          }}
-          defaultValue={unsavedCurrentAddress}
-          type="text"
-          name="current_address"
-          id="current_address"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="St. Pauls School"
-        />
-      </div>
-      <div className="">
-        <label htmlFor="permanent_address" className="block mb-2 text-sm font-medium text-gray-900">
-          Permanent Address
-        </label>
+                  <label htmlFor="current_address" className="block text-sm font-medium text-gray-900">
+                    Current Address
+                  </label>
+                  <input
+                    onChange={(e) => {
+                      handleChangeApplicantDetails(e);
+                      // Update the unsavedCurrentAddress when the user types in the input
+                      setUnsavedCurrentAddress(e.target.value);
+                    }}
+                    defaultValue={unsavedCurrentAddress}
+                    type="text"
+                    name="current_address"
+                    id="current_address"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="St. Pauls School"
+                  />
+                </div>
+                <div className="">
+                  <label htmlFor="permanent_address" className="block mb-2 text-sm font-medium text-gray-900">
+                    Permanent Address
+                  </label>
 
-        <div className="flex mb-2">
-          <button onClick={handleCopyCurrentToPermanent} className="flex gap-2 items-center">
+                  <div className="flex mb-2">
+                    <button onClick={handleCopyCurrentToPermanent} className="flex gap-2 items-center">
 
-            {
-              (!checked)?<><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#dfe3e6" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-</svg></>:
-<><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#03b1fc" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-</svg></>
-            }
-          Same as current address
-          </button>
-        </div>
+                      {
+                        (!checked) ? <><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#dfe3e6" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg></> :
+                          <><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#03b1fc" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                          </svg></>
+                      }
+                      Same as current address
+                    </button>
+                  </div>
 
-        <div className="">
-          <input
-            onChange={(e) => {
-              handleChangeApplicantDetails(e);
-              
-            }}
-            value={checked ? unsavedCurrentAddress : applicantDetails.permanent_address}
-            type="text"
-            name="permanent_address"
-            id="permanent_address"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                  <div className="">
+                    <input
+                      onChange={(e) => {
+                        handleChangeApplicantDetails(e);
+
+                      }}
+                      value={checked ? unsavedCurrentAddress : applicantDetails.permanent_address}
+                      type="text"
+                      name="permanent_address"
+                      id="permanent_address"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="St. Pauls School"
-          />
-        </div>
-      </div>
+                      placeholder="St. Pauls School"
+                    />
+                  </div>
+                </div>
                 <div className="flex gap-2">
                   <div>
                     <label htmlFor="phone" className="block  text-sm font-medium text-gray-900 darkno:text-white">
@@ -252,15 +249,15 @@ export const AddProfileModal = ({ defaultApplicantDetails }: MyProfileDetailsPro
                     />
                   </div>
                   <div>
-                    <label htmlFor="birthday" className="block  text-sm font-medium text-gray-900 ">
+                    <label htmlFor="birth_year" className="block  text-sm font-medium text-gray-900 ">
                       Birth Year
                     </label>
                     <input
                       onChange={(e) => handleChangeApplicantDetails(e)}
                       defaultValue={defaultApplicantDetails?.birth_year}
                       type="text"
-                      name="birthday"
-                      id="birthday"
+                      name="birth_year"
+                      id="birth_year"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                      focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                       placeholder="2000"

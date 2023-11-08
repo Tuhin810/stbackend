@@ -13,7 +13,7 @@ const ApplicantDashboard = () => {
         applicantDispatch({ type: "refreshPage", payload: details })
     }, [])
     return (
-        <div>
+        <div className=' min-h-screen'>
             <InvitedAppliedJobListState>
                 <ApplicantNavbar />
                 <Outlet />

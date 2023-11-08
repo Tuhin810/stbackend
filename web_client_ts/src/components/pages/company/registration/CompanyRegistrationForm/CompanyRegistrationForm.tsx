@@ -19,6 +19,7 @@ const CompanyRegistrationForm = () => {
         type: "unregistered",
         email: "",
         country_code: "+91",
+        logo:"",
         phone: 0,
         state: "Andaman and Nicobar Islands",
         country: "india",

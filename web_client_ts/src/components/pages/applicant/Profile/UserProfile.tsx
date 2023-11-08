@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { MyExperience } from "./myExperience/MyExperience";
 // import { updateApplicantPrivacy } from "../../../../utils/apis/applicant/Applicant"
 import { showModal } from "../../../../utils/commonFunctions/HandleModal";
-import { Review } from "./review/Review";
 
 const ApplicantProfile = () => {
   const { applicantloggedinDetails } = useContext(applicantContext);
@@ -57,14 +56,13 @@ const ApplicantProfile = () => {
   }, [])
   return (
     <>
-      <div className="mt-16 my-16 min-h-screen capitalize">
+      <div className="mt-16 mt-16 min-h-screen capitalize">
 
         <div className="body md:flex flex-col md:flex-row gap-10 px-3 md:px-32 py-10">
           {/* Left Side  */}
           <div className=" mb-5 flex flex-col   md:fixed ">
             <MyLeftProfile defaultApplicantDetails={applicantDetails} />
             <MyResumeContainer />
-            <Review/>
           </div>
           {/*RIGHT side  */}
           <div className="w-full flex flex-col gap-7 md:ml-80">

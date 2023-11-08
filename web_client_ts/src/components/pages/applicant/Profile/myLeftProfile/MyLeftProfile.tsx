@@ -72,9 +72,9 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
                     </div>
 
                     <div className="flex items-center space-x-6 mt-3 sm:mt-0">
-                        <img className='h-7 w-7' src="https://img.icons8.com/?size=96&id=114445&format=png" alt="" />
-                        <img className='h-7 w-7' src="https://img.icons8.com/?size=160&id=LoL4bFzqmAa0&format=png" alt="" />
-                        <img className='h-7 w-7' src="https://img.icons8.com/?size=96&id=uLWV5A9vXIPu&format=png" alt="" />
+                        <img className='h-7 w-7 cursor-pointer' src="https://img.icons8.com/?size=96&id=114445&format=png" alt="" />
+                        <img className='h-7 w-7 cursor-pointer' src="https://img.icons8.com/?size=160&id=LoL4bFzqmAa0&format=png" alt="" />
+                        <img className='h-7 w-7 cursor-pointer' src="https://img.icons8.com/?size=96&id=uLWV5A9vXIPu&format=png" alt="" />
                     </div>
                 </div>
             </div>

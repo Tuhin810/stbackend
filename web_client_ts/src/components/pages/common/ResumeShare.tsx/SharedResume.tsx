@@ -7,7 +7,7 @@ import Spinner from "../../../shared/spinner/Spinner";
 import NotFound from "../../../shared/notfound/NotFound";
 import { SharedResumeProps } from "../../../../@types/interfaces/props/SharedResumeProps/SharedResumeProps";
 
-const SharedResume = ({ jobApplied }: SharedResumeProps) => {
+const SharedResume = ({ jobApplied,jobStatus }: SharedResumeProps) => {
     const params = useParams();
     const [isAccessable, setIsAccesable] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -81,6 +81,8 @@ const SharedResume = ({ jobApplied }: SharedResumeProps) => {
                 }
             }
         }
+        console.log("status",resume_visibilty_status);
+        
     }, [resume_visibilty_status, params.id, getApplicantDetails])
 
     return (
@@ -92,7 +94,7 @@ const SharedResume = ({ jobApplied }: SharedResumeProps) => {
                     (isAccessable) ?
                         <div className="flex justify-center mt-8" id='resume'>
                             <div className=" md:w-3/4">
-                                <Resume defaultApplicantDetails={applicantDetails} />
+                                <Resume defaultApplicantDetails={applicantDetails} jobStatus={jobStatus}/>
                             </div>
                         </div>
                         : <NotFound message="unable to access,ask applicant to make it public" />

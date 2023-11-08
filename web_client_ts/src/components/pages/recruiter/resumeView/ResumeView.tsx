@@ -63,7 +63,7 @@ const ResumeView = () => {
 
     return (
         <div>
-            <SharedResume jobApplied={jobDetails.accept} />
+            <SharedResume jobApplied={jobDetails.accept} jobStatus={status}/>
             <div className=''>
 
                 <div className="floating-container">
