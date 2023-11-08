@@ -17,15 +17,15 @@ export const loginRecruiter = async (req: Request, res: Response) => {
         const matchedrecruiter = await getRecruiterByEmail(recruiterCredentail.userId)
 
         if (recruiter && matchedrecruiter) {
-            const token = jwt.sign({ _id: matchedrecruiter._id }, process.env.JWTKEY);
-            matchedrecruiter.tokens = matchedrecruiter.tokens.concat({ token: token })
-            matchedrecruiter.save()
+            // const token = jwt.sign({ _id: matchedrecruiter._id }, process.env.JWTKEY);
+            // matchedrecruiter.tokens = matchedrecruiter.tokens.concat({ token: token })
+            // matchedrecruiter.save()
 
             res.status(200).json({
                 success: true,
                 message: "login successful",
                 recruiter: recruiter,
-                token
+                // token
             });
         }
         else {

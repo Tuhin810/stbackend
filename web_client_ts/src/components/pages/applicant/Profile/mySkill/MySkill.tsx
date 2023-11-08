@@ -20,7 +20,7 @@ const MySkill = ({ skillList }: MySkillProps) => {
                                 <AddIcon/>
                             </button>
                         </div>
-                        <div className="md:flex md:flex-row  w-3/4">
+                        <div className=" flex flex-wrap  w-3/4">
                             {
                                 skillList.map((skill, value) => {
                                     return (

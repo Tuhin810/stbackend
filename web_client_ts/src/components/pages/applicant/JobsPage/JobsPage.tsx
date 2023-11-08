@@ -59,18 +59,16 @@ export const JobsPage = () => {
   return (
     <>
       {(invitedJobList.length != 0) ?
-        <>  <div className="bg-[#ffff] pt-20 h-screen md:pl-28 md:pr-16">
+        <>  <div className="bg-[#ffff] pt-20  md:pl-28 md:pr-16">
           {
             (loading) ? <Spinner /> : <> <div className="flex  py-7 px-8 md:px-0  gap-2  items-center  ">
               {/* <JobHeader /> */}
               <RefreshButton />
               <SearchBox />
             </div>
-              <div className="flex">
+              <div className="md:flex">
                 <div className="md:w-1/2  md:pr-4 ">
-
-
-                  <div className="flex  flex-col gap-3 px-5 md:px-0 md:pr-6 h-screen overflow-y-scroll hidescroll">
+                  <div className="flex pb-20  flex-col gap-3 px-5 md:px-0 md:pr-6 h-screen overflow-y-scroll hidescroll">
                     {
                       invitedJobList.map((invitedJob, value) => {
                         const { job_details } = invitedJob

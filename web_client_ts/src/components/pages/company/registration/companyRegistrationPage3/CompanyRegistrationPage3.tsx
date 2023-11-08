@@ -1,6 +1,23 @@
+import { useState } from 'react';
 import { CompanyRegistrationProps } from '../../../../../@types/interfaces/props/companyProps/CompanyRegistrationProps'
 
-const CompanyRegistrationPage3 = ({handleChangeCompanyDetails}:CompanyRegistrationProps) => {
+const CompanyRegistrationPage3 = ({ handleChangeCompanyDetails }: CompanyRegistrationProps) => {
+    // const [selectedFile, setSelectedFile] = useState<string |un | null>(null);
+
+
+    // const convertImageToUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const reader = new FileReader();
+      
+    //     if (e.target.files![0]) {
+    //       reader.readAsDataURL(e.target.files![0]);
+    //     }
+      
+    //     reader.onload = (readerEvent) => {
+    //         setSelectedFile(readerEvent.target!.result)
+           
+    //     };
+    //   };
+
     return (
         <div className='page3'>
             <div className="mb-4">
@@ -20,6 +37,10 @@ const CompanyRegistrationPage3 = ({handleChangeCompanyDetails}:CompanyRegistrati
             <div className="mb-4">
                 <label htmlFor="website" className="block text-sm font-medium text-gray-700">Company Website</label>
                 <input type="text" id="website" name="website" className="mt-1 p-2 border rounded w-full focus:outline-none focus:ring focus:border-blue-300" required onChange={(e) => handleChangeCompanyDetails(e)} />
+            </div>
+            <div className="flex items-center justify-start  gap-2">
+         
+                
             </div>
         </div>
     )

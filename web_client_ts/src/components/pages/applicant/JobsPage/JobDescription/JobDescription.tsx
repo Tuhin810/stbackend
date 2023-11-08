@@ -33,7 +33,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
         <div className="sticky top-0 z-10  w-full  bg-white md:h-44 h-52 shadow-lg border-b-2  px-8 py-3 ">
           <div className="flex justify-between items-center">
           <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline pt-5 md:pt-0">{jobDetails.job_title}</div>
-          <div onClick={() => hideModal('jobdesc')} className="z-50 ">
+          <div onClick={() => hideModal('jobdesc')} className="z-50 md:hidden">
                     <img className="h-7 w-7" src="https://cdn.iconscout.com/icon/free/png-512/free-close-1957281-1650975.png?f=avif&w=512" alt="" />
                   </div>
           </div>

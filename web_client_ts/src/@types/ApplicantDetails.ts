@@ -22,7 +22,7 @@ export interface ApplicantDetails {
     country: string,
     pin: number,
     age: number,
-    birth_year: number,
+    birth_year?: number,
     photo?: string | ArrayBuffer,
     cv?: BufferSource[],
     experience_year: number,

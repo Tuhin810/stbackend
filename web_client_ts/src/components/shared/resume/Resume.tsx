@@ -4,17 +4,16 @@ import { logo } from "../../../assets/images"
 
 const Resume = forwardRef(({ defaultApplicantDetails, componentRef ,jobStatus}: MyProfileDetailsProps) => {
 
-    useEffect(() => {
-     console.log("status for ribon",jobStatus);
-    }, [])
+    
     
     return (
         <div id="resume" ref={componentRef}>
 <div id='resume' className="relative overflow-hidden  container mx-auto p-8  bg-white border">
   <div className="absolute left-0 top-0 h-16 w-16">
     <div
-      className={`${(jobStatus==="hired")?"bg-green-600":""}absolute bg-green-600 transform -rotate-45  text-center text-white font-semibold py-1 left-[-34px] top-[32px] w-[170px]`}>
-      Hired
+      className={`${(jobStatus==="hired")?"bg-green-600":""}
+      ${(jobStatus==="rejected")?"bg-red-600":""} absolute  transform -rotate-45  text-center text-white font-semibold py-1 left-[-34px] top-[32px] w-[170px]`}>
+      {jobStatus}
     </div>
   </div>
 

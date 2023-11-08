@@ -96,7 +96,7 @@ const ResumeView = () => {
 
     const handleChat = () => {
         const path = `/recruiter/chat/${applicantId}`
-        navigate(path);
+        navigate(path);https://github.com/RahulDutta007/Starmark/pull/74/conflict?name=web_client_ts%252Fsrc%252Fcomponents%252Fpages%252Frecruiter%252FresumeView%252FResumeView.tsx&ancestor_oid=301e7174684c432a37356d99bca9ee2142e89889&base_oid=84d61e8b4b122b220ff1e886916c51eaf12a5b2f&head_oid=b0ef1f0426e780e284c506911dd274bca1b8dc86
     }
 
     useEffect(() => {
@@ -105,8 +105,11 @@ const ResumeView = () => {
 
     return (
         <div>
-            {error ? <Alert title={"Try Again Later"} type={"Danger"} text={errorMessage} color={"red"} img={""} handleClose={handleClose} /> : null}
-            <SharedResume jobApplied={jobDetails.accept} />
+{error ? <Alert title={"Try Again Later"} type={"Danger"} text={errorMessage} color={"red"} img={""} handleClose={handleClose} /> : null}
+
+            <SharedResume jobApplied={jobDetails.accept} jobStatus={status}/>
+
+            
             <div className=''>
 
                 <div className="floating-container">

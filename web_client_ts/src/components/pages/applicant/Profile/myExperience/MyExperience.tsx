@@ -28,7 +28,7 @@ export const MyExperience = ({ Experience }:ApplicantExperienceProps) => {
                                         <p className="text-gray-600">{experience?.company}</p></div>
                                        
                                         <p className="text-gray-700 text-sm font-medium mt-2">From {experience?.start_year} </p>
-                                        <p className="text-gray-700 text-sm font-medium mt-2">{(experience?.end_year)?<>To ${experience?.end_year}</>:<>Currently working</>} </p>
+                                        <p className="text-gray-700 text-sm font-medium mt-2">{(experience?.end_year)?<>To {experience?.end_year}</>:<>Currently working</>} </p>
                                     </div>
                                 )
                             })
