@@ -1,25 +1,9 @@
-import { useState } from 'react';
+
 import { CompanyRegistrationProps } from '../../../../../@types/interfaces/props/companyProps/CompanyRegistrationProps'
 
 const CompanyRegistrationPage1 = ({ handleChangeCompanyDetails  }: CompanyRegistrationProps) => {
 
-    const [selectedFile, setSelectedFile] = useState<string | undefined | null>(null);
-    const convertImageToUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const reader = new FileReader();
-
-        if (e.target.files![0]) {
-            reader.readAsDataURL(e.target.files![0]);
-        }
-
-        reader.onload = (readerEvent) => {
-            setSelectedFile(readerEvent.target!.result)
-console.log(selectedFile);
-
-        };
-        handleChangeCompanyDetails(selectedFile)
-
-       
-    };
+ 
     return (
         <div>
             <div className="mb-4">
@@ -39,18 +23,11 @@ console.log(selectedFile);
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
                 <input type="email" id="email" name="email" className="mt-1 p-2 border rounded w-full focus:outline-none focus:ring focus:border-blue-300" required onChange={(e) => handleChangeCompanyDetails(e)} />
             </div>
-            <div className="mb-4">
+            <div className="">
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
                 <input type="tel" id="phone" name="phone" className="mt-1 p-2 border rounded w-full focus:outline-none focus:ring focus:border-blue-300" required onChange={(e) => handleChangeCompanyDetails(e)} />
             </div>
-            <div className="flex">
-    <input type="file"  id="logo" name="logo"  onChange={(e) => handleChangeCompanyDetails(e)} />
-    {selectedFile && (
-        <img className='h-12 w-12 rounded-xl' src={selectedFile} alt="" />
-    )}
-
-{/* <input type="text"  id="logo" name="logo"  onChange={e => handleChangeCompanyDetails(e)} /> */}
-</div>
+    
         </div>
 
     )

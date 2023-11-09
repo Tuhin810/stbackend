@@ -16,12 +16,13 @@ import ChatIcon from '../../../shared/icons/chatIcon/ChatIcon';
 // import { yes_no } from '../../../../assets/images';
 
 import "./ResumeView.css"
+import MailIcon from '../../../shared/icons/mailIcon/MailIcon';
 const ResumeView = () => {
     const navigate = useNavigate();
     const params = useParams();
     const [status, setStatus] = useState("")
     const applicantId = params.id!;
-    const navigate = useNavigate();
+   
     const [show, setShow] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
@@ -96,7 +97,8 @@ const ResumeView = () => {
 
     const handleChat = () => {
         const path = `/recruiter/chat/${applicantId}`
-        navigate(path);https://github.com/RahulDutta007/Starmark/pull/74/conflict?name=web_client_ts%252Fsrc%252Fcomponents%252Fpages%252Frecruiter%252FresumeView%252FResumeView.tsx&ancestor_oid=301e7174684c432a37356d99bca9ee2142e89889&base_oid=84d61e8b4b122b220ff1e886916c51eaf12a5b2f&head_oid=b0ef1f0426e780e284c506911dd274bca1b8dc86
+        navigate(path);
+        //github.com/RahulDutta007/Starmark/pull/74/conflict?name=web_client_ts%252Fsrc%252Fcomponents%252Fpages%252Frecruiter%252FresumeView%252FResumeView.tsx&ancestor_oid=301e7174684c432a37356d99bca9ee2142e89889&base_oid=84d61e8b4b122b220ff1e886916c51eaf12a5b2f&head_oid=b0ef1f0426e780e284c506911dd274bca1b8dc86
     }
 
     useEffect(() => {
@@ -184,10 +186,10 @@ const ResumeView = () => {
 
             {/* <CommonModal leftButtonLink={`/recruiter/`} leftRoute={true} leftButtonText='Yes,Sure!' rightButtonLink={``} rightRoute={true} rightButtontext='No,Thanks' message={message} id={"selectionModal"} Img={yes_no} /> */}
 
-            <CommonModal leftMethod={leftHireMethod} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} />
-            <CommonModal leftMethod={leftHireMethod} leftButtonText='No,Thanks' rightMethod={rightHireMethod} rightButtontext='Yes,Sure' message={message} id={"rejectModal"} Img={question} />
+            {/* <CommonModal leftMethod={leftHireMethod} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} /> */}
+            {/* <CommonModal leftMethod={leftHireMethod} leftButtonText='No,Thanks' rightMethod={rightHireMethod} rightButtontext='Yes,Sure' message={message} id={"rejectModal"} Img={question} /> */}
         </div>
     )
-}
+}}
 
 export default ResumeView

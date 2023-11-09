@@ -12,12 +12,9 @@ export const CompanySchema: Schema<CompanyDetails> = new mongoose.Schema({
         unique: true
     },
     logo: {
-        data: Buffer,
-        contentType: String,
+        type: String,
     },
-    type: {
-        type: String
-    },
+
     email: {
         type: String,
         trim: true,
