@@ -3,6 +3,6 @@ import authentiaction from "../../controller/auth/generateToken.controller";
 
 const router = express.Router();
 
-router.post("/auth/authentication", authentiaction)
+router.route("/auth/authentication").post(authentiaction)
 
-export { router as authenticationRouter }
+module.exports = router

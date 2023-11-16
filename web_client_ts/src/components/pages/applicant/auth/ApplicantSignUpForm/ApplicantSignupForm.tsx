@@ -30,7 +30,7 @@ const ApplicantSignupForm = () => {
   const [buttonText, setButtonText] = useState<string>("Continue");
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
-
+  const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({} as ApplicantDetails);
   const [password, setPassword] = useState();
   const [strength, setStrength] = useState('');
 

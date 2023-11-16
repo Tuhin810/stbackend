@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import UserModel from "../../../model/applicant/ApplicantSchema";
 import { ApplicantDetails } from "../../../@types/interfaces/ApplicantDetails";
-import { getApplicantDetailsByEmail, getApplicantDetailsByMobile, registerNewApplicant } from "../../../service/applicant/applicant.service";
+import { getApplicantDetailsByEmail, registerNewApplicant } from "../../../service/applicant/applicant.service";
 
 export const registerNewUser = async (req: Request, res: Response) => {
     const userDetails: ApplicantDetails = req.body;
@@ -11,17 +11,14 @@ export const registerNewUser = async (req: Request, res: Response) => {
         return res.status(422).json({ error: "fill the form" })
     }
     try {
-        const applicant = await getApplicantDetailsByEmail(userDetails.email);
-        if (!applicant && userDetails.phone) {
-            const applicantByPhone = await getApplicantDetailsByMobile(userDetails.phone);
-            if (applicantByPhone) {
-                return res.status(409).send({
-                    success: false,
-                    message: "Already Registered please login",
-                });
-            }
-        }
-        else {
+        const user = await UserModel.findOne({ email: userDetails.email })
+
+        if (user) {
+            return res.status(409).send({
+                success: false,
+                message: "Already Register please login",
+            });
+        } else {
             const data = await registerNewApplicant(userDetails);
             if (data) {
                 const applicantResponse = await getApplicantDetailsByEmail(userDetails.email);

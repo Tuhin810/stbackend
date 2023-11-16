@@ -130,7 +130,7 @@ export const updateApplicantSkill = async (applicantId: string, skillList: strin
 }
 
 export const editApplicantSkill = async (applicantId: string, skillList: string[]) => {
-    await ApplicantModel.updateOne(
+    await applicantModel.updateOne(
         { _id: applicantId },
         { $set: { skills: skillList } }
     )
