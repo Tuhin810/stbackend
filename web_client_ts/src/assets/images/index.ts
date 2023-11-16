@@ -18,7 +18,7 @@ import notFound from './notFound.png';
 import defaultCompany from './defaultCompany.png';
 import applicant_login from './Tablet login-amico.svg'
 import recruiter_login from './Computer login-bro.svg'
-import applicant_signup from './job_search.svg'
+import applicant_signup from './Login-bro.svg'
 import success from './success.gif'
 import company_registration from './Company-amico.svg'
 import contact_us from './Service 24_7-amico.svg'
@@ -32,6 +32,7 @@ import question from './question.svg'
 import jobHunt from './Job-hunt-bro.svg'
 import warning from './Warning-cuate.svg'
 import forgetPass from './Forgot password-bro.svg'
+import imageUpload from './imageUpload.svg'
 
 export {
 	get_find,
@@ -67,5 +68,6 @@ export {
 	question,
 	jobHunt,
 	warning,
-	forgetPass
+	forgetPass,
+	imageUpload
 };

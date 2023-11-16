@@ -16,13 +16,13 @@ router.get("/jobs/getJobByCompanyId/:companyId", getJobsByCompany);
 router.get("/jobs/getJobByRecruiterId/:recruiterId", getJobsRecruiter);
 router.get("/jobs/searchApplicant/:job", recruiterSearchPreferredJob);
 router.get("/jobs/getJobByJobId/:jobId", getJobDetails)
-router.get("/jobs/getMatchedProfileListByJobId/:jobId", employerAuth, matchedApplicantDetailsList);
+router.get("/jobs/getMatchedProfileListByJobId/:jobId", matchedApplicantDetailsList);
 router.get("/jobs/getMatchedJobDetails/:jobId/:applicantId", getMatchedJobDetails);
-router.post("/jobs/postjob", employerAuth, postNewJobs);
-router.post("/job/brodcast/:id", employerAuth, brodcastJob);
+router.post("/jobs/postjob", postNewJobs);
+router.post("/job/brodcast/:id", brodcastJob);
 router.post("/job/addPreferredJob", postApplicantPreferredJob);
-router.put("/job/hire/:jobId", employerAuth, matchedApplicantHire)
-router.put("/job/:status/:jobId", employerAuth, matchedApplicantstatus)
+router.put("/job/hire/:jobId", matchedApplicantHire)
+router.put("/job/:status/:jobId", matchedApplicantstatus)
 
 router.delete("/jobs/deleteJobDetailsByJobId/:jobId", deleteJob);
 

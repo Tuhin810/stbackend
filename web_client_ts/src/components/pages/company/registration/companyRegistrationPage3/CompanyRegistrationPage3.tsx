@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { CompanyRegistrationProps } from '../../../../../@types/interfaces/props/companyProps/CompanyRegistrationProps'
 
 const CompanyRegistrationPage3 = ({ companyDetails, handleChangeCompanyDetails }: CompanyRegistrationProps) => {

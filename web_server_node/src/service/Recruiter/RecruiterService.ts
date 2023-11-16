@@ -15,6 +15,18 @@ export const getRecruiterByEmail = async (email: string) => {
         throw error;
     }
 }
+
+export const getRecruiterByPhone = async (phone: number) => {
+    try {
+        const recruiter = await recruiterModel.findOne({ phone: phone }).populate("company_details").exec();
+        return recruiter;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+
 export const postRecruiter = async (recruiterDetails: RecruiterSignUp) => {
     try {
         let data = null;

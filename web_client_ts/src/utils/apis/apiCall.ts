@@ -1,6 +1,6 @@
 
 import axios from "axios"
-import { baseURL } from "../../configs/apiConfig";
+import { baseURL } from "../../configs/config";
 
 
 export const Get = async (url: string, headers: Object) => {

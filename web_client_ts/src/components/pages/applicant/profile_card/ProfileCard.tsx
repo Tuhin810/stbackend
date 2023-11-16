@@ -16,7 +16,10 @@ const ProfileCard = forwardRef(({componentRef}:MyProfileDetailsProps) => {
             <div className="">
               <p>{applicantDetails.email}</p>
               <p>{applicantDetails.country_code}{applicantDetails.phone}</p>
-              <p>Age : {new Date().getFullYear() - applicantDetails.birth_year} years</p>
+              {
+                applicantDetails.birth_year?
+                <p>Age : {new Date().getFullYear() - applicantDetails.birth_year} years</p>:null
+              }
             </div>
           </div>
         </div>

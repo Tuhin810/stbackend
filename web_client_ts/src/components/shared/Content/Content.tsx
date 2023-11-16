@@ -14,7 +14,7 @@ export const ApplicantSignupContent = () => {
     return (
         <>
             <h2 className="text-5xl mb-4 font-serif leading-tight font-medium">Welcome your <span className="text-indigo-700">Dream Job</span> Here!</h2>
-            <p className="text-gray-500 text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem saepe deserunt voluptates animi eveniet, culpa molestiae deleniti voluptas dignissimos recusandae dolor. </p>
+            <p className="text-gray-500 text-md">Empower yourself in the competitive job market by registering yourself and allow the advanced AI algorithms of StarMark to do the magic for you. StarMark provides you with a diversified platform to navigate the right job, your skills and preferences with suitable job postings, streamlining your job search.Get new updates by registering yourself on the StarMark website today!</p>
         </>
     )
 }

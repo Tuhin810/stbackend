@@ -7,9 +7,9 @@ import employerAuth from "../../middleware/employer.middleware";
 
 const router = express.Router();
 
-router.post("/recruiter/auth/register", registerNewRecruiter);
-router.post("/recruiter/auth/login", loginRecruiter);
-router.post("/recruiter/review/post", employerAuth, postReviewToApplicant);
-router.put("/recruiter/complete-payment/:id", employerAuth, recruiterPayment);
+router.route("/auth/register").post(registerNewRecruiter);
+router.route("/auth/login").post(loginRecruiter);
+router.route("/review/post").post(postReviewToApplicant);
+router.route("/complete-payment/:id").put(recruiterPayment);
 
-export { router as RecruiterRouter }
+module.exports = router

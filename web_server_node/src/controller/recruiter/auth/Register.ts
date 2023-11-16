@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { RecruiterSignUp } from "../../../@types/interfaces/RecruiterDetails";
-import { getRecruiterByEmail, postRecruiter } from "../../../service/Recruiter/RecruiterService";
+import { getRecruiterByEmail, getRecruiterByPhone, postRecruiter } from "../../../service/Recruiter/RecruiterService";
 import { getCompanyById, getCompanyByName } from "../../../service/Company/CompanyService";
 import recruiterModel from "../../../model/recruiter/RecruiterSchema";
 import { encryptPass } from "../../../service/commonFunction/CommonFunctions";
@@ -13,6 +13,15 @@ export const registerNewRecruiter = async (req: Request, res: Response) => {
     try {
 
         const recruiter = await getRecruiterByEmail(recruiterDetails.email);
+        if (!recruiter && recruiterDetails.phone) {
+            const recruiterByPhone = await getRecruiterByPhone(recruiterDetails.phone);
+            if (recruiterByPhone) {
+                return res.status(409).send({
+                    success: false,
+                    message: "Already Registered please login",
+                });
+            }
+        }
 
         if (recruiter) {
             return res.status(409).send({

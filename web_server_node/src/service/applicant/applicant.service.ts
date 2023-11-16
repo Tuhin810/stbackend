@@ -74,6 +74,17 @@ export const getApplicantDetailsByEmail = async (email: string) => {
     }
 }
 
+export const getApplicantDetailsByMobile = async (phone: number) => {
+    try{
+        const response = await applicantModel.findOne({ phone: phone });
+        return response;
+    }catch(error){
+        throw error;
+    }
+}
+
+
+
 export const updateApplicantQualification = async (applicantId: string, applicantQualification: ApplicantQualification) => {
     try{
         await applicantModel.updateOne(

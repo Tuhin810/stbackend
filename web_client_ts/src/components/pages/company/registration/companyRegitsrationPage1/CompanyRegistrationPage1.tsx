@@ -14,7 +14,6 @@ const CompanyRegistrationPage1 = ({ handleChangeCompanyDetails, companyDetails }
                     <option value="unregistered" selected={companyDetails.type === "unregistered"}>Unregistered</option>
                     <option value="pvt" selected={companyDetails.type === "pvt"}>Private Ltd.</option>
                     <option value="opc" selected={companyDetails.type === "opc"}>OPC</option>
-
                 </select>
             </div>
             <div className="mb-4">

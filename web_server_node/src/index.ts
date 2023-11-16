@@ -36,7 +36,7 @@ const io = new Server(server, {
 
 app.use(cors(options));
 app.use(json());
-app.use([ApplicantRouter, RecruiterRouter, companyRouter, jobRouter, messageRouter, authenticationRouter]);
+app.use("/api/v1", require("./router/routes.index"));
 
 const rooms = new Map<string, Set<Socket>>();
 

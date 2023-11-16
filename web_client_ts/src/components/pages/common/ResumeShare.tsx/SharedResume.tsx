@@ -32,7 +32,7 @@ const SharedResume = ({ jobApplied,jobStatus }: SharedResumeProps) => {
         skills: [],
         additonal_skills: [],
         experience_details: [],
-        spoken_english: true,
+        spoken_english: "beginner",
         is_fresher: false,
         gender: "male",
         qualification_to_search: [],

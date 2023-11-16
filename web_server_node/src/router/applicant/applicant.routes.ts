@@ -17,18 +17,18 @@ import applicantAuth from "../../middleware/applicant.middleware";
 const router = express.Router();
 
 router.get("/applicant/getApplicantDetailsById/:id", getApplicantDetailsById);
-router.get("/applicant/getApplicantInvitedJobDetailsList/:id", applicantAuth, getApplicantInvitedJobList);
-router.get("/applicant/getApplicantResumePrivacy/:id", applicantAuth, getApplicantResumePrivacy);
-router.get("/applicant/getApplicantAcceptedJobList/:id", applicantAuth, getApplicantAcceptedJobList);
+router.get("/applicant/getApplicantInvitedJobDetailsList/:id", getApplicantInvitedJobList);
+router.get("/applicant/getApplicantResumePrivacy/:id", getApplicantResumePrivacy);
+router.get("/applicant/getApplicantAcceptedJobList/:id", getApplicantAcceptedJobList);
 router.post("/applicant/register", registerNewUser);
 router.post("/applicant/login", loginUser);
 router.post("/applicant/googleLogin/:email", googleLogin);
 router.post("/applicant/forgetPassword/:applicantPhone", fogottenPassword);
-router.post("/applicant/applyJob/:jobId/:applicantId", applicantAuth, applicantApplyJob);
-router.put("/applicant/updateApplicantEducation/:id", applicantAuth, updateQualification);
-router.put("/applicant/updateApplicantExperience/:id", applicantAuth, updateExperience);
-router.put("/applicant/updateApplicantSkills/:id", applicantAuth, updateApplicantSkillById);
-router.patch("/applicant/updateApplicantProfile/:id", applicantAuth, updateApplicntProfileDetails);
-router.patch("/applicant/updateApplicantPrivacy/:id/:visibilty", applicantAuth, updateApplicantPrivacy);
+router.post("/applicant/applyJob/:jobId/:applicantId", applicantApplyJob);
+router.put("/applicant/updateApplicantEducation/:id", updateQualification);
+router.put("/applicant/updateApplicantExperience/:id", updateExperience);
+router.put("/applicant/updateApplicantSkills/:id", updateApplicantSkillById);
+router.patch("/applicant/updateApplicantProfile/:id", updateApplicntProfileDetails);
+router.patch("/applicant/updateApplicantPrivacy/:id/:visibilty", updateApplicantPrivacy);
 
 export { router as ApplicantRouter }

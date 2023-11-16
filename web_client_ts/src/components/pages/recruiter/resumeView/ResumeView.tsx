@@ -3,7 +3,7 @@ import SharedResume from '../../common/ResumeShare.tsx/SharedResume'
 // import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 import { getMatchedApplicantStatus, getMatchedJobDetails } from '../../../../utils/apis/Job/jobpost';
 import { MatchedApplicant } from '../../../../@types/interfaces/models/MatchedApplicant';
-import { hideModal, showModal } from '../../../../utils/commonFunctions/HandleModal';
+import { hideModal } from '../../../../utils/commonFunctions/HandleModal';
 import UserRemoveIcon from '../../../shared/icons/userRemoveIcon/UserRemoveIcon';
 import UserPlusIcon from '../../../shared/icons/userPlusIcon/UserPlusIcon';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -17,7 +17,7 @@ const ResumeView = () => {
     const params = useParams();
     const [status, setStatus] = useState("")
     const applicantId = params.id!;
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [show, setShow] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
@@ -28,7 +28,7 @@ const ResumeView = () => {
         accept: false,
         status: "matched"
     });
-
+    const navigate = useNavigate();
 
     const getJobApplicantRelation = useCallback(async (applicantId: string) => {
         const jobId = params.jobId!;
@@ -45,6 +45,7 @@ const ResumeView = () => {
         setShow(true);
     }
     const hideOptions = () => {
+        console.log(show);
         setShow(false);
     }
 
@@ -53,38 +54,35 @@ const ResumeView = () => {
         // showModal("selectionModal");
         getMatchedApplicantStatus(jobDetails.jobId, status)
         console.log(status);
-        await alert(`this resume is ${status}`)
         navigate("/recruiter/jobs");
     }
 
     const handleClose = () => {
         setError(false);
+        setErrorMessage("");
     }
-    const handleHire = () => {
-        if (jobDetails.accept) {
-            setMessage("Are You Sure to Hire This Candidate ?")
-            showModal("hireModal");
-        }
-        else {
-            setError(true);
-            setErrorMessage("This User has not accepeted the job invitation yet");
-            console.log("true");
-        }
-    }
-
-    const handleReject = () => {
-        if (jobDetails.status !== "hired") {
-            setMessage("Are You Sure to Reject This Candidate ?")
-            showModal("rejectModal");
-        }
-        else {
-            setError(true);
-            setErrorMessage("You have Already Hired this Candidate.")
-            console.log("true");
-        }
-    }
-
-
+    // const handleHire = () => {
+    //     if (jobDetails.accept) {
+    //         setMessage("Are You Sure to Hire This Candidate ?")
+    //         showModal("hireModal");
+    //     }
+    //     else {
+    //         setError(true);
+    //         setErrorMessage("This User has not accepeted the job invitation yet");
+    //         console.log("true");
+    //     }
+    // }
+    // const handleReject = () => {
+    //     if (jobDetails.status !== "hired") {
+    //         setMessage("Are You Sure to Reject This Candidate ?")
+    //         showModal("rejectModal");
+    //     }
+    //     else {
+    //         setError(true);
+    //         setErrorMessage("You have Already Hired this Candidate.")
+    //         console.log("true");
+    //     }
+    // }
     const rightHireMethod = () => {
         hideModal("hireModal");
         console.log("closed");
@@ -177,8 +175,8 @@ const ResumeView = () => {
 
             {/* <CommonModal leftButtonLink={`/recruiter/`} leftRoute={true} leftButtonText='Yes,Sure!' rightButtonLink={``} rightRoute={true} rightButtontext='No,Thanks' message={message} id={"selectionModal"} Img={yes_no} /> */}
 
-            <CommonModal leftMethod={handleHire} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} />
-            {/* <CommonModal leftMethod={leftHireMethod} leftButtonText='No,Thanks' rightMethod={rightHireMethod} rightButtontext='Yes,Sure' message={message} id={"rejectModal"} Img={question} /> */}
+            <CommonModal leftMethod={rightHireMethod} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} />
+            <CommonModal leftMethod={()=>hideModal("rejectModal")} leftButtonText='No,Thanks' rightMethod={()=>hideModal("rejectModal")} rightButtontext='Yes,Reject' message={message} id={"rejectModal"} Img={yes_no} />
         </div>
     )
 }

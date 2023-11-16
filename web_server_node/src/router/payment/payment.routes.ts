@@ -3,7 +3,7 @@ import { getAllPayment, postNewPayment } from "../../controller/payment/Payment.
 
 const router = express.Router();
 
-router.get("/payment/getAllPayment", getAllPayment);
+router.get("/getAllPayment", getAllPayment);
 router.post("/recruiter/payment/newPayment", postNewPayment);
 
 export { router as paymentRouter }

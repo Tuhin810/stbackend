@@ -1,6 +1,6 @@
 import { RecruiterDetails } from "../../../@types/RecruiterDetails";
 import { UserCredentials } from "../../../@types/UserCredential";
-import { header } from "../../../configs/apiConfig";
+import { header } from "../../../configs/config";
 import { Get, Post } from "../apiCall";
 
 export const registerRecruiter =async (recruiterSignupDetails:RecruiterDetails) => {

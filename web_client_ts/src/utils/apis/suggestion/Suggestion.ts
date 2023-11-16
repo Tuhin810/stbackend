@@ -1,4 +1,4 @@
-import { header } from "../../../configs/apiConfig"
+import { header } from "../../../configs/config"
 import { Get } from "../apiCall"
 
 export const getStateList =async (country:string) => {

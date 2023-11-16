@@ -1,5 +1,5 @@
 import { JobDetails } from "../../../@types/interfaces/JobDetails";
-import { header } from "../../../configs/apiConfig";
+import { header } from "../../../configs/config";
 import { Get, Post ,Put} from "../apiCall";
 
 export const newJobPost = async (jobDetails: JobDetails) => {
