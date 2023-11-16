@@ -6,11 +6,6 @@ import { json } from "body-parser";
 import http from "http";
 import { Server, Socket } from "socket.io";
 import { MessageInterface } from "./@types/interfaces/MessageInterface";
-import { authenticationRouter } from "./router/auth/auth.routes";
-import { ApplicantRouter } from "./router/applicant/applicant.routes";
-import { companyRouter } from "./router/company/company.routes";
-import { jobRouter } from "./router/jobs/jobs.routes";
-import { messageRouter } from "./router/message/message.routes";
 
 dotenv.config();
 const app: Express = express();
@@ -35,7 +30,7 @@ const io = new Server(server, {
 
 app.use(cors(options));
 app.use(json());
-app.use("/api/v1", require("./router/routes.index"));
+app.use("", require("./router/routes.index"));
 
 const rooms = new Map<string, Set<Socket>>();
 

@@ -28,4 +28,4 @@ router.route("/job/:status/:jobId").put(matchedApplicantstatus)
 
 router.delete("/jobs/deleteJobDetailsByJobId/:jobId", deleteJob);
 
-export { router as jobRouter }
+module.exports = router

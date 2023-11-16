@@ -6,4 +6,4 @@ const router = express.Router();
 router.route("/getAllPayment").get(getAllPayment);
 router.route("/recruiter/payment/newPayment").post(postNewPayment);
 
-export { router as paymentRouter }
+module.exports = router

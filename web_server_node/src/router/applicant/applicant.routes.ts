@@ -16,21 +16,21 @@ import applicantAuth from "../../middleware/applicant.middleware";
 
 const router = express.Router();
 
-router.route("/applicant/getApplicantDetailsById/:id").get(getApplicantDetailsById);
-router.route("/applicant/getApplicantInvitedJobDetailsList/:id").get(getApplicantInvitedJobList);
-router.route("/applicant/getApplicantResumePrivacy/:id").get(getApplicantResumePrivacy);
-router.route("/applicant/getApplicantAcceptedJobList/:id").get(getApplicantAcceptedJobList);
-router.route("/applicant/register").post(registerNewUser);
-router.route("/applicant/login").post(loginUser);
-router.route("/applicant/googleLogin/:email").post(googleLogin);
-router.route("/applicant/forgetPassword/:applicantPhone").post(fogottenPassword);
-router.route("/applicant/applyJob/:jobId/:applicantId").post(applicantApplyJob);
-router.route("/applicant/updateApplicantEducation/:id").put(updateQualification);
-router.route("/applicant/updateApplicantExperience/:id").put(updateExperience);
-router.route("/applicant/updateApplicantSkills/:id").put(updateApplicantSkillById);
-router.route("/applicant/updateApplicantProfile/:id").patch(updateApplicntProfileDetails);
-router.route("/applicant/updateApplicantPrivacy/:id/:visibilty").patch(updateApplicantPrivacy);
+router.route("/getApplicantDetailsById/:id").get(getApplicantDetailsById);
+router.route("/getApplicantInvitedJobDetailsList/:id").get(getApplicantInvitedJobList);
+router.route("/getApplicantResumePrivacy/:id").get(getApplicantResumePrivacy);
+router.route("/getApplicantAcceptedJobList/:id").get(getApplicantAcceptedJobList);
+router.route("/register").post(registerNewUser);
+router.route("/login").post(loginUser);
+router.route("/googleLogin/:email").post(googleLogin);
+router.route("/forgetPassword/:applicantPhone").post(fogottenPassword);
+router.route("/applyJob/:jobId/:applicantId").post(applicantApplyJob);
+router.route("/updateApplicantEducation/:id").put(updateQualification);
+router.route("/updateApplicantExperience/:id").put(updateExperience);
+router.route("/updateApplicantSkills/:id").put(updateApplicantSkillById);
+router.route("/updateApplicantProfile/:id").patch(updateApplicntProfileDetails);
+router.route("/updateApplicantPrivacy/:id/:visibilty").patch(updateApplicantPrivacy);
 
 
 
-export { router as ApplicantRouter }
+module.exports = router
