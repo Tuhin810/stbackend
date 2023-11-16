@@ -1,7 +1,7 @@
 import { ApplicantDetails } from "../../../@types/ApplicantDetails";
 import { ApplicantEducation } from "../../../@types/interfaces/ApplicantEducation";
 import { ApplicantExperience } from "../../../@types/interfaces/ApplicantExp";
-import { header } from "../../../configs/apiConfig"
+import { header } from "../../../configs/config"
 import { Get, Put, Patch, Post } from "../apiCall"
 
 export const getApplicantDetailsById = async (applicantId: string) => {

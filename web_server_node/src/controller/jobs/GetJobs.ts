@@ -19,7 +19,7 @@ export const getJobsByCompany = async (req: Request, res: Response) => {
             getJobsByCompanyId(companyId)
                 .then((data) => {
                     const jobsList: JobPostDetails[] = data;
-                    // const applicantsCount = await ApplicantModel.countDocuments({  });
+                    // const applicantsCount = await applicantModel.countDocuments({  });
                     if (jobsList.length !== 0) {
                         res.status(200).send({
                             success: true,

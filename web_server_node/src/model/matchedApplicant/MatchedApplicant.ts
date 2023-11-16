@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { MatchedApplicant } from "../../@types/interfaces/MatchedApplicant";
 import JobModel from "../jobs/JobSchema";
-import ApplicantModel from "../applicant/ApplicantSchema";
+import applicantModel from "../applicant/ApplicantSchema";
 
 // model for new matched profile registration 
 
@@ -36,13 +36,13 @@ matchedApplicantSchema.virtual("job_details", {
 });
 
 matchedApplicantSchema.virtual("applicant_details", {
-	ref: ApplicantModel,
+	ref: applicantModel,
 	localField: "applicantId",
 	foreignField: "_id",
 	justOne: true,
 	options: { lean: true }
 });
 
-const MatchedApplicantModel = mongoose.model<MatchedApplicant>("matchedApplicants", matchedApplicantSchema);
+const MatchedapplicantModel = mongoose.model<MatchedApplicant>("matchedApplicants", matchedApplicantSchema);
 
-export default MatchedApplicantModel;
+export default MatchedapplicantModel;

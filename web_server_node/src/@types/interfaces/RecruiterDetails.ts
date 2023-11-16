@@ -20,5 +20,4 @@ export interface RecruiterSignUp {
     dob: Date,
     photo: Buffer,
     company_id: string,
-    tokens: any
 }

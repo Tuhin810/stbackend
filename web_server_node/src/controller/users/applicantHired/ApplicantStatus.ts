@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getApplicantDetailsByJob, getApplicantDetailsByJobmatched } from "../../../service/jobs/job.service";
-import MatchedApplicantModel from "../../../model/matchedApplicant/MatchedApplicant";
+import MatchedapplicantModel from "../../../model/matchedApplicant/MatchedApplicant";
 
 export const matchedApplicantstatus = async (req: Request, res: Response) => {
 	const jobId: string = req.params.jobId;
@@ -18,7 +18,7 @@ export const matchedApplicantstatus = async (req: Request, res: Response) => {
 
 				if (["applied", "matched", "hired", "rejected"].includes(newStatus)) {
 
-					await MatchedApplicantModel.updateOne({ jobId }, { status: newStatus });
+					await MatchedapplicantModel.updateOne({ jobId }, { status: newStatus });
 
 					res.status(200).json({
 						success: true,

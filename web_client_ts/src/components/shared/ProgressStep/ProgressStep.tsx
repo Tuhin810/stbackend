@@ -3,16 +3,13 @@ import './ProgreesStep.css'
 import { ProgressStepProps } from "../../../@types/interfaces/props/ProgressSteps/ProgressStepProps";
 
 
-const steps = [
-  { id: 'step01', label: 'Step 1' },
-  { id: 'step02', label: 'Step 2' },
-  { id: 'step03', label: 'Step 3' },
-  { id: 'step04', label: 'Step 4' },
-]
 
-const ProgressStep = ({currentStep}:ProgressStepProps) => {
-
+const ProgressStep = ({currentStep,stepcount}:ProgressStepProps) => {
   
+  const steps = []
+  for (let i=0;i<stepcount;i++){
+    steps.push( { id: `step${i+1}`, label: `Step ${i+1}` })
+  }
   return (
     <div className="mb-2 w-full">
       <StepProgressBar

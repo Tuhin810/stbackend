@@ -28,7 +28,7 @@ export interface ApplicantDetails {
     experience_year: number,
     skills: string[],
     additonal_skills: string[],
-    spoken_english: boolean,
+    spoken_english: string,
     gender: string,
     qualification_to_search: string[],
     qualification_details: ApplicantEducation[],

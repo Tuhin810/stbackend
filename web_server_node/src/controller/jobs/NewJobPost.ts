@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
 import { matchedJobApplicants, postNewJob } from "../../service/jobs/job.service";
-import { sendMessage } from "../../service/emailService/EmailService";
 
 //posting new jobs
 
@@ -23,7 +22,7 @@ const postNewJobs = async (req: Request, res: Response) => {
                     const jobData = data;
                     try {
                         matchedJobApplicants(data._id).
-                            then(()=> {
+                            then(() => {
                                 res.status(200).send({
                                     success: true,
                                     message: "Job posted Successfully",

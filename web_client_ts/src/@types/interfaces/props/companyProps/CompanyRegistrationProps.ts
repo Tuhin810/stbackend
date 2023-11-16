@@ -1,3 +1,8 @@
+import { Dispatch, SetStateAction } from "react";
+import { CompanyDetails } from "../../../CompanyDetails";
+
 export interface CompanyRegistrationProps{
-    handleChangeCompanyDetails:(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>)=>void;
+    companyDetails:CompanyDetails;
+    setCompanyDetails:Dispatch<SetStateAction<CompanyDetails>>;
+    handleChangeCompanyDetails:(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>)=>void;
 }

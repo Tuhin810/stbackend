@@ -2,8 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 import io from 'socket.io-client';
 import { ChatBoardProps } from '../../../../@types/interfaces/props/ChatProps/ChatBoardProps';
 import { MessageInterface } from '../../../../@types/interfaces/messageInterface/MessageInterface';
+import { socketURL } from '../../../../configs/config';
 
-const serverUrl = 'http://localhost:8585'; // Replace with your server URL
+const serverUrl = socketURL; // Replace with your server URL
 
 const socket = io(serverUrl);
 
@@ -170,7 +171,7 @@ const ChatBoard = ({ applicantId, recruiterId, sender }: ChatBoardProps) => {
                 </div>
                 <div className="ml-4">
                   <button
-                    className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl
+                    className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-700 rounded-xl
                      text-white px-4 py-1 flex-shrink-0"
                     onClick={sendMessage}
                   >

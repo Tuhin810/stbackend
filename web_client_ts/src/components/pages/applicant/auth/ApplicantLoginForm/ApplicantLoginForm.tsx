@@ -9,6 +9,7 @@ import { applicantSignIn } from '../../../../../utils/apis/auth/login';
 import { UserCredentials } from '../../../../../@types/UserCredential';
 import Alert from '../../../../shared/alert/Alert';
 import Spinner from '../../../../shared/spinner/Spinner';
+import ApplicantGoogleSignUp from '../ApplicantGoogleSignUp/ApplicantGoogleSignUp';
 
 const ApplicantLoginForm = () => {
   const navigate = useNavigate();
@@ -16,16 +17,17 @@ const ApplicantLoginForm = () => {
   const [error, setError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  // const [message,setMessage]=useState();
   const { applicantDispatch } = useContext(applicantContext);
   const { loggedIn } = useContext(globalContext);
   const [emailError, setEmailError] = useState<boolean>(false);
+
+  const applicantDetails: ApplicantDetails = {} as ApplicantDetails;
   //email change
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     console.log("event", event)
-      const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-   (!emailRegex.test(value)) ?setEmailError(true):setEmailError(false)
+    const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    (!emailRegex.test(value)) ? setEmailError(true) : setEmailError(false)
 
     setApplicantCredential(Object.assign({}, applicantCredential, {
       userId: value
@@ -59,7 +61,7 @@ const ApplicantLoginForm = () => {
 
 
       setLoading(false);
-   
+
       setErrorMsg(err.response.data.message);
 
     })
@@ -105,6 +107,7 @@ const ApplicantLoginForm = () => {
               <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} emailError={emailError} />
               <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 shadow-lg shadow-blue-500/50 darkno:shadow-lg darkno:shadow-blue-800/80 font-medium
          rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleLogin}>Log In</button>
+              <ApplicantGoogleSignUp applicantDetails={applicantDetails} setErrorMessage={setErrorMsg} setHasError={setError} setLoading={setLoading} />
               {/* <button type="button" onClick={googleSignIn} className="text-gray-900 w-full bg-white hover:bg-gray-100 border
                  border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium
                   rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center mr-2 my-3">

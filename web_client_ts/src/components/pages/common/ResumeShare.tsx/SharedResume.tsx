@@ -32,13 +32,16 @@ const SharedResume = ({ jobApplied,jobStatus }: SharedResumeProps) => {
         skills: [],
         additonal_skills: [],
         experience_details: [],
-        spoken_english: true,
+        spoken_english: "beginner",
         is_fresher: false,
         gender: "male",
         qualification_to_search: [],
         qualification_details: [],
         min_expected_salary: 0,
-        min_duty_hours: 0
+        min_duty_hours: 0,
+        facebook_link:"",
+        github_link:"",
+        linkedin_link:""
     });
 
     const isResumePublic = async (applicantId: string) => {

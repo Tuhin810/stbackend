@@ -3,9 +3,9 @@ import mongoose, { FilterQuery } from "mongoose";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import JobModel from "../../model/jobs/JobSchema";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
-import ApplicantModel from "../../model/applicant/ApplicantSchema";
+import applicantModel from "../../model/applicant/ApplicantSchema";
 import { sendInviteApplicantList } from "../applicant/applicant.service";
-import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
+import MatchedapplicantModel from "../../model/matchedApplicant/MatchedApplicant";
 import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
 
 export const postNewJob = async (jobDetails: JobPostDetails) => {
@@ -58,7 +58,7 @@ export const matchedJobApplicants = async (jobId: string) => {
                         { skills: { $all: jobDetails.mandatory_skills } }
                     ]
                 }
-                applicantList = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
+                applicantList = await applicantModel.find(queryToFindApplicant, { _id: 1 });
             }
             else {
                 const queryToFindApplicant: FilterQuery<ApplicantDetails> = {
@@ -72,7 +72,7 @@ export const matchedJobApplicants = async (jobId: string) => {
                         { skills: { $all: jobDetails.mandatory_skills } }
                     ]
                 }
-                applicantList = await ApplicantModel.find(queryToFindApplicant, { _id: 1 });
+                applicantList = await applicantModel.find(queryToFindApplicant, { _id: 1 });
             }
             await sendInviteApplicantList(applicantList, jobDetails._id!);
             await updateMatchedApplicantNumbers(jobDetails._id!);
@@ -88,7 +88,7 @@ export const matchedJobApplicants = async (jobId: string) => {
 
 const updateMatchedApplicantNumbers = async (jobId: string) => {
     try {
-        const matchedApplicantNumber: number = await MatchedApplicantModel.countDocuments({ jobId: jobId })
+        const matchedApplicantNumber: number = await MatchedapplicantModel.countDocuments({ jobId: jobId })
         if (matchedApplicantNumber) {
             await JobModel.updateOne(
                 { _id: jobId },
@@ -103,7 +103,7 @@ const updateMatchedApplicantNumbers = async (jobId: string) => {
 
 const getMatchedApplicantDetails = async (jobId: string) => {
     try {
-        const matchedApplicantDetails = await MatchedApplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
+        const matchedApplicantDetails = await MatchedapplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
         return matchedApplicantDetails;
     }
     catch (error) {
@@ -143,7 +143,7 @@ export const getJobDetailsByJobId = async (jobId: string) => {
 
 export const getApplicantDetailsByJob = async (jobId: string) => {
     try {
-        const response = await MatchedApplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
+        const response = await MatchedapplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
         return response;
     }
     catch (error) {
@@ -153,7 +153,7 @@ export const getApplicantDetailsByJob = async (jobId: string) => {
 
 export const getApplicantDetailsByJobmatched = async (jobId: string, status: string) => {
     try {
-        const response = await MatchedApplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
+        const response = await MatchedapplicantModel.find({ jobId: jobId }).lean().populate("applicant_details").exec();
         return response;
     }
     catch (error) {
@@ -174,7 +174,7 @@ export const allJobs = async () => {
 
 export const getMatchedJobDetailsService = async (jobId: string, applicant_id: string) => {
     try {
-        const response = await MatchedApplicantModel.findOne({ jobId: jobId, applicantId: applicant_id });
+        const response = await MatchedapplicantModel.findOne({ jobId: jobId, applicantId: applicant_id });
         return response;
     }
     catch (error) {
@@ -184,7 +184,7 @@ export const getMatchedJobDetailsService = async (jobId: string, applicant_id: s
 
 export const updateJobStatus = async (jobId: string, applicant_id: string, status: string) => {
     try {
-        await MatchedApplicantModel.updateOne(
+        await MatchedapplicantModel.updateOne(
             { jobId: jobId, applicantId: applicant_id },
             {
                 $set: {

@@ -1,25 +1,39 @@
 import { PaymentPackages } from "../../@types/interfaces/PaymentDetails";
 import { RecruiterSignUp } from "../../@types/interfaces/RecruiterDetails";
+import { ReviewDetails } from "../../@types/interfaces/ReviewDetails";
 import { UserCredential } from "../../@types/interfaces/UserCredentail";
-import RecruiterModel from "../../model/recruiter/RecruiterSchema"
+import applicantModel from "../../model/applicant/ApplicantSchema";
+import recruiterModel from "../../model/recruiter/RecruiterSchema"
 import { encryptPass, isEmail, isPasswordMatched } from "../commonFunction/CommonFunctions";
 
 export const getRecruiterByEmail = async (email: string) => {
     try {
-        const recruiter = await RecruiterModel.findOne({ email: email }).populate("company_details").exec();
+        const recruiter = await recruiterModel.findOne({ email: email }).populate("company_details").exec();
         return recruiter;
     }
     catch (error) {
         throw error;
     }
 }
+
+export const getRecruiterByPhone = async (phone: number) => {
+    try {
+        const recruiter = await recruiterModel.findOne({ phone: phone }).populate("company_details").exec();
+        return recruiter;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+
 export const postRecruiter = async (recruiterDetails: RecruiterSignUp) => {
     try {
         let data = null;
         const hashPass = await encryptPass(recruiterDetails.password!);
         if (hashPass != undefined) {
             recruiterDetails.password = hashPass
-            const response = await RecruiterModel.create(recruiterDetails);
+            const response = await recruiterModel.create(recruiterDetails);
             if (response) {
                 data = await getRecruiterByEmail(recruiterDetails.email);
             }
@@ -27,7 +41,6 @@ export const postRecruiter = async (recruiterDetails: RecruiterSignUp) => {
         }
     }
     catch (error) {
-
         throw error;
     }
 }
@@ -36,13 +49,12 @@ export const getRecruiterByEmailAndPassword = async (recruiterCredential: UserCr
 
     try {
         let response;
-        console.log("credential", recruiterCredential);
         const { userId } = recruiterCredential;
         if (!isEmail(recruiterCredential.userId)) {
-            response = await RecruiterModel.findOne({ email: userId }).populate("company_details").exec();
+            response = await recruiterModel.findOne({ email: userId }).populate("company_details").exec();
         }
         else {
-            response = await RecruiterModel.findOne({ phone: userId }).populate("company_details").exec();
+            response = await recruiterModel.findOne({ phone: userId }).populate("company_details").exec();
         }
         const isPassMatched = await isPasswordMatched(recruiterCredential.password, response?.password || "")
 
@@ -59,7 +71,7 @@ export const getRecruiterByEmailAndPassword = async (recruiterCredential: UserCr
 
 export const buySubscription = async (paymentPackage: PaymentPackages, recruiterId: string) => {
     try {
-        RecruiterModel.updateOne(
+        recruiterModel.updateOne(
             { _id: recruiterId },
             {
                 $set:
@@ -68,7 +80,7 @@ export const buySubscription = async (paymentPackage: PaymentPackages, recruiter
                 }
             }
         )
-        const response = await RecruiterModel.findById(recruiterId);
+        const response = await recruiterModel.findById(recruiterId);
         return response;
     }
     catch (error) {
@@ -76,4 +88,19 @@ export const buySubscription = async (paymentPackage: PaymentPackages, recruiter
     }
 }
 
+export const postReviewToApplicantService = async (applicantId: string, review: ReviewDetails) => {
+    try {
+        const reviewResponse = await applicantModel.findByIdAndUpdate(applicantId,
+            {
+                $push: { reviews: review },
+            }
 
+        )
+        if (reviewResponse) {
+            const applicantDetailsInstance = await applicantModel.findById(applicantId);
+            return applicantDetailsInstance;
+        }
+    } catch (error) {
+        throw error;
+    }
+}

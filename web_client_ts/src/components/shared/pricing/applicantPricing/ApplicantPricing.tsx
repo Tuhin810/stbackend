@@ -14,11 +14,11 @@ const ApplicantPricing = ({handleLoginButton,handleSignUpButton}:IHeroProps) => 
                         <p className="mt-5 sm:mt-10 lg:w-10/12 text-gray-400 font-normal text-center text-sm sm:text-lg">A professonal website drives sales. Create a beautiful website to impress and engage new customers and establish your business online </p>
                     </div>
                     <div className="flex justify-center items-center">
-                        <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border
+                        <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-700 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border
                          border-indigo-700 py-2 sm:py-4 text-sm" onClick={handleSignUpButton}>Sign Up</button>
                         <button className="ml-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700
-                         bg-transparent transition duration-150 ease-in-out hover:border-indigo-600 lg:text-xl
-                          lg:font-bold  hover:text-indigo-600 rounded border border-indigo-700 text-indigo-700 
+                         bg-transparent transition duration-150 ease-in-out hover:border-indigo-700 lg:text-xl
+                          lg:font-bold  hover:text-indigo-700 rounded border border-indigo-700 text-indigo-700 
                           px-4 sm:px-10 py-2 sm:py-4 text-sm" onClick={handleLoginButton}>Log In</button>
                     </div>
                 </div>

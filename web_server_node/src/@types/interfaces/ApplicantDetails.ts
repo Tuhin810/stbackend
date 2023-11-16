@@ -38,7 +38,7 @@ export interface ApplicantDetails {
     resume_visibilty_status: number,
     rating: number,
     reviews: ReviewDetails[],
-    tokens: any,
+    no_of_rating: number,
     is_phone_verified: boolean,
     is_email_verified: boolean,
     facebook_link: string,

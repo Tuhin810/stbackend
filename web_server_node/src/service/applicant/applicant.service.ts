@@ -1,10 +1,10 @@
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
 import { ApplicantQualification } from "../../@types/interfaces/ApplicantEducation";
-import ApplicantModel from "../../model/applicant/ApplicantSchema"
+import applicantModel from "../../model/applicant/ApplicantSchema"
 import { IApplicantPrivacy } from "../../@types/interfaces/ApplicantPrivacy";
 import mongoose, { FilterQuery } from "mongoose";
 import { MatchedApplicant } from "../../@types/interfaces/MatchedApplicant";
-import MatchedApplicantModel from "../../model/matchedApplicant/MatchedApplicant";
+import MatchedapplicantModel from "../../model/matchedApplicant/MatchedApplicant";
 import JobModel from "../../model/jobs/JobSchema";
 import ApplicantPreferreJobModel from "../../model/applicantPrefferedJob/ApplicantPreferredJob";
 import { ApplicantPreferredJob } from "../../@types/interfaces/ApplicantPreferredJobs";
@@ -16,7 +16,7 @@ export const registerNewApplicant = async (applicantDetails: ApplicantDetails) =
         const hashPass = await encryptPass(applicantDetails.password!);
         if (hashPass != undefined) {
             applicantDetails.password = hashPass
-            const response: ApplicantDetails = await ApplicantModel.create(applicantDetails);
+            const response: ApplicantDetails = await applicantModel.create(applicantDetails);
             return response;
         }
     }
@@ -27,7 +27,7 @@ export const registerNewApplicant = async (applicantDetails: ApplicantDetails) =
 
 export const googleLogin = async (email: string) => {
     try {
-        const response = await ApplicantModel.findOne({ email: email });
+        const response = await applicantModel.findOne({ email: email });
         return response;
     }
     catch (error) {
@@ -39,10 +39,10 @@ export const loginExistingUser = async (userId: string | number, password: strin
     try {
         let response;
         if (!isEmail(userId)) {
-            response = await ApplicantModel.findOne({ email: userId });
+            response = await applicantModel.findOne({ email: userId });
         }
         else {
-            response = await ApplicantModel.findOne({ phone: userId });
+            response = await applicantModel.findOne({ phone: userId });
         }
         const isPassMatched = await isPasswordMatched(password, response?.password || "")
 
@@ -57,45 +57,76 @@ export const loginExistingUser = async (userId: string | number, password: strin
 }
 
 export const getApplicantDetails = async (applicantId: string) => {
-    const response = await ApplicantModel.findById(applicantId);
-    return response;
+    try{
+        const response = await applicantModel.findById(applicantId);
+        return response;
+    }catch(error){
+        throw error;
+    }
 }
 
 export const getApplicantDetailsByEmail = async (email: string) => {
-    const response = await ApplicantModel.findOne({ email: email });
-    return response;
+    try{
+        const response = await applicantModel.findOne({ email: email });
+        return response;
+    }catch(error){
+        throw error;
+    }
 }
 
+export const getApplicantDetailsByMobile = async (phone: number) => {
+    try{
+        const response = await applicantModel.findOne({ phone: phone });
+        return response;
+    }catch(error){
+        throw error;
+    }
+}
+
+
+
 export const updateApplicantQualification = async (applicantId: string, applicantQualification: ApplicantQualification) => {
-    await ApplicantModel.updateOne(
-        { _id: applicantId },
-        { $push: { qualification_to_search: applicantQualification.qualification } }
-    )
-    await ApplicantModel.updateOne(
-        { _id: applicantId },
-        { $push: { qualification_details: applicantQualification } },
-    )
-    const applicantdetails = await getApplicantDetails(applicantId);
-    return applicantdetails;
+    try{
+        await applicantModel.updateOne(
+            { _id: applicantId },
+            { $push: { qualification_to_search: applicantQualification.qualification } }
+        )
+        await applicantModel.updateOne(
+            { _id: applicantId },
+            { $push: { qualification_details: applicantQualification } },
+        )
+        const applicantdetails = await getApplicantDetails(applicantId);
+        return applicantdetails;
+    }catch(error){
+        throw error;
+    }
 }
 
 export const updateApplicantExperience = async (applicantId: string, applicantExperience: ApplicantExperience) => {
-    await ApplicantModel.updateOne(
-        { _id: applicantId },
-        { $push: { experience_details: applicantExperience } },
-    )
-    const applicantdetails = await getApplicantDetails(applicantId);
-    return applicantdetails;
+    try{
+        await applicantModel.updateOne(
+            { _id: applicantId },
+            { $push: { experience_details: applicantExperience } },
+        )
+        const applicantdetails = await getApplicantDetails(applicantId);
+        return applicantdetails;
+    }catch(error){
+        throw error;
+    }
 }
 
 export const updateApplicantSkill = async (applicantId: string, skillList: string[]) => {
-    await ApplicantModel.updateOne(
-        { _id: applicantId },
-        { $push: { skills: { $each: skillList } } }
-    )
-
-    const applicantdetails = await getApplicantDetails(applicantId);
-    return applicantdetails;
+    try{
+        await applicantModel.updateOne(
+            { _id: applicantId },
+            { $push: { skills: { $each: skillList } } }
+        )
+    
+        const applicantdetails = await getApplicantDetails(applicantId);
+        return applicantdetails;
+    }catch(error){
+        throw error;
+    }
 }
 
 export const editApplicantSkill = async (applicantId: string, skillList: string[]) => {
@@ -112,13 +143,17 @@ export const editApplicantSkill = async (applicantId: string, skillList: string[
 
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
-    const response = (await MatchedApplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());
-    return response;
+    try{
+        const response = (await MatchedapplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());
+        return response;
+    }catch(error){
+        throw error;
+    }
 }
 
 export const updateApplicantProfileDetailsById = async (applicantId: string, applicantProfile: ApplicantDetails) => {
     try {
-        await ApplicantModel.updateOne(
+        await applicantModel.updateOne(
             { _id: applicantId },
             {
                 $set:
@@ -159,7 +194,7 @@ export const updateApplicantProfileDetailsById = async (applicantId: string, app
 
 export const updateApplicantProfileAndResumePrivacy = async (applicantId: string, applicantResumePrivacy: number) => {
     try {
-        await ApplicantModel.updateOne(
+        await applicantModel.updateOne(
             { _id: applicantId },
             {
                 $set:
@@ -179,7 +214,7 @@ export const updateApplicantProfileAndResumePrivacy = async (applicantId: string
 
 export const getApplicantResumeVisibility = async (applicantId: string) => {
     try {
-        const response = await ApplicantModel.findOne({ _id: applicantId }, { resume_visibilty_status: 1, _id: 0 });
+        const response = await applicantModel.findOne({ _id: applicantId }, { resume_visibilty_status: 1, _id: 0 });
         return response;
     }
     catch (error) {
@@ -205,7 +240,7 @@ const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobI
         const isApplicantAlreadyMatched = await getIsApplicantAlreadyMatched(matchedApplicant);
         if (!isApplicantAlreadyMatched) {
             try {
-                MatchedApplicantModel.create(matchedApplicant);
+                MatchedapplicantModel.create(matchedApplicant);
             }
             catch (error) {
                 throw error;
@@ -219,7 +254,7 @@ const inviteApplicant = async (applicantId: mongoose.Schema.Types.ObjectId, jobI
 
 const getIsApplicantAlreadyMatched = async (matchedApplicant: MatchedApplicant) => {
     try {
-        const response = await MatchedApplicantModel.findOne({
+        const response = await MatchedapplicantModel.findOne({
             $and: [
                 { applicantId: matchedApplicant.applicantId },
                 { jobId: matchedApplicant.jobId }
@@ -241,8 +276,8 @@ export const applyjob = async (jobId: string, applicantId: string) => {
                 { jobId: jobId }
             ]
         }
-        const result = await MatchedApplicantModel.findOne(queryToFindApplicantAndJob);
-        const response = await MatchedApplicantModel.updateOne(
+        const result = await MatchedapplicantModel.findOne(queryToFindApplicantAndJob);
+        const response = await MatchedapplicantModel.updateOne(
             queryToFindApplicantAndJob,
             { $set: { accept: true } }
         )
@@ -258,7 +293,7 @@ export const applyjob = async (jobId: string, applicantId: string) => {
 
 const setAppliedJobNumber = async (jobId: string) => {
     try {
-        const no_of_applicants: number = await MatchedApplicantModel.countDocuments({
+        const no_of_applicants: number = await MatchedapplicantModel.countDocuments({
             $and: [
                 { jobId: jobId },
                 { accept: true }
@@ -299,10 +334,14 @@ export const addPreferredJob = async (applicantPreferredJob: ApplicantPreferredJ
 
 export const getApplicantAcceptedJobListService = async (applicantId: string) => {
     try {
-        const response = await MatchedApplicantModel.find({ applicantId: applicantId, accept: true }).lean().populate("job_details").exec();
+        const response = await MatchedapplicantModel.find({ applicantId: applicantId, accept: true }).lean().populate("job_details").exec();
         return response;
     }
     catch (error) {
         throw error;
     }
 }
+
+// export const forgottenPassword =async (phone:type) => {
+    
+// }

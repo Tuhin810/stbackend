@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
-import ApplicantModel from "../../../model/applicant/ApplicantSchema";
+import applicantModel from "../../../model/applicant/ApplicantSchema";
 import { UserCredential } from "../../../@types/interfaces/UserCredentail";
 import { loginExistingUser } from "../../../service/applicant/applicant.service";
 import { isEmail } from "../../../service/commonFunction/CommonFunctions";
-const jwt = require("jsonwebtoken");
 
 export const loginUser = async (req: Request, res: Response) => {
     const userCredentail: UserCredential = req.body;
@@ -17,25 +16,20 @@ export const loginUser = async (req: Request, res: Response) => {
     try {
         let matchedUser = null;
         if (!isEmail(userCredentail.userId)) {
-            matchedUser = await ApplicantModel.findOne({ email: userCredentail.userId })
+            matchedUser = await applicantModel.findOne({ email: userCredentail.userId })
         }
         else {
-            matchedUser = await ApplicantModel.findOne({ phone: userCredentail.userId })
+            matchedUser = await applicantModel.findOne({ phone: userCredentail.userId })
         }
 
         const user = await loginExistingUser(userCredentail.userId, userCredentail.password);
 
         if (user) {
-            const token = jwt.sign({ _id: matchedUser!._id }, process.env.JWTKEY);
-            matchedUser!.tokens = matchedUser!.tokens.concat({ token: token })
-            matchedUser!.save()
-
             user.password = "";
             res.status(200).send({
                 success: true,
                 message: "login successful from ts",
                 applicant: user,
-                token
 
             });
         }
@@ -56,4 +50,31 @@ export const loginUser = async (req: Request, res: Response) => {
         });
     }
 
+}
+
+export const googleLogin = async (req: Request, res: Response) => {
+
+    try {
+        const { email } = req.params;
+        const applicantInstance = await applicantModel.findOne({ email: email });
+        if (applicantInstance) {
+            res.status(200).send({
+                success: true,
+                message: "login successful by google",
+                data: applicantInstance,
+            });
+        }
+        else {
+            res.status(404).send({
+                success: false,
+                message: "account not found",
+            });
+        }
+    }
+    catch (e) {
+        res.status(500).send({
+            success: false,
+            message: "Error in login",
+        });
+    }
 }

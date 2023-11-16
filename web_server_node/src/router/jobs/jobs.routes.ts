@@ -7,6 +7,7 @@ import { postApplicantPreferredJob } from "../../controller/users/applicantPrefe
 import { recruiterSearchPreferredJob } from "../../controller/recruiter/searchJob/RecruiterSearchPreferredJob";
 import { matchedApplicantHire } from "../../controller/users/applicantHired/ApplicantHired";
 import { matchedApplicantstatus } from "../../controller/users/applicantHired/ApplicantStatus";
+import employerAuth from "../../middleware/employer.middleware";
 
 const router = express.Router();
 

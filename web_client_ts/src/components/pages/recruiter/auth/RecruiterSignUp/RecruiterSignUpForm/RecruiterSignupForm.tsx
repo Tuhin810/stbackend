@@ -47,7 +47,7 @@ const RecruiterSignupForm = () => {
     const response = await registerRecruiter(recruiterSignUpDetail);
     setLoading(false);
     if (response?.status === 200) {
-      const recruiterDetails = response.data.recruiter as RecruiterDetails;
+      const recruiterDetails = response.data.data as RecruiterDetails;
       dispatch({ type: "login", payload: recruiterDetails })
       loggedIn({ type: "login", userType: "recruiter" });
       navigate('/recruiter/jobs');
@@ -95,10 +95,6 @@ const RecruiterSignupForm = () => {
 
 
   const handlePageIncrement = async () => {
-    console.log(page);
-    if (page < 4) {
-      setPage(prev => prev + 1);
-    }
     if (page === 1) {
       console.log("otp");
       senOtpToPhone();
@@ -106,7 +102,9 @@ const RecruiterSignupForm = () => {
     else if (page === 3) {
       console.log("page 4");
       await validateOtp();
+      return;
     }
+    setPage(prev => prev + 1);
   }
 
   const handlePageDecrease = async () => {

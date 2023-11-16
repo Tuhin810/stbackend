@@ -1,0 +1,34 @@
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  @keyframes rotate {
+    from {transform: rotate(-90deg);}
+    to {transform: rotate(0deg);}
+  }
+  
+  .text {
+    opacity: 0;
+    animation: 1s ease-in 4s fadein;
+    animation-fill-mode: both;
+  }
+  
+  .t1,
+  .t2,
+  .t3 {
+    opacity: 0;
+    animation: .8s linear .5s fadein,
+               .5s linear .5s rotate;
+    animation-fill-mode: both;
+    transform-origin: left bottom 0px;
+  
+  }
+  
+  .t2 {
+    animation-delay: .7s;
+  }
+  
+  .t3 {
+    animation-delay: .9s;
+  }

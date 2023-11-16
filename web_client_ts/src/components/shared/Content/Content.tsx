@@ -13,7 +13,16 @@ export const ApplicantLoginContent = () => {
 export const ApplicantSignupContent = () => {
     return (
         <>
-            <h2 className="text-5xl mb-4 font-serif leading-tight font-medium">Wellcome your <span className="text-indigo-700">Dream Job</span> Here!</h2>
+            <h2 className="text-5xl mb-4 font-serif leading-tight font-medium">Welcome your <span className="text-indigo-700">Dream Job</span> Here!</h2>
+            <p className="text-gray-500 text-md">Empower yourself in the competitive job market by registering yourself and allow the advanced AI algorithms of StarMark to do the magic for you. StarMark provides you with a diversified platform to navigate the right job, your skills and preferences with suitable job postings, streamlining your job search.Get new updates by registering yourself on the StarMark website today!</p>
+        </>
+    )
+}
+
+export const ForgetPasswordContent = () => {
+    return (
+        <>
+            <h2 className="text-5xl mb-4 font-serif leading-tight font-medium">No need to panic<span className="text-indigo-700"> Resetting </span>is just a click away</h2>
             <p className="text-gray-500 text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem saepe deserunt voluptates animi eveniet, culpa molestiae deleniti voluptas dignissimos recusandae dolor. </p>
         </>
     )
@@ -33,6 +42,15 @@ export const RecruiterLoginContent = () => {
         <>
             <h2 className="text-5xl mb-4 font-serif leading-tight font-medium">Your search <span className="text-indigo-700">for the right candidate</span> ends here! </h2>
             <p className="text-gray-500 text-md">At StarMark access a wide range of candidates as per your job description and requirements with our efficient search and match system. Through advanced AI algorithms, StarMark enables you to find the right, at cost effective solution and secure communication platform.</p>
+        </>
+    )
+}
+
+export const CompanyRegisteredContent = () => {
+    return (
+        <>
+            <h2 className="text-5xl mb-4 font-serif leading-tight font-medium">Discover Your Next <span className="text-indigo-700">Star Register</span> Your Company !</h2>
+            <p className="text-gray-500 text-md">In today's competitive job market, finding the right talent to drive your company forward can be a challenging task. At Starmark, we simplify the process, making it easier than ever to connect with the next star of your organization.</p>
         </>
     )
 }

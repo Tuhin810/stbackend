@@ -13,7 +13,7 @@ function ApplicantCard() {
          ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-between space-x-6">
             <div className="flex gap-7 items-center">
                  <img className='h-16 w-16 rounded-xl
-                  bg-gradient-to-r from-cyan-500 to-blue-500' src="" alt="" />
+                  bg-gradient-to-r from-indigo-700 to-blue-500' src="" alt="" />
                   <div className="text-lg font-semibold">Siya j.</div></div>
            
          <div className="flex gap-4">

@@ -8,9 +8,6 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
     firebase_id: {
         type: String
     },
-    _id: {
-        type: String
-    },
     first_name: {
         type: String,
         trim: true,
@@ -80,14 +77,6 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         type: String,
         required: true
     },
-    tokens: [
-        {
-            token: {
-                type: String,
-                require: true
-            }
-        }
-    ]
 },
     {
         toJSON: { virtuals: true }
@@ -102,6 +91,6 @@ recruiterSchema.virtual("company_details", {
 });
 
 
-const RecruiterModel = mongoose.model<RecruiterSignUp>("Recruiters", recruiterSchema);
+const recruiterModel = mongoose.model<RecruiterSignUp>("Recruiters", recruiterSchema);
 
-export default RecruiterModel;
+export default recruiterModel;

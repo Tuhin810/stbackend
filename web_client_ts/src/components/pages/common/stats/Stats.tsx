@@ -12,21 +12,21 @@ const Stats = () => {
                     </p>
                 </div>
                 <div className="text-center md:border-r">
-                    <h6 className="text-5xl md:text-5xl font-bold text-indigo-600"><CountUp isCounting end={35} duration={1.2} />K</h6>
-                    <p className="text-sm font-medium tracking-widest text-indigo-600 uppercase lg:text-base">
+                    <h6 className="text-5xl md:text-5xl font-bold text-indigo-700"><CountUp isCounting end={35} duration={1.2} />K</h6>
+                    <p className="text-sm font-medium tracking-widest text-indigo-700 uppercase lg:text-base">
                         Jobs
                     </p>
                 </div>
                 <div className="text-center md:border-r">
-                    <h6 className="text-5xl md:text-5xl font-bold "><CountUp isCounting end={14} duration={1.2} />K</h6>
+                    <h6 className="text-5xl md:text-5xl font-bold "><CountUp isCounting end={24} duration={1.2} />K</h6>
                     <p className="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
                         Employers
                     </p>
                 </div>
                 <div className="text-center">
-                    <h6 className="text-5xl md:text-5xl font-bold  text-indigo-600"><CountUp isCounting end={35} duration={1.2} />K</h6>
-                    <p className="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base  text-indigo-600">
-                        Cookies
+                    <h6 className="text-5xl md:text-5xl font-bold  text-indigo-700"><CountUp isCounting end={68} duration={1.2} />K</h6>
+                    <p className="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base  text-indigo-700">
+                        Hired
                     </p>
                 </div>
             </div>

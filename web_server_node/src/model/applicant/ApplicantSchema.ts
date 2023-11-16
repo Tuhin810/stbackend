@@ -1,6 +1,5 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, SchemaDefinitionProperty, Types } from "mongoose";
 import { ApplicantDetails } from "../../@types/interfaces/ApplicantDetails";
-const jwt = require("jsonwebtoken");
 // model for new registration 
 
 export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
@@ -158,14 +157,18 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
         type: String,
         default: ""
     },
-    tokens: [
-        {
-            token: {
-                type: String,
-                require: true
-            }
-        }
-    ]
+    reviews: {
+        type: [Object],
+        default: []
+    },
+    rating: {
+        type: Number,
+        default: 0
+    },
+    no_of_rating: {
+        type: Number,
+        default: 0
+    }
 },
     // JobSchema.virtual("invited_job_details_list", {
     //     ref: "Jobs",
@@ -177,6 +180,6 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
 
 
 
-const ApplicantModel = mongoose.model<ApplicantDetails>("applicants", applicantSchema);
+const applicantModel = mongoose.model<ApplicantDetails>("applicants", applicantSchema);
 
-export default ApplicantModel;
+export default applicantModel;

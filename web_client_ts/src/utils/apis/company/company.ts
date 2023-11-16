@@ -1,5 +1,5 @@
 import { CompanyDetails } from "../../../@types/CompanyDetails";
-import { header } from "../../../configs/apiConfig";
+import { header } from "../../../configs/config";
 import { Get, Post } from "../apiCall";
 
 export const getCompanyList = async () => {
