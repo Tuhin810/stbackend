@@ -8,7 +8,6 @@ import { Server, Socket } from "socket.io";
 import { MessageInterface } from "./@types/interfaces/MessageInterface";
 import { authenticationRouter } from "./router/auth/auth.routes";
 import { ApplicantRouter } from "./router/applicant/applicant.routes";
-import { RecruiterRouter } from "./router/recruiter/recruiter.routes";
 import { companyRouter } from "./router/company/company.routes";
 import { jobRouter } from "./router/jobs/jobs.routes";
 import { messageRouter } from "./router/message/message.routes";
