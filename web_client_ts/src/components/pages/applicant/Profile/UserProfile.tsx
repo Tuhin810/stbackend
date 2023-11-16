@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { MyExperience } from "./myExperience/MyExperience";
 // import { updateApplicantPrivacy } from "../../../../utils/apis/applicant/Applicant"
 import { showModal } from "../../../../utils/commonFunctions/HandleModal";
+
 import SocialMediaModal from "../modals/socialMediaModal/SocialMediaModal";
+import { ApllicantBio } from "./applicantBio/ApllicantBio";
 
 
 const ApplicantProfile = () => {
@@ -71,6 +73,7 @@ const ApplicantProfile = () => {
           </div>
           {/*RIGHT side  */}
           <div className="w-full flex flex-col gap-7 md:ml-80">
+            <ApllicantBio/>
             <MyProfileDetails defaultApplicantDetails={applicantDetails} />
             <MySkill skillList={applicantDetails?.skills} />
             <MyQualification qualificationDetails={applicantDetails?.qualification_details} />

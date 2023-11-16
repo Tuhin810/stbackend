@@ -30,42 +30,47 @@ const ApplicantSignupForm = () => {
   const [buttonText, setButtonText] = useState<string>("Continue");
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
-  const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>(
-    {
-      is_fresher: false,
-      first_name: "",
-      middle_name: "",
-      last_name: "",
-      experience_details: [],
-      email: "",
-      country_code: "+91",
-      profile_bio: "",
-      phone: 0,
-      password: "",
-      current_address: "",
-      permanent_address: "",
-      state: "",
-      country: "",
-      pin: 0,
-      age: 0,
-      birth_year: 1900,
-      experience_year: 0,
-      skills: [],
-      additonal_skills: [],
-      spoken_english: "beginner",
-      gender: "male",
-      qualification_to_search: [],
-      qualification_details: [],
-      min_expected_salary: 0,
-      min_duty_hours: 0,
-      is_disabled: false,
-      invited_job_list: [],
-      applied_job_list: [],
-      facebook_link: "",
-      linkedin_link: "",
-      github_link: ""
+
+  const [password, setPassword] = useState();
+  const [strength, setStrength] = useState('');
+
+ 
+
+ 
+    const validatePassword = (password:any) => {
+      let strengthLevel = 0;
+      const lowerCase = /[a-z]/g;
+      const upperCase = /[A-Z]/g;
+      const numbers = /[0-9]/g;
+      const specialChars = /[!@#$%^&*(),.?":{}|<>]/g;
+  
+      if(password.match(lowerCase)) strengthLevel++;
+      if(password.match(upperCase)) strengthLevel++;
+      if(password.match(numbers)) strengthLevel++;
+      if(password.match(specialChars)) strengthLevel++;
+  
+      switch(strengthLevel) {
+        case 1:
+          return 'Weak'
+          break;
+        case 2:
+          return 'Medium'
+          
+          break;
+        case 3:
+          return 'Strong'
+          
+          break;
+        case 4:
+          return 'Very Strong'
+          break;
+        default:
+          return 'Very Weak'
+          
+      }
     }
-  );
+  
+  
   const handlePageIncrement = async () => {
     if (page === 1) {
       if (applicantDetails.first_name === "" || applicantDetails.last_name === "") {
@@ -103,13 +108,16 @@ const ApplicantSignupForm = () => {
     }
   }
 
-  useEffect(() => {
-    setDisable(false)
-  }, [])
+  
 
 
   const handleChangeApplicantDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = event.target;
+    if (name === "password") {
+      validatePassword(applicantDetails?.password)
+      console.log("strenngth",strength);
+      
+    }
     if (name === "cnf_password") {
       (applicantDetails.password !== value) ? setPasswordError(true) : setPasswordError(false);
     }
@@ -164,6 +172,10 @@ const ApplicantSignupForm = () => {
       setButtonText("Continue");
     }
   }, [page]);
+
+  useEffect(() => {
+    setDisable(false)
+  }, [])
 
   return (
     <>

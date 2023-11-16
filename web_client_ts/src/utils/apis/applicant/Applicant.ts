@@ -19,6 +19,11 @@ export const updateApplicantSkills =async (applicantId:string,skillList:string[]
     return response;
 }
 
+export const editApplicantSkills =async (applicantId:string,skillList:string[]) => {
+    const response = await Put(`/applicant/editApplicantSkills/${applicantId}`,skillList,header);
+    return response;
+}
+
 export const updateApplicantEducation =async (applicantId:string,applicantEducation:ApplicantEducation) => {
     const response = await Put(`applicant/updateApplicantEducation/${applicantId}`,applicantEducation,header);
     return response;

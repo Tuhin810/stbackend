@@ -129,19 +129,18 @@ export const updateApplicantSkill = async (applicantId: string, skillList: strin
     }
 }
 
-export const deleteApplicantSkill = async (applicantId: string, skill: string) => {
-    try{
-        await applicantModel.deleteOne(
-            { _id: applicantId },
-            { $set: { skills: skill } },
-        )
-    
-        const applicantdetails = await getApplicantDetails(applicantId);
-        return applicantdetails;
-    }catch(error){
-        throw error
-    }
+export const editApplicantSkill = async (applicantId: string, skillList: string[]) => {
+    await ApplicantModel.updateOne(
+        { _id: applicantId },
+        { $set: { skills: skillList } }
+    )
+
+    const applicantdetails = await getApplicantDetails(applicantId);
+    return applicantdetails;
 }
+
+
+
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
     try{

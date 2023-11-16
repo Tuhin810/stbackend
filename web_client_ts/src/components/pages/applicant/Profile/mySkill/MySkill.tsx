@@ -19,6 +19,7 @@ const MySkill = ({ skillList }: MySkillProps) => {
                                 type="button" className="text-black text-xl font-small rounded-md h-8 px-2 text-center inline-flex items-center" >
                                 <AddIcon/>
                             </button>
+                            
                         </div>
                         <div className=" flex flex-wrap  w-3/4">
                             {
