@@ -17,19 +17,18 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                 </div>
 
                                 <button onClick={() => { showModal('updateprofile') }} type="button">
-                                    <EditIcon/>
+                                    <EditIcon />
                                 </button>
                             </div>
+                            
 
-                            <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
 
-
-                            </div>
-                            <div className="text-gray-700 ">
+                            <div className="text-gray-700 pb-5">
+                            
                                 <div className="grid md:grid-cols-2 text-md">
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 :py-12 xl:py-2 font-semibold">First Name</div>
-                                        <div className="px-4 xl:py-2 ">{(defaultApplicantDetails?.first_name)?defaultApplicantDetails?.first_name:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}</div>
+                                        <div className="px-4 xl:py-2 ">{(defaultApplicantDetails?.first_name) ? defaultApplicantDetails?.first_name : <><div className="text-blue-500 text-lg" onClick={() => showModal('updateprofile')}>Add</div></>}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Last Name</div>
@@ -38,36 +37,36 @@ const MyProfileDetails = ({ defaultApplicantDetails }: MyProfileDetailsProps) =>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Gender</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.gender)?defaultApplicantDetails?.gender:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}</div>
+                                            {(defaultApplicantDetails?.gender) ? defaultApplicantDetails?.gender : <><div className="text-blue-500 text-lg" onClick={() => showModal('updateprofile')}>Add</div></>}</div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Contact No.</div>
                                         <div className="px-4 xl:py-2 xl:text-sm text-xs">
-                                        {defaultApplicantDetails?.country_code} 
-                                        {(defaultApplicantDetails?.phone)?defaultApplicantDetails?.phone:<>null</>}
-                                           </div>
+                                            {defaultApplicantDetails?.country_code}
+                                            {(defaultApplicantDetails?.phone) ? defaultApplicantDetails?.phone : <>null</>}
+                                        </div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Current Address</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.current_address)?defaultApplicantDetails?.current_address:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
-                                            </div>
+                                            {(defaultApplicantDetails?.current_address) ? defaultApplicantDetails?.current_address : <><div className="text-blue-500 text-lg" onClick={() => showModal('updateprofile')}>Add</div></>}
+                                        </div>
                                     </div>
-                                    
+
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 xl:py-2 font-semibold">Permanant Address</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.permanent_address)?defaultApplicantDetails?.permanent_address:<><div className="text-blue-500 text-lg" onClick={()=>showModal('updateprofile')}>Add</div></>}
-                                   
-                                            </div>
+                                            {(defaultApplicantDetails?.permanent_address) ? defaultApplicantDetails?.permanent_address : <><div className="text-blue-500 text-lg" onClick={() => showModal('updateprofile')}>Add</div></>}
+
+                                        </div>
                                     </div>
 
                                     <div className="grid grid-cols-2 md:mb-0 mb-10">
                                         <div className="px-4 xl:py-2 font-semibold">Birthday</div>
                                         <div className="px-4 xl:py-2">
-                                        {(defaultApplicantDetails?.birth_year)?defaultApplicantDetails?.birth_year:<>null</>}
-                                   
-                                            </div>
+                                            {(defaultApplicantDetails?.birth_year) ? defaultApplicantDetails?.birth_year : <>null</>}
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
