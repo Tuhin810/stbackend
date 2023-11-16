@@ -13,6 +13,7 @@ import RecruiterSignUpPage3 from '../RecruiterSignUpPage3/RecruiterSignUpPage3';
 import OtpVerification from '../OtpVerificationPage/OtpVerification';
 import { confirmationResult, sendOtp } from '../../../../../../utils/service/firebase.service';
 import Spinner from '../../../../../shared/spinner/Spinner';
+import Alert from '../../../../../shared/alert/Alert';
 
 const RecruiterSignupForm = () => {
   const navigate = useNavigate();
@@ -20,6 +21,8 @@ const RecruiterSignupForm = () => {
   const { loggedIn } = useContext(globalContext);
   const [otp, setOtp] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [companyList, setCompanyList] = useState<CompanyList[]>([]);
@@ -89,7 +92,9 @@ const RecruiterSignupForm = () => {
       await signUpRecruiter();
     }).catch((error) => {
       // setInvalidOtp(true);
+      setHasError(true);
       console.log(error);
+      setErrorMessage(error.response.data.message);
     });
   }
 
@@ -139,6 +144,10 @@ const RecruiterSignupForm = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+       {
+            (hasError) ?
+              <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> </div> : null
+          }
       <img src={logo} className='mb-2' />
       <div className=" p-8 w-full max-w-sm">
         {
