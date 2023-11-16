@@ -98,15 +98,18 @@ export const updateApplicantSkill = async (applicantId: string, skillList: strin
     return applicantdetails;
 }
 
-export const deleteApplicantSkill = async (applicantId: string, skill: string) => {
-    await ApplicantModel.deleteOne(
+export const editApplicantSkill = async (applicantId: string, skillList: string[]) => {
+    await ApplicantModel.updateOne(
         { _id: applicantId },
-        { $set: { skills: skill } },
+        { $set: { skills: skillList } }
     )
 
     const applicantdetails = await getApplicantDetails(applicantId);
     return applicantdetails;
 }
+
+
+
 
 export const getApplicantInvitedJobListService = async (applicantId: string) => {
     const response = (await MatchedApplicantModel.find({ applicantId: applicantId }).lean().populate("job_details").exec());

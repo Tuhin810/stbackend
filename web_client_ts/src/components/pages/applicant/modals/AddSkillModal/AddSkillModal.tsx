@@ -1,8 +1,8 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 import Select, { MultiValue } from 'react-select'
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal"
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext";
-import { updateApplicantSkills } from "../../../../../utils/apis/applicant/Applicant";
+import { editApplicantSkills, updateApplicantSkills } from "../../../../../utils/apis/applicant/Applicant";
 // import { skillSuggestion } from "../../../../../constants/skillSuggestion";
 import makeAnimated from 'react-select/animated';
 import { AutoCompleteProps } from "../../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps";
@@ -11,13 +11,16 @@ const animatedComponents = makeAnimated();
 
 const AddSkillModal = () => {
     const [skillList, setSkillList] = useState<string[]>([]);
-    const [applicantSkillList,setApplicantSkillList] =useState<string[]>([]);
+    const [applicantSkillList, setApplicantSkillList] = useState<string[]>([]);
+    const [applicantFetchedSkills, setApplicantFetchedSkills] = useState<{ value: string; label: string; }[]>([])
     const { applicantDispatch } = useContext(applicantContext);
     const { applicantloggedinDetails } = useContext(applicantContext);
 
+
     const handleChangeSkillName = (event: MultiValue<AutoCompleteProps>) => {
-        const tempArray:string[] = [];
-        event.forEach((skill:any)=>{
+
+        const tempArray: string[] = [];
+        event.forEach((skill: any) => {
             tempArray.push(skill.value);
         })
         setSkillList(tempArray);
@@ -29,14 +32,30 @@ const AddSkillModal = () => {
             hideModal("addSkills")
         }
     }
+    const handleEditSkill = async () => {
+        const response = await editApplicantSkills(applicantloggedinDetails.applicantDetails._id!, skillList);
+        if (response?.status === 200) {
+            applicantDispatch({ type: "updateDetails", payload: response?.data.data })
+            hideModal("addSkills")
+        }
+    }
+
+
+   
+
+
+    // Filter out options that are already in applicantSkillList
+    const filteredSkillSuggestion = skillSuggestion.filter((option) => !applicantSkillList.includes(option.value));
+
 
     useEffect(() => {
+
+        setApplicantFetchedSkills(skillSuggestion.filter((option) => applicantloggedinDetails.applicantDetails.skills.includes(option.value)));
         setApplicantSkillList(applicantloggedinDetails.applicantDetails.skills)
-       console.log("skills",applicantloggedinDetails.applicantDetails.skills );
-       
     }, [])
-    // Filter out options that are already in applicantSkillList
-  const filteredSkillSuggestion = skillSuggestion.filter((option) => !applicantSkillList.includes(option.value));
+
+    console.log(applicantFetchedSkills.length);
+    
 
     return (
         <div>
@@ -53,16 +72,42 @@ const AddSkillModal = () => {
                         </button>
                         <div className="px-6 py-6 lg:px-8">
                             <h3 className="mb-4 text-xl font-medium text-gray-900 darkno:text-white">Enter Your<span className="text-blue-600"> Qualification </span>Details</h3>
+                            {/* <p>{applicantFetchedSkills/}</p> */}
                             <div className="space-y-6">
-                                <Select
-                                    options={filteredSkillSuggestion}
+
+                                {/* <Select
+                                    options={applicantFetchedSkills}
                                     closeMenuOnSelect={false}
                                     isMulti
+
                                     components={animatedComponents}
                                     onChange={e => handleChangeSkillName(e as MultiValue<AutoCompleteProps>)}
-                                />
-                                
-                                
+                                // defaultValue={applicantFetchedSkills.map(skill => ({ value: skill.value, label: skill.label }))} // Set default values based on applicantFetchedSkills
+                                /> */}
+                                {
+                                    applicantFetchedSkills.length === 0 ?
+                                        <Select
+                                           
+                                            isMulti
+                                            options={filteredSkillSuggestion}
+                                            className="basic-multi-select"
+                                            classNamePrefix="select"
+                                            onChange={e => handleChangeSkillName(e as MultiValue<AutoCompleteProps>)}
+                                        />:null
+                                }
+                                {
+                                    applicantFetchedSkills.length === 0 ? null
+                                     :
+                                        <Select
+                                            defaultValue={applicantFetchedSkills.map(skill => ({ value: skill.value, label: skill.label }))}
+                                            isMulti
+                                            options={filteredSkillSuggestion}
+                                            className="basic-multi-select"
+                                            classNamePrefix="select"
+                                            onChange={e => handleChangeSkillName(e as MultiValue<AutoCompleteProps>)}
+                                        />
+                                }
+
                                 <button className="w-full inline-flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
                                 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={handleAddSkill}>
                                     Add Qualification

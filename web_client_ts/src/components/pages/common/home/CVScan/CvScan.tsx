@@ -6,7 +6,7 @@ export const CvScan = () => {
   const [, setAction] = useState<string>('');
   const handleSignUpButton = () => {
   
-    setAction('signup')
+    setAction('login')
     showModal(modalId);
 }
   return (
@@ -21,7 +21,7 @@ export const CvScan = () => {
         </h1>
         <p className="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
        
-        <button onClick={handleSignUpButton} className="px-8 py-3 text-blue-100 rounded bg-gradient-to-r  from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500">Regester Now</button>
+        <button onClick={handleSignUpButton} className="px-8 py-3 text-blue-100 rounded bg-gradient-to-r  from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500">Login now</button>
      
                               
       </div>

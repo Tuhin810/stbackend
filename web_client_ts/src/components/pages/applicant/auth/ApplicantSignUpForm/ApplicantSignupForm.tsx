@@ -33,6 +33,47 @@ const ApplicantSignupForm = () => {
   const [buttonText, setButtonText] = useState<string>("Continue");
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
+
+  const [password, setPassword] = useState();
+  const [strength, setStrength] = useState('');
+
+ 
+
+ 
+    const validatePassword = (password:any) => {
+      let strengthLevel = 0;
+      const lowerCase = /[a-z]/g;
+      const upperCase = /[A-Z]/g;
+      const numbers = /[0-9]/g;
+      const specialChars = /[!@#$%^&*(),.?":{}|<>]/g;
+  
+      if(password.match(lowerCase)) strengthLevel++;
+      if(password.match(upperCase)) strengthLevel++;
+      if(password.match(numbers)) strengthLevel++;
+      if(password.match(specialChars)) strengthLevel++;
+  
+      switch(strengthLevel) {
+        case 1:
+          return 'Weak'
+          break;
+        case 2:
+          return 'Medium'
+          
+          break;
+        case 3:
+          return 'Strong'
+          
+          break;
+        case 4:
+          return 'Very Strong'
+          break;
+        default:
+          return 'Very Weak'
+          
+      }
+    }
+  
+  
   const handlePageIncrement = async () => {
     if (page < 4) {
       setPage(prev => prev + 1);
@@ -55,13 +96,16 @@ const ApplicantSignupForm = () => {
     }
   }
 
-  useEffect(() => {
-    setDisable(false)
-  }, [])
+  
 
 
   const handleChangeApplicantDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = event.target;
+    if (name === "password") {
+      validatePassword(applicantDetails?.password)
+      console.log("strenngth",strength);
+      
+    }
     if (name === "cnf_password") {
       (applicantDetails.password !== value) ? setPasswordError(true) : setPasswordError(false);
     }
@@ -144,6 +188,10 @@ const ApplicantSignupForm = () => {
       setButtonText("Continue");
     }
   }, [page]);
+
+  useEffect(() => {
+    setDisable(false)
+  }, [])
 
   return (
     <>
