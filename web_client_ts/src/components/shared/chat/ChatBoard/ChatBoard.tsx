@@ -2,8 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 import io from 'socket.io-client';
 import { ChatBoardProps } from '../../../../@types/interfaces/props/ChatProps/ChatBoardProps';
 import { MessageInterface } from '../../../../@types/interfaces/messageInterface/MessageInterface';
+import { socketUrl } from '../../../../configs/chatConfig';
 
-const serverUrl = 'http://localhost:8585'; // Replace with your server URL
+const serverUrl = socketUrl; // Replace with your server URL
 
 const socket = io(serverUrl);
 

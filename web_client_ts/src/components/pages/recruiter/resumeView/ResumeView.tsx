@@ -8,21 +8,16 @@ import UserRemoveIcon from '../../../shared/icons/userRemoveIcon/UserRemoveIcon'
 import UserPlusIcon from '../../../shared/icons/userPlusIcon/UserPlusIcon';
 import { useNavigate, useParams } from 'react-router-dom';
 import CommonModal from '../../../shared/modal/CommonModal';
-import { question, yes_no } from '../../../../assets/images';
+import { yes_no } from '../../../../assets/images';
 import Alert from '../../../shared/alert/Alert';
+import "./ResumeView.css"
 import ChatIcon from '../../../shared/icons/chatIcon/ChatIcon';
 
-// import CommonModal from '../../../shared/modal/CommonModal';
-// import { yes_no } from '../../../../assets/images';
-
-import "./ResumeView.css"
-import MailIcon from '../../../shared/icons/mailIcon/MailIcon';
 const ResumeView = () => {
-    const navigate = useNavigate();
     const params = useParams();
     const [status, setStatus] = useState("")
     const applicantId = params.id!;
-   
+
     const [show, setShow] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
@@ -40,9 +35,9 @@ const ResumeView = () => {
         const response = await getMatchedJobDetails(jobId, applicantId);
         if (response?.status === 200) {
             setJobDetails(response?.data.data);
-            console.log("matched",response?.data.data.status);
+            console.log("matched", response?.data.data.status);
             setStatus(response?.data.data.status)
-            
+
         }
     }, [params.jobId]);
 
@@ -52,15 +47,15 @@ const ResumeView = () => {
     const hideOptions = () => {
         setShow(false);
     }
-  
-    const handleseStatus = async(status:string) => {
+
+    const handleStatus = async (status: string) => {
         setMessage("Are You Sure to Hire This Candidate ?")
         // showModal("selectionModal");
         getMatchedApplicantStatus(jobDetails.jobId, status)
         console.log(status);
-       
         await alert(`this resume is ${status}`)
-         navigate("/recruiter/jobs");
+        navigate("/recruiter/jobs");
+    }
 
     const handleClose = () => {
         setError(false);
@@ -89,7 +84,7 @@ const ResumeView = () => {
         }
     }
 
- 
+
     const rightHireMethod = () => {
         hideModal("hireModal");
         console.log("closed");
@@ -98,7 +93,6 @@ const ResumeView = () => {
     const handleChat = () => {
         const path = `/recruiter/chat/${applicantId}`
         navigate(path);
-        //github.com/RahulDutta007/Starmark/pull/74/conflict?name=web_client_ts%252Fsrc%252Fcomponents%252Fpages%252Frecruiter%252FresumeView%252FResumeView.tsx&ancestor_oid=301e7174684c432a37356d99bca9ee2142e89889&base_oid=84d61e8b4b122b220ff1e886916c51eaf12a5b2f&head_oid=b0ef1f0426e780e284c506911dd274bca1b8dc86
     }
 
     useEffect(() => {
@@ -107,28 +101,25 @@ const ResumeView = () => {
 
     return (
         <div>
-{error ? <Alert title={"Try Again Later"} type={"Danger"} text={errorMessage} color={"red"} img={""} handleClose={handleClose} /> : null}
-
-            <SharedResume jobApplied={jobDetails.accept} jobStatus={status}/>
-
-            
+            {error ? <Alert title={"Try Again Later"} type={"Danger"} text={errorMessage} color={"red"} img={""} handleClose={handleClose} /> : null}
+            <SharedResume jobApplied={jobDetails.accept} />
             <div className=''>
 
                 <div className="floating-container">
                     <div className="floating-button">+
                     </div>
                     <div className="element-container">
-                        
+
                         <span className={`float-element items-center justify-center flex`}>
-                            <button disabled={status==="rejected"}  className='m-auto mt-3'><MailIcon /></button>
+                            <button disabled={status === "rejected"} className='m-auto mt-3' onClick={handleChat}><ChatIcon /></button>
 
                         </span>
                         <span className="float-element items-center justify-center flex">
-                            <button disabled={status!=="matched"}  onClick={()=>handleseStatus("rejected")} className='m-auto mt-3'><UserRemoveIcon /></button>
+                            <button disabled={status !== "matched"} onClick={() => handleStatus("rejected")} className='m-auto mt-3'><UserRemoveIcon /></button>
 
                         </span>
                         <span className="float-element items-center justify-center flex">
-                            <button disabled={status!=="matched"} onClick={()=>handleseStatus("hired")} className='m-auto mt-3'><UserPlusIcon /></button>
+                            <button disabled={status !== "matched"} onClick={() => handleStatus("hired")} className='m-auto mt-3'><UserPlusIcon /></button>
 
                         </span>
                     </div>
@@ -186,10 +177,10 @@ const ResumeView = () => {
 
             {/* <CommonModal leftButtonLink={`/recruiter/`} leftRoute={true} leftButtonText='Yes,Sure!' rightButtonLink={``} rightRoute={true} rightButtontext='No,Thanks' message={message} id={"selectionModal"} Img={yes_no} /> */}
 
-            {/* <CommonModal leftMethod={leftHireMethod} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} /> */}
+            <CommonModal leftMethod={handleHire} leftButtonText='Yes,Sure' rightMethod={rightHireMethod} rightButtontext='No,Thanks' message={message} id={"hireModal"} Img={yes_no} />
             {/* <CommonModal leftMethod={leftHireMethod} leftButtonText='No,Thanks' rightMethod={rightHireMethod} rightButtontext='Yes,Sure' message={message} id={"rejectModal"} Img={question} /> */}
         </div>
     )
-}}
+}
 
 export default ResumeView

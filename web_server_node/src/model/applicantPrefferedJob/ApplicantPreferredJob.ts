@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { ApplicantPreferredJob } from "../../@types/interfaces/ApplicantPreferredJobs";
-import ApplicantModel from "../applicant/ApplicantSchema";
+import applicantModel from "../applicant/ApplicantSchema";
 // model for new matched profile registration 
 
 export const applicantPreferredJobSchema: Schema<ApplicantPreferredJob> = new mongoose.Schema({
@@ -18,7 +18,7 @@ export const applicantPreferredJobSchema: Schema<ApplicantPreferredJob> = new mo
 );
 
 applicantPreferredJobSchema.virtual("applicant_details", {
-	ref: ApplicantModel,
+	ref: applicantModel,
 	localField: "applicant_id",
 	foreignField: "_id",
 	justOne: true,

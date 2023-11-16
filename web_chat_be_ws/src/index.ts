@@ -8,19 +8,14 @@ import mongoose from "mongoose";
 
 
 const app: Express = express();
-const allowedOrigins = [
-    "http://localhost:5173"
-];
-
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: allowedOrigins,
+        origin: "*",
         methods: ["GET", "POST"],
     },
 });
-
 
 const rooms = new Map<string, Set<Socket>>();
 

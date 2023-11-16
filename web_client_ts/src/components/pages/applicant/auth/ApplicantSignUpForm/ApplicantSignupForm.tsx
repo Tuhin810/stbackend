@@ -3,7 +3,7 @@ import { ApplicantDetails } from "../../../../../@types/ApplicantDetails"
 import SignUpPage1 from "./SignUpPage1/SignUpPage1";
 import SignUpPage2 from "./SignUpPage2/SignUpPage2";
 import SignUpPage3 from "./SignUpPage3/SignUpPage3";
-import { google_icon, logo } from "../../../../../assets/images"
+import { logo } from "../../../../../assets/images"
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext";
 import { globalContext } from "../../../../../context/GlobalDetails/GlobalContext";
 import { applicantSignUp } from "../../../../../utils/apis/auth/login";
@@ -12,10 +12,8 @@ import SignUpPage4 from "./SignUpPage4/SignUpPage4";
 import { confirmationResult, sendOtp } from "../../../../../utils/service/firebase.service";
 import Spinner from "../../../../shared/spinner/Spinner";
 import ProgressStep from "../../../../shared/ProgressStep/ProgressStep";
-import { signInWithGoogle } from "../../../../../configs/firebaseConfig";
-import { UserCredential } from "firebase/auth";
-import { getFormattedtName } from "../../../../../utils/commonFunctions/FormatName";
 import Alert from "../../../../shared/alert/Alert";
+import ApplicantGoogleSignUp from "../ApplicantGoogleSignUp/ApplicantGoogleSignUp";
 
 const ApplicantSignupForm = () => {
 
@@ -29,11 +27,61 @@ const ApplicantSignupForm = () => {
   const [hasError, setHasError] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [page, setPage] = useState<number>(1);
-  const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({} as ApplicantDetails);
   const [buttonText, setButtonText] = useState<string>("Continue");
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
+  const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>(
+    {
+      is_fresher: false,
+      first_name: "",
+      middle_name: "",
+      last_name: "",
+      experience_details: [],
+      email: "",
+      country_code: "",
+      profile_bio: "",
+      phone: 0,
+      password: "",
+      current_address: "",
+      permanent_address: "",
+      state: "",
+      country: "",
+      pin: 0,
+      age: 0,
+      birth_year: 1900,
+      experience_year: 0,
+      skills: [],
+      additonal_skills: [],
+      spoken_english: false,
+      gender: "male",
+      qualification_to_search: [],
+      qualification_details: [],
+      min_expected_salary: 0,
+      min_duty_hours: 0,
+      is_disabled: false,
+      invited_job_list: [],
+      applied_job_list: [],
+      facebook_link: "",
+      linkedin_link: "",
+      github_link: ""
+    }
+  );
   const handlePageIncrement = async () => {
+    if (page === 1) {
+      if (applicantDetails.first_name === "" || applicantDetails.last_name === "") {
+        return;
+      }
+    }
+    if (page === 2) {
+      if (applicantDetails.birth_year === 1900 || applicantDetails.phone === 0) {
+        return;
+      }
+    }
+    if (page === 3) {
+      if (applicantDetails.email === "" || applicantDetails.password === "") {
+        return;
+      }
+    }
     if (page < 4) {
       setPage(prev => prev + 1);
     }
@@ -50,7 +98,7 @@ const ApplicantSignupForm = () => {
     if (page > 1) {
       setPage(prev => prev - 1);
     }
-    else{
+    else {
       navigate("/home");
     }
   }
@@ -65,10 +113,10 @@ const ApplicantSignupForm = () => {
     if (name === "cnf_password") {
       (applicantDetails.password !== value) ? setPasswordError(true) : setPasswordError(false);
     }
-    if(name === "email"){
+    if (name === "email") {
       const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-   (!emailRegex.test(applicantDetails?.email)) ?setEmailError(true):setEmailError(false)
-   }
+      (!emailRegex.test(applicantDetails?.email)) ? setEmailError(true) : setEmailError(false)
+    }
     setApplicantDetails(Object.assign({}, applicantDetails, { [name]: value }));
   }, [applicantDetails]);
 
@@ -96,8 +144,8 @@ const ApplicantSignupForm = () => {
     await applicantSignUp(applicantDetails).then(response => {
       setLoading(false);
       if (response?.status === 200) {
-        const resonseApplicant: ApplicantDetails = response?.data.user;
-        applicantDispatch({ type: "signup", payload: resonseApplicant })
+        const responseApplicant: ApplicantDetails = response?.data.user;
+        applicantDispatch({ type: "signup", payload: responseApplicant })
         loggedIn({ type: "login", userType: "applicant" });
         navigate("/applicant");
       }
@@ -106,34 +154,6 @@ const ApplicantSignupForm = () => {
       setHasError(true);
       setErrorMessage(error.response.data.message);
     })
-  }
-
-  const generatePassword = (length: number) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-  }
-
-
-  const googleSignIn = async () => {
-    const response: UserCredential = await signInWithGoogle();
-    if (response) {
-      const { user } = response;
-      const name = getFormattedtName(user.displayName)
-      applicantDetails.email = user.email!;
-      applicantDetails.is_email_verified = user.emailVerified;
-      applicantDetails.photo = user.photoURL || '';
-      applicantDetails.first_name = name[0];
-      applicantDetails.last_name = name[name.length - 1];
-      applicantDetails.password = generatePassword(8);
-      await signUp();
-    }
   }
 
   useEffect(() => {
@@ -149,12 +169,12 @@ const ApplicantSignupForm = () => {
     <>
       <div className="applicant_signup" id="applicant_signup">
         <div className="flex flex-col items-center justify-center gap-y-6 h-screen w-full px-5">
-        {
-          (hasError) ? 
-          <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> </div> : null
-        }
+          {
+            (hasError) ?
+              <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> </div> : null
+          }
           <img src={logo} />
-          <ProgressStep currentStep={page} stepcount={7} />
+          <ProgressStep currentStep={page} stepcount={4} />
           {
             (loading) ? <Spinner /> :
               <div className=" w-full max-w-sm">
@@ -162,30 +182,31 @@ const ApplicantSignupForm = () => {
 
                 {
                   (page === 1) ?
-                    <SignUpPage1 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} /> :
-                    (page === 2) ?
-                      <SignUpPage2 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} passwordError={passwordError} /> :
-                      (page === 3) ?
-
-                        <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails}  emailError={emailError} passwordError={passwordError} /> :
-
-                        (page === 4) ?
-                          <SignUpPage4 handleChangeOtp={handleChangeOtp} /> : null
+                    <SignUpPage1 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} /> : null
+                }
+                {
+                  (page === 2) ?
+                    <SignUpPage2 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} passwordError={passwordError} /> :
+                    null
+                }
+                {
+                  (page === 3) ?
+                    <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} emailError={emailError} passwordError={passwordError} /> :
+                    null
+                }
+                {
+                  (page === 4) ?
+                    <SignUpPage4 handleChangeOtp={handleChangeOtp} /> : null
                 }
 
                 <div className="flex w-full">
-                  <button type="button"  className="text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
+                  <button type="button" className="text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
                   py-2.5 text-center mr-2 mb-2" onClick={handlePageDecrease}>Back</button>
 
                   <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
              focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2" onClick={handlePageIncrement}>{buttonText}</button>
                 </div>
-                <button type="button" onClick={googleSignIn} className="text-gray-900 w-full bg-white hover:bg-gray-100 border
-                 border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium
-                  rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center mr-2 my-3">
-                  <img src={google_icon} className="me-2" />
-                  Sign In With Google
-                </button>
+                <ApplicantGoogleSignUp applicantDetails={applicantDetails} setErrorMessage={setErrorMessage} setHasError={setHasError} setLoading={setLoading} key={0} />
               </div>
           }
         </div>

@@ -1,3 +1,6 @@
+import { CompanyDetails } from "../../../CompanyDetails";
+
 export interface CompanyRegistrationProps{
-    handleChangeCompanyDetails:(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>)=>void;
+    companyDetails:CompanyDetails;
+    handleChangeCompanyDetails:(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>)=>void;
 }

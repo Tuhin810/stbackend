@@ -11,6 +11,7 @@ import SettingsIcon from '../../../../shared/icons/settingsIcons/SettingsIcon'
 import { useContext } from 'react'
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext'
 import ThreeLines from '../../../../shared/icons/threeLines/ThreeLines'
+import ChatIcon from '../../../../shared/icons/chatIcon/ChatIcon'
 
 const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplicantNavbarProps) => {
     const {applicantDetails} = useContext(applicantContext).applicantloggedinDetails;
@@ -31,11 +32,11 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
          
             </li>
             <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
-            <Link to="/applicant/performance" className='focus:text-blue-700 flex gap-1 items-center'><CompassIcon />Performance</Link>
+            <Link to="/applicant/performance" className='focus:text-blue-700 flex gap-1 items-center'><CompassIcon />Applied Jobs</Link>
          
             </li>
             <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
-            <Link to="/applicant/matchedJobs/" className='focus:text-blue-700 flex gap-1 items-center'><QuestionIcon /> Fraud</Link>
+            <Link to="/applicant/inbox/" className='focus:text-blue-700 flex gap-1 items-center'><ChatIcon /> Inbox</Link>
          
             </li>
         </ul>

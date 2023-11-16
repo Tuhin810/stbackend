@@ -37,6 +37,8 @@ import ResumeView from "./components/pages/recruiter/resumeView/ResumeView";
 import ProfileCard from "./components/pages/applicant/profile_card/ProfileCard";
 import EmployerChat from "./components/pages/recruiter/chat/EmployerChat";
 import ApplicantChat from "./components/pages/applicant/chat/ApplicantChat";
+import ApplicantInbox from "./components/pages/applicant/applicantInbox/ApplicantInbox";
+import ApplicantForgottenPassword from "./components/pages/applicant/auth/ApplicantForgetPassword/ApplicantForgottenPassword";
 
 
 const App = () => {
@@ -85,6 +87,7 @@ const App = () => {
 
           <Route path="/applicant/signup" element={<ApplicantSignup />} />
           <Route path="/applicant/login" element={<ApplicantLogin />} />
+          <Route path="/applicant/forgetpass" element={<ApplicantForgottenPassword />} />
           <Route path="/profile/details/:id" element={<ApplicantProfile />} />
 
           {/* applicant dashboard */}
@@ -93,6 +96,7 @@ const App = () => {
             <Route path="/applicant/Card/" element={<ProfileCard />} />
             <Route path="/applicant/resume/" element={<ApplicantResume />} />
             <Route path="/applicant/chat/:recruiterId" element={<ApplicantChat />} />
+            <Route path="/applicant/inbox" element={<ApplicantInbox/>} />
             <Route path="/applicant/matchedJobs/" element={<JobsPage />} />
             <Route path="/applicant/performance/" element={<ApplicantPerformance />} />
           </Route>

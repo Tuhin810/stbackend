@@ -38,7 +38,10 @@ const SharedResume = ({ jobApplied,jobStatus }: SharedResumeProps) => {
         qualification_to_search: [],
         qualification_details: [],
         min_expected_salary: 0,
-        min_duty_hours: 0
+        min_duty_hours: 0,
+        facebook_link:"",
+        github_link:"",
+        linkedin_link:""
     });
 
     const isResumePublic = async (applicantId: string) => {

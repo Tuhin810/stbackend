@@ -29,6 +29,9 @@ import wrong from './wrong.svg'
 import modeImg from './modelImg.svg'
 import yes_no from './yes_no.svg'
 import question from './question.svg'
+import jobHunt from './Job-hunt-bro.svg'
+import warning from './Warning-cuate.svg'
+import forgetPass from './Forgot password-bro.svg'
 
 export {
 	get_find,
@@ -61,5 +64,8 @@ export {
 	wrong,
 	modeImg,
 	yes_no,
-	question
+	question,
+	jobHunt,
+	warning,
+	forgetPass
 };

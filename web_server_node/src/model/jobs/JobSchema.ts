@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { JobPostDetails } from "../../@types/interfaces/JobPostDetails";
 import CompanyModel from "../company/CompanySchema";
-import RecruiterModel from "../recruiter/RecruiterSchema";
+import recruiterModel from "../recruiter/RecruiterSchema";
 
 // model for new company registration 
 
@@ -134,7 +134,7 @@ JobSchema.virtual("company_details", {
 });
 
 JobSchema.virtual("recruiter_details", {
-    ref: RecruiterModel,
+    ref: recruiterModel,
     localField: "job_poster_id",
     foreignField: "_id",
     justOne: true,

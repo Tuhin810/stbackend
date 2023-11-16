@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { RecruiterSignUp } from "../../../@types/interfaces/RecruiterDetails";
 import { getRecruiterByEmail, postRecruiter } from "../../../service/Recruiter/RecruiterService";
 import { getCompanyById, getCompanyByName } from "../../../service/Company/CompanyService";
+import recruiterModel from "../../../model/recruiter/RecruiterSchema";
+import { encryptPass } from "../../../service/commonFunction/CommonFunctions";
 
 export const registerNewRecruiter = async (req: Request, res: Response) => {
     const recruiterDetails: RecruiterSignUp = req.body;
@@ -17,32 +19,21 @@ export const registerNewRecruiter = async (req: Request, res: Response) => {
                 success: false,
                 message: "Already Registered please login",
             });
-        } else {
-            const comapny = await getCompanyById(recruiterDetails.company_id);
-            if (comapny) {
-                postRecruiter(recruiterDetails)
-                    .then((data) => {
-                        const recruiterDetails = data;
-                        res.status(200).send({
-                            success: true,
-                            message: "Users Register Successfully",
-                            recruiter: recruiterDetails
-                        });
-                    })
-            }
-            else {
-                return res.status(404).send({
-                    success: false,
-                    message: "Company not found",
-                });
-            }
-
         }
-    } catch (e) {
+        const hashPass = await encryptPass(recruiterDetails.password);
+        recruiterDetails.password = hashPass
+        console.log(recruiterDetails);
+        const employerInstance = await new recruiterModel(recruiterDetails).save().then(data => data.populate("company_details"));
+        console.log("emp", employerInstance);
+        return res.status(200).json({
+            message: "Account is created successfully",
+            data: employerInstance
+        })
+    } catch (err) {
+        console.log(err);
         res.status(500).send({
             success: false,
             message: "Error in Registeration",
-            e,
         });
     }
 }

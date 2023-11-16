@@ -18,7 +18,7 @@ const Features =()=> {
                   </div>
                 </div>
                 <div className="w-10/12">
-                  <h2 tabIndex={0} className="focus:outline-none text-lg font-bold leading-tight text-gray-800">Ready to use components</h2>
+                  <h2 tabIndex={0} className="focus:outline-none text-lg font-bold leading-tight text-gray-800">Automatic job seeker selection</h2>
                   <p tabIndex={0} className="focus:outline-none text-base text-gray-600 leading-normal pt-2">Starmark provides a range of job listings that varies from IT, healthcare and management. It gives an automatic job seeker selection that caters to the personalized experience of the job seekers and tailored job recommendations based on their preferences.</p>
                 </div>
               </div>
@@ -30,7 +30,7 @@ const Features =()=> {
                   </div>
                 </div>
                 <div className="w-10/12">
-                  <h2 tabIndex={0} className="focus:outline-none text-lg font-semibold leading-tight text-gray-800">Hight Quality UI you can reply on</h2>
+                  <h2 tabIndex={0} className="focus:outline-none text-lg font-semibold leading-tight text-gray-800">Trust</h2>
                   <p tabIndex={0} className="focus:outline-none text-base text-gray-600 leading-normal pt-2">StarMark facilitates the benefit of trust to both job seekers and employers by providing an efficient hiring process using  user-friendly interfaces using advanced AI algorithms to ensure job seekers connect with the right job profile in the market.</p>
                 </div>
               </div>
@@ -42,8 +42,11 @@ const Features =()=> {
                   </div>
                 </div>
                 <div className="w-10/12">
-                  <h2 tabIndex={0} className="focus:outline-none text-lg font-semibold leading-tight text-gray-800">Coded by Developers for Developers</h2>
-                  <p tabIndex={0} className="focus:outline-none text-base text-gray-600 leading-normal pt-2">First time ever, StarMark introduces live ratings of job seekers to let employers provide their feedback on their hired candidates. This is a conventional step towards a completely transparent hiring process to make the job seekers understand their strengths and areas for further improvements.</p>
+                  <h2 tabIndex={0} className="focus:outline-none text-lg font-semibold leading-tight text-gray-800">Job seeker live rating</h2>
+                  <p tabIndex={0} className="focus:outline-none text-base text-gray-600 leading-normal pt-2">
+                  First time ever, StarMark introduces live ratings of job seekers to let employers provide their feedback on their hired candidates. 
+                  This is a conventional step towards a completely transparent hiring process to make the job seekers understand their strengths and areas for further improvements.
+                  </p>
                 </div>
               </div>
               <div tabIndex={0} aria-label="card 4" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
@@ -54,8 +57,8 @@ const Features =()=> {
                   </div>
                 </div>
                 <div className="w-10/12">
-                  <h2 tabIndex={0} className="focus:outline-none text-lg font-semibold leading-tight text-gray-800">The Last UI kit you’ll ever need</h2>
-                  <p tabIndex={0} className="focus:outline-none text-base text-gray-600 leading-normal pt-2">Browse through a diverse range of job listings spanning industries from technology to healthcare, marketing to finance. Filter by location, experience level, and specialization to find the perfect match for your skills and ambitions. Personalized Experience helps job seekers to create a profile that showcases your skills, experience, and aspirations. Receive tailored job recommendations based on your preferences. Stay updated with the latest opportunities through customized alerts.</p>
+                  <h2 tabIndex={0} className="focus:outline-none text-lg font-semibold leading-tight text-gray-800"> Automatically Job Match</h2>
+                  <p tabIndex={0} className="focus:outline-none text-base text-gray-600 leading-normal pt-2">Browse through a diverse range of job listings spanning industries from technology to healthcare, marketing to finance. Filter by location, experience level, and specialization to find the perfect match for your skills and ambitions. </p>
                 </div>
               </div>
             </div>

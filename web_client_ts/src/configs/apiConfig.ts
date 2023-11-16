@@ -7,7 +7,7 @@ export const baseURL: string =
         (mode === "mobile") ?
             'http://192.168.1.6:8989/' :
             (mode === "dev") ?
-                'http://192.168.1.6:8989/' :
+                'https://dnjggwx9e25i6.cloudfront.net/' :
 
                 (mode === "prod") ?
                     'http://localhost:8989/' :

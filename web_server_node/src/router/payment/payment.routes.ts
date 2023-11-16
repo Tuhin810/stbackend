@@ -4,6 +4,6 @@ import { getAllPayment, postNewPayment } from "../../controller/payment/Payment.
 const router = express.Router();
 
 router.get("/payment/getAllPayment", getAllPayment);
-router.post("/recruiter/auth/login", postNewPayment);
+router.post("/recruiter/payment/newPayment", postNewPayment);
 
 export { router as paymentRouter }
