@@ -160,6 +160,7 @@ const ApplicantSignupForm = () => {
     }).catch(error => {
       setLoading(false);
       setHasError(true);
+     
       setErrorMessage(error.response.data.message);
     })
   }
