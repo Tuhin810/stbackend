@@ -1,10 +1,88 @@
 // import { logo } from "../../../../assets/images"
-import starmarkdarklogo from "../../../../assets/footer/starmarkdarklogo.png"
+import { Link } from "react-router-dom";
+import { logo } from '../../../../assets/images';
+interface ProductType {
+    id: number;
+    section: string;
+    link: string[];
+}
 
+const products: ProductType[] = [
+    {
+        id: 1,
+        section: "Company",
+        link: ['About us', 'Blog', 'Contact us', 'Pricing', 'Testimonials'],
+    },
+    {
+        id: 2,
+        section: "Support",
+        link: ['Help center', 'Terms of service', 'Legal', 'Privacy Policy', 'Status']
+    }
+]
 const Footer = () => {
     return (
         <div>
+            <div className="bg-gray-800 " id="first-section">
+                <div className="mx-auto max-w-2xl pt-16 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <div className="mt-24 grid grid-cols-1 gap-y-10 gap-x-16 sm:grid-cols-2 lg:grid-cols-12 xl:gap-x-8">
 
+                        {/* COLUMN-1 */}
+
+                        <div className='col-span-4'>
+                            <img src={logo} alt="logo" className='pb-4' />
+                            <h3 className='text-white text-lg font-medium leading-9 mb-4 lg:mb-10'> Level up your skills, and get dream <br /> job with passion. </h3>
+                            <div className='flex gap-4'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#14a6d2" className="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ff2323" className="bi bi-youtube" viewBox="0 0 16 16">
+                                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="black" className="bi bi-youtube" viewBox="0 0 16 16">
+                                <path d="M6.048 3.323c.022.277-.13.523-.338.55-.21.026-.397-.176-.419-.453-.022-.277.13-.523.338-.55.21-.026.397.176.42.453Zm2.265-.24c-.603-.146-.894.256-.936.333-.027.048-.008.117.037.15.045.035.092.025.119-.003.361-.39.751-.172.829-.129l.011.007c.053.024.147.028.193-.098.023-.063.017-.11-.006-.142-.016-.023-.089-.08-.247-.118Z"/>
+  <path d="M11.727 6.719c0-.022.01-.375.01-.557 0-3.07-1.45-6.156-5.015-6.156-3.564 0-5.014 3.086-5.014 6.156 0 .182.01.535.01.557l-.72 1.795a25.85 25.85 0 0 0-.534 1.508c-.68 2.187-.46 3.093-.292 3.113.36.044 1.401-1.647 1.401-1.647 0 .979.504 2.256 1.594 3.179-.408.126-.907.319-1.228.556-.29.213-.253.43-.201.518.228.386 3.92.246 4.985.126 1.065.12 4.756.26 4.984-.126.052-.088.088-.305-.2-.518-.322-.237-.822-.43-1.23-.557 1.09-.922 1.594-2.2 1.594-3.178 0 0 1.041 1.69 1.401 1.647.168-.02.388-.926-.292-3.113a25.78 25.78 0 0 0-.534-1.508l-.72-1.795ZM9.773 5.53a.095.095 0 0 1-.009.096c-.109.159-1.554.943-3.033.943h-.017c-1.48 0-2.925-.784-3.034-.943a.098.098 0 0 1-.018-.055c0-.015.004-.028.01-.04.13-.287 1.43-.606 3.042-.606h.017c1.611 0 2.912.319 3.042.605Zm-4.32-.989c-.483.022-.896-.529-.922-1.229-.026-.7.344-1.286.828-1.308.483-.022.896.529.922 1.23.027.7-.344 1.286-.827 1.307Zm2.538 0c-.484-.022-.854-.607-.828-1.308.027-.7.44-1.25.923-1.23.483.023.853.608.827 1.309-.026.7-.439 1.251-.922 1.23ZM2.928 8.99c.213.042.426.081.639.117v2.336s1.104.222 2.21.068V9.363c.326.018.64.026.937.023h.017c1.117.013 2.474-.136 3.786-.396.097.622.151 1.386.097 2.284-.146 2.45-1.6 3.99-3.846 4.012h-.091c-2.245-.023-3.7-1.562-3.846-4.011-.054-.9 0-1.663.097-2.285Z"/>
+ </svg>
+                            </div>
+                        </div>
+
+                        {/* CLOUMN-2/3 */}
+
+                        {products.map((product) => (
+                            <div key={product.id} className="group relative col-span-2">
+                                <p className="text-white text-xl font-semibold mb-9">{product.section}</p>
+                                <ul>
+                                    {product.link.map((link: string, index: number) => (
+                                        <li key={index} className='mb-5'>
+                                            <Link to="/" className="text-gray-100 text-sm font-normal mb-6 space-links">{link}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+
+                        {/* CLOUMN-4 */}
+
+                        <div className='col-span-4'>
+                            <h3 className='text-white text-xl font-semibold mb-6'>Stay up to date</h3>
+                            <div className="relative text-white focus-within:text-white flex flex-row-reverse">
+                                <input type="Email address" name="q" className="py-4 text-sm w-full text-white bg-gray-900 rounded-md pl-4 focus:outline-none bg-emailbg focus:text-white" placeholder="Your email address" autoComplete="off" />
+                                <div className="absolute inset-y-0 right-0 flex items-center pr-2">
+                                    <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" className="bi bi-facebook" viewBox="0 0 16 16">
+                                   <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+ </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+              
+
+            </div>
+            {/* 
             <footer className="px-4 divide-y bg-gray-900 text-gray-100">
                 <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                     <div className="lg:w-1/4 -ml-5">
@@ -78,7 +156,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="py-6 text-sm text-center text-gray-600">© 1968 Company Co. All rights reserved.</div>
-            </footer>
+            </footer> */}
+
         </div>
     )
 }

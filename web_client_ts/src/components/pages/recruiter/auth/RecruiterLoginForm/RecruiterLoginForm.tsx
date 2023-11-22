@@ -10,7 +10,7 @@ import { logo } from '../../../../../assets/images';
 import LogInForm from '../../../../shared/forms/LogInForm';
 import Spinner from '../../../../shared/spinner/Spinner';
 import { UserCredentials } from '../../../../../@types/UserCredential';
-import Alert from '../../../../shared/alert/Alert';
+import {Alert} from '../../../../shared/alert/Alert';
 
 const RecruiterLoginForm = () => {
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ const RecruiterLoginForm = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-y-10 h-screen">
-      {(hasError) ?<> <Alert text={errorMsg} type="danger" color={'red'} img={''} title={'Error'} /> </>:null}
+      {(hasError) ?<> <Alert text={errorMsg} type="danger"  title={'Error'} /> </>:null}
       <img src={logo} />
       {
           (loading) ? <Spinner /> :

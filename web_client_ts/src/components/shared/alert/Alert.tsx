@@ -1,37 +1,37 @@
 import { AlertProps } from '../../../@types/interfaces/props/AlertProps'
-
+import { hideModal } from '../../../utils/commonFunctions/HandleModal';
+import "./alert.css"
 // Test Push
-const Alert = ({ title,text, type ,color,handleClose}: AlertProps) => {
-    console.log(type);
+export const Alert = ({ title,text, type}: AlertProps) => {
+    
     return (
 
-        <div className={`alert shadow-2xl shadow-${color}-300`} id='alert'>
-            <div className={`flex w-96 border-2 border-${color}-400 max-w-lg overflow-hidden bg-gray-100  rounded-lg  `}>
+       
+<div id='alert' className={`error bg-red-400`} >
+    <div className="error__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+    </div>
+    <div className="error__title"><span className='text-lg'>Error!&nbsp;&nbsp;</span> {text}</div>
+    <div className="error__close" onClick={()=>hideModal('alert')}><svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20"><path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path></svg></div>
+</div>
 
-                <div className={`flex items-center justify-center w-12 bg-${color}-500` }>
-                    <svg className="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z" />
-                    </svg>
-                </div>
-
-                <div className="px-4 py-2 -mx-3 w-full flex items-center justify-between">
-                    <div className="mx-3 ">
-                        <span className={`font-semibold text-${color}-500 `}>{title}</span>
-                        <p className="text-sm text-gray-800 ">
-                            {text}!
-                        </p>
-                    </div>
-                    <p className='me-2 cursor-pointer' onClick={handleClose}>X</p>
-                </div>
-            </div>
-            {/* <div className="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
-                <p>{text}</p>
-                <span className="absolute inset-y-0 right-0 flex items-center mr-4">
-                    <svg className="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
-                </span>
-            </div> */}
-        </div>
     )
 }
 
-export default Alert
+export const Success = ({ title,text, type}: AlertProps) => {
+    
+    return (
+
+       
+<div id='alert' className={`error bg-green-400`} >
+    <div className="error__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+    </div>
+    <div className="error__title">{text}</div>
+    <div className="error__close" onClick={()=>hideModal('alert')}><svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20"><path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path></svg></div>
+</div>
+
+    )
+}
+
+

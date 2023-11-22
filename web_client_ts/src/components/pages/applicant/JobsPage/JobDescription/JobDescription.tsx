@@ -5,7 +5,7 @@ import "../JobPage.css"
 import { SuccesModal } from "../jobAppliedSucces/SuccesModal";
 import Chip from "../../../../shared/chip/Chip";
 import { useState } from "react";
-import Alert from "../../../../shared/alert/Alert";
+import {Alert, Success} from "../../../../shared/alert/Alert";
 
 export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: JobDetailsProps) => {
   const [apply,setApply]=useState<boolean>(false);
@@ -26,7 +26,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
   return (
     <div className=' z-50   md:-mt-10 md:px-0'>
       {
-          (accept=="accepted")?<><div className="fixed top-24 left-96 z-50"><Alert title={"Succes"} text={"Job Accepted"} color={"green"} img={""}/></div></>:null
+          (accept=="accepted")?<><div className="fixed top-24 left-96 z-50"><Success text={'job accepted'} type="danger"  title={'Error'} /></div></>:null
         }
       <div className=" overflow-y-auto  h-screen scroll bg-white w-[99%] md:w-full  border-2 mb-2 rounded-lg drop-shadow-md  hidescroll ">
       

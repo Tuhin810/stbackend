@@ -18,7 +18,7 @@ import notFound from './notFound.png';
 import defaultCompany from './defaultCompany.png';
 import applicant_login from './Tablet login-amico.svg'
 import recruiter_login from './Computer login-bro.svg'
-import applicant_signup from './Login-bro.svg'
+import applicant_signup from './job_search.svg'
 import success from './success.gif'
 import company_registration from './Company-amico.svg'
 import contact_us from './Service 24_7-amico.svg'

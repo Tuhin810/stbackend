@@ -12,7 +12,7 @@ import SignUpPage4 from "./SignUpPage4/SignUpPage4";
 import { confirmationResult, sendOtp } from "../../../../../utils/service/firebase.service";
 import Spinner from "../../../../shared/spinner/Spinner";
 import ProgressStep from "../../../../shared/ProgressStep/ProgressStep";
-import Alert from "../../../../shared/alert/Alert";
+import {Alert} from "../../../../shared/alert/Alert";
 import ApplicantGoogleSignUp from "../ApplicantGoogleSignUp/ApplicantGoogleSignUp";
 
 const ApplicantSignupForm = () => {
@@ -184,7 +184,7 @@ const ApplicantSignupForm = () => {
         <div className="flex flex-col items-center justify-center gap-y-6 h-screen w-full px-5">
           {
             (hasError) ?
-              <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> </div> : null
+              <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger"  title={'Error'} /> </div> : null
           }
           <img src={logo} />
           <ProgressStep currentStep={page} stepcount={4} />

@@ -13,7 +13,7 @@ import RecruiterSignUpPage3 from '../RecruiterSignUpPage3/RecruiterSignUpPage3';
 import OtpVerification from '../OtpVerificationPage/OtpVerification';
 import { confirmationResult, sendOtp } from '../../../../../../utils/service/firebase.service';
 import Spinner from '../../../../../shared/spinner/Spinner';
-import Alert from '../../../../../shared/alert/Alert';
+import {Alert} from '../../../../../shared/alert/Alert';
 
 const RecruiterSignupForm = () => {
   const navigate = useNavigate();
@@ -142,11 +142,12 @@ const RecruiterSignupForm = () => {
     setDisable(false)
   }, [page]);
 
+  
   return (
     <div className="flex flex-col items-center justify-center h-screen">
        {
             (hasError) ?
-              <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger" color={'red'} img={''} title={'Error'} /> </div> : null
+              <div className='-mb-24 z-50'> <Alert text={errorMessage} type="danger"  title={'Error'} /> </div> : null
           }
       <img src={logo} className='mb-2' />
       <div className=" p-8 w-full max-w-sm">

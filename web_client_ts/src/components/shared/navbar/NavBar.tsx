@@ -48,14 +48,19 @@ const NavBar = () => {
     return (
         <>
             <nav className="navbar bg-[#f5f9ff] backdrop-blur-lg  sticky py-1 sm:py-2 w-full z-20 top-0 left-0 border-gray-200">
+                
+            <div aria-hidden="true" className="-z-10 absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+        <div className="blur-[106px] h-36 bg-gradient-to-br from-purple-800 to-purple-400 dark:from-blue-700"></div>
+        <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+    </div>
                 <div className="max-w-screen-xl flex flex-wrap justify-center mx-auto p-4 sm:justify-between" id='items'>
                     <a href="https://flowbite.com/" className="flex items-center " id="logo">
-                        <img src={logo} className="h-10 mr-3" alt="Flowbite Logo" />
+                        <img src={logo} className="h-12 mr-3" alt="Flowbite Logo" />
                     </a>
                     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
+                        <ul className="flex flex-col p-4 items-center md:p-0 mt-4 font-medium border rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
                             <li>
-                                <Link to="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-black md:p-0 md:darkno:text-black">Home</Link>
+                                <Link to="/" className=" z-50 py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-black md:p-0 md:darkno:text-black">Home</Link>
                             </li>
                             <li>
                                 <Link to="/about" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</Link>
@@ -67,17 +72,24 @@ const NavBar = () => {
                                 <Link to="/support" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Support</Link>
                             </li>
                             <li>
-                                <a href="#" className="inline-flex items-center justify-center  text-base font-medium text-center text-blue-600 " onClick={handleLoginButton}>
-                                    Login
-                                </a>
+                             
+                                <a onClick={handleLoginButton}
+                            href="#"
+                            className="relative  flex h-10 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-[#f3faff] before:border-2 before:border-blue-400 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                            >
+                            <span className="relative text-md font-semibold text-blue-400"
+                                >&nbsp;Login&nbsp;</span>
+                        </a>
                             </li>
                             <li>
-                                <a href="#" className="inline-flex items-center justify-center  text-base font-medium text-center text-red-600 " onClick={handleSignUpButton}>
-                                    Register
-                                    <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                    </svg>
-                                </a>
+                            <a onClick={handleSignUpButton}
+                            href="#"
+                            className="relative -ml-2  flex h-10 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-[#144667] before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                            >
+                            <span className="relative text-md font-semibold text-white"
+                                >Register</span>
+                        </a>
+                               
                             </li>
 
                         </ul>

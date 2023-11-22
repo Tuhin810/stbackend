@@ -12,7 +12,7 @@ function Testimonial() {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing
                 </h2>
             </div>
-            <div className="  md:px-4 2xl:px-0 flex flex-wrap items-center mt-4">
+            <div className=" md:px-4 2xl:px-0 flex flex-wrap items-center mt-4">
                 <div className="mt-24">
                     <div className="flex items-end ">
                         <img tabIndex={0} src="https://i.ibb.co/kBgtHK6/Rectangle-5.png" alt="girl with blue background" className="w-20 h-20 rounded-lg mr-6" />
@@ -26,14 +26,14 @@ function Testimonial() {
                         <img tabIndex={0} src="https://i.ibb.co/fnNqJrx/Rectangle-7.png" alt="guy with glasses" className="w-20 h-20 rounded-lg ml-6 flex-shrink-0 object-cover object-fit" />
                     </div>
                 </div>
-                <div className="ml-6 mt-32">
+                <div className="ml-6 mt-32 hidden md:inline ">
                     <img tabIndex={0} src="https://i.ibb.co/LSxy7fy/Rectangle-9.png" className="w-72 h-80 rounded-lg" alt="guy with sunglasses" />
                     <div className="flex items-start mt-6">
                         <img tabIndex={0} src="https://i.ibb.co/X8PKD3q/Rectangle-8.png" alt="girl  laughing" className="w-48 h-48 rounded-lg" />
                         <img tabIndex={0} src="https://i.ibb.co/2Yj51CY/Rectangle-13.png" alt="guy with glasses" className="w-20 h-20 rounded-lg ml-6 object-cover object-fit" />
                     </div>
                 </div>
-                <div className="mt-14 ml-6">
+                <div className="mt-14 ml-6 hidden md:inline ">
                     <div className="lg:flex ">
                         <div>
                             <img tabIndex={0} src="https://i.ibb.co/bWGVSkP/Rectangle-10.png" alt="group of friends" className="w-96 h-72 rounded-lg object-center object-fit" />

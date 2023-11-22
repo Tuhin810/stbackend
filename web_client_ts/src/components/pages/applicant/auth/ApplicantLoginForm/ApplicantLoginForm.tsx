@@ -7,7 +7,7 @@ import { ApplicantDetails } from '../../../../../@types/ApplicantDetails';
 import { applicantContext } from '../../../../../context/applicantDetails/ApplicantContext';
 import { applicantSignIn } from '../../../../../utils/apis/auth/login';
 import { UserCredentials } from '../../../../../@types/UserCredential';
-import Alert from '../../../../shared/alert/Alert';
+import { Alert } from '../../../../shared/alert/Alert';
 import Spinner from '../../../../shared/spinner/Spinner';
 import ApplicantGoogleSignUp from '../ApplicantGoogleSignUp/ApplicantGoogleSignUp';
 
@@ -89,7 +89,7 @@ const ApplicantLoginForm = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-y-10 h-screen w-full">
       {
-        (error) ? <Alert text={errorMsg} type="danger" color={'red'} img={''} title={'Error'} /> : null
+        (error) ? <Alert text={errorMsg} type="danger"  title={'Error'} /> : null
       }
       <div className=' max-w-md flex justify-center'>
         <img src={logo} />
