@@ -1,6 +1,6 @@
 import { IApplicantSignUpProps } from "../../../../../../@types/interfaces/props/ApplicantProps/ApplicantSignUpProps"
 
-const SignUpPage2 = ({applicantDetails, handleChangeApplicantDetails}:IApplicantSignUpProps) => {
+const SignUpPage2 = ({applicantDetails,errors, handleChangeApplicantDetails}:IApplicantSignUpProps) => {
     return (
         <div id='signup2'>
             <div className="mb-4">
@@ -20,6 +20,10 @@ const SignUpPage2 = ({applicantDetails, handleChangeApplicantDetails}:IApplicant
             <div className="mb-4">
                 <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900">Phone<span className="text-red-500">*</span></label>
                 <input type="number" id="phone" name="phone" defaultValue={applicantDetails.phone} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required onChange={(e) => handleChangeApplicantDetails(e)} />
+                {(errors.phone) ?
+                    <p className="text-red-500">{errors.phone}</p>
+                    : null
+                }
             </div>
         </div>
     )

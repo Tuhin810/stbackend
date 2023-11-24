@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { showModal } from "../../../../../utils/commonFunctions/HandleModal";
+import { qrCodeImg } from "../../../../../assets/images";
 
 export const CvScan = () => {
   const modalId= 'navbar-modal'
@@ -13,7 +14,7 @@ export const CvScan = () => {
     <div><section className="text-gray-600 body-font">
     <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
       <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-        <img className="object-cover object-center rounded-lg" alt="QR scan" src="https://storage.googleapis.com/support-kms-prod/mQmcrC93Ryi2U4x5UdZNeyHQMybbyk71yCVm"/>
+        <img className="object-cover object-center rounded-lg" alt="QR scan" src={qrCodeImg}/>
       </div>
       <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
         <h1 className="title-font  text-5xl mb-4 font-semibold text-gray-900 ">Get e-CV ready 

@@ -1,13 +1,13 @@
-import { useState, useContext, useEffect, useCallback } from "react";
+import { useState, useContext, useEffect } from "react";
 import Select, { MultiValue } from 'react-select'
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal"
 import { applicantContext } from "../../../../../context/applicantDetails/ApplicantContext";
-import { editApplicantSkills, updateApplicantSkills } from "../../../../../utils/apis/applicant/Applicant";
+
 // import { skillSuggestion } from "../../../../../constants/skillSuggestion";
-import makeAnimated from 'react-select/animated';
+
 import { AutoCompleteProps } from "../../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps";
 import { skillSuggestion } from "../../../../../constants/skillSuggestion";
-const animatedComponents = makeAnimated();
+import { updateApplicantSkills } from "../../../../../utils/apis/applicant/Applicant";
 
 const AddSkillModal = () => {
     const [skillList, setSkillList] = useState<string[]>([]);
@@ -32,13 +32,13 @@ const AddSkillModal = () => {
             hideModal("addSkills")
         }
     }
-    const handleEditSkill = async () => {
-        const response = await editApplicantSkills(applicantloggedinDetails.applicantDetails._id!, skillList);
-        if (response?.status === 200) {
-            applicantDispatch({ type: "updateDetails", payload: response?.data.data })
-            hideModal("addSkills")
-        }
-    }
+    // const handleEditSkill = async () => {
+    //     const response = await editApplicantSkills(applicantloggedinDetails.applicantDetails._id!, skillList);
+    //     if (response?.status === 200) {
+    //         applicantDispatch({ type: "updateDetails", payload: response?.data.data })
+    //         hideModal("addSkills")
+    //     }
+    // }
 
 
    

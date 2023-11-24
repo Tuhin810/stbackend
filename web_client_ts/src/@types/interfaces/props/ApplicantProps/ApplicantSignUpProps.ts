@@ -4,6 +4,6 @@ export interface IApplicantSignUpProps{
     applicantDetails:ApplicantDetails,
     handleChangeApplicantDetails:(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>)=>void;
     passwordError?:boolean,
-    emailError?:boolean,
-    passwordStrength?:string
+    passwordStrength?:string,
+    errors?:any
 }
