@@ -1,4 +1,3 @@
-import React from 'react'
 import EditIcon from '../../../../shared/icons/editIcon/EditIcon'
 import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
 
