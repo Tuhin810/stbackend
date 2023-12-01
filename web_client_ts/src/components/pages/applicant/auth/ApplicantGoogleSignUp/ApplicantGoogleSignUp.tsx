@@ -35,7 +35,7 @@ const ApplicantGoogleSignUp = ({setLoading,applicantDetails,setHasError,setError
                 const responseApplicant: ApplicantDetails = response?.data.user;
                 applicantDispatch({ type: "signup", payload: responseApplicant })
                 loggedIn({ type: "login", userType: "applicant" });
-                navigate("/applicant");
+                navigate("/jobSeeker");
             }
         }).catch(async (error) => {
             setLoading(false);
@@ -47,7 +47,7 @@ const ApplicantGoogleSignUp = ({setLoading,applicantDetails,setHasError,setError
                         const responseApplicant: ApplicantDetails = response?.data.data;
                         applicantDispatch({ type: "login", payload: responseApplicant })
                         loggedIn({ type: "login", userType: "applicant" });
-                        navigate("/applicant");
+                        navigate("/jobSeeker");
                     }
                 }).catch(error => {
                     setLoading(false);

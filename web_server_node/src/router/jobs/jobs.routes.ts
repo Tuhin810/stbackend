@@ -11,21 +11,20 @@ import employerAuth from "../../middleware/employer.middleware";
 
 const router = express.Router();
 
-router.route("/jobs/getAllJobs").get(getAllJob);
-router.route("/jobs/getJobByCompanyId/:companyId").get(getJobsByCompany);
-router.route("/jobs/getJobByRecruiterId/:recruiterId").get(getJobsRecruiter);
-router.route("/jobs/searchApplicant/:job").get(recruiterSearchPreferredJob);
-router.route("/jobs/getJobByJobId/:jobId").get(getJobDetails)
-router.route("/jobs/getMatchedProfileListByJobId/:jobId").get(matchedApplicantDetailsList);
-router.route("/jobs/getMatchedJobDetails/:jobId/:applicantId").get(getMatchedJobDetails);
+router.route("/getAllJobs").get(getAllJob);
+router.route("/getJobByCompanyId/:companyId").get(getJobsByCompany);
+router.route("/getJobByRecruiterId/:recruiterId").get(getJobsRecruiter);
+router.route("/searchApplicant/:job").get(recruiterSearchPreferredJob);
+router.route("/getJobByJobId/:jobId").get(getJobDetails)
+router.route("/getMatchedProfileListByJobId/:jobId").get(matchedApplicantDetailsList);
+router.route("/getMatchedJobDetails/:jobId/:applicantId").get(getMatchedJobDetails);
 
-router.route("/jobs/postjob").post(postNewJobs);
-router.route("/job/brodcast/:id").post(brodcastJob);
-router.route("/job/addPreferredJob").post(postApplicantPreferredJob);
+router.route("/postjob").post(postNewJobs);
+router.route("/brodcast/:id").post(brodcastJob);
+router.route("/addPreferredJob").post(postApplicantPreferredJob);
 
-router.route("/job/hire/:jobId").put(matchedApplicantHire)
-router.route("/job/:status/:jobId").put(matchedApplicantstatus)
+router.route("/hire/:jobId").put(matchedApplicantHire)
 
-router.delete("/jobs/deleteJobDetailsByJobId/:jobId", deleteJob);
+router.route("/deleteJobDetailsByJobId/:jobId").delete(deleteJob)
 
 module.exports = router

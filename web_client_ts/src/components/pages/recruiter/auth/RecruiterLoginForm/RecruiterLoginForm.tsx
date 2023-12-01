@@ -44,7 +44,7 @@ const RecruiterLoginForm = () => {
         const recruiterDetails = response.data.recruiter as RecruiterDetails;
         dispatch({ type: "login", payload: recruiterDetails })
         loggedIn({ type: "login", userType: "recruiter" });
-        navigate('/recruiter/jobs');
+        navigate('/employer/jobs');
       }
     }).catch(error => {
       setLoading(false);
@@ -67,7 +67,7 @@ const RecruiterLoginForm = () => {
             <div className="p-8 rounded w-full max-w-sm">
               <LogInForm handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
               <button type="button" className=" w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br   shadow-lg shadow-blue-500/50  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleLogin}>Log In</button>
-              <p className="text-sm text-gray-600 mt-3">Don't have an account? <Link to="/recruiter/signup" className="text-blue-500 hover:underline">Sign up</Link></p>
+              <p className="text-sm text-gray-600 mt-3">Don't have an account? <Link to="/employer/signup" className="text-blue-500 hover:underline">Sign up</Link></p>
             </div>
       }
 

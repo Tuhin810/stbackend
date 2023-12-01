@@ -7,14 +7,14 @@ const MyResumeContainer = () => {
   const navgate = useNavigate();
   const {applicantDetails}=useContext(applicantContext).applicantloggedinDetails;
   const routeTo = () => {
-    const path = "/applicant/resume"
+    const path = "/jobSeeker/resume"
     navgate(path)
   }
   const currentUrl = window.location.host + '/resume/' + applicantDetails._id;
   
   return (
-    <div>
-      <div className="w-full mt-4 h-24 max-w-sm 
+    <div className="">
+      <div className=" m-auto w-full mt-4 h-24 max-w-sm 
        text-blue-500 bg-white font-bold border border-gray-200 cursor-pointer
         rounded-xl shadow-md  flex items-center justify-center"
         onClick={routeTo}>

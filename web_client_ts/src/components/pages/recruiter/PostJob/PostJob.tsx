@@ -12,6 +12,7 @@ import { MultiValue, SingleValue } from 'react-select';
 import { ISuggestion } from '../../../../@types/interfaces/Suggestion';
 import { AutoCompleteProps } from '../../../../@types/interfaces/props/AutoCompleteProps/AutoCompleteProps';
 import { JobDetails } from '../../../../@types/interfaces/JobDetails';
+import { LockModal } from '../modal/ErrorModal/LockModal/lockModal';
 
 const PostJob = () => {
     const navigate = useNavigate();
@@ -70,7 +71,7 @@ const PostJob = () => {
         if (step > 1) {
             setStep(prevStep => prevStep - 1)
         }else{
-            navigate("/recruiter/jobs")
+            navigate("/employer/jobs")
         }
     };
 
@@ -148,6 +149,7 @@ const PostJob = () => {
         else {
             setButtontext("Continue");
         }
+        
     }, [step]);
 
    
@@ -171,12 +173,13 @@ const PostJob = () => {
                                         null
                     }
                     <div className='flex justify-between'>
-                        <button type="button" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 darkno:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={decreasePage}>Back</button>
+                        <button type="button" className="text-white bg-gradient-to-r from-gray-500 via-gray-700 to-gray-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 darkno:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={decreasePage}>Back</button>
                         <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 darkno:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={incrementPage}>{buttonText}</button>
                     </div>
                 </div>
             </div>
             <PostJobConfirmationModal jobDetails={jobDetails} InvitedJob={''} jobId={''} applicantId={''}/>
+            <LockModal/>
         </>
     )
 }

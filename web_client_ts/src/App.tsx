@@ -39,6 +39,7 @@ import EmployerChat from "./components/pages/recruiter/chat/EmployerChat";
 import ApplicantChat from "./components/pages/applicant/chat/ApplicantChat";
 import ApplicantInbox from "./components/pages/applicant/applicantInbox/ApplicantInbox";
 import ApplicantForgottenPassword from "./components/pages/applicant/auth/ApplicantForgetPassword/ApplicantForgottenPassword";
+import { SignUp } from "./components/pages/common/auth/signUp/SignUp";
 
 
 const App = () => {
@@ -58,8 +59,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={`/${userType$}`} />} />
-          <Route path="/recruiter" element={<Navigate to={'/recruiter/jobs'} />} />
-          <Route path="/applicant" element={<Navigate to={'/applicant/profile'} />} />
+          <Route path="/employer" element={<Navigate to={'/employer/jobs'} />} />
+          <Route path="/jobSeeker" element={<Navigate to={'/jobSeeker/profile'} />} />
           <Route path="/admin" element={<Navigate to={'/admin/jobs'} />} />
           <Route path="/resume/:id" element={<SharedResume jobApplied={true} />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
@@ -71,34 +72,35 @@ const App = () => {
             <Route path="/support" element={<Contact />} />
           </Route>
 
+          <Route path="/signup" element={< SignUp />} />
           {/* recruiter */}
-          <Route path="/recruiter/login" element={< RecruiterLogin />} />
-          <Route path="/recruiter/signup" element={<RecruiterSignUp />} />
+          <Route path="/employer/login" element={< RecruiterLogin />} />
+          <Route path="/employer/signup" element={<RecruiterSignUp />} />
 
           {/* Recruiter Dashboard */}
-          <Route path="/recruiter" element={<RecruiterDashboard />}>
-            <Route path="/recruiter/jobs" element={<PostedJobList />} />
-            <Route path="/recruiter/applicant-resume/:id/:jobId" element={<ResumeView />} />
-            <Route path="/recruiter/postjob" element={<PostJob />} />
-            <Route path="/recruiter/chat/:applicantId" element={<EmployerChat />} />
-            <Route path="/recruiter/pricing" element={<RecruiterPricing />} />
-            <Route path="/recruiter/jobDetails/:jobId" element={<PostedJobDashboard />} />
+          <Route path="/employer" element={<RecruiterDashboard />}>
+            <Route path="/employer/jobs" element={<PostedJobList />} />
+            <Route path="/employer/applicant-resume/:id/:jobId" element={<ResumeView />} />
+            <Route path="/employer/postjob" element={<PostJob />} />
+            <Route path="/employer/chat/:applicantId" element={<EmployerChat />} />
+            <Route path="/employer/pricing" element={<RecruiterPricing />} />
+            <Route path="/employer/jobDetails/:jobId" element={<PostedJobDashboard />} />
           </Route>
 
-          <Route path="/applicant/signup" element={<ApplicantSignup />} />
-          <Route path="/applicant/login" element={<ApplicantLogin />} />
-          <Route path="/applicant/forgetpass" element={<ApplicantForgottenPassword />} />
+          <Route path="/jobSeeker/signup" element={<ApplicantSignup />} />
+          <Route path="/jobSeeker/login" element={<ApplicantLogin />} />
+          <Route path="/jobSeeker/forgetpass" element={<ApplicantForgottenPassword />} />
           <Route path="/profile/details/:id" element={<ApplicantProfile />} />
 
           {/* applicant dashboard */}
-          <Route path="/applicant" element={<ApplicantDashboard />}>
-            <Route path="/applicant/profile/" element={<ApplicantProfile />} />
-            <Route path="/applicant/Card/" element={<ProfileCard />} />
-            <Route path="/applicant/resume/" element={<ApplicantResume />} />
-            <Route path="/applicant/chat/:recruiterId" element={<ApplicantChat />} />
-            <Route path="/applicant/inbox" element={<ApplicantInbox/>} />
-            <Route path="/applicant/matchedJobs/" element={<JobsPage />} />
-            <Route path="/applicant/performance/" element={<ApplicantPerformance />} />
+          <Route path="/jobSeeker" element={<ApplicantDashboard />}>
+            <Route path="/jobSeeker/profile/" element={<ApplicantProfile />} />
+            <Route path="/jobSeeker/Card/" element={<ProfileCard />} />
+            <Route path="/jobSeeker/resume/" element={<ApplicantResume />} />
+            <Route path="/jobSeeker/chat/:recruiterId" element={<ApplicantChat />} />
+            <Route path="/jobSeeker/inbox" element={<ApplicantInbox />} />
+            <Route path="/jobSeeker/matchedJobs/" element={<JobsPage />} />
+            <Route path="/jobSeeker/performance/" element={<ApplicantPerformance />} />
           </Route>
 
           <Route path="/admin" element={<AdminDashBoard />}>

@@ -4,6 +4,8 @@ import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetai
 import { useContext } from "react";
 import { JobDetailsListContext } from "../../../../../context/jobDetails/JobDetailsContext";
 import { JobDetails } from "../../../../../@types/interfaces/JobDetails";
+import { showModal } from "../../../../../utils/commonFunctions/HandleModal";
+import { LockModal } from "../../modal/ErrorModal/LockModal/lockModal";
 
 const PostJobConfirmationModal = ({ jobDetails }: JobDetailsProps) => {
     const navigate = useNavigate();
@@ -20,7 +22,13 @@ const PostJobConfirmationModal = ({ jobDetails }: JobDetailsProps) => {
             fetchedJobList.push(response?.data.job);
             jobListDispatch({ type: "postJob", payload: fetchedJobList });
             hideModal();
-            navigate("/recruiter/jobs")
+            navigate("/employer/jobs")
+        }
+        else {
+            hideModal()
+            alert("buy subscription")
+            console.log("buy subscription");
+            
         }
     }
     return (
@@ -47,6 +55,7 @@ const PostJobConfirmationModal = ({ jobDetails }: JobDetailsProps) => {
                     </div>
                 </div>
             </div>
+            <LockModal/>
         </div>
     )
 }

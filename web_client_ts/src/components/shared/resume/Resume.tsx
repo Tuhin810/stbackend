@@ -1,9 +1,13 @@
-import { forwardRef } from "react"
+import { forwardRef, useEffect } from "react"
 import { MyProfileDetailsProps } from "../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps"
 import { logo } from "../../../assets/images"
 
 const Resume = forwardRef(({ defaultApplicantDetails, componentRef, jobStatus }: MyProfileDetailsProps) => {
 
+useEffect(() => {
+console.log("resume",defaultApplicantDetails);
+
+}, [])
 
 
     return (
@@ -36,18 +40,22 @@ const Resume = forwardRef(({ defaultApplicantDetails, componentRef, jobStatus }:
                     <hr className='mb-4' />
                     <div className="mb-4">
                         <h2 className="text-xl font-semibold text-indigo-700">Profile</h2>
-                        <p className="text-gray-700">Passionate frontend developer with a strong eye for design. Excels in creating dynamic and visually appealing websites using the latest web technologies.</p>
+                        <p className="text-gray-700">{defaultApplicantDetails?.profile_bio}</p>
                     </div>
                     <hr className='mb-4' />
                     <div className="mb-4">
                         <h2 className="text-xl font-bold mb-4 text-indigo-700">About Me</h2>
-                        <p className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est
+                        <p className="text-gray-700">
                             <ul className=' grid capitalize grid-cols-2 gap-x-8 gap-1'>
                                 {
                                     defaultApplicantDetails?.birth_year ?
                                         <li><span className="font-bold">Age</span>  : {new Date().getFullYear() - defaultApplicantDetails.birth_year || 0}</li> : null
                                 }
-                                <li><span className="font-bold">Experience </span> : {defaultApplicantDetails?.experience_year} years</li>
+                                <li><span className="font-bold">Experience </span> :
+                               {
+                                (defaultApplicantDetails?.qualification_details.length )?<></>:<>&nbsp;no experience yet</>
+                               }
+                                 </li>
                                 <li><span className="font-bold">Current Address : </span>{defaultApplicantDetails?.current_address}</li>
                                 <li><span className="font-bold">Permanent Address :</span> {defaultApplicantDetails?.permanent_address}</li>
                                 <li><span className="font-bold">English Profiencey :</span> {defaultApplicantDetails?.spoken_english}</li>
@@ -74,7 +82,10 @@ const Resume = forwardRef(({ defaultApplicantDetails, componentRef, jobStatus }:
                     <hr className='mb-4' />
                     <div className="mb-4">
                         <h2 className="text-xl font-bold mt-6 mb-4 text-blue-600">Experience</h2>
+
                         {
+                                    (defaultApplicantDetails?.experience_year)?<>
+                                     {
                             defaultApplicantDetails?.experience_details.map((experience, key) => {
                                 return (
                                     <div className="mb-6" key={key}>
@@ -92,12 +103,19 @@ const Resume = forwardRef(({ defaultApplicantDetails, componentRef, jobStatus }:
                                 )
                             })
                         }
+                                    </>:<>
+                                    <div className="border-4  text-lg text-semibold text-gray-600 border-dashed h-24 items-center flex justify-center py-2 px-4  rounded-xl">Experience not added </div>
+                                    </>
+                                }
+                       
                     </div>
 
                     <hr className='mb-4' />
                     <div className="mb-4">
                         <h2 className="text-xl font-semibold text-blue-600">Education</h2>
                         {
+                            (defaultApplicantDetails?.qualification_details.length )?<>
+                            {
                             defaultApplicantDetails?.qualification_details.map((qualification, value) => {
                                 return (
                                     <>
@@ -115,6 +133,12 @@ const Resume = forwardRef(({ defaultApplicantDetails, componentRef, jobStatus }:
                                 )
                             })
                         }
+                            </>:<>
+                            <div className="mt-2 text-lg text-semibold text-gray-600 border-4 border-dashed h-24 items-center flex justify-center py-2 px-4  rounded-xl">Education not added</div>
+                                   
+                            </>
+                        }
+                        
                     </div>
                     <hr className='mb-4' />
                     <div className='copy_right flex items-center justify-center ms-auto w-100 relative bottom-0'>

@@ -20,7 +20,7 @@ const NavBar = () => {
         showModal(modalId);
     }
     const leftMethod = () =>{
-        const path=`/recruiter/${action}`;
+        const path=`/employer/${action}`;
         navigate(path);
     }
     const rightMethod = () =>{
@@ -54,7 +54,7 @@ const NavBar = () => {
         <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
     </div>
                 <div className="max-w-screen-xl flex flex-wrap justify-center mx-auto p-4 sm:justify-between" id='items'>
-                    <a href="https://flowbite.com/" className="flex items-center " id="logo">
+                    <a href="" className="flex items-center " id="starmark">
                         <img src={logo} className="h-12 mr-3" alt="Flowbite Logo" />
                     </a>
                     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">

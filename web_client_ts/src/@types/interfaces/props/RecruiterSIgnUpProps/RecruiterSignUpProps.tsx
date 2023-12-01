@@ -5,5 +5,6 @@ export interface IRecruiterSignupProps{
     handleChnageRecruiterDetails: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void,
     passwordError?:boolean,
     emailError?:boolean,
-    handleChangeOtp?:(otp:string)=>void
+    handleChangeOtp?:(otp:string)=>void,
+    errors?:any
 }

@@ -25,23 +25,23 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                         </div>
                         <ul className="flex items-center gap-5">
             <li className="p-4 border-b-2 focus:ring border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active">
-              <Link to="/applicant/matchedJobs/" className='focus:text-blue-700 flex gap-1 items-center'><FourBoxIcon />Job Dashboard</Link>
+              <Link to="/jobSeeker/matchedJobs/" className='focus:text-blue-700 flex gap-1 items-center'><FourBoxIcon />Job Dashboard</Link>
             </li>
             <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
-            <Link to="/applicant/profile" className='focus:text-blue-700 flex gap-1 items-center'><UserIcon />My Profile</Link>
+            <Link to="/jobSeeker/profile" className='focus:text-blue-700 flex gap-1 items-center'><UserIcon />My Profile</Link>
          
             </li>
             <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
-            <Link to="/applicant/performance" className='focus:text-blue-700 flex gap-1 items-center'><CompassIcon />Applied Jobs</Link>
+            <Link to="/jobSeeker/performance" className='focus:text-blue-700 flex gap-1 items-center'><CompassIcon />Applied Jobs</Link>
          
             </li>
             <li className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
-            <Link to="/applicant/inbox/" className='focus:text-blue-700 flex gap-1 items-center'><ChatIcon /> Inbox</Link>
+            <Link to="/jobSeeker/inbox/" className='focus:text-blue-700 flex gap-1 items-center'><ChatIcon /> Inbox</Link>
          
             </li>
         </ul>
                         {/* <ul className="hidden md:flex items-center h-full">
-                            <Link to="/applicant/matchedJobs/">
+                            <Link to="/jobSeeker/matchedJobs/">
                                 <li className="cursor-pointer p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mx-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
                                         <FourBoxIcon />
@@ -49,7 +49,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                     Job Dashboard
                                 </li>
                             </Link>
-                            <Link to="/applicant/profile">
+                            <Link to="/jobSeeker/profile">
                                 <div className="cursor-pointer  p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
                                     <span className="mr-2">
                                         <UserIcon />
@@ -57,7 +57,7 @@ const ApplicantDesktopNavbar = ({ profile, setProfile, logout }: IDesktopApplica
                                     My Profile
                                 </div>
                             </Link>
-                            <Link to="/applicant/performance" className="cursor-pointer p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
+                            <Link to="/jobSeeker/performance" className="cursor-pointer p-3 rounded-lg focus:bg-gray-100 hover:bg-gray-100 h-full flex items-center text-md font-medium hover:text-indigo-700 text-black mr-10 tracking-normal transition duration-150 ease-in-out">
                                 <span className="mr-2">
                                     <CompassIcon />
                                 </span>

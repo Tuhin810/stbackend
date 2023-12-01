@@ -33,6 +33,7 @@ import jobHunt from './Job-hunt-bro.svg'
 import warning from './Warning-cuate.svg'
 import forgetPass from './Forgot password-bro.svg'
 import imageUpload from './imageUpload.svg'
+import qrCodeImg from "./QR Code-bro.svg";
 
 export {
 	get_find,
@@ -69,5 +70,6 @@ export {
 	jobHunt,
 	warning,
 	forgetPass,
-	imageUpload
+	imageUpload,
+	qrCodeImg
 };

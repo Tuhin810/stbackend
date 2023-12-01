@@ -11,11 +11,18 @@ import { hideModal, showModal } from "../../../../../utils/commonFunctions/Handl
 import WarningModal from "../../../../shared/warningModal/WarningModal";
 import { StateList } from "../../../../../constants/stateSuggestion";
 import CompanyRegistrationPage4 from "../companyRegistrationPage4/CompanyRegistrationPage4";
+import { validateName } from "../../../../../utils/commonFunctions/validateName";
+import { validatePhone } from "../../../../../utils/commonFunctions/validatePhone";
+import { validateEmail } from "../../../../../utils/commonFunctions/validateEmail";
 
 const CompanyRegistrationForm = () => {
     const navigate = useNavigate();
     const [page, setPage] = useState<number>(0);
+    const [pageOnerrors, setPageOnerrors] = useState<{ first_name?: string; email?: string ;phone?: string }>({});
+    // const [pageTworrors, setPageTwoErrors] = useState<{ phone?: string }>({});
+    // const [pageThreeerrors, setPageThreeErrors] = useState<{ email?: string; password?: string }>({});
     const [buttonText, setButtonText] = useState<string>("Next");
+    const [emailError, setEmailError] = useState<boolean>(false);
     const [warningMsg, setWarningMsg] = useState<string>("");
     const [companyDetails, setCompanyDetails] = useState<CompanyDetails>({
         name: "",
@@ -40,11 +47,12 @@ const CompanyRegistrationForm = () => {
     }
     const handleNext = () => {
         if (page === 0) {
-            if (companyDetails.name === "" || companyDetails.email === "" || companyDetails.phone === 0) {
+            if (companyDetails.name === "" || companyDetails.email === "" || companyDetails.phone === 0 || companyDetails.email === "") {
                 setWarningMsg("Company Name, Email, Phone Number can not be blank")
                 handleOpenWarning();
                 return;
             }
+           
         }
         if (page === 1) {
             if (companyDetails.pin === 0 || companyDetails.address === "") {
@@ -52,6 +60,7 @@ const CompanyRegistrationForm = () => {
                 handleOpenWarning();
                 return;
             }
+            
         }
         if (page === 2) {
             if (companyDetails.establish_year === 0 || companyDetails.no_of_workers === 0) {
@@ -77,9 +86,28 @@ const CompanyRegistrationForm = () => {
 
     const handleChangeCompanyDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = event.target;
+        if(name==="name"){
+            const nameError=validateName(value,name);
+            setPageOnerrors(Object.assign({}, pageOnerrors, { [name]: nameError }))
+            setCompanyDetails(Object.assign({},  companyDetails, { [name]: Number(value) }));
+          }
         if (name === "pin" || name === "phone" || name === "no_of_workers" || name === "establish_year") {
             setCompanyDetails(Object.assign({}, companyDetails, { [name]: Number(value) }))
         }
+        if(name==="phone"){
+            const phoneError=validatePhone(value);
+            setPageOnerrors(Object.assign({}, pageOnerrors, { "phone": phoneError }))
+            setCompanyDetails(Object.assign({}, companyDetails, { [name]: Number(value) }));
+          }
+        // if (name === "email") {
+        //     const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+        //     (!emailRegex.test(companyDetails?.email)) ? setEmailError(true) : setEmailError(false)
+        //   }
+        //   if(name==="email"){
+        //     const emailError=validateEmail(value);
+        //     setPageOnerrors(Object.assign({}, pageOnerrors, { "email": emailError }))
+        //     setCompanyDetails(Object.assign({}, companyDetails, { [name]: Number(value) }));
+        //   }
         else {
             setCompanyDetails(Object.assign({}, companyDetails, { [name]: value }))
         }
@@ -88,7 +116,7 @@ const CompanyRegistrationForm = () => {
     const handleSubmit = async () => {
         const response = await registerNewCompany(companyDetails);
         if (response?.status === 200) {
-            navigate('/recruiter/signup')
+            navigate('/employer/signup')
         }
     }
 
@@ -111,7 +139,7 @@ const CompanyRegistrationForm = () => {
                         <h2 className="text-2xl font-semibold mb-4">Register Your <span className="text-blue-700"> Company </span></h2>
                         {
                             (page === 0) ?
-                                <CompanyRegistrationPage1 companyDetails={companyDetails} setCompanyDetails={setCompanyDetails} handleChangeCompanyDetails={handleChangeCompanyDetails} /> : null
+                                <CompanyRegistrationPage1 companyDetails={companyDetails} setCompanyDetails={setCompanyDetails} handleChangeCompanyDetails={handleChangeCompanyDetails} errors={pageOnerrors}/> : null
                         }
                         {
                             (page === 1) ?

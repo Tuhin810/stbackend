@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom"
 const Pricing = () => {
   const navigate = useNavigate();
     const handleLoginButton = () => {
-      navigate('/applicant/login')
+      navigate('/jobSeeker/login')
     }
     const handleSignUpButton = () => {
-      navigate('/applicant/signup')
+      navigate('/jobSeeker/signup')
     }
   return (
     <div>

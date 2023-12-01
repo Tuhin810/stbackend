@@ -49,9 +49,16 @@ const MyLeftProfile = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
                     <img className="w-32 h-32 mb-3 rounded-full  shadow-xl shadow-orange-200 border-y-4 border-x-4 border-orange-200 "
                         src={defaultApplicantDetails?.photo?.toString()} />
                     <label htmlFor="file">
-
-                        <img className='h-10 w-10 -mt-12 ml-20 cursor-pointer' src="https://img.icons8.com/?size=160&id=102714&format=png" alt="" />
-                    </label>
+                    <div  className="group relative px-4 cursor-pointer">
+        <div className="flex  items-center justify-center rounded-full hover:text-blue-500">
+        <img className='h-10 w-10 -mt-12 ml-20 cursor-pointer' src="https://img.icons8.com/?size=160&id=102714&format=png" alt="" />
+                  
+        </div>
+        <span className="absolute -top-24 left-[90%] -translate-x-[50%] z-20 origin-left scale-0 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+            Upload Photo
+        </span>
+    </div>
+                          </label>
                     <input id="file" type="file"
                         hidden
                         onChange={e => convertImageToUrl(e)}

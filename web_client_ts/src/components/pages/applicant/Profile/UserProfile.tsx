@@ -22,26 +22,7 @@ const ApplicantProfile = () => {
   const { applicantloggedinDetails } = useContext(applicantContext);
   const navigate = useNavigate();
   const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
-  // const { applicantDispatch } = useContext(applicantContext);
-  // const resumeLink = window.location.host + '/resume/' + applicantDetails._id;
-  // const handleChangeResumePrivacy = async (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   const { value } = event.target;
-  //   updatePrivacy(Number(value));
-  // }
 
-  // const updatePrivacy = async (resumeVisibilty: number) => {
-  //   await updateApplicantPrivacy(applicantDetails._id!, resumeVisibilty).then(response => {
-  //     if (response?.status === 200) {
-  //       applicantDispatch({ type: "updateDetails", payload: response?.data.data })
-  //     }
-  //   }).catch(error => {
-  //     console.log(error);
-  //   })
-  // }
-
-  // const { applicantDetails } = useContext(applicantContext).applicantloggedinDetails;
-
-  // Get the current URL of the page.
   const currentUrl = window.location.host + '/resume/' + applicantDetails._id;
 
   const shareOnWhatsApp = () => {
@@ -59,6 +40,8 @@ const ApplicantProfile = () => {
     if (!applicantloggedinDetails.applicantDetails || applicantloggedinDetails.applicantDetails === undefined) {
       navigate("/home");
     }
+    console.log(applicantloggedinDetails.applicantDetails);
+    
   }, [])
 
   return (
@@ -73,7 +56,7 @@ const ApplicantProfile = () => {
           </div>
           {/*RIGHT side  */}
           <div className="w-full flex flex-col gap-7 md:ml-80">
-            <ApllicantBio/>
+            <ApllicantBio defaultApplicantDetails={applicantDetails}/>
             <MyProfileDetails defaultApplicantDetails={applicantDetails} />
             <MySkill skillList={applicantDetails?.skills} />
             <MyQualification qualificationDetails={applicantDetails?.qualification_details} />

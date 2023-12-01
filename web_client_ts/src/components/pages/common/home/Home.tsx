@@ -28,11 +28,11 @@ const Home = () => {
         showModal(modalId);
     }
     const leftMethod = () =>{
-        const path=`/recruiter/${action}`;
+        const path=`/employer/${action}`;
         navigate(path);
     }
     const rightMethod = () =>{
-        const path=`/applicant/${action}`;
+        const path=`/jobSeeker/${action}`;
         navigate(path);
     }
     return (

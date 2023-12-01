@@ -14,6 +14,9 @@ import OtpVerification from '../OtpVerificationPage/OtpVerification';
 import { confirmationResult, sendOtp } from '../../../../../../utils/service/firebase.service';
 import Spinner from '../../../../../shared/spinner/Spinner';
 import {Alert} from '../../../../../shared/alert/Alert';
+import { validateName } from '../../../../../../utils/commonFunctions/validateName';
+import { validatePhone } from '../../../../../../utils/commonFunctions/validatePhone';
+import { validatePassword } from '../../../../../../utils/commonFunctions/validatePassword';
 
 const RecruiterSignupForm = () => {
   const navigate = useNavigate();
@@ -27,6 +30,9 @@ const RecruiterSignupForm = () => {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [companyList, setCompanyList] = useState<CompanyList[]>([]);
   const [page, setPage] = useState<number>(0);
+  const [pageOnerrors, setPageOnerrors] = useState<{ first_name?: string; last_name?: string }>({});
+  const [pageTworrors, setPageTwoErrors] = useState<{ phone?: string }>({});
+  const [pageThreeerrors, setPageThreeErrors] = useState<{ email?: string; password?: string }>({});
   const [buttonText, setButtonText] = useState<string>('Next');
   const [recruiterSignUpDetail, setRecruiterSignUpDetail] = useState<RecruiterDetails>({
     first_name: "",
@@ -53,15 +59,54 @@ const RecruiterSignupForm = () => {
       const recruiterDetails = response.data.data as RecruiterDetails;
       dispatch({ type: "login", payload: recruiterDetails })
       loggedIn({ type: "login", userType: "recruiter" });
-      navigate('/recruiter/jobs');
+      navigate('/employer/pricing');
     }else{
       alert("error")
     }
   }
   const [disable, setDisable] = useState<boolean>(false);
  
+
+  const handlePageIncrement = async () => {
+    if (page === 1) {
+      console.log("Checking pageOnerrors:", pageOnerrors);
+      if (pageOnerrors.first_name || pageOnerrors.last_name || recruiterSignUpDetail.first_name === undefined || recruiterSignUpDetail.last_name === undefined) {
+        console.log("Invalid first_name or last_name");
+        alert("First Name or Last Name may be invalid");
+        return;
+      }
+    }
+    if (page === 2) {
+      if (pageTworrors.phone || recruiterSignUpDetail.phone ===undefined) {
+        alert("Phone Number be invalid")
+        return;
+      }
+    }
+    else if (page === 3) {
+      console.log("page 4");
+      await validateOtp();
+      return;
+    }
+    setPage(prev => prev + 1);
+  }
+
+
   const handleChnageRecruiterDetails = useCallback((event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
+    if(name==="first_name" || name==="last_name"){
+      const nameError=validateName(value,name);
+      setPageOnerrors(Object.assign({}, pageOnerrors, { [name]: nameError }))
+      setRecruiterSignUpDetail(Object.assign({},  recruiterSignUpDetail, { [name]: Number(value) }));
+    }
+    if(name==="phone"){
+      const phoneError=validatePhone(value);
+      setPageTwoErrors(Object.assign({}, pageTworrors, { "phone": phoneError }))
+      setRecruiterSignUpDetail(Object.assign({}, recruiterSignUpDetail, { [name]: Number(value) }));
+    }
+    if(name==="password"){
+      const passwordError=validatePassword(value);
+      setPageThreeErrors(Object.assign({}, pageThreeerrors, { "password": passwordError }));
+    }
     if (name === "cnf_password") {
       (recruiterSignUpDetail.password !== value) ? setPasswordError(true) : setPasswordError(false);
     }
@@ -99,18 +144,7 @@ const RecruiterSignupForm = () => {
   }
 
 
-  const handlePageIncrement = async () => {
-    if (page === 1) {
-      console.log("otp");
-      senOtpToPhone();
-    }
-    else if (page === 3) {
-      console.log("page 4");
-      await validateOtp();
-      return;
-    }
-    setPage(prev => prev + 1);
-  }
+ 
 
   const handlePageDecrease = async () => {
     if (page > 0) {
@@ -157,13 +191,13 @@ const RecruiterSignupForm = () => {
               <h1 className="text-2xl font-semibold mb-6">Sign Up</h1>
               {
                 (page === 0) ?
-                  <RecruiterSignUpPage1 companyList={companyList} handleChnageRecruiterDetails={handleChnageRecruiterDetails} />
+                  <RecruiterSignUpPage1 companyList={companyList} handleChnageRecruiterDetails={handleChnageRecruiterDetails} errors={pageOnerrors} />
                   :
                   (page === 1) ?
-                    <RecruiterSignUpPage2 handleChnageRecruiterDetails={handleChnageRecruiterDetails} emailError={emailError} />
+                    <RecruiterSignUpPage2 handleChnageRecruiterDetails={handleChnageRecruiterDetails} emailError={emailError} errors={pageTworrors} />
                     :
                     (page === 2) ?
-                      <RecruiterSignUpPage3 handleChnageRecruiterDetails={handleChnageRecruiterDetails} passwordError={passwordError} />
+                      <RecruiterSignUpPage3 handleChnageRecruiterDetails={handleChnageRecruiterDetails} passwordError={passwordError} errors={pageThreeerrors}/>
                       :
                       (page === 3) ?
                         <OtpVerification handleChangeOtp={handleChangeOtp} />
