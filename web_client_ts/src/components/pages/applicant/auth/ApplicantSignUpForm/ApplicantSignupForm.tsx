@@ -76,6 +76,48 @@ const ApplicantSignupForm = () => {
 
 
 
+  const [buttonType, setButtonType] = useState<"button" | "submit">("button");
+  const [pageOnerrors, setPageOnerrors] = useState<{ first_name?: string; last_name?: string }>({});
+  const [pageTworrors, setPageTwoErrors] = useState<{ phone?: string }>({});
+  const [pageThreeerrors, setPageThreeErrors] = useState<{ email?: string; password?: string }>({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+
+  // const validatePassword = (password:any) => {
+  //   let strengthLevel = 0;
+  //   const lowerCase = /[a-z]/g;
+  //   const upperCase = /[A-Z]/g;
+  //   const numbers = /[0-9]/g;
+  //   const specialChars = /[!@#$%^&*(),.?":{}|<>]/g;
+
+  //   if(password.match(lowerCase)) strengthLevel++;
+  //   if(password.match(upperCase)) strengthLevel++;
+  //   if(password.match(numbers)) strengthLevel++;
+  //   if(password.match(specialChars)) strengthLevel++;
+
+  //   switch(strengthLevel) {
+  //     case 1:
+  //       return 'Weak'
+  //       break;
+  //     case 2:
+  //       return 'Medium'
+
+  //       break;
+  //     case 3:
+  //       return 'Strong'
+
+  //       break;
+  //     case 4:
+  //       return 'Very Strong'
+  //       break;
+  //     default:
+  //       return 'Very Weak'
+
+  //   }
+  // }
+
+
+
   const handlePageIncrement = async () => {
     if (page === 1) {
       console.log(pageOnerrors);
@@ -88,10 +130,14 @@ const ApplicantSignupForm = () => {
     if (page === 2) {
       if (pageTworrors.phone || applicantDetails.phone ===undefined) {
         alert("Phone Number be invalid")
+      if (pageTworrors.phone || applicantDetails.phone ===undefined) {
+        alert("Phone Number be invalid")
         return;
       }
     }
     if (page === 3) {
+      if (pageThreeerrors.email || pageThreeerrors.password || applicantDetails.email===undefined || applicantDetails.password===undefined) {
+        alert("Email or Password or both may be invalid")
       if (pageThreeerrors.email || pageThreeerrors.password || applicantDetails.email===undefined || applicantDetails.password===undefined) {
         alert("Email or Password or both may be invalid")
         return;
@@ -103,8 +149,10 @@ const ApplicantSignupForm = () => {
     if (page === 3) {
       senOtpToPhone();
       setButtonType("submit");
+      setButtonType("submit");
     }
     else if (page === 4) {
+    await validateOtp();
     await validateOtp();
     }
   }
@@ -134,7 +182,23 @@ const ApplicantSignupForm = () => {
       setPageTwoErrors(Object.assign({}, pageTworrors, { "phone": phoneError }))
       setApplicantDetails(Object.assign({}, applicantDetails, { [name]: Number(value) }));
     }
+    if(name==="first_name" || name==="last_name"){
+      const nameError=validateName(value,name);
+      setPageOnerrors(Object.assign({}, pageOnerrors, { [name]: nameError }))
+      setApplicantDetails(Object.assign({}, applicantDetails, { [name]: Number(value) }));
+    }
+    if(name==="phone"){
+      const phoneError=validatePhone(value);
+      setPageTwoErrors(Object.assign({}, pageTworrors, { "phone": phoneError }))
+      setApplicantDetails(Object.assign({}, applicantDetails, { [name]: Number(value) }));
+    }
     if (name === "email") {
+      const emailError = validateEmail(value);
+      setPageThreeErrors(Object.assign({}, pageThreeerrors, { "email": emailError }));
+    }
+    if(name==="password"){
+      const passwordError=validatePassword(value);
+      setPageThreeErrors(Object.assign({}, pageThreeerrors, { "password": passwordError }));
       const emailError = validateEmail(value);
       setPageThreeErrors(Object.assign({}, pageThreeerrors, { "email": emailError }));
     }
@@ -178,9 +242,11 @@ const ApplicantSignupForm = () => {
       setLoading(false);
       setHasError(true);
 
+
       setErrorMessage(error.response.data.message);
     })
   }
+
 
 
   useEffect(() => {
@@ -229,13 +295,36 @@ const ApplicantSignupForm = () => {
                     (page === 4) ?
                       <SignUpPage4 handleChangeOtp={handleChangeOtp} /> : null
                   }
+                  {
+                    (page === 1) ?
+                      <SignUpPage1 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} errors={pageOnerrors} /> : null
+                  }
+                  {
+                    (page === 2) ?
+                      <SignUpPage2 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} errors={pageTworrors} passwordError={passwordError} /> :
+                      null
+                  }
+                  {
+                    (page === 3) ?
+                      <SignUpPage3 applicantDetails={applicantDetails} handleChangeApplicantDetails={handleChangeApplicantDetails} errors={pageThreeerrors} passwordError={passwordError} /> :
+                      null
+                  }
+                  {
+                    (page === 4) ?
+                      <SignUpPage4 handleChangeOtp={handleChangeOtp} /> : null
+                  }
 
+                  <div className="flex w-full">
+                    <button type="button" className="text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
                   <div className="flex w-full">
                     <button type="button" className="text-white w-1/2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 
                   py-2.5 text-center mr-2 mb-2" onClick={handlePageDecrease}>Back</button>
 
                     <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                    <button type="button" disabled={disable} id="sign-in-button" className="sign-in-button w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
              focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2" onClick={handlePageIncrement}>{buttonText}</button>
+                  </div>
+                  <ApplicantGoogleSignUp applicantDetails={applicantDetails} setErrorMessage={setErrorMessage} setHasError={setHasError} setLoading={setLoading} key={0} />
                   </div>
                   <ApplicantGoogleSignUp applicantDetails={applicantDetails} setErrorMessage={setErrorMessage} setHasError={setHasError} setLoading={setLoading} key={0} />
               </div>

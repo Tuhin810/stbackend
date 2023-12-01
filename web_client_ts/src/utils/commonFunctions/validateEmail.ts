@@ -1,6 +1,6 @@
 export const validateEmail = (value: string) => {
     // Email regex pattern
-    const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!value) {
         return 'Email is required';
