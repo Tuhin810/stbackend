@@ -1,8 +1,11 @@
 import EditIcon from '../../../../shared/icons/editIcon/EditIcon'
 import { showModal } from '../../../../../utils/commonFunctions/HandleModal'
+import { AddBioModal } from '../../modals/AddBioModal/AddBioModal'
+import { MyProfileDetailsProps } from '../../../../../@types/interfaces/props/myProfileDetailsProps/MyProfileDetailsProps'
 
-export const ApllicantBio = () => {
+export const ApllicantBio = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
   return (
+    <div className="">
     <div className="w-full bg-white drop-shadow-xl rounded-3xl h-auto pb-5 px-2 md:px-5 pt-8">
                 <div className="deatils">
                     <div>
@@ -20,7 +23,7 @@ export const ApllicantBio = () => {
                             </div>
                             
                             <div className="text-gray-700 text-sm px-5 pb-5">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta laborum, unde quos nostrum libero non, asperiores reprehenderit iste pariatur saepe nemo itaque accusantium quidem neque aperiam ea possimus perferendis iure quo deleniti. Velit illum obcaecati eum repellat, minima nam eligendi earum? Eligendi, voluptates!</p>
+                                <p>{defaultApplicantDetails?.profile_bio}</p>
                             </div>
 
                             
@@ -29,6 +32,9 @@ export const ApllicantBio = () => {
                         </div>
                     </div>
                 </div>
+               
+            </div>
+            <AddBioModal defaultApplicantDetails={defaultApplicantDetails}/>
             </div>
   )
 }

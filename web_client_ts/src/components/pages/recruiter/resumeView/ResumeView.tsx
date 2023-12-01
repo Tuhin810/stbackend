@@ -9,7 +9,7 @@ import UserPlusIcon from '../../../shared/icons/userPlusIcon/UserPlusIcon';
 import { useNavigate, useParams } from 'react-router-dom';
 import CommonModal from '../../../shared/modal/CommonModal';
 import { yes_no } from '../../../../assets/images';
-import Alert from '../../../shared/alert/Alert';
+import {Alert} from '../../../shared/alert/Alert';
 import "./ResumeView.css"
 import ChatIcon from '../../../shared/icons/chatIcon/ChatIcon';
 
@@ -99,7 +99,7 @@ const ResumeView = () => {
 
     return (
         <div>
-            {error ? <Alert title={"Try Again Later"} type={"Danger"} text={errorMessage} color={"red"} img={""} handleClose={handleClose} /> : null}
+            {error ? <Alert text={errorMessage} type="danger"  title={'Error'} /> : null}
             <SharedResume jobApplied={jobDetails.accept} />
             <div className=''>
 

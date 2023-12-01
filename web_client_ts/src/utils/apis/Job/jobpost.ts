@@ -13,7 +13,7 @@ export const getJobDetailsByJobId =async (jobId:string) => {
 }
 
 export const brodcastJob =async (jobId:string) => {
-    const response = await Post(`job/brodcast/${jobId}`,{},header);
+    const response = await Post(`jobs/brodcast/${jobId}`,{},header);
     return response;
 }
 
@@ -33,7 +33,7 @@ export const getMatchedJobDetails = async (jobId:string,applicantId:string) => {
 }
 
 export const getMatchedApplicantStatus = async (jobId:string,status: string) => {
-    const response = await Put(`job/${status}/${jobId}`,{},header);
+    const response = await Put(`jobs/${status}/${jobId}`,{},header);
     return response;
 }
 

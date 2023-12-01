@@ -6,9 +6,11 @@ import './Hero.css'
 const Hero = ({ handleLoginButton, handleSignUpButton }: IHeroProps) => {
     return (
         <div>
+            
             <div className='home bg-[#f5f9ff] mb-10 px-5 pt-2 pb-14 sm:py-12 sm:pb-32  flex flex-col md:flex-row'>
+                
                 <div className='left-home' data-aos="fade-right">
-                    <h2 className='text-4xl font-extrabold text-gray-900  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-blue-500'>Success Your Future</span> Starts Here.</h2>
+                    <h2 className='text-4xl font-extrabold text-black  md:text-3xl lg:text-5xl '>Unlocking Doors to <span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-indigo-700 '>Success Your Future</span> Starts Here.</h2>
                     <p className='text-xs  md:text-sm font-normal text-gray-500 lg:text-xl  mt-9'>
                         Embark on your journey to excellence with career opportunities matching to your requirements. Job search now ends here! Starmarks brings to the job seekers the best of job opportunities to match their profiles and help them climb towards the ladder of success. Come join us today for free!
                     </p>

@@ -1,12 +1,12 @@
 import { AxiosHeaders } from "axios";
 
-export const NODE_ENV: "LOCAL" | "DEV" | "PROD" = "PROD";
+export const NODE_ENV: "LOCAL" | "DEV" | "PROD" = "DEV";
 
 export const baseURL: string =
     (NODE_ENV.toString() === "LOCAL") ?
         'http://localhost:8989/' :
         (NODE_ENV.toString() === "DEV") ?
-            'http://localhost:8989/' :
+            'http://192.168.1.57:8989/' :
             (NODE_ENV.toString() === "PROD") ?
                 'https://dnjggwx9e25i6.cloudfront.net/' :
                 ""

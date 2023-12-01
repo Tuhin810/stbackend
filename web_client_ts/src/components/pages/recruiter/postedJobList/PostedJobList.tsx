@@ -8,6 +8,7 @@ import BrodcastModal from '../brodcastModal/BrodcastModal';
 import NotFound from '../../../shared/notfound/NotFound';
 import { showModal } from '../../../../utils/commonFunctions/HandleModal';
 import './PostedJobList.css';
+import { LockModal } from '../modal/ErrorModal/LockModal/lockModal';
 
 const PostedJobList = () => {
   const [jobId, setJobId] = useState("");
@@ -34,10 +35,11 @@ const PostedJobList = () => {
     showModal("brodcast");
   }
   useEffect(() => {
-    console.log('rec', recruiterDetails);
-    if (recruiterDetails != undefined) {
-      getJobList(recruiterDetails._id!);
-    }
+    if (recruiterDetails) {
+      if(recruiterDetails._id){
+        getJobList(recruiterDetails._id);
+      }
+    }  
   }, []);
 
   return (
@@ -77,7 +79,7 @@ const PostedJobList = () => {
                       return (
                         <tr className="bg-white border-b-2  hover:bg-gray-50" key={value}>
                           <th scope="row" className="px-6 hover:underline py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
-                            < Link to={`/${globalLoggedIn.userType}/jobDetails/${job._id}`}>{job.job_title}</Link>
+                            < Link to={`/employer/jobDetails/${job._id}`}>{job.job_title}</Link>
 
                           </th>
                           <td className="px-6 py-4">
@@ -121,6 +123,7 @@ const PostedJobList = () => {
           </>
       }
       <BrodcastModal jobId={jobId} />
+      <LockModal/>
     </div>
 
 

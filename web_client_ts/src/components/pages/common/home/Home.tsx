@@ -28,11 +28,11 @@ const Home = () => {
         showModal(modalId);
     }
     const leftMethod = () =>{
-        const path=`/recruiter/${action}`;
+        const path=`/employer/${action}`;
         navigate(path);
     }
     const rightMethod = () =>{
-        const path=`/applicant/${action}`;
+        const path=`/jobSeeker/${action}`;
         navigate(path);
     }
     return (
@@ -40,7 +40,7 @@ const Home = () => {
             <div className="fixed layout top-0 z-10 w-full">
                 {/* <ComplexNavbar/> */}
             </div>
-                <div className="home-page">
+                <div className="home-page pt-5">
                     <Hero handleLoginButton={handleLoginButton} handleSignUpButton={handleSignUpButton}/> 
                     <CommonModal leftMethod={leftMethod} leftButtonText='Employer' rightMethod={rightMethod} rightButtontext='Job Seeker' message={`${action} As a`} id={modalId} Img={modeImg} />
                     <Stats/>

@@ -56,7 +56,7 @@ const PostedJobDashboard = () => {
                 </div>
                 <div>
                   <span className="block text-2xl font-bold">{jobDetails?.no_of_matched_profiles}</span>
-                  <span className="block text-gray-500">Mached Profiles</span>
+                  <span className="block text-gray-500">Eligible Candidates</span>
                 </div>
               </div>
               <div className="flex items-center p-8 bg-white shadow rounded-lg">
@@ -135,9 +135,13 @@ const PostedJobDashboard = () => {
 
                     {/* job description starts */}
 
-                    <div className="max-h-52 overflow-y-scroll">
-                      <h2 className="text-xl font-bold my-2"> Job Description</h2>
-                      <p>{jobDetails.job_description}</p>
+                    <div className="max-h-52 overflow-y-scroll hide_scoll">
+                      <h2 className="text-xl font-bold my-2 text-gray-800 flex gap-2 items-center flex">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="gray" className="bi bi-info-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+</svg>
+                         Job Description</h2>
+                      <p className="px-3 text-gray-700">{jobDetails.job_description}</p>
                     </div>
 
                     {/* job details ends */}
@@ -171,7 +175,7 @@ const PostedJobDashboard = () => {
               </div>
               <div className="row-span-3 bg-white shadow rounded-lg">
                 <div className="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
-                  <span>Matched Applicant List</span>
+                  <span>Eligible Applicant List</span>
                   <button type="button" className="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600" id="options-menu" aria-haspopup="true" aria-expanded="true">
                     Descending
                     <svg className="-mr-1 ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

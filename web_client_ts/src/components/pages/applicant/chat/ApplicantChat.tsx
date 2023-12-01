@@ -10,6 +10,8 @@ const ApplicantChat = () => {
     return (
         <div className="mt-20">
             <ChatBoard recruiterId={recruiterId!} applicantId={applicantDetails._id!} sender="applicant" />
+            
+
         </div>
     )
 }

@@ -79,6 +79,7 @@ export const ApplicantPerformance = () => {
           </div>
         </div>
       </div>
+    
     </div>
   )
 }

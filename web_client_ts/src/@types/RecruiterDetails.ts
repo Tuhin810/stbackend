@@ -19,5 +19,6 @@ export interface RecruiterDetails{
     dob?:Date,
     photo:BufferSource,
     company_id:string,
-    company_details:CompanyDetails
+    company_details:CompanyDetails,
+    subscription:boolean
 }
