@@ -13,7 +13,6 @@ import { StateList } from "../../../../../constants/stateSuggestion";
 import CompanyRegistrationPage4 from "../companyRegistrationPage4/CompanyRegistrationPage4";
 import { validateName } from "../../../../../utils/commonFunctions/validateName";
 import { validatePhone } from "../../../../../utils/commonFunctions/validatePhone";
-import { validateEmail } from "../../../../../utils/commonFunctions/validateEmail";
 
 const CompanyRegistrationForm = () => {
     const navigate = useNavigate();
@@ -22,7 +21,6 @@ const CompanyRegistrationForm = () => {
     // const [pageTworrors, setPageTwoErrors] = useState<{ phone?: string }>({});
     // const [pageThreeerrors, setPageThreeErrors] = useState<{ email?: string; password?: string }>({});
     const [buttonText, setButtonText] = useState<string>("Next");
-    const [emailError, setEmailError] = useState<boolean>(false);
     const [warningMsg, setWarningMsg] = useState<string>("");
     const [companyDetails, setCompanyDetails] = useState<CompanyDetails>({
         name: "",

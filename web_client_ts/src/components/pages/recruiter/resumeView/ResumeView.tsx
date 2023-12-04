@@ -19,7 +19,7 @@ const ResumeView = () => {
     const applicantId = params.id!;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [show, setShow] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>(false);
+    // const [error, setError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [message, setMessage] = useState<string>("");
     const [jobDetails, setJobDetails] = useState<MatchedApplicant>({
@@ -35,7 +35,7 @@ const ResumeView = () => {
         const response = await getMatchedJobDetails(jobId, applicantId);
         if (response?.status === 200) {
             setJobDetails(response?.data.data);
-            console.log("matched", response?.data.data.status);
+            console.log("job status?", response?.data.data.status);
             setStatus(response?.data.data.status)
 
         }
@@ -50,39 +50,15 @@ const ResumeView = () => {
     }
 
     const handleStatus = async (status: string) => {
+        setErrorMessage("");
         setMessage("Are You Sure to Hire This Candidate ?")
         // showModal("selectionModal");
         getMatchedApplicantStatus(jobDetails.jobId, status)
         console.log(status);
-        navigate("/recruiter/jobs");
+        navigate("/employer/jobs");
     }
 
-    const handleClose = () => {
-        setError(false);
-        setErrorMessage("");
-    }
-    // const handleHire = () => {
-    //     if (jobDetails.accept) {
-    //         setMessage("Are You Sure to Hire This Candidate ?")
-    //         showModal("hireModal");
-    //     }
-    //     else {
-    //         setError(true);
-    //         setErrorMessage("This User has not accepeted the job invitation yet");
-    //         console.log("true");
-    //     }
-    // }
-    // const handleReject = () => {
-    //     if (jobDetails.status !== "hired") {
-    //         setMessage("Are You Sure to Reject This Candidate ?")
-    //         showModal("rejectModal");
-    //     }
-    //     else {
-    //         setError(true);
-    //         setErrorMessage("You have Already Hired this Candidate.")
-    //         console.log("true");
-    //     }
-    // }
+
     const rightHireMethod = () => {
         hideModal("hireModal");
         console.log("closed");
@@ -99,7 +75,8 @@ const ResumeView = () => {
 
     return (
         <div>
-            {error ? <Alert text={errorMessage} type="danger"  title={'Error'} /> : null}
+            //here false will be replaced with error
+            {false ? <Alert text={errorMessage} type="danger"  title={'Error'} /> : null}
             <SharedResume jobApplied={jobDetails.accept} />
             <div className=''>
 

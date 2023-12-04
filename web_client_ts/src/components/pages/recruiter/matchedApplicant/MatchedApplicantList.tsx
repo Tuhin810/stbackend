@@ -8,9 +8,12 @@ const MatchedApplicantList = ({ applicantList }: IMatchedApplicantApplicant) => 
     const params = useParams();
     const viewApplicantResume = (applicantId:string) =>{
         const jobId = params.jobId;
-        const path = `/recruiter/applicant-resume/${applicantId}/${jobId}`;
+        const path = `/employer/applicant-resume/${applicantId}/${jobId}`;
         navigte(path);
+        console.log(jobId);
     }
+   
+    
     return (
         <div >
             <div className="w-full h-full px-2 py-5">

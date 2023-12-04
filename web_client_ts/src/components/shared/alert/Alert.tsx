@@ -2,7 +2,7 @@ import { AlertProps } from '../../../@types/interfaces/props/AlertProps'
 import { hideModal } from '../../../utils/commonFunctions/HandleModal';
 import "./alert.css"
 // Test Push
-export const Alert = ({ title,text, type}: AlertProps) => {
+export const Alert = ({ text}: AlertProps) => {
     
     return (
 
@@ -18,7 +18,7 @@ export const Alert = ({ title,text, type}: AlertProps) => {
     )
 }
 
-export const Success = ({ title,text, type}: AlertProps) => {
+export const Success = ({text}: AlertProps) => {
     
     return (
 

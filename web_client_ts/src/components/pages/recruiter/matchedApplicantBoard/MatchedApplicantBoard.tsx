@@ -26,7 +26,7 @@ const MatchedApplicantBoard = ({matched_applicant_no,jobId}:MatchedApplicantProp
     <div className="w-full p-0">
     {
         (isLoading)?<><div className="flex justify-center"><Spinner/></div></>:
-        <MatchedApplicantList applicantList={applicantDetailsList}/>
+      <> <MatchedApplicantList applicantList={applicantDetailsList}/></> 
     }
     </div>
   )

@@ -81,9 +81,16 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    activated: {
+        type: Boolean,
+        default: false
+    },
     job_limit: {
         type: Number,
         default: 0
+    },
+    subscription_plan_object_id: {
+        type: mongoose.Schema.Types.ObjectId,
     }
 },
     {

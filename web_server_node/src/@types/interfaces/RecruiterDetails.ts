@@ -1,3 +1,5 @@
+import mongoose from "mongoose"
+
 export interface RecruiterSignUp {
     firebase_id: string,
     _id?: string,
@@ -21,5 +23,7 @@ export interface RecruiterSignUp {
     photo: Buffer,
     company_id: string,
     subscription: boolean,
-    job_limit: number
+    activated: boolean,
+    job_limit: number,
+    subscription_plan_object_id: mongoose.Schema.Types.ObjectId
 }

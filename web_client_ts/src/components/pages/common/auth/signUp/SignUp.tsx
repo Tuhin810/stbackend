@@ -1,4 +1,3 @@
-import React from 'react'
 import "./signup.css"
 import img from "../../../../../assets/images/Milestones of business projects-bro.svg"
 export const SignUp = () => {

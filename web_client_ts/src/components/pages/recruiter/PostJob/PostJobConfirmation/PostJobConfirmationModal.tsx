@@ -4,7 +4,6 @@ import { JobDetailsProps } from "../../../../../@types/interfaces/props/JobDetai
 import { useContext } from "react";
 import { JobDetailsListContext } from "../../../../../context/jobDetails/JobDetailsContext";
 import { JobDetails } from "../../../../../@types/interfaces/JobDetails";
-import { showModal } from "../../../../../utils/commonFunctions/HandleModal";
 import { LockModal } from "../../modal/ErrorModal/LockModal/lockModal";
 
 const PostJobConfirmationModal = ({ jobDetails }: JobDetailsProps) => {

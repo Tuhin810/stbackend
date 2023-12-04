@@ -11,7 +11,7 @@ import RecruiterSignUpPage1 from '../RecruiterSignUpPage1/RecruiterSignUpPage1';
 import RecruiterSignUpPage2 from '../RecruiterSignUpPage2/RecruiterSignUpPage2';
 import RecruiterSignUpPage3 from '../RecruiterSignUpPage3/RecruiterSignUpPage3';
 import OtpVerification from '../OtpVerificationPage/OtpVerification';
-import { confirmationResult, sendOtp } from '../../../../../../utils/service/firebase.service';
+import { confirmationResult } from '../../../../../../utils/service/firebase.service';
 import Spinner from '../../../../../shared/spinner/Spinner';
 import {Alert} from '../../../../../shared/alert/Alert';
 import { validateName } from '../../../../../../utils/commonFunctions/validateName';
@@ -124,12 +124,6 @@ const RecruiterSignupForm = () => {
   const handleChangeOtp = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setOtp(value);
-  }
-
-  const senOtpToPhone = () => {
-    const phone = "+91" + recruiterSignUpDetail.phone.toString();
-    console.log(phone);
-    sendOtp(phone);
   }
 
   const validateOtp = async () => {

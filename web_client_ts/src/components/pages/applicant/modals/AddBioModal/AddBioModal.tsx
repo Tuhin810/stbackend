@@ -6,7 +6,7 @@ import { MyProfileDetailsProps } from "../../../../../@types/interfaces/props/my
 import { hideModal } from "../../../../../utils/commonFunctions/HandleModal";
 
 
-export const AddBioModal = ({ defaultApplicantDetails }: MyProfileDetailsProps) => {
+export const AddBioModal = ({  }: MyProfileDetailsProps) => {
 
     const { applicantDispatch } = useContext(applicantContext);
     const { applicantloggedinDetails } = useContext(applicantContext);
