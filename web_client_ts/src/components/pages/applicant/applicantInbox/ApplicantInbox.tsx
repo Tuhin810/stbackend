@@ -1,5 +1,4 @@
 import { applicantContext } from "../../../../context/applicantDetails/ApplicantContext";
-import ApplicantChatList from "./ApplicantChatList/ApplicantChatList"
 import { useContext } from 'react'
 const ApplicantInbox = () => {
   const { applicantloggedinDetails } = useContext(applicantContext);

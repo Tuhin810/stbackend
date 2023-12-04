@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { logo } from '../../../../assets/images';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { Link, useNavigate } from "react-router-dom";
@@ -6,16 +6,12 @@ import SideBar from '../sidebar/SideBar';
 
 import "./Nav.css"
 const RecruiterNavbar = () => {
-  const [show, setShow] = useState<boolean>(true);
+  // const [show, setShow] = useState<boolean>(true);
   const { recruiterDetails } = useContext(recruiterContext).recruiterloggedinDetails;
   const { company_details } = recruiterDetails;
   const { dispatch } = useContext(recruiterContext);
 
   const navigate = useNavigate();
-
-  const handleSidebar = () => {
-    setShow(!show);
-  }
 
   function myFunction() {
     document.getElementById("myDropdown")!.classList.toggle("show");
@@ -150,7 +146,7 @@ const RecruiterNavbar = () => {
           </div>
         </div>
       </header>
-      <SideBar show={show} logout={logout} />
+      <SideBar show={true} logout={logout} />
 
     </div>
   );

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
-import { globalContext } from '../../../../context/GlobalDetails/GlobalContext';
 import { recruiterContext } from '../../../../context/recruiterDetails/RecruiterContext';
 import { getJobsByRecruiter } from '../../../../utils/apis/recruiter/recruiter';
 import { JobDetailsListContext } from '../../../../context/jobDetails/JobDetailsContext';
@@ -12,7 +11,6 @@ import { LockModal } from '../modal/ErrorModal/LockModal/lockModal';
 
 const PostedJobList = () => {
   const [jobId, setJobId] = useState("");
-  const { globalLoggedIn } = useContext(globalContext);
   const { jobListDispatch } = useContext(JobDetailsListContext);
   const { jobDetailsListDetails } = useContext(JobDetailsListContext);
   const { jobList } = jobDetailsListDetails;

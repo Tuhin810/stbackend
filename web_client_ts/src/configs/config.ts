@@ -1,6 +1,6 @@
 import { AxiosHeaders } from "axios";
 
-export const NODE_ENV: "LOCAL" | "DEV" | "PROD" = "DEV";
+export const NODE_ENV: "LOCAL" | "DEV" | "PROD" = "LOCAL";
 
 export const baseURL: string =
     (NODE_ENV.toString() === "LOCAL") ?

@@ -34,7 +34,6 @@ const ApplicantSignupForm = () => {
   const [buttonText, setButtonText] = useState<string>("Continue");
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [applicantDetails, setApplicantDetails] = useState<ApplicantDetails>({} as ApplicantDetails);
-  const [buttonType, setButtonType] = useState<"button" | "submit">("button");
   const [pageOnerrors, setPageOnerrors] = useState<{ first_name?: string; last_name?: string }>({});
   const [pageTworrors, setPageTwoErrors] = useState<{ phone?: string }>({});
   const [pageThreeerrors, setPageThreeErrors] = useState<{ email?: string; password?: string }>({});
@@ -102,7 +101,6 @@ const ApplicantSignupForm = () => {
     }
     if (page === 3) {
       senOtpToPhone();
-      setButtonType("submit");
     }
     else if (page === 4) {
     await validateOtp();

@@ -5,7 +5,7 @@ import "../JobPage.css"
 import { SuccesModal } from "../jobAppliedSucces/SuccesModal";
 import Chip from "../../../../shared/chip/Chip";
 import { useState } from "react";
-import {Alert, Success} from "../../../../shared/alert/Alert";
+import {Success} from "../../../../shared/alert/Alert";
 
 export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: JobDetailsProps) => {
   const [apply,setApply]=useState<boolean>(false);

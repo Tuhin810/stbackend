@@ -23,7 +23,7 @@ router.route("/postjob").post(postNewJobs);
 router.route("/brodcast/:id").post(brodcastJob);
 router.route("/addPreferredJob").post(postApplicantPreferredJob);
 
-router.route("/hire/:jobId").put(matchedApplicantHire)
+router.route("/hired/:jobId").put(matchedApplicantHire)
 
 router.route("/deleteJobDetailsByJobId/:jobId").delete(deleteJob)
 
