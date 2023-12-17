@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { RecruiterSignUp } from "../../@types/interfaces/RecruiterDetails";
-import CompanyModel, { CompanySchema } from "../company/CompanySchema";
+import CompanyModel from "../company/CompanySchema";
 
 // model for new registration 
 
@@ -85,12 +85,16 @@ const recruiterSchema: Schema<RecruiterSignUp> = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    current_Plan: {
+        type: String,
+        default: null
+    },
     job_limit: {
         type: Number,
         default: 0
     },
     subscription_plan_object_id: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
     }
 },
     {

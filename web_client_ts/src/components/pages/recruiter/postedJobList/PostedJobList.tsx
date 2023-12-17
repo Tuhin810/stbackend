@@ -16,6 +16,7 @@ const PostedJobList = () => {
   const { jobList } = jobDetailsListDetails;
   const { recruiterloggedinDetails } = useContext(recruiterContext);
   const { recruiterDetails } = recruiterloggedinDetails
+  const [jobtime, setJobTime] = useState();
 
   const getJobList = async (recruiterId: string) => {
     if (!jobDetailsListDetails.isFetched) {
@@ -28,6 +29,8 @@ const PostedJobList = () => {
         })
     }
   }
+  
+
   const openBrodcastModal = (jobId: string) => {
     setJobId(jobId);
     showModal("brodcast");
@@ -84,7 +87,7 @@ const PostedJobList = () => {
                             {job.job_type}
                           </td>
                           <td className="px-6 py-4">
-                            {job.posted_date.toString()}
+                          {new Date(job.posted_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                           </td>
                           <td className="px-6 py-4 bg-gray-50">
                             {job.no_of_matched_profiles}

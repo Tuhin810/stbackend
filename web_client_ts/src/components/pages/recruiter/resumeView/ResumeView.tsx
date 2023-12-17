@@ -75,7 +75,7 @@ const ResumeView = () => {
 
     return (
         <div>
-            //here false will be replaced with error
+           
             {false ? <Alert text={errorMessage} type="danger"  title={'Error'} /> : null}
             <SharedResume jobApplied={jobDetails.accept} />
             <div className=''>

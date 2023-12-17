@@ -18,6 +18,14 @@ const setRecruiterLoggedIn = (recruiterloggedin: RecruiterLoggedInDetails, actio
                 isLoggedin: true,
                 recruiterDetails: recruiterDetails
             };
+        case "updateDetails":{
+            localStorage.setItem("details", JSON.stringify(action.payload));
+            return{
+                ...recruiterloggedin,
+                isLoggedin: true,
+                recruiterDetails: action.payload
+            }
+        }
         case "logout":
             localStorage.clear();
             return {
