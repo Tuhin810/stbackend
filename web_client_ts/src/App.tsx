@@ -64,12 +64,14 @@ const App = () => {
           <Route path="/admin" element={<Navigate to={'/admin/jobs'} />} />
           <Route path="/resume/:id" element={<SharedResume jobApplied={true} />} />
           <Route path="/newCompany" element={<CompanyRegistration />} />
+          
           {/* landing page */}
           <Route path="/" element={<LandingPage />}>
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/support" element={<Contact />} />
+       
           </Route>
 
           <Route path="/signup" element={< SignUp />} />
@@ -85,6 +87,9 @@ const App = () => {
             <Route path="/employer/chat/:applicantId" element={<EmployerChat />} />
             <Route path="/employer/pricing" element={<RecruiterPricing />} />
             <Route path="/employer/jobDetails/:jobId" element={<PostedJobDashboard />} />
+            <Route path="/employer/create-checkout-session" element={<PostedJobDashboard />} />
+            <Route path="/employer/success" element={<>succes</>} />
+            <Route path="/employer/cancel" element={<>cancel</>} />
           </Route>
 
           <Route path="/jobSeeker/signup" element={<ApplicantSignup />} />

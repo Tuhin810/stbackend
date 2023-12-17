@@ -25,5 +25,7 @@ export interface RecruiterSignUp {
     subscription: boolean,
     activated: boolean,
     job_limit: number,
-    subscription_plan_object_id: mongoose.Schema.Types.ObjectId
+    // subscription_plan_object_id: mongoose.Schema.Types.ObjectId
+    subscription_plan_object_id: string,
+    current_Plan: string
 }

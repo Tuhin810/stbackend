@@ -31,6 +31,3 @@ export const recruiterSearchPreferredJob = async (req: Request, res: Response) =
 	}
 }
 
-export const UpdateJobStatus = async (req: Request, res: Response) => {
-	const jobDetails = req.body;
-}
