@@ -23,7 +23,7 @@ export const fogottenPassword = async (req: Request, res: Response) => {
 
 		const otp = generateOTP();
 		const encOtp = encryptData(otp);
-		sendTextMessage(otp, applicantInstance.country_code + applicantPhone);
+		// sendTextMessage(otp, applicantInstance.country_code + applicantPhone);
 		return res.status(200).json({
 			message: "Otp Successfully Sent",
 			data: encOtp

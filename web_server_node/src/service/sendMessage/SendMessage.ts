@@ -3,11 +3,11 @@ import { accountSid, authToken } from "../..";
 
 const client = new Twilio("AC324e013b4f7478582bb47924c19ee849", "6857853c70847063bd4d51d10795c891");
 
-export const sendTextMessage = (code: string, phoneNumber: string) => {
+export const sendTextMessage = () => {
 	client.messages.create({
-		body: code,
-		to: phoneNumber,
-		from: "+12028518556"
+		body: "hellowwww",
+		to: "+91 81018 44250",
+		from: "+18886024229"
 	})
 		.then((message) => console.log(message.sid));
 }
