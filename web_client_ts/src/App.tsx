@@ -40,6 +40,8 @@ import ApplicantChat from "./components/pages/applicant/chat/ApplicantChat";
 import ApplicantInbox from "./components/pages/applicant/applicantInbox/ApplicantInbox";
 import ApplicantForgottenPassword from "./components/pages/applicant/auth/ApplicantForgetPassword/ApplicantForgottenPassword";
 import { SignUp } from "./components/pages/common/auth/signUp/SignUp";
+import { SuccessModal } from "./components/shared/modal/paymentModal/succes/SuccessModal";
+import { CancelModal } from "./components/shared/modal/paymentModal/cancel/CancelMOdal";
 
 
 const App = () => {
@@ -88,8 +90,8 @@ const App = () => {
             <Route path="/employer/pricing" element={<RecruiterPricing />} />
             <Route path="/employer/jobDetails/:jobId" element={<PostedJobDashboard />} />
             <Route path="/employer/create-checkout-session" element={<PostedJobDashboard />} />
-            <Route path="/employer/success" element={<>succes</>} />
-            <Route path="/employer/cancel" element={<>cancel</>} />
+            <Route path="/employer/success" element={<SuccessModal/>} />
+            <Route path="/employer/cancel" element={<CancelModal/>} />
           </Route>
 
           <Route path="/jobSeeker/signup" element={<ApplicantSignup />} />

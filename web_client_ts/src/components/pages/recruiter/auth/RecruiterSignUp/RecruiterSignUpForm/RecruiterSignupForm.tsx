@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { CompanyList } from '../../../../../../@types/CompanyList';
 import { getCompanyList } from '../../../../../../utils/apis/company/company';
 import { RecruiterDetails } from '../../../../../../@types/RecruiterDetails';
-import { registerRecruiter } from '../../../../../../utils/apis/recruiter/recruiter';
+import { registerRecruiter, verifyOtp } from '../../../../../../utils/apis/recruiter/recruiter';
 import { useNavigate } from 'react-router-dom';
 import { recruiterContext } from '../../../../../../context/recruiterDetails/RecruiterContext';
 import { globalContext } from '../../../../../../context/GlobalDetails/GlobalContext';
@@ -17,6 +17,7 @@ import {Alert} from '../../../../../shared/alert/Alert';
 import { validateName } from '../../../../../../utils/commonFunctions/validateName';
 import { validatePhone } from '../../../../../../utils/commonFunctions/validatePhone';
 import { validatePassword } from '../../../../../../utils/commonFunctions/validatePassword';
+import { Otpload } from '../../../../../../@types/otpDetails';
 
 const RecruiterSignupForm = () => {
   const navigate = useNavigate();
@@ -34,6 +35,9 @@ const RecruiterSignupForm = () => {
   const [pageTworrors, setPageTwoErrors] = useState<{ phone?: string }>({});
   const [pageThreeerrors, setPageThreeErrors] = useState<{ email?: string; password?: string }>({});
   const [buttonText, setButtonText] = useState<string>('Next');
+  const [rejkey, setRejkey] = useState<string>('null');
+  const [disable, setDisable] = useState<boolean>(false);
+ 
   const [recruiterSignUpDetail, setRecruiterSignUpDetail] = useState<RecruiterDetails>({
     first_name: "",
     middle_name: "",
@@ -51,20 +55,47 @@ const RecruiterSignupForm = () => {
     company_id: ""
   } as RecruiterDetails);
 
+  const otpVerificationData: Otpload = {
+    registrationKey: rejkey,
+    otpCode: otp
+  };
+
   const signUpRecruiter = async () => {
     setLoading(true);
-    const response = await registerRecruiter(recruiterSignUpDetail);
-    setLoading(false);
-    if (response?.status === 200) {
-      const recruiterDetails = response.data.data as RecruiterDetails;
-      dispatch({ type: "login", payload: recruiterDetails })
-      loggedIn({ type: "login", userType: "recruiter" });
-      navigate('/employer/pricing');
-    }else{
-      alert("error")
+    try {
+      const response = await registerRecruiter(recruiterSignUpDetail);
+      setLoading(false);
+  
+      if (response?.status === 200) {
+        console.log(response?.data?.registrationKey);
+        setRejkey(response?.data?.registrationKey);
+      } else {
+        setHasError(true);
+        setErrorMessage("Failed to sign up recruiter. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error in signUpRecruiter:", error);
+      setHasError(true);
+      setErrorMessage("An unexpected error occurred. Please try again.");
     }
-  }
-  const [disable, setDisable] = useState<boolean>(false);
+  };
+  
+  const validateOtp = async () => {
+    try {
+      const response = await verifyOtp(otpVerificationData);
+
+      if (response?.status === 200) {
+        navigate("/employer/login");
+      } else {
+        setHasError(true);
+        setErrorMessage("Failed to verify OTP. Please check your OTP and try again.");
+      }
+    } catch (error) {
+      console.error("Error in validateOtp:", error);
+      setHasError(true);
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    }
+  };
  
 
   const handlePageIncrement = async () => {
@@ -81,6 +112,12 @@ const RecruiterSignupForm = () => {
         alert("Phone Number be invalid")
         return;
       }
+    }
+    else if (page === 2) {
+      console.log("page 3");
+      await signUpRecruiter();
+
+      return;
     }
     else if (page === 3) {
       console.log("page 4");
@@ -124,18 +161,10 @@ const RecruiterSignupForm = () => {
   const handleChangeOtp = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setOtp(value);
-  }
+    console.log("OTP value:", value); // Add this line for debugging
+  };
+  
 
-  const validateOtp = async () => {
-    confirmationResult.confirm(otp).then(async () => {
-      await signUpRecruiter();
-    }).catch((error) => {
-      // setInvalidOtp(true);
-      setHasError(true);
-      console.log(error);
-      setErrorMessage(error.response.data.message);
-    });
-  }
 
 
  
@@ -160,8 +189,12 @@ const RecruiterSignupForm = () => {
 
 
   useEffect(() => {
-    if (page === 4) {
-      setButtonText("")
+    if (page === 3) {
+     signUpRecruiter();
+      return;
+    } else if (page === 4) {
+       validateOtp();
+      return;
     }
     else {
       setButtonText("Continue");
@@ -170,6 +203,11 @@ const RecruiterSignupForm = () => {
     setDisable(false)
   }, [page]);
 
+
+  useEffect(() => {
+    console.log("key set", rejkey);
+  }, [rejkey]);
+  
   
   return (
     <div className="flex flex-col items-center justify-center h-screen">

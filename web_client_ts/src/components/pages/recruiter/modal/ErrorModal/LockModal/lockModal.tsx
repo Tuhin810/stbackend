@@ -21,7 +21,7 @@ export const LockModal = () => {
                         </div>
                         <div className="content">
                             <span className="title text-indigo-500">Go Premium</span>
-                            <p className="message">Thank you for your purchase. you package will be delivered within 2 days of your purchase</p>
+                            <p className="message">Purchase a subscription plan to get access to all features</p>
                         </div>
                         <div className="actions">
                             <button onClick={goBack} className="history bg-indigo-700">Buy Subscription</button>

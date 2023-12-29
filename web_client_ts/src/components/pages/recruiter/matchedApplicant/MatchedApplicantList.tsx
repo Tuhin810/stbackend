@@ -16,13 +16,14 @@ const MatchedApplicantList = ({ applicantList }: IMatchedApplicantApplicant) => 
     
     return (
         <div >
-            <div className="w-full h-full px-2 py-5">
+            <div className="w-full h-[60vh] overflow-y-auto px-2 py-5 gap-5">
+                <div className="h-8"></div>
                 {
                     applicantList.map((applicantDetails, key) => {
                         console.log(applicantDetails);
                         return (
                             <div key={key}>
-                                <div className="w-full h-full pb-5 border-2 flex pt-3 justify-center rounded-lg items-center shadow-lg">
+                                <div className="w-full my-3 h-full pb-5 border-2 flex pt-3 justify-center rounded-lg items-center shadow-lg">
                                     <div className="flex justify-between items-center w-full px-4">
                                         <div className="flex items-center  ">
                                             <div className="mr-4 w-12 h-12 rounded-full shadow">
