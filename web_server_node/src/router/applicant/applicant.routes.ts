@@ -1,5 +1,5 @@
 import express from "express";
-import { registerNewUser } from "../../controller/users/auth/Register";
+import { registerNewUser, verifyOTPforUser } from "../../controller/users/auth/Register";
 import { googleLogin, loginUser } from "../../controller/users/auth/Login";
 import { getApplicantDetailsById } from "../../controller/users/applicantDetails/GetApplicantDetails";
 import { updateQualification } from "../../controller/users/applicantQualification/applicantQualification.controller";
@@ -21,6 +21,7 @@ router.route("/getApplicantInvitedJobDetailsList/:id").get(getApplicantInvitedJo
 router.route("/getApplicantResumePrivacy/:id").get(getApplicantResumePrivacy);
 router.route("/getApplicantAcceptedJobList/:id").get(getApplicantAcceptedJobList);
 router.route("/register").post(registerNewUser);
+router.route("/verifyuserotp").post(verifyOTPforUser);
 router.route("/login").post(loginUser);
 router.route("/googleLogin/:email").post(googleLogin);
 router.route("/forgetPassword/:applicantPhone").post(fogottenPassword);

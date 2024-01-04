@@ -18,6 +18,8 @@ import { validateEmail } from "../../../../../utils/commonFunctions/validateEmai
 import { validatePassword } from "../../../../../utils/commonFunctions/validatePassword";
 import { validatePhone } from "../../../../../utils/commonFunctions/validatePhone";
 import { validateName } from "../../../../../utils/commonFunctions/validateName";
+import { verifyOtpforapplicant } from "../../../../../utils/apis/applicant/Applicant";
+import { Otpload } from "../../../../../@types/otpDetails";
 
 const ApplicantSignupForm = () => {
 
@@ -37,6 +39,7 @@ const ApplicantSignupForm = () => {
   const [pageOnerrors, setPageOnerrors] = useState<{ first_name?: string; last_name?: string }>({});
   const [pageTworrors, setPageTwoErrors] = useState<{ phone?: string }>({});
   const [pageThreeerrors, setPageThreeErrors] = useState<{ email?: string; password?: string }>({});
+  const [rejkey, setRejkey] = useState<string>('null');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 
@@ -73,7 +76,10 @@ const ApplicantSignupForm = () => {
   //   }
   // }
 
-
+  const otpVerificationData: Otpload = {
+    registrationKey: rejkey,
+    otpCode: otp
+  };
 
   const handlePageIncrement = async () => {
     if (page === 1) {
@@ -100,7 +106,7 @@ const ApplicantSignupForm = () => {
       setPage(prev => prev + 1);
     }
     if (page === 3) {
-      senOtpToPhone();
+     signUp()
     }
     else if (page === 4) {
     await validateOtp();
@@ -153,24 +159,25 @@ const ApplicantSignupForm = () => {
     sendOtp(phone);
   }
 
-  const validateOtp = async () => {
-    confirmationResult.confirm(otp).then(async () => {
-      await signUp();
-    }).catch((error) => {
-      // setInvalidOtp(true);
-      console.log(error);
-    });
-  }
+  // const validateOtp = async () => {
+  //   confirmationResult.confirm(otp).then(async () => {
+  //     await signUp();
+  //   }).catch((error) => {
+  //     // setInvalidOtp(true);
+  //     console.log(error);
+  //   });
+  // }
 
   const signUp = async () => {
     setLoading(true);
     await applicantSignUp(applicantDetails).then(response => {
       setLoading(false);
       if (response?.status === 200) {
-        const responseApplicant: ApplicantDetails = response?.data.user;
-        applicantDispatch({ type: "signup", payload: responseApplicant })
-        loggedIn({ type: "login", userType: "applicant" });
-        navigate("/jobSeeker");
+        console.log(response?.data?.registrationKey);
+        setRejkey(response?.data?.registrationKey);
+      } else {
+        setHasError(true);
+        setErrorMessage("Failed to sign up recruiter. Please try again.");
       }
     }).catch(error => {
       setLoading(false);
@@ -179,11 +186,35 @@ const ApplicantSignupForm = () => {
       setErrorMessage(error.response.data.message);
     })
   }
+  const validateOtp = async () => {
+    try {
+      const response = await verifyOtpforapplicant(otpVerificationData);
+
+    if (response?.status === 200) {
+        const responseApplicant: ApplicantDetails = response?.data.user;
+        applicantDispatch({ type: "signup", payload: responseApplicant })
+        loggedIn({ type: "login", userType: "applicant" });
+        navigate("/jobSeeker/signup");
+      }
+      else {
+        setHasError(true);
+        setErrorMessage("Failed to verify OTP. Please check your OTP and try again.");
+      }
+    } catch (error) {
+      console.error("Error in validateOtp:", error);
+      setHasError(true);
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    }
+  };
+ 
 
 
   useEffect(() => {
-    if (page === 4) {
+    if (page === 3) {
       setButtonText("Sign Up")
+    }
+    if (page === 4) {
+      setButtonText("Verify Otp")
     }
     else {
       setButtonText("Continue");

@@ -26,6 +26,7 @@
     "react-select": "^5.8.0",
     "react-simple-typewriter": "^5.0.1",
     "react-to-print": "^2.14.15",
+    "reactjs-social-login": "^2.6.3",
     "socket.io-client": "^4.7.2",
     "use-count-up": "^3.0.1"
   },

@@ -34,7 +34,7 @@ export const loginUser = async (req: Request, res: Response) => {
             });
         }
         else {
-            res.status(404).send({
+            res.status(401).send({
                 success: false,
                 message: "invalid credentials",
 

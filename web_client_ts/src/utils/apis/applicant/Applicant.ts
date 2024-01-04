@@ -1,6 +1,7 @@
 import { ApplicantDetails } from "../../../@types/ApplicantDetails";
 import { ApplicantEducation } from "../../../@types/interfaces/ApplicantEducation";
 import { ApplicantExperience } from "../../../@types/interfaces/ApplicantExp";
+import { Otpload } from "../../../@types/otpDetails";
 import { header } from "../../../configs/config"
 import { Get, Put, Patch, Post } from "../apiCall"
 
@@ -8,6 +9,12 @@ export const getApplicantDetailsById = async (applicantId: string) => {
     const response = await Get(`applicant/getApplicantDetailsById/${applicantId}`, header);
     return response;
 }
+
+export const verifyOtpforapplicant =async (otpload:Otpload) => {
+    const response = await Post('applicant/verifyuserotp',otpload,header);
+    return response;
+}
+
 
 export const updateApplicantDetailsById = async (applicantId: string,applicantDetails:ApplicantDetails) => {
     const response = await Patch(`applicant/updateApplicantProfile/${applicantId}`,applicantDetails, header);

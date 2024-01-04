@@ -38,7 +38,7 @@ export const applicantSchema: Schema<ApplicantDetails> = new mongoose.Schema({
     phone: {
         type: Number,
         maxLength: [10, "phone number can not be more than 10 digits"],
-        unique: true,
+        default: 0
     },
     password: {
         type: String,

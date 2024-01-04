@@ -44,7 +44,7 @@ app.post("/api/create-checkout-session", stripePayment);
 app.get("/", (req, res) => {
   sendTextMessage()
   res.send(
-    `<>sent succesfully"`
+    `<h1>sent succesfully</h1>`
   )
 });
 
