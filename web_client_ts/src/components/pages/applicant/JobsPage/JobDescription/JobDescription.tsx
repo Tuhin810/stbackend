@@ -32,7 +32,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
       
         <div className="sticky top-0 z-10  w-full  bg-white md:h-44 h-52 shadow-lg border-b-2  px-8 py-3 ">
           <div className="flex justify-between items-center">
-          <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline pt-5 md:pt-0">{jobDetails.job_title}</div>
+          <div className="text-xl mb-2 text-gray-800 font-semibold hover:underline pt-5 md:pt-0">{jobDetails?.job_title}</div>
           <div onClick={() => hideModal('jobdesc')} className="z-50 md:hidden">
                     <img className="h-7 w-7" src="https://cdn.iconscout.com/icon/free/png-512/free-close-1957281-1650975.png?f=avif&w=512" alt="" />
                   </div>
@@ -40,7 +40,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
           <div className="company text-xs text-blue-600  hover:underline">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
           {/* <div className=""><Ratings/></div> */}
           <div className="">Kolkata, West Bengal</div>
-          <div className="">₹{jobDetails.min_salary} - ₹{jobDetails.max_salary}</div>
+          <div className="">₹{jobDetails?.min_salary} - ₹{jobDetails?.max_salary}</div>
           {
             (!isAccept || apply) ?
               <div className="flex gap-4 mt-2 ">
@@ -90,7 +90,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
                 </div>
                 <div className="">
                   <div className="text-lg text-gray-900">Pay</div>
-                  <div className="text-sm">₹{jobDetails.min_salary} - ₹{jobDetails.max_salary}</div>
+                  <div className="text-sm">₹{jobDetails?.min_salary} - ₹{jobDetails?.max_salary}</div>
                 </div>
               </div>
 
@@ -103,7 +103,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
                 </div>
                 <div className="">
                   <div className="text-lg text-gray-900">Job type</div>
-                  <div className="text-sm">{jobDetails.job_type}</div>
+                  <div className="text-sm">{jobDetails?.job_type}</div>
                 </div>
               </div>
 
@@ -117,7 +117,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
                 </div>
                 <div className="">
                   <div className="text-lg text-gray-900 ">Daily hours</div>
-                  <div className="text-sm">{jobDetails.duty_hours}&nbsp;hours</div>
+                  <div className="text-sm">{jobDetails?.duty_hours}&nbsp;hours</div>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ export const JobDescription = ({ jobDetails, isAccept, jobId, applicantId }: Job
           {/* Description part starts */}
           <div className="">
             <div className="px-3">
-              <p className="text-gray-800"> {jobDetails.job_description}</p>
+              <p className="text-gray-800"> {jobDetails?.job_description}</p>
             </div>
             <div className="py-2 px-3">
               <div className="text-lg font-semibold mb-2 ">Industry:</div>

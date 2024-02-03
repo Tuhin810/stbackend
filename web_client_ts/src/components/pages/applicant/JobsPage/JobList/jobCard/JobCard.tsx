@@ -8,7 +8,7 @@ export const JobCard = ({ jobDetails }: JobDetailsProps) => {
       <div className="w-full cursor-pointer border-2 bg-white h-72 rounded-lg drop-shadow-md px-5 pt-5">
         <div className="flex justify-between">
           <div className="">
-            <div className="text-lg md:text-2xl  text-gray-700 font-medium hover:underline mb-3">{jobDetails.job_title}</div>
+            <div className="text-lg md:text-2xl  text-gray-700 font-medium hover:underline mb-3">{jobDetails?.job_title}</div>
             <div className="company text-xs w-1/2 md:w-full md:text-sm text-gray-600  uppercase">ORCHID SCIENTIFIC AND INNOVATIVE INDIA PVT LTD</div>
             <div className="">
               <Ratings />
@@ -28,25 +28,26 @@ export const JobCard = ({ jobDetails }: JobDetailsProps) => {
         <div className="Features mt-3 px-2 flex-col gap-3">
           <div className="flex gap-4 ">
             <div className="flex text-sm w-auto items-center gap-1 bg-gray-200 px-2 md:py-1 rounded-md">
-              <p className=" text-sm">₹{jobDetails.min_salary}&nbsp;to&nbsp;₹{jobDetails.max_salary} </p>
+              <p className=" text-sm">₹{jobDetails?.min_salary}&nbsp;to&nbsp;₹{jobDetails?.max_salary} </p>
 
             </div>
             <div className="hidden md:inline  items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">
-              <p className="h- text-sm">{jobDetails.job_type} </p>
+              <p className="h- text-sm">{jobDetails?.job_type} </p>
 
             </div>
             <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">
-              <p className="h- text-sm">Applicants&nbsp;{jobDetails.no_of_applicants}</p>
+              <p className="h- text-sm">Applicants&nbsp;{jobDetails?.no_of_applicants}</p>
 
             </div>
           </div>
 
                 <div className="flex gap-4 mt-2 ">
                 <div className="flex items-center  gap-1 bg-gray-200 px-2 py-1 rounded-md">      
-                   <p className="md:mb-1 text-sm">Vacancy <span className="px-2 text-white  py-1 text-xs rounded-full   bg-blue-400">{jobDetails.no_of_vacancy}</span> </p>
+                   <p className="md:mb-1 text-sm">Vacancy <span className="px-2 text-white  py-1 text-xs rounded-full
+                      bg-blue-400">{jobDetails?.no_of_vacancy}</span> </p>
                 </div>
                 <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-md">      
-                   <p text-sm>{jobDetails.max_experience_year}y experience </p>
+                   <p text-sm>{jobDetails?.max_experience_year}y experience </p>
                  
                  </div>
                 

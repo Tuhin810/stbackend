@@ -21,6 +21,10 @@ export const getMatchedApplicantList =async (jobId:string) => {
     const response = await Get(`jobs/getMatchedProfileListByJobId/${jobId}`,header);
     return response;
 }
+export const deleteJobById =async (jobId:string) => {
+    const response = await Get(`jobs/deleteJobDetailsByJobId/${jobId}`,header);
+    return response;
+}
 
 export const getAllJobs = async () => {
     const response = await Get(`jobs/getAllJobs`,header);
